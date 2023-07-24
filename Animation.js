@@ -46,3 +46,21 @@ async function animateOnVisible() {
 
 // will be executed once the file loaded
 animateOnVisible();
+
+
+//Code used for navigation bar elements
+// Setting up the Variables
+var bars = document.getElementById("nav-action");
+var nav = document.getElementById("nav");
+//setting up the listener
+bars.addEventListener("click", barClicked, false);
+//setting up the clicked Effect
+function barClicked() {
+  bars.classList.toggle('active');
+  nav.classList.toggle('visible');
+}
+
+function closeMenu(){
+  bars.classList.remove('active');
+  nav.classList.remove('visible');
+}
