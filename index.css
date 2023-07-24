@@ -28,8 +28,7 @@
   body {
     background-color: var(--background-color);
     margin: 0;
-    padding: 0;
-    overflow: hidden; /* Hide the main scrollbar */
+    padding: 0
   }
   
   /* Hint font style */
@@ -554,4 +553,20 @@
     background-color: green;
   }
   
+  /* Style the scrollbar track */
+body::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Style the scrollbar thumb */
+  body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+
+  /* Hide the default scrollbar */
+body {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
   
