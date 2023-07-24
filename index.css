@@ -504,7 +504,7 @@ nav.visible>ul>li:last-child a {
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
     color: #f0f8ff;
-    font-family: "Source Sans Pro",sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
     padding: 13px;
     border-radius: 10px;
     z-index: 2;
@@ -530,7 +530,7 @@ nav.visible>ul>li:last-child a {
     transition: background-color 0.3s;
     font-size: 13px;
     /* Adjust the value as per your preference */
-    font-family: "Source Sans Pro",sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
 #sideBar.slider-container {
@@ -550,8 +550,10 @@ nav.visible>ul>li:last-child a {
     width: 5px;
     background-color: white;
     border-radius: 5px;
-    transition: top 0.3s;
+    transition: transform 0.3s ease-in-out;
+    /* Use transform for smooth sliding */
     z-index: 1;
+
 }
 
 /* Add a new class for the vertical line */

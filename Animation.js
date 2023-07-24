@@ -48,7 +48,7 @@ async function animateOnVisible() {
   await clearHint();
 }
 
-function clearHint(){
+function clearHint() {
   const hintElement = document.getElementById('hint');
   hintElement.innerHTML = "";
 }
@@ -83,3 +83,57 @@ function closeMenu() {
   bars.classList.remove('active');
   nav.classList.remove('visible');
 }
+
+//Scroll sideBar and slider animation efffect.
+const slider = document.querySelector('.slider');
+const verticalLine = document.querySelector('.vertical-line');
+let lastSliderTop = 0;
+
+function handleAnchorHover(event) {
+  const anchorElement = event.target;
+  const anchorRect = anchorElement.getBoundingClientRect();
+  const verticalLineRect = verticalLine.getBoundingClientRect();
+  const sliderTop = anchorRect.top - verticalLineRect.top + window.scrollY + anchorRect.height / 2 - slider.offsetHeight / 2;
+
+  slider.style.transform = `translateY(${sliderTop}px)`;
+  slider.style.opacity = 1;
+
+  // Clear the timer to prevent slider from hiding on mouse hover
+  clearTimeout(slider.hideTimer);
+}
+
+function handleAnchorHoverEnd() {
+  // Check if the mouse is still inside the #sideBar element
+  const sideBar = document.getElementById('sideBar');
+  const sideBarRect = sideBar.getBoundingClientRect();
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+
+  if (
+    mouseX >= sideBarRect.left &&
+    mouseX <= sideBarRect.right &&
+    mouseY >= sideBarRect.top &&
+    mouseY <= sideBarRect.bottom
+  ) {
+    // Mouse is still inside the #sideBar element, don't hide the slider
+    return;
+  }
+
+  // Hide the slider after a brief delay when the mouse leaves the anchor
+  slider.hideTimer = setTimeout(() => {
+    slider.style.opacity = 0;
+  }, 100); // Adjust the delay time (in milliseconds) as needed
+}
+
+// Add event listeners to anchors
+const anchors = document.querySelectorAll('.navigation a');
+anchors.forEach((anchor) => {
+  anchor.addEventListener('mouseenter', handleAnchorHover);
+  anchor.addEventListener('mouseleave', handleAnchorHoverEnd);
+});
+
+// Handle mouse leave on the #sideBar element
+const sideBar = document.getElementById('sideBar');
+sideBar.addEventListener('mouseleave', () => {
+  slider.style.opacity = 1;
+});
