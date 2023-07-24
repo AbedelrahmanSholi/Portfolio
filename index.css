@@ -4,92 +4,101 @@
     padding: 0;
     box-sizing: border-box;
     transition: all 0.1s linear;
-  }
-  
-  *:focus {
+}
+
+*:focus {
     outline-width: 1px;
     outline-style: dotted;
     outline-color: var(--text-color);
-  }
-  
-  /* Root variables */
-  :root {
+}
+
+/* Root variables */
+:root {
     --main-font: 'Courier New', monospace;
     --h1: normal bold min(max(36px, 7vw), 72px) / 1.2 var(--main-font);
     --p: normal normal min(max(14px, 4vw), 24px) / 1.2 var(--main-font);
     --small: normal normal min(max(9px, 2.5vw), 18px) / 1.2 var(--main-font);
-    --text-color: #FFFFFF; /* text color */
-    --background-color: #000000; /* Light Gray */
-    --comment-color: #2e95d3; /* comment */
-    --highlight-color: #6e4acf; /* White */
-  }
-  
-  /* Body styles */
-  body {
+    --text-color: #FFFFFF;
+    /* text color */
+    --background-color: #000000;
+    /* Light Gray */
+    --comment-color: #2e95d3;
+    /* comment */
+    --highlight-color: #6e4acf;
+    /* White */
+}
+
+/* Body styles */
+body {
     background-color: var(--background-color);
     margin: 0;
     padding: 0
-  }
-  
-  /* Hint font style */
-  .hint {
+}
+
+/* Hint font style */
+.hint {
     font-style: italic;
     font-size: 20px;
     font-weight: bold;
-    color: #6e4acf; /* Vibrant purple color */
+    color: #6e4acf;
+    /* Vibrant purple color */
     position: relative;
-    bottom: 30px; /* Adjust the value to set the distance from the bottom of the screen */
+    bottom: 30px;
+    /* Adjust the value to set the distance from the bottom of the screen */
     left: 50%;
     transform: translateX(-50%);
-    animation: blinking 1s infinite; /* Blinking animation */
-    margin-top: auto; /* Use margin-top to push the hint down */
-  }
-  
-  /* Comment styles */
-  .comment {
+    animation: blinking 1s infinite;
+    /* Blinking animation */
+    margin-top: auto;
+    /* Use margin-top to push the hint down */
+}
+
+/* Comment styles */
+.comment {
     color: var(--comment-color);
     font-style: italic;
-  }
-  
-  /* Add a transparent pseudo-element to push the hint down based on the content */
+}
+
+/* Add a transparent pseudo-element to push the hint down based on the content */
 .about-me::after {
     content: "";
     display: block;
     height: 100%;
-    margin-top: 20%; /* Adjust the value to set the distance from the content */
-  }
-  
-  /* Header and Page styles */
-  h1,
-  p,
-  li {
+    margin-top: 20%;
+    /* Adjust the value to set the distance from the content */
+}
+
+/* Header and Page styles */
+h1,
+p,
+li {
     color: var(--text-color);
-  }
-  
-  header,
-  .page:last-of-type {
+}
+
+header,
+.page:last-of-type {
     min-height: 95vh;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     text-align: left;
-  }
-  
-  header:first-of-type h1,
-  .page:last-of-type h1 {
+}
+
+header:first-of-type h1,
+.page:last-of-type h1 {
     margin-bottom: 10vh 0;
     text-align: left;
-  }
-  
-  header:first-of-type p,
-  .page:last-of-type p {
+}
+
+header:first-of-type p,
+.page:last-of-type p {
     margin: 0;
     text-align: left;
     margin-bottom: 5vw;
-  }
-   
-  /* Page styles */
-  .page {
+}
+
+/* Page styles */
+.page {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -99,147 +108,148 @@
     max-width: 1000px;
     width: 100%;
     text-align: left;
-  }
-  
-  /* Link styles */
-  a {
+}
+
+/* Link styles */
+a {
     color: var(--highlight-color);
-  }
-  
-  /* Heading styles */
-  .page h1 {
+}
+
+/* Heading styles */
+.page h1 {
     text-align: left;
     font: var(--h1);
     margin: 0;
     padding-bottom: 4%;
-  }
-  
-  /* Paragraph styles */
-  .page p {
+}
+
+/* Paragraph styles */
+.page p {
     margin-bottom: 20px;
-  }
-  
-  .page p:last-of-type {
+}
+
+.page p:last-of-type {
     margin-bottom: 0;
-  }
-  
-  /* Generic text styles */
-  p,
-  li {
+}
+
+/* Generic text styles */
+p,
+li {
     font: var(--p);
     text-align: left;
-  }
-  
-  /* Small text styles */
-  .small {
+}
+
+/* Small text styles */
+.small {
     opacity: 0;
     font: var(--small);
     text-decoration: underline;
     cursor: pointer;
     margin-top: 1rem;
     width: fit-content;
-  }
-  
-  button.small {
+}
+
+button.small {
     background-color: transparent;
     border: none;
     color: var(--text-color);
-  }
-  
-  /* Long description styles */
-  .page .long-description {
+}
+
+/* Long description styles */
+.page .long-description {
     border: 1px solid var(--text-color);
     text-align: left;
-  }
-  
-  .long-description {
+}
+
+.long-description {
     padding: 2%;
     overflow: hidden;
-  }
-  
-  /* Wrapper styles */
-  .page .wrapper {
+}
+
+/* Wrapper styles */
+.page .wrapper {
     justify-content: space-between;
     min-height: 30vh;
-  }
-  
-  .page:nth-child(even) {
+}
+
+.page:nth-child(even) {
     text-align: right;
-  }
-  
-  .page:nth-child(even) .small {
+}
+
+.page:nth-child(even) .small {
     align-self: flex-end;
-  }
-  
-  .page:nth-child(odd) .wrapper {
+}
+
+.page:nth-child(odd) .wrapper {
     flex-direction: row-reverse;
-  }
-  
-  /* Image styles */
-  img {
+}
+
+/* Image styles */
+img {
     height: 100%;
     filter: var(--img-filter);
-  }
-  
-  /* Description styles */
-  .description {
+}
+
+/* Description styles */
+.description {
     width: 100%;
     height: auto;
-  }
-  
-  /* Hidden styles */
-  .hidden {
+}
+
+/* Hidden styles */
+.hidden {
     display: none;
     opacity: 0;
     transition: all 0.3s linear;
-  }
-  
-  /* Blinking animation */
-  @keyframes blinking {
+}
+
+/* Blinking animation */
+@keyframes blinking {
     from {
-      opacity: 0;
+        opacity: 0;
     }
+
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
-  .page {
+}
+
+.page {
     opacity: 1;
-  }
-  
-  /* Last page link color */
-  .page:last-of-type a {
+}
+
+/* Last page link color */
+.page:last-of-type a {
     color: var(--highlight-color);
-  }
-  
-  /* Tree list styles */
-  .tree {
+}
+
+/* Tree list styles */
+.tree {
     --spacing: 1.5rem;
     --radius: 10px;
-  }
-  
-  .tree li {
+}
+
+.tree li {
     display: block;
     position: relative;
     padding-left: calc(2 * var(--spacing) - var(--radius) - 2px);
     margin: 5px;
-  }
-  
-  .tree ul {
+}
+
+.tree ul {
     margin-left: calc(var(--radius) - var(--spacing));
     padding-left: 0;
-  }
-  
-  .tree ul li {
+}
+
+.tree ul li {
     border-left: 2px solid #ddd;
-  }
-  
-  .tree ul li:last-child {
+}
+
+.tree ul li:last-child {
     border-color: transparent;
-  }
-  
-  .tree ul li::before {
+}
+
+.tree ul li::before {
     content: '';
     display: block;
     position: absolute;
@@ -249,29 +259,29 @@
     height: calc(var(--spacing) + 1px);
     border: solid #ddd;
     border-width: 0 0 2px 2px;
-  }
-  
-  .tree summary {
+}
+
+.tree summary {
     display: block;
     cursor: pointer;
     margin: 5px;
-  }
-  
-  .tree summary::marker,
-  .tree summary::-webkit-details-marker {
+}
+
+.tree summary::marker,
+.tree summary::-webkit-details-marker {
     display: none;
-  }
-  
-  .tree summary:focus {
+}
+
+.tree summary:focus {
     outline: none;
-  }
-  
-  .tree summary:focus-visible {
+}
+
+.tree summary:focus-visible {
     outline: 1px dotted #000;
-  }
-  
-  .tree li::after,
-  .tree summary::before {
+}
+
+.tree li::after,
+.tree summary::before {
     content: '';
     display: block;
     position: absolute;
@@ -281,24 +291,29 @@
     height: calc(2 * var(--radius));
     border-radius: 50%;
     background: #ddd;
-  }
-  
-  .tree summary::before {
+}
+
+.tree summary::before {
     z-index: 1;
     background: #696 url('images/expand-collapse.svg') 0 0;
-  }
-  
-  .tree details[open]>summary::before {
+}
+
+.tree details[open]>summary::before {
     background-position: calc(-2 * var(--radius)) 0;
-  }
-  
-  /* Optional: Add a smooth scrolling effect to anchor links */
-  html {
+}
+
+/* Optional: Add a smooth scrolling effect to anchor links */
+html {
     scroll-behavior: smooth;
-  }
-  
-  /* Navigation styles */
-  .bars {
+}
+
+/* Add smooth scrolling behavior */
+.scroll-section {
+    scroll-behavior: smooth;
+}
+
+/* Navigation styles */
+.bars {
     position: absolute;
     width: 27px;
     height: 27px;
@@ -307,49 +322,49 @@
     cursor: pointer;
     z-index: 101;
     padding-top: 9px;
-  }
-  
-  .bar {
+}
+
+.bar {
     width: 100%;
     height: 4px;
     background-color: #fff;
     position: absolute;
-  }
-  
-  span::before,
-  span::after {
+}
+
+span::before,
+span::after {
     content: "";
     display: block;
     background-color: #fff;
     width: 100%;
     height: 4px;
     position: absolute;
-  }
-  
-  .bar::before {
+}
+
+.bar::before {
     transform: translateY(-9px);
-  }
-  
-  .bar::after {
+}
+
+.bar::after {
     transform: translateY(9px);
-  }
-  
-  .bars.active .bar {
+}
+
+.bars.active .bar {
     background-color: transparent;
-  }
-  
-  .bars.active span::before {
+}
+
+.bars.active span::before {
     animation: top-bar 1s;
     animation-fill-mode: forwards;
-  }
-  
-  .bars.active span::after {
+}
+
+.bars.active span::after {
     animation: bottom-bar 1s;
     animation-fill-mode: forwards;
-  }
-  
-  /* Navbar Links CSS */
-  #nav {
+}
+
+/* Navbar Links CSS */
+#nav {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -359,9 +374,9 @@
     z-index: -1;
     overflow: hidden;
     opacity: 0;
-  }
-  
-  #nav a {
+}
+
+#nav a {
     color: #fff;
     text-decoration: none;
     line-height: 70vw;
@@ -373,22 +388,22 @@
     text-indent: 50vw;
     border-radius: 50%;
     transition: all .5s;
-  }
-  
-  #nav a:hover {
+}
+
+#nav a:hover {
     background: #606f86;
-  }
-  
-  #nav {
+}
+
+#nav {
     list-style: none;
-  }
-  
-  .visible {
+}
+
+.visible {
     z-index: 100 !important;
     opacity: 1 !important;
-  }
-  
-  .shape-circle {
+}
+
+.shape-circle {
     border-radius: 50%;
     width: 20vw;
     height: 20vw;
@@ -398,9 +413,9 @@
     transition: all 1s ease-in-out;
     background: #8e9dac;
     box-shadow: 0 0px 0px rgba(4, 26, 62, 0.5);
-  }
-  
-  nav.visible>ul>li:first-child {
+}
+
+nav.visible>ul>li:first-child {
     width: 200vw;
     height: 200vw;
     top: -100vw;
@@ -408,9 +423,9 @@
     z-index: 5;
     transition: all .5s ease-in-out;
     box-shadow: 0 0px 80px rgba(4, 26, 62, 0.5);
-  }
-  
-  nav.visible>ul>li:nth-child(2) {
+}
+
+nav.visible>ul>li:nth-child(2) {
     width: 150vw;
     height: 150vw;
     top: -75vw;
@@ -418,9 +433,9 @@
     z-index: 6;
     transition: all .6s ease-in-out;
     box-shadow: 0 0px 80px rgba(4, 26, 62, 0.5);
-  }
-  
-  nav.visible>ul>li:nth-child(3) {
+}
+
+nav.visible>ul>li:nth-child(3) {
     width: 100vw;
     height: 100vw;
     top: -50vw;
@@ -428,9 +443,9 @@
     z-index: 7;
     transition: all .7s ease-in-out;
     box-shadow: 0 0px 80px rgba(4, 26, 62, 0.5);
-  }
-  
-  nav.visible>ul>li:last-child {
+}
+
+nav.visible>ul>li:last-child {
     width: 50vw;
     height: 50vw;
     top: -25vw;
@@ -438,49 +453,51 @@
     z-index: 8;
     transition: all .8s ease-in-out;
     box-shadow: 0 0px 80px rgba(4, 26, 62, 0.5);
-  }
-  
-  nav.visible>ul>li:first-child a {
+}
+
+nav.visible>ul>li:first-child a {
     line-height: 265vw !important;
     text-indent: 15vw !important;
-  }
-  
-  nav.visible>ul>li:nth-child(2) a {
+}
+
+nav.visible>ul>li:nth-child(2) a {
     line-height: 200vw !important;
     text-indent: 17vw !important;
-  }
-  
-  nav.visible>ul>li:nth-child(3) a {
+}
+
+nav.visible>ul>li:nth-child(3) a {
     line-height: 137vw !important;
     text-indent: 17vw !important;
-  }
-  
-  nav.visible>ul>li:last-child a {
+}
+
+nav.visible>ul>li:last-child a {
     line-height: 70vw !important;
     text-indent: 12vw !important;
-  }
-  
-  @keyframes top-bar {
+}
+
+@keyframes top-bar {
     50% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
+
     100% {
-      transform: rotate(45deg) translateY(0);
+        transform: rotate(45deg) translateY(0);
     }
-  }
-  
-  @keyframes bottom-bar {
+}
+
+@keyframes bottom-bar {
     50% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
+
     100% {
-      transform: rotate(-45deg) translateY(0);
+        transform: rotate(-45deg) translateY(0);
     }
-  }
+}
 
 /*Side bar navigation*/
-  
-  #sideBar.navigation {
+
+#sideBar.navigation {
     position: fixed;
     top: 50%;
     right: 10px;
@@ -490,41 +507,45 @@
     font-family: Arial, sans-serif;
     padding: 20px;
     border-radius: 10px;
-    z-index: 2; /* Increase the z-index to place the navigation on top */
-  }
-  
-  #sideBar.navigation > ul {
+    z-index: 2;
+    /* Increase the z-index to place the navigation on top */
+}
+
+#sideBar.navigation>ul {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  
-  #sideBar.navigation > ul > li {
+}
+
+#sideBar.navigation>ul>li {
     margin-bottom: 15px;
-  }
-  
-  #sideBar.navigation > ul > li > a {
+}
+
+#sideBar.navigation>ul>li>a {
     text-decoration: none;
     color: white;
     display: block;
     padding: 5px;
     transition: background-color 0.3s;
-    font-size: 16px; /* Adjust the value as per your preference */
+    font-size: 16px;
+    /* Adjust the value as per your preference */
     font-family: "Arial", sans-serif;
-  }
-  
-  #sideBar.navigation > ul > li > a:hover {
+}
+
+#sideBar.navigation>ul>li>a:hover {
     background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  #sideBar.slider-container {
-    position: relative; /* Set the container's position relative to the body element */
-    height: 100%; /* Set the height of the slider container to match the navigation */
+}
+
+#sideBar.slider-container {
+    position: relative;
+    /* Set the container's position relative to the body element */
+    height: 100%;
+    /* Set the height of the slider container to match the navigation */
     width: 5px;
-  }
-  
-  /* Add a new class for the slider */
-  .slider {
+}
+
+/* Add a new class for the slider */
+.slider {
     position: absolute;
     top: 0;
     right: 0;
@@ -534,39 +555,41 @@
     border-radius: 5px;
     transition: top 0.3s;
     z-index: 1;
-  }
-  
-  /* Add a new class for the vertical line */
-  .vertical-line {
+}
+
+/* Add a new class for the vertical line */
+.vertical-line {
     position: absolute;
     top: 0;
-    right: 2.5px; /* Adjust the distance to make the vertical line appear at the right side of the slider */
+    right: 2.5px;
+    /* Adjust the distance to make the vertical line appear at the right side of the slider */
     transform: translateX(50%);
     height: 100%;
     width: 2px;
-    background-color: gray; /* Color of the vertical line */
-    z-index: 0; /* Place the vertical line behind the slider */
-  }
-  
-  /* Add hover effect to the vertical line */
-  .vertical-line:hover {
+    background-color: gray;
+    /* Color of the vertical line */
+    z-index: 0;
+    /* Place the vertical line behind the slider */
+}
+
+/* Add hover effect to the vertical line */
+.vertical-line:hover {
     background-color: green;
-  }
-  
-  /* Style the scrollbar track */
+}
+
+/* Style the scrollbar track */
 body::-webkit-scrollbar {
     width: 6px;
-  }
-  
-  /* Style the scrollbar thumb */
-  body::-webkit-scrollbar-thumb {
+}
+
+/* Style the scrollbar thumb */
+body::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
-  }
+}
 
-  /* Hide the default scrollbar */
+/* Hide the default scrollbar */
 body {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
-  }
-  
+}
