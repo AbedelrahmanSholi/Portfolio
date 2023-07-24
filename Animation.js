@@ -83,3 +83,36 @@ function closeMenu() {
   bars.classList.remove('active');
   nav.classList.remove('visible');
 }
+
+
+// Scrolling events and functions
+const sectionIds = ["home", "myStackPage", "endPage"];
+const sections = sectionIds.map((id) => document.getElementById(id));
+const totalSections = sections.length;
+let currentSectionIndex = 0;
+let scrolling = false;
+
+function scrollToSection(index) {
+  if (index >= 0 && index < totalSections) {
+    scrolling = true;
+    sections[index].scrollIntoView({ behavior: "smooth" });
+    currentSectionIndex = index;
+  }
+}
+
+function handleScroll(event) {
+  if (!scrolling) {
+    scrolling = true;
+    const deltaY = event.deltaY;
+    if (deltaY > 0) {
+      scrollToSection(currentSectionIndex + 1);
+    } else if (deltaY < 0) {
+      scrollToSection(currentSectionIndex - 1);
+    }
+    setTimeout(() => {
+      scrolling = false;
+    }, 1000); // Set a delay to prevent scrolling immediately after a section change
+  }
+}
+
+window.addEventListener("wheel", handleScroll, { passive: false });

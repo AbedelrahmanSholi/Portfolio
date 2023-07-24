@@ -32,7 +32,18 @@
 		</ul>
 	</nav>
 
-	<header class="page" id="home">
+	<div id="sideBar" class="navigation">
+		<ul>
+		  <li><a href="#">00</a></li>
+		  <li><a href="#myStackPage">01</a></li>
+		  <li><a href="#endPage">02</a></li>
+		  <li><a href="#">03</a></li>
+		</ul>
+		<div class="slider"></div>
+		<div class="vertical-line"></div> <!-- Add a new div for the vertical line -->
+	  </div>
+
+	<header class="page scroll-section" id="home">
 
 		<h1 id="greeting"></h1>
 		<div class="about-me">
@@ -42,7 +53,7 @@
 		<p class="hint" id="hint">//Click anywhere to stop animation!</p>
 	</header>
 
-	<section class="page">
+	<section class="page scroll-section" id="myStackPage">
 		<h1 class="" style="opacity: 1;">My Stack</h1>
 		<p>This is the list of the technologies, farmeworks, and tools I use on daliy basis.</p>
 		<p class="comment">Expand the tree!</p>
@@ -151,7 +162,7 @@
 			</li>
 		</ul>
 	</section>
-	<section class="page">
+	<section class="page scroll-section" id="endPage">
 		<h1 class="" style="opacity: 1;">Cool! Huh?</h1>
 		<h1 class="" style="opacity: 1;">:)</h1>
 		<div class="about-me">
@@ -162,7 +173,6 @@
 			</p>
 		</div>
 	</section>
-
 	<script src="Animation.js"></script>
 </body>
 
