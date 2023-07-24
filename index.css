@@ -503,11 +503,12 @@ nav.visible>ul>li:last-child a {
     right: 10px;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    font-family: Arial, sans-serif;
-    padding: 20px;
+    color: #f0f8ff;
+    font-family: "Source Sans Pro",sans-serif;
+    padding: 13px;
     border-radius: 10px;
     z-index: 2;
+    display: flex;
     /* Increase the z-index to place the navigation on top */
 }
 
@@ -523,17 +524,13 @@ nav.visible>ul>li:last-child a {
 
 #sideBar.navigation>ul>li>a {
     text-decoration: none;
-    color: white;
+    color: #f0f8ff;
     display: block;
     padding: 5px;
     transition: background-color 0.3s;
-    font-size: 16px;
+    font-size: 13px;
     /* Adjust the value as per your preference */
-    font-family: "Arial", sans-serif;
-}
-
-#sideBar.navigation>ul>li>a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    font-family: "Source Sans Pro",sans-serif;
 }
 
 #sideBar.slider-container {
@@ -570,11 +567,6 @@ nav.visible>ul>li:last-child a {
     /* Color of the vertical line */
     z-index: 0;
     /* Place the vertical line behind the slider */
-}
-
-/* Add hover effect to the vertical line */
-.vertical-line:hover {
-    background-color: green;
 }
 
 /* Style the scrollbar track */
