@@ -244,12 +244,6 @@ img {
     transition: all 0.3s linear;
 }
 
-.selected:after {
-    content: '_';
-    opacity: 0;
-    animation: blinking 1s infinite steps(2, jump-none);
-}
-
 @keyframes blinking {
     from {
         opacity: 0
