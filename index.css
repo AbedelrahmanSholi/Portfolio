@@ -42,12 +42,21 @@
     left: 50%;
     transform: translateX(-50%);
     animation: blinking 1s infinite; /* Blinking animation */
+    margin-top: auto; /* Use margin-top to push the hint down */
   }
   
   /* Comment styles */
   .comment {
     color: var(--comment-color);
     font-style: italic;
+  }
+  
+  /* Add a transparent pseudo-element to push the hint down based on the content */
+.about-me::after {
+    content: "";
+    display: block;
+    height: 100%;
+    margin-top: 20%; /* Adjust the value to set the distance from the content */
   }
   
   /* Header and Page styles */
@@ -468,3 +477,6 @@
       transform: rotate(-45deg) translateY(0);
     }
   }
+
+
+  
