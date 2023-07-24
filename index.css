@@ -1,383 +1,282 @@
+/* General styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     transition: all 0.1s linear;
-}
-
-*:focus {
+  }
+  
+  *:focus {
     outline-width: 1px;
     outline-style: dotted;
-    outline-color: var(--main-color);
-}
-
-@font-face {
-    font-family: SourceCode;
-    src: url(bb97deb0c4b7e4944063caa836cfd12a.woff2);
-}
-
-@font-face {
-    font-family: SourceCode;
-    src: url(8c59cf004863e521b980f753d9690ecf.woff2);
-    font-weight: bold;
-}
-
-:root {
-  --main-font: 'Courier New', monospace;
-  --h1: normal bold min(max(36px, 7vw), 72px) / 1.2 var(--main-font);
-  --p: normal normal min(max(14px, 4vw), 24px) / 1.2 var(--main-font);
-  --small: normal normal min(max(9px, 2.5vw), 18px) / 1.2 var(--main-font);
-  --main-color: #FFFFFF; /* text color */
-  --secondary-color: #000000; /* Light Gray */
-  --accent-color: #2e95d3; /* comment */
-  --highlight-color: #6e4acf; /* White */
-}
+    outline-color: var(--text-color);
+  }
   
-body {
-    background-color: var(--secondary-color);
+  /* Root variables */
+  :root {
+    --main-font: 'Courier New', monospace;
+    --h1: normal bold min(max(36px, 7vw), 72px) / 1.2 var(--main-font);
+    --p: normal normal min(max(14px, 4vw), 24px) / 1.2 var(--main-font);
+    --small: normal normal min(max(9px, 2.5vw), 18px) / 1.2 var(--main-font);
+    --text-color: #FFFFFF; /* text color */
+    --background-color: #000000; /* Light Gray */
+    --comment-color: #2e95d3; /* comment */
+    --highlight-color: #6e4acf; /* White */
+  }
+  
+  /* Body styles */
+  body {
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
-}
-::selection {
-    color: var(--secondary-color);
-    background: var(--highlight-color);
-}
-
-/*overlay*/
-
-body::after {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100vw;
-    background: rgba(18, 16, 16, 0.1);
-    opacity: 0.3;
-    z-index: 10;
-    pointer-events: none;
-    animation: turn-on 5s linear;
-}
-
-body::before {
-    content: " ";
-    opacity: 0.3;
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100vw;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 10;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
-}
-/*
-h1, .description p, .about-me p {
-    opacity: 0;
-}
-*/
-
-.comment {
-    color: var(--accent-color);
+  }
+  
+  /* Comment styles */
+  .comment {
+    color: var(--comment-color);
     font-style: italic;
-}
-
-h1, p, li {
-    color: var(--main-color);
-}
-header, .page:last-of-type {
+  }
+  
+  /* Header and Page styles */
+  h1,
+  p,
+  li {
+    color: var(--text-color);
+  }
+  
+  header,
+  .page:last-of-type {
     min-height: 95vh;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    border-bottom: 1px solid var(--main-color);
     text-align: left;
-}
-
-header:first-of-type h1, .page:last-of-type h1 {
+  }
+  
+  header:first-of-type h1,
+  .page:last-of-type h1 {
     margin-bottom: 10vh 0;
     text-align: left;
-}
-
-header:first-of-type p, .page:last-of-type p {
+  }
+  
+  header:first-of-type p,
+  .page:last-of-type p {
     margin: 0;
     text-align: left;
     margin-bottom: 5vw;
-}
-
-.page {
+  }
+  
+  /* Page styles */
+  .page {
     position: relative;
     display: flex;
     flex-direction: column;
     padding: 5% 7%;
-    border-bottom: 1px solid var(--main-color);
     align-items: stretch;
     justify-content: start;
     max-width: 1000px;
     width: 100%;
     text-align: left;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-a {
+  }
+  
+  /* Link styles */
+  a {
     color: var(--highlight-color);
-}
-
-.page h1 {
+  }
+  
+  /* Heading styles */
+  .page h1 {
     text-align: left;
     font: var(--h1);
     margin: 0;
     padding-bottom: 4%;
-}
-
-.page p {
+  }
+  
+  /* Paragraph styles */
+  .page p {
     margin-bottom: 20px;
-}
-
-.page p:last-of-type {
+  }
+  
+  .page p:last-of-type {
     margin-bottom: 0;
-}
-
-p, li {
+  }
+  
+  /* Generic text styles */
+  p,
+  li {
     font: var(--p);
     text-align: left;
-}
-
-.small {
+  }
+  
+  /* Small text styles */
+  .small {
     opacity: 0;
     font: var(--small);
     text-decoration: underline;
     cursor: pointer;
     margin-top: 1rem;
     width: fit-content;
-}
-
-button.small {
+  }
+  
+  button.small {
     background-color: transparent;
     border: none;
-    color: var(--main-color);
-}
-
-.page .long-description {
-    border: 1px solid var(--main-color);
+    color: var(--text-color);
+  }
+  
+  /* Long description styles */
+  .page .long-description {
+    border: 1px solid var(--text-color);
     text-align: left;
-}
-
-.long-description {
+  }
+  
+  .long-description {
     padding: 2%;
     overflow: hidden;
-}
-
-.scroll {
-    font: var(--small);
-    position: absolute;
-    margin-bottom: 2vh;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%);
-}
-
-.page .wrapper {
+  }
+  
+  /* Wrapper styles */
+  .page .wrapper {
     justify-content: space-between;
     min-height: 30vh;
-}
-
-.page:nth-child(even) {
+  }
+  
+  .page:nth-child(even) {
     text-align: right;
-}
-
-.page:nth-child(even) .small {
+  }
+  
+  .page:nth-child(even) .small {
     align-self: flex-end;
-}
-
-.page:nth-child(odd) .wrapper {
+  }
+  
+  .page:nth-child(odd) .wrapper {
     flex-direction: row-reverse;
-}
-
-figure, .scroll {
-    position: relative;
-    top: 20px;
-    display: flex;
-    justify-content: center;
-    transition: all 0.7s;
-}
-
-figure {
-    height: 30vh;
-    margin-bottom: 5vh;
-    opacity: 0;
-}
-
-.scroll {
-    display: flex;
-    position: absolute;
-    justify-content: end;
-    align-items: flex-end;
-    transition: all 0.7s;
-}
-
-img {
+  }
+  
+  /* Image styles */
+  img {
     height: 100%;
-    filter: var(--img-filter)
-}
-
-.description {
+    filter: var(--img-filter);
+  }
+  
+  /* Description styles */
+  .description {
     width: 100%;
     height: auto;
-}
-
-.hidden {
+  }
+  
+  /* Hidden styles */
+  .hidden {
     display: none;
     opacity: 0;
     transition: all 0.3s linear;
-}
-
-@keyframes blinking {
-    from {
-        opacity: 0
-    }
-    to {
-        opacity: 1
-    }
-}
-
-.page {
-    opacity: 1;
-}
-
-.page:last-of-type a {
-    color: var(--highlight-color)
-}
-
-
-.scrollLink {
-    display: contents;
-}
-
-/*add for the tree list*/
-.tree{
-    --spacing : 1.5rem;
-    --radius  : 10px;
   }
   
-  .tree li{
-    display      : block;
-    position     : relative;
-    padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+  /* Blinking animation */
+  @keyframes blinking {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .page {
+    opacity: 1;
+  }
+  
+  /* Last page link color */
+  .page:last-of-type a {
+    color: var(--highlight-color);
+  }
+  
+  /* Tree list styles */
+  .tree {
+    --spacing: 1.5rem;
+    --radius: 10px;
+  }
+  
+  .tree li {
+    display: block;
+    position: relative;
+    padding-left: calc(2 * var(--spacing) - var(--radius) - 2px);
     margin: 5px;
   }
   
-  .tree ul{
-    margin-left  : calc(var(--radius) - var(--spacing));
-    padding-left : 0;
+  .tree ul {
+    margin-left: calc(var(--radius) - var(--spacing));
+    padding-left: 0;
   }
   
-  .tree ul li{
-    border-left : 2px solid #ddd;
+  .tree ul li {
+    border-left: 2px solid #ddd;
   }
   
-  .tree ul li:last-child{
-    border-color : transparent;
+  .tree ul li:last-child {
+    border-color: transparent;
   }
   
-  .tree ul li::before{
-    content      : '';
-    display      : block;
-    position     : absolute;
-    top          : calc(var(--spacing) / -2);
-    left         : -2px;
-    width        : calc(var(--spacing) + 2px);
-    height       : calc(var(--spacing) + 1px);
-    border       : solid #ddd;
-    border-width : 0 0 2px 2px;
+  .tree ul li::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(var(--spacing) / -2);
+    left: -2px;
+    width: calc(var(--spacing) + 2px);
+    height: calc(var(--spacing) + 1px);
+    border: solid #ddd;
+    border-width: 0 0 2px 2px;
   }
   
-  .tree summary{
-    display : block;
-    cursor  : pointer;
+  .tree summary {
+    display: block;
+    cursor: pointer;
     margin: 5px;
   }
   
   .tree summary::marker,
-  .tree summary::-webkit-details-marker{
-    display : none;
+  .tree summary::-webkit-details-marker {
+    display: none;
   }
   
-  .tree summary:focus{
-    outline : none;
+  .tree summary:focus {
+    outline: none;
   }
   
-  .tree summary:focus-visible{
-    outline : 1px dotted #000;
+  .tree summary:focus-visible {
+    outline: 1px dotted #000;
   }
   
   .tree li::after,
-  .tree summary::before{
-    content       : '';
-    display       : block;
-    position      : absolute;
-    top           : calc(var(--spacing) / 2 - var(--radius));
-    left          : calc(var(--spacing) - var(--radius) - 1px);
-    width         : calc(2 * var(--radius));
-    height        : calc(2 * var(--radius));
-    border-radius : 50%;
-    background    : #ddd;
+  .tree summary::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(var(--spacing) / 2 - var(--radius));
+    left: calc(var(--spacing) - var(--radius) - 1px);
+    width: calc(2 * var(--radius));
+    height: calc(2 * var(--radius));
+    border-radius: 50%;
+    background: #ddd;
   }
   
-  .tree summary::before{
-    z-index    : 1;
-    background : #696 url('images/expand-collapse.svg') 0 0;
+  .tree summary::before {
+    z-index: 1;
+    background: #696 url('images/expand-collapse.svg') 0 0;
   }
   
-  .tree details[open] > summary::before{
-    background-position : calc(-2 * var(--radius)) 0;
+  .tree details[open]>summary::before {
+    background-position: calc(-2 * var(--radius)) 0;
   }
   
-/* Optional: Add a smooth scrolling effect to anchor links */
-html {
-  scroll-behavior: smooth;
-}
-
-@media only screen and (min-width: 768px) {
-    .page {
-        /* display: grid;*/
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(3 1fr);
-        grid-template-areas: figure description;
-    }
-    h1 {
-        margin: 0;
-        padding: 1px;
-    }
-    .image-and-description {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: figure description;
-    }
-    .description {
-        opacity: 1;
-        grid-area: description;
-    }
-    figure {
-        grid-area: figure;
-    }
-    .page:nth-child(odd) .image-and-description figure {
-        order: 1;
-    }
-}
-
-/*navigation*/
-.bars {
-    /*   background-color:pink; */
+  /* Optional: Add a smooth scrolling effect to anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Navigation styles */
+  .bars {
     position: absolute;
     width: 27px;
     height: 27px;
@@ -385,7 +284,7 @@ html {
     right: 30px;
     cursor: pointer;
     z-index: 101;
-    padding-top:9px;
+    padding-top: 9px;
   }
   
   .bar {
@@ -427,9 +326,7 @@ html {
     animation-fill-mode: forwards;
   }
   
-  
   /* Navbar Links CSS */
-  
   #nav {
     position: absolute;
     top: 0;
@@ -481,7 +378,7 @@ html {
     box-shadow: 0 0px 0px rgba(4, 26, 62, 0.5);
   }
   
-  nav.visible > ul > li:first-child {
+  nav.visible>ul>li:first-child {
     width: 200vw;
     height: 200vw;
     top: -100vw;
@@ -491,7 +388,7 @@ html {
     box-shadow: 0 0px 80px rgba(4, 26, 62, 0.5);
   }
   
-  nav.visible > ul > li:nth-child(2) {
+  nav.visible>ul>li:nth-child(2) {
     width: 150vw;
     height: 150vw;
     top: -75vw;
@@ -501,7 +398,7 @@ html {
     box-shadow: 0 0px 80px rgba(4, 26, 62, 0.5);
   }
   
-  nav.visible > ul > li:nth-child(3){
+  nav.visible>ul>li:nth-child(3) {
     width: 100vw;
     height: 100vw;
     top: -50vw;
@@ -511,7 +408,7 @@ html {
     box-shadow: 0 0px 80px rgba(4, 26, 62, 0.5);
   }
   
-  nav.visible > ul > li:last-child{
+  nav.visible>ul>li:last-child {
     width: 50vw;
     height: 50vw;
     top: -25vw;
@@ -521,26 +418,24 @@ html {
     box-shadow: 0 0px 80px rgba(4, 26, 62, 0.5);
   }
   
-  nav.visible > ul > li:first-child a {
+  nav.visible>ul>li:first-child a {
     line-height: 265vw !important;
-      text-indent: 15vw !important;
-  
+    text-indent: 15vw !important;
   }
   
-  nav.visible > ul > li:nth-child(2) a {
+  nav.visible>ul>li:nth-child(2) a {
     line-height: 200vw !important;
-    text-indent:17vw !important;
+    text-indent: 17vw !important;
   }
   
-  nav.visible > ul > li:nth-child(3) a {
+  nav.visible>ul>li:nth-child(3) a {
     line-height: 137vw !important;
-      text-indent: 17vw !important;
-    
+    text-indent: 17vw !important;
   }
   
-  nav.visible > ul > li:last-child a {
+  nav.visible>ul>li:last-child a {
     line-height: 70vw !important;
-    text-indent:12vw !important;
+    text-indent: 12vw !important;
   }
   
   @keyframes top-bar {
