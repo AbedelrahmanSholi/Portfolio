@@ -1,3 +1,4 @@
+/*Start of text typewriter effect */
 let animationTimeout; // Variable to store the animation timeout
 
 const greetingElement = document.getElementById('greeting');
@@ -66,3 +67,77 @@ document.addEventListener('click', function () {
   detailsElement.innerHTML = detailsMSG;
   clearHint();
 });
+/*End of text typewriter effect */
+
+/*Start of anchor click to navigate to specific section and move slider */
+
+// Get all anchor elements inside the #side_nav
+const anchors = document.querySelectorAll("#side_nav li a");
+
+// Loop through each anchor and add a click event listener
+anchors.forEach(anchor => {
+  anchor.addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default behavior of anchor element
+    
+    // Get the target section's ID from the href attribute
+    const targetSectionID = anchor.getAttribute("href");
+    
+    // Get the target section element
+    const targetSection = document.querySelector(targetSectionID);
+    
+    // Check if the target section exists and scroll to it with smooth behavior
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+      
+      // Remove active class from the previous active element
+      const currentActive = document.querySelector("#side_nav li.active");
+      if (currentActive) {
+        currentActive.classList.remove("active");
+      }
+      
+      // Add active class to the clicked anchor's parent element (li)
+      anchor.parentElement.classList.add("active");
+    }
+  });
+});
+/*End of anchor click to navigate to specific section and move slider */
+
+/*Start of Handel scroll up/down to move the slider */
+
+// Function to handle the intersection changes for the sections
+function handleIntersection(entries) {
+  entries.forEach(entry => {
+    const targetSectionID = `#${entry.target.id}`;
+    const correspondingAnchor = document.querySelector(`#side_nav li a[href="${targetSectionID}"]`);
+    
+    if (entry.isIntersecting) {
+      // Add active class to the anchor corresponding to the visible section
+      correspondingAnchor.parentElement.classList.add("active");
+    } else {
+      // Remove active class from the anchor if it's not visible in the viewport
+      correspondingAnchor.parentElement.classList.remove("active");
+    }
+  });
+}
+
+// Set up the Intersection Observer with options
+const observerOptions = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.5, // Adjust this threshold value based on your preference
+};
+
+// Create the Intersection Observer instance
+const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+// Get all the sections that you want to observe
+const sections = document.querySelectorAll("section");
+
+// Observe each section
+sections.forEach(section => {
+  observer.observe(section);
+});
+
+/*End of Handel scroll up/down to move the slider */
+
+

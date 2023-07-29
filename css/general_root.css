@@ -17,10 +17,10 @@ html {
 }
 /* Root variables */
 :root {
+    /*--main-font: 'Courier New', monospace;*/
     --main-font: 'Courier New', monospace;
     --h1: normal bold min(max(36px, 7vw), 72px) / 1.2 var(--main-font);
     --p: normal normal min(max(14px, 4vw), 24px) / 1.2 var(--main-font);
-    --small: normal normal min(max(9px, 2.5vw), 18px) / 1.2 var(--main-font);
     --text-color: #FFFFFF;
     /* text color */
     --background-color: #000000;
@@ -152,10 +152,6 @@ li {
 
 .page:nth-child(even) {
     text-align: right;
-}
-
-.page:nth-child(even) .small {
-    align-self: flex-end;
 }
 
 .page:nth-child(odd) .wrapper {
