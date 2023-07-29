@@ -1,0 +1,200 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.1s linear;
+}
+
+*:focus {
+    outline-width: 1px;
+    outline-style: dotted;
+    outline-color: var(--text-color);
+}
+/* Optional: Add a smooth scrolling effect to anchor links */
+html {
+    scroll-behavior: smooth;
+}
+/* Root variables */
+:root {
+    --main-font: 'Courier New', monospace;
+    --h1: normal bold min(max(36px, 7vw), 72px) / 1.2 var(--main-font);
+    --p: normal normal min(max(14px, 4vw), 24px) / 1.2 var(--main-font);
+    --small: normal normal min(max(9px, 2.5vw), 18px) / 1.2 var(--main-font);
+    --text-color: #FFFFFF;
+    /* text color */
+    --background-color: #000000;
+    /* Light Gray */
+    --comment-color: #2e95d3;
+    /* comment */
+    --highlight-color: #6e4acf;
+    /* White */
+}
+
+/* Body styles */
+body {
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0
+}
+
+/* Hide the default scrollbar */
+body {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+
+/* Hint font style */
+.hint {
+    font-style: italic;
+    font-size: 20px;
+    font-weight: bold;
+    color: #6e4acf;
+    /* Vibrant purple color */
+    position: relative;
+    bottom: 30px;
+    /* Adjust the value to set the distance from the bottom of the screen */
+    left: 50%;
+    transform: translateX(-50%);
+    animation: blinking 1s infinite;
+    /* Blinking animation */
+    margin-top: auto;
+    /* Use margin-top to push the hint down */
+}
+
+/* Comment styles */
+.comment {
+    color: var(--comment-color);
+    font-style: italic;
+}
+
+/* Add a transparent pseudo-element to push the hint down based on the content */
+.about-me::after {
+    content: "";
+    display: block;
+    height: 100%;
+    margin-top: 20%;
+    /* Adjust the value to set the distance from the content */
+}
+
+/* Header and Page styles */
+h1,
+p,
+li {
+    color: var(--text-color);
+}
+
+header,
+.page:last-of-type {
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+}
+
+header:first-of-type h1,
+.page:last-of-type h1 {
+    margin-bottom: 10vh 0;
+    text-align: left;
+}
+
+header:first-of-type p,
+.page:last-of-type p {
+    margin: 0;
+    text-align: left;
+    margin-bottom: 5vw;
+}
+
+/* Page styles */
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 5% 7%;
+    align-items: stretch;
+    justify-content: start;
+    max-width: 1000px;
+    width: 100%;
+    text-align: left;
+}
+
+/* Link styles */
+a {
+    color: var(--highlight-color);
+}
+
+/* Heading styles */
+.page h1 {
+    text-align: left;
+    font: var(--h1);
+    margin: 0;
+    padding-bottom: 4%;
+}
+
+/* Paragraph styles */
+.page p {
+    margin-bottom: 20px;
+}
+
+.page p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Generic text styles */
+p,
+li {
+    font: var(--p);
+    text-align: left;
+}
+
+
+.page:nth-child(even) {
+    text-align: right;
+}
+
+.page:nth-child(even) .small {
+    align-self: flex-end;
+}
+
+.page:nth-child(odd) .wrapper {
+    flex-direction: row-reverse;
+}
+
+/* Image styles */
+img {
+    height: 100%;
+    filter: var(--img-filter);
+}
+
+
+/* Blinking animation */
+@keyframes blinking {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.page {
+    opacity: 1;
+}
+
+/* Last page link color */
+.page:last-of-type a {
+    color: var(--highlight-color);
+}
+/* Style the scrollbar track */
+body::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Style the scrollbar thumb */
+body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}

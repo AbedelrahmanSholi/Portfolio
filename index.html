@@ -9,38 +9,43 @@
 	<title>Quality Assurance Software Engineer - Abedelrahman Sholi</title>
 	<!-- Favicon link -->
 	<link rel="icon" type="image/png" href="favicon.png">
-	<link href="index.css" rel="stylesheet" />
+	<link href="css/general_root.css" rel="stylesheet" />
+	<link href="css/slider.css" rel="stylesheet" />
+	<link href="css/background_effect.css" rel="stylesheet" />
+	<link href="css/tree_element.css" rel="stylesheet" />
 </head>
 
 <body>
-	<!--HamBurger Icon-->
-	<div class="bars" id="nav-action">
-		<span class="bar"> </span>
-	</div>
-
-	<!--Navbar Links-->
-	<nav id="nav">
-		<ul>
-			<li class="shape-circle circle-one"><a href="#home" onclick="closeMenu()">Home</a></li>
-			<li class="shape-circle circle-one"><a href="https://www.linkedin.com/in/sholi/"
-					target="_blank">Linkedin</a></li>
-			<li class="shape-circle circle-one"><a href="https://github.com/AbedelrahmanSholi"
-					target="_blank">GitHub</a></li>
-			<li class="shape-circle circle-one"><a
-					href="https://d1fdloi71mui9q.cloudfront.net/FHTumduR86KeZGXxjFIK_Abedelrahman%20Sholi.pdf"
-					target="_blank">Resume</a></li>
-		</ul>
-	</nav>
-
-	<div id="sideBar" class="navigation">
-		<ul>
-			<li><a id="anchor0" href="#" title="Home">00</a></li>
-			<li><a id="anchor1" href="#myStackPage" title="Stack">01</a></li>
-			<li><a id="anchor2" href="">02</a></li>
-			<li><a id="anchor3" href="#endPage" title="contact">03</a></li>
-		</ul>
-		<div class="slider"></div>
-		<div class="vertical-line"></div> <!-- Add a new div for the vertical line -->
+	<div class="overlay_sides overlay_sides_right">
+		<a class="btn_light" href="#contact">Contact</a>
+		<nav class="nav__wrapper">
+			<ul id="side_nav">
+				<li data-menuanchor="home" class="active">
+					<a href="#home" title="home">00</a>
+				</li>
+				<li data-menuanchor="about" class="">
+					<a href="#about" title="about">01</a>
+				</li>
+				<li data-menuanchor="skills" class="">
+					<a href="#skills" title="skills">02</a>
+				</li>
+				<li data-menuanchor="portfolio">
+					<a href="#portfolio" title="portfolio">03</a>
+				</li>
+				<li data-menuanchor="contact">
+					<a href="#contact" title="contact">04</a>
+				</li>
+				<div class="line"></div>
+			</ul>
+		</nav>
+		<div>
+			<div class="btn_down"><span>Scroll Down</span>
+				<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+					<path d="M0 0h24v24H0V0z" fill="none"></path>
+					<path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="aliceblue"></path>
+				</svg>
+			</div>
+		</div>
 	</div>
 
 	<div class="background-container">
@@ -179,7 +184,7 @@
 			</p>
 		</div>
 	</section>
-	<script src="Animation.js"></script>
+	<script src="js/Animation.js"></script>
 </body>
 
 </html>
