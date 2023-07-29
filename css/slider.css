@@ -68,7 +68,7 @@ body .btn_light:hover {
     }
 }
 
-.overlay_sides {
+.slider_section {
     margin: 1rem 0;
     position: fixed;
     top: 0;
@@ -76,17 +76,17 @@ body .btn_light:hover {
 }
 
 @media (min-width:992px) {
-    .overlay_sides {
+    .slider_section {
         margin: 3.125rem 0
     }
 }
 
-.overlay_sides.overlay_sides_right {
+.slider_section.slider_section_right {
     right: 15px
 }
 
 @media (min-width:992px) {
-    .overlay_sides.overlay_sides_right {
+    .slider_section.slider_section_right {
         align-items: flex-end;
         height: calc(100vh - 2rem);
         display: flex;
@@ -97,7 +97,7 @@ body .btn_light:hover {
     }
 }
 
-.overlay_sides.overlay_sides_right .btn_down {
+.slider_section.slider_section_right .btn_down {
     display: none;
     cursor: pointer;
     border: 0;
@@ -111,22 +111,22 @@ body .btn_light:hover {
 }
 
 @media (min-width:992px) {
-    .overlay_sides.overlay_sides_right .btn_down {
+    .slider_section.slider_section_right .btn_down {
         display: flex
     }
 }
 
-.overlay_sides.overlay_sides_right .btn_down svg {
+.slider_section.slider_section_right .btn_down svg {
     transition: transform .3s ease;
     position: relative;
     top: 40px
 }
 
-.overlay_sides.overlay_sides_right .btn_down:hover svg {
+.slider_section.slider_section_right .btn_down:hover svg {
     transform: translateY(10px)
 }
 
-.overlay_sides.overlay_sides_right .btn_down span {
+.slider_section.slider_section_right .btn_down span {
     display: block;
     transform: rotate(-90deg);
     color: #f0f8ff;
@@ -138,7 +138,7 @@ body .btn_light:hover {
     font-family: "Source Sans Pro", sans-serif
 }
 
-.overlay_sides.overlay_sides_right .btn_up {
+.slider_section.slider_section_right .btn_up {
     display: none;
     cursor: pointer;
     border: 0;
@@ -152,22 +152,22 @@ body .btn_light:hover {
 }
 
 @media (min-width:992px) {
-    .overlay_sides.overlay_sides_right .btn_up {
+    .slider_section.slider_section_right .btn_up {
         display: flex
     }
 }
 
-.overlay_sides.overlay_sides_right .btn_up svg {
+.slider_section.slider_section_right .btn_up svg {
     transition: transform .3s ease;
     position: relative;
     top: -15px
 }
 
-.overlay_sides.overlay_sides_right .btn_up:hover svg {
+.slider_section.slider_section_right .btn_up:hover svg {
     transform: translateY(-10px)
 }
 
-.overlay_sides.overlay_sides_right .btn_up span {
+.slider_section.slider_section_right .btn_up span {
     display: block;
     transform: rotate(-90deg);
     color: #f0f8ff;
@@ -179,24 +179,24 @@ body .btn_light:hover {
     font-family: "Source Sans Pro", sans-serif
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper {
+.slider_section.slider_section_right .nav__wrapper {
     display: none
 }
 
 @media (min-width:992px) {
-    .overlay_sides.overlay_sides_right .nav__wrapper {
+    .slider_section.slider_section_right .nav__wrapper {
         display: block
     }
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav {
+.slider_section.slider_section_right .nav__wrapper #side_nav {
     list-style: none;
     padding: 0;
     margin: 0;
     position: relative
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav:before {
+.slider_section.slider_section_right .nav__wrapper #side_nav:before {
     content: "";
     position: absolute;
     top: 0;
@@ -209,11 +209,11 @@ body .btn_light:hover {
     background-color: #f0f8ff
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li {
+.slider_section.slider_section_right .nav__wrapper #side_nav li {
     transition: all .5s ease-in-out
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li a {
+.slider_section.slider_section_right .nav__wrapper #side_nav li a {
     display: block;
     width: 50px;
     height: 50px;
@@ -228,35 +228,35 @@ body .btn_light:hover {
     transition: all .5s ease-in-out
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:first-child.passedSection:hover~.line {
+.slider_section.slider_section_right .nav__wrapper #side_nav li:first-child.passedSection:hover~.line {
     transform: translateY(0)
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(2).active~.line,
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(2).passedSection:hover~.line,
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(2):hover~.line {
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(2).active~.line,
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(2).passedSection:hover~.line,
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(2):hover~.line {
     transform: translateY(50px)
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(3).active~.line,
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(3).passedSection:hover~.line,
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(3):hover~.line {
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(3).active~.line,
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(3).passedSection:hover~.line,
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(3):hover~.line {
     transform: translateY(100px)
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(4).active~.line,
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(4).passedSection:hover~.line,
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(4):hover~.line {
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(4).active~.line,
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(4).passedSection:hover~.line,
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(4):hover~.line {
     transform: translateY(150px)
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(5).active~.line,
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(5).passedSection:hover~.line,
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav li:nth-child(5):hover~.line {
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(5).active~.line,
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(5).passedSection:hover~.line,
+.slider_section.slider_section_right .nav__wrapper #side_nav li:nth-child(5):hover~.line {
     transform: translateY(200px)
 }
 
-.overlay_sides.overlay_sides_right .nav__wrapper #side_nav .line {
+.slider_section.slider_section_right .nav__wrapper #side_nav .line {
     height: 50px;
     width: 3px;
     background-color: #f0f8ff;
@@ -267,21 +267,21 @@ body .btn_light:hover {
     transition: all .5s ease-in-out
 }
 
-.overlay_sides.overlay_sides_left {
+.slider_section.overlay_sides_left {
     left: 15px
 }
 
 @media (min-width:992px) {
-    .overlay_sides.overlay_sides_left {
+    .slider_section.overlay_sides_left {
         left: 3.125rem
     }
 }
 
-.overlay_sides.overlay_sides_left a {
+.slider_section.overlay_sides_left a {
     text-decoration: none
 }
 
-.overlay_sides.overlay_sides_left .github {
+.slider_section.overlay_sides_left .github {
     position: fixed;
     left: 15px;
     bottom: 1rem;
@@ -289,7 +289,7 @@ body .btn_light:hover {
 }
 
 @media (min-width:992px) {
-    .overlay_sides.overlay_sides_left .github {
+    .slider_section.overlay_sides_left .github {
         left: 3.125rem;
         bottom: 3.125rem;
         display: block
