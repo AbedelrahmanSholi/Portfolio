@@ -6,7 +6,7 @@ const summeryElement = document.getElementById('summery');
 const detailsElement = document.getElementById('details');
 
 const greetingMSG = "Hey, I'm Abedelrahman Sholi";
-const summeryMSG = "Professional Quality Assurenace Engineer.";
+const summeryMSG = "Visionary quality guardian, Inspire excellence and drive success.";
 const detailsMSG =
   "Results-driven engineer, leading cross-functional teams for successful product rollouts, achieving high-quality software releases, and optimizing efficiency.";
 
@@ -140,4 +140,74 @@ sections.forEach(section => {
 
 /*End of Handel scroll up/down to move the slider */
 
+
+// Add an event listener to the "Scroll Down" button to call the function when clicked
+document.getElementById("scrollDownButton").addEventListener("click", scrollToNextSection);
+
+function scrollToNextSection() {
+  // Find the currently active section
+  const currentActiveSection = document.querySelector("#side_nav li.active a");
+
+  if (currentActiveSection) {
+    // Find the next sibling of the currently active section's parent (li)
+    const nextSectionLI = currentActiveSection.parentElement.nextElementSibling;
+
+    if (nextSectionLI) {
+      // Get the anchor link within the next section's li element
+      const nextSectionAnchor = nextSectionLI.querySelector("a");
+
+      if (nextSectionAnchor) {
+        // Scroll to the next section using smooth behavior
+        document.querySelector(nextSectionAnchor.getAttribute("href")).scrollIntoView({
+          behavior: "smooth",
+        });
+
+        // Trigger click on the next section's anchor link
+        nextSectionAnchor.click();
+      }
+    }
+  }
+}
+
+/*Popup */
+var modal = document.querySelector(".modal");
+var triggers = document.querySelectorAll(".trigger");
+var modals = document.querySelectorAll(".modal");
+
+function toggleModal(event) {
+  var clickedTrigger = event.currentTarget;
+  var index = Array.from(triggers).indexOf(clickedTrigger);
+  var modal = modals[index];
+  modal.classList.toggle("show-modal");
+  document.body.classList.toggle("modal-open"); // Add or remove 'modal-open' class to the body
+}
+
+function closeModal(event) {
+  var modal = event.currentTarget.closest(".modal");
+  modal.classList.remove("show-modal");
+/* Add this CSS to disable scrolling on the page behind the modal 
+This will be added to the body using JS and then removed after closing the modal. 
+the effect here is to prevent the scrolling in the background of the modal.
+and only to scroll the modal.
+*/
+  document.body.classList.remove("modal-open"); // Remove 'modal-open' class from the body
+}
+
+triggers.forEach(function(trigger) {
+  trigger.addEventListener("click", toggleModal);
+});
+
+var closeButtons = document.querySelectorAll(".close-button");
+closeButtons.forEach(function(closeButton) {
+  closeButton.addEventListener("click", closeModal);
+});
+
+function windowOnClick(event) {
+  if (event.target.classList.contains("modal")) {
+    event.target.classList.remove("show-modal");
+    document.body.classList.remove("modal-open"); // Remove 'modal-open' class from the body
+  }
+}
+
+window.addEventListener("click", windowOnClick);
 

@@ -11,15 +11,18 @@
     outline-style: dotted;
     outline-color: var(--text-color);
 }
+
 /* Optional: Add a smooth scrolling effect to anchor links */
 html {
     scroll-behavior: smooth;
 }
+
 /* Root variables */
 :root {
     /*--main-font: 'Courier New', monospace;*/
     --main-font: 'Courier New', monospace;
     --h1: normal bold min(max(36px, 7vw), 72px) / 1.2 var(--main-font);
+    --h2: normal normal min(max(18px, 5vw), 30px) / 1.2 var(--main-font);
     --p: normal normal min(max(14px, 4vw), 24px) / 1.2 var(--main-font);
     --text-color: #FFFFFF;
     /* text color */
@@ -96,13 +99,11 @@ header,
 
 header:first-of-type h1,
 .page:last-of-type h1 {
-    margin-bottom: 10vh 0;
     text-align: left;
 }
 
 header:first-of-type p,
 .page:last-of-type p {
-    margin: 0;
     text-align: left;
     margin-bottom: 5vw;
 }
@@ -133,9 +134,17 @@ a {
     padding-bottom: 4%;
 }
 
+.page h2 {
+    text-align: left;
+    font: var(--h2);
+    margin: 0;
+    padding-bottom: 4%;
+}
+
+
 /* Paragraph styles */
 .page p {
-    margin-bottom: 20px;
+    text-align: justify;
 }
 
 .page p:last-of-type {
@@ -184,6 +193,7 @@ img {
 .page:last-of-type a {
     color: var(--highlight-color);
 }
+
 /* Style the scrollbar track */
 body::-webkit-scrollbar {
     width: 6px;
