@@ -10,7 +10,7 @@ Still initial version and a lot work still needed to add more information and so
 
 - 📫 How to reach me **s.holi_1989@live.com**
 
-- 📄 Know about my experiences <a herf="https://d1fdloi71mui9q.cloudfront.net/FHTumduR86KeZGXxjFIK_Abedelrahman%20Sholi.pdf" title"Resume" target="_blank" />
+- 📄 Know about my experiences <a herf="https://d1fdloi71mui9q.cloudfront.net/FHTumduR86KeZGXxjFIK_Abedelrahman%20Sholi.pdf" target="_blank">Resume</a>
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
