@@ -138,7 +138,6 @@ section .bubble-section{
     'tr tc tl';
   padding: 2rem;
   gap: 2rem;
-  background: #141518;
 }
 
 .middle{
