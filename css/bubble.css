@@ -10,6 +10,7 @@
   border-radius: var(--bbBorderRadius);
   padding: var(--bbPadding);
   position: relative;
+  z-index: 1;
 }
 
 [speech-bubble]::before{
