@@ -1,4 +1,6 @@
 /* General styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -10,22 +12,26 @@ html {
 }
 
 :root {
-    --main-font: 'Courier New', monospace;
-    --h1: normal bold min(max(36px, 7vw), 72px) / 1.2 var(--main-font);
-    --h2: normal normal min(max(18px, 5vw), 30px) / 1.2 var(--main-font);
-    --p: normal normal min(max(14px, 4vw), 24px) / 1.2 var(--main-font);
-    --text-color: #FFFFFF;
-    --background-color: #000000;
-    --comment-color: #2e95d3;
-    --highlight-color: #6e4acf;
+    --main-font: 'Poppins', sans-serif;
+    --code-font: 'Roboto Mono', monospace;
+    --h1: normal 600 min(max(28px, 5vw), 48px) / 1.2 var(--main-font);
+    --h2: normal 600 min(max(16px, 3vw), 28px) / 1.2 var(--main-font);
+    --p: normal 400 min(max(14px, 2.5vw), 20px) / 1.5 var(--main-font);
+    --text-color: #e0e0e0;
+    --background-color: #1a1a1a;
+    --comment-color: #4db8ff;
+    --highlight-color: #26a69a;
 }
 
 body {
+    font-family: var(--main-font);
     background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
+    position: relative;
 }
 
 body::-webkit-scrollbar {
@@ -37,27 +43,32 @@ body::-webkit-scrollbar-thumb {
     border-radius: 3px;
 }
 
+code, pre {
+    font-family: var(--code-font);
+}
+
 .side-by-side-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
-    max-width: 100%;
-    padding: 0 7%;
-    margin: 0 auto;
-    gap: 20px;
+    max-width: 1200px;
+    padding: 2% 0 2% 2%; /* Reduced left padding too, right to 0 */
+    margin: 0;
+    margin-left: 10px; /* Small offset from edge */
+    gap: 15px; /* Tighter gap */
 }
 
 .hint {
     font-style: italic;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: #6e4acf;
     position: relative;
-    bottom: 30px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     animation: blinking 1s infinite;
-    margin-top: 20%;
+    margin-top: 10%;
 }
 
 .comment {
@@ -70,7 +81,7 @@ h1, p, li {
 }
 
 header, .page:last-of-type {
-    min-height: 95vh;
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -80,20 +91,29 @@ header, .page:last-of-type {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 5% 7%;
+    padding: 4% 5%;
     align-items: stretch;
     justify-content: start;
-    max-width: 1000px;
+    max-width: 100%;
     width: 100%;
     text-align: left;
 }
 
-#home, #myStackPage {
+#home {
+    flex: 0 1 auto; /* Changed from flex: 1 to prevent over-expansion */
+    min-width: 0;
+    padding: 4% 1% 4% 2%; /* Reduced right to 1%, left to 2% */
+    box-sizing: border-box;
+    max-width: 40%; /* Narrower to force left shift */
+    margin-right: 1%; /* Minimal separation */
+}
+
+#myStackPage {
     flex: 1;
     min-width: 0;
-    padding: 5% 7%;
+    padding: 4% 5% 4% 2%; /* Adjusted left padding */
     box-sizing: border-box;
-    max-width: 50%;
+    max-width: 55%; /* Adjusted to fit beside narrower #home */
 }
 
 a {
@@ -103,17 +123,21 @@ a {
 .page h1 {
     font: var(--h1);
     margin: 0;
-    padding-bottom: 4%;
+    padding-bottom: 1.5rem;
 }
 
 .page h2 {
     font: var(--h2);
     margin: 0;
-    padding-bottom: 4%;
+    padding-bottom: 1rem;
 }
 
 p, li {
     font: var(--p);
+}
+
+.about-me {
+    text-align: justify;
 }
 
 @keyframes blinking {
@@ -126,7 +150,7 @@ p, li {
 }
 
 .location {
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
 }
 
 .contact-info {
@@ -151,13 +175,31 @@ p, li {
 .contact-row a {
     color: var(--highlight-color);
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-row a:hover {
+    color: #4dd0e1;
+}
+
+#endPage {
+    padding-bottom: 6rem;
+}
+
+.available {
+    color: var(--comment-color);
 }
 
 @media (max-width: 992px) {
     .side-by-side-container {
         flex-direction: column;
+        padding: 2% 3%;
+        gap: 15px;
+        margin-left: 0; /* Reset on mobile */
     }
     #home, #myStackPage {
         max-width: 100%;
+        padding: 3% 3%;
+        margin-right: 0;
     }
 }

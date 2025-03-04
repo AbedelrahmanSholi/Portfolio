@@ -4,32 +4,33 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
+    padding: 20px;
 }
 
 .bubble-cluster {
     position: relative;
-    width: 120px;
-    height: 120px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #6e4acf;
+    width: 130px;
+    height: 130px;
+    background: rgba(38, 38, 38, 0.9);
+    border: 2px solid var(--highlight-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
     font-family: 'Courier New', monospace;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(110, 74, 207, 0.5);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(38, 166, 154, 0.2);
     z-index: 1;
 }
 
 .bubble-cluster:hover {
-    transform: scale(1.1);
-    background-color: rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 20px rgba(110, 74, 207, 0.7);
+    transform: scale(1.05);
+    background: rgba(38, 166, 154, 0.1);
+    box-shadow: 0 6px 20px rgba(38, 166, 154, 0.4);
     z-index: 20;
 }
 
@@ -39,15 +40,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 1);
-    border: 1px solid #6e4acf;
-    border-radius: 10px;
-    padding: 15px;
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid var(--highlight-color);
+    border-radius: 8px;
+    padding: 20px;
     color: #FFFFFF;
     font-family: 'Courier New', monospace;
-    width: 250px;
+    width: 280px;
     z-index: 10;
-    box-shadow: 0 0 15px rgba(110, 74, 207, 0.7);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .bubble-cluster:hover .bubble-details {
@@ -55,16 +56,16 @@
 }
 
 .bubble-details h2 {
-    font-size: 24px;
-    color: #6e4acf;
+    font-size: 22px;
+    color: var(--highlight-color);
     margin-bottom: 8px;
     text-align: center;
 }
 
 .bubble-details .role {
     font-style: italic;
-    font-size: 16px;
-    color: #4db8ff;
+    font-size: 14px;
+    color: var(--comment-color);
     margin-bottom: 12px;
     text-align: center;
 }
@@ -83,7 +84,7 @@
 
 .bubble-details li:before {
     content: '>';
-    color: #6e4acf;
+    color: var(--highlight-color);
     position: absolute;
     left: 0;
 }
@@ -94,12 +95,12 @@
         gap: 30px;
     }
     .bubble-cluster {
-        width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 140px;
         font-size: 20px;
     }
     .bubble-details {
-        width: 300px;
+        width: 260px;
     }
     .bubble-details h2 { font-size: 28px; }
     .bubble-details .role { font-size: 18px; }
