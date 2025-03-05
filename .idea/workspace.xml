@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8ec9da2-0f10-4693-98ca-547364ac1567" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/css/background_effect.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/background_effect.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/bubble.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/bubble.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/experience.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/experience.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogs/automation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogs/design.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogs/selenium.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/general_root.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/general_root.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/slider.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/slider.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Animation.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Animation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +27,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/SAQERpc/Documents/AbedelrahmanSholi/Portfolio"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/SAQERpc/Documents/AbedelrahmanSholi/Portfolio&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

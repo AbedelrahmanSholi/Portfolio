@@ -22,7 +22,7 @@
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1;
+    z-index: 100; /* Increased from 10 to 100 for clear layering */
 }
 
 @media (min-width: 992px) {
@@ -142,3 +142,4 @@
 
 #side_nav li:nth-child(2).active:before { transform: translateY(50px); }
 #side_nav li:nth-child(3).active:before { transform: translateY(100px); }
+#side_nav li:nth-child(4).active:before { transform: translateY(150px); }

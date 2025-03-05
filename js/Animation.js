@@ -65,15 +65,22 @@ anchors.forEach(anchor => {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     const anchor = document.querySelector(`#side_nav li a[href="#${entry.target.id}"]`);
-    if (entry.isIntersecting) {
-      anchor.parentElement.classList.add("active");
-    } else {
-      anchor.parentElement.classList.remove("active");
+    if (anchor) { // Only proceed if anchor exists
+      if (entry.isIntersecting) {
+        anchor.parentElement.classList.add("active");
+      } else {
+        anchor.parentElement.classList.remove("active");
+      }
     }
   });
 }, { root: null, rootMargin: "0px", threshold: 0.5 });
 
-document.querySelectorAll("section").forEach(section => observer.observe(section));
+// Only observe sections with matching sidebar links
+const sectionsToObserve = ['sideBySide', 'skills', 'blogCarousel', 'endPage'];
+sectionsToObserve.forEach(id => {
+  const section = document.getElementById(id);
+  if (section) observer.observe(section);
+});
 
 /* Scroll Down Button */
 document.addEventListener('DOMContentLoaded', () => {
