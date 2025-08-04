@@ -8,8 +8,8 @@ Welcome to my personal portfolio! This is an evolving project showcasing my expe
 
 - 👨‍💻 **Projects:** Explore my work on [GitHub](https://github.com/AbedelrahmanSholi)
 - 📫 **Contact:** Reach me at [s.holi_1989@live.com](mailto:s.holi_1989@live.com)
-- 📄 **Resume:** Learn about my experience [here](https://abedelrahmansholi.github.io/Portfolio/Resume/Resume.pdf)
-- 🌐 **LinkedIn:** Connect with me at [linkedin.com/in/abedelrahman-sholi/](https://www.linkedin.com/in/abedelrahman-sholi/)
+- 📄 **Resume:** Learn about my experience [here](https://abedelrahmansholi.github.io/Portfolio/resume.html)
+- 🌐 **LinkedIn:** Connect with me at [linkedin.com/in/abedelrahman-sholi/](https://www.linkedin.com/in/sholi/)
 
 ## Portfolio Highlights
 
@@ -34,7 +34,7 @@ This portfolio is built with HTML, CSS, and JavaScript, featuring:
 Have questions or suggestions? Reach out via email or connect with me on LinkedIn:
 
 - 📫 Email: [s.holi_1989@live.com](mailto:s.holi_1989@live.com)
-- 🌐 [LinkedIn](https://www.linkedin.com/in/abedelrahman-sholi/)
+- 🌐 [LinkedIn](https://www.linkedin.com/in/sholi/)
 
 ---
 
