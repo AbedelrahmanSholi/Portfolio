@@ -9,7 +9,7 @@ Welcome to my personal portfolio! This is an evolving project showcasing my expe
 - 👨‍💻 **Projects:** Explore my work on [GitHub](https://github.com/AbedelrahmanSholi)
 - 📫 **Contact:** Reach me at [s.holi_1989@live.com](mailto:s.holi_1989@live.com)
 - 📄 **Resume:** Learn about my experience [here](https://abedelrahmansholi.github.io/Portfolio/resume.html)
-- 🌐 **LinkedIn:** Connect with me at [linkedin.com/in/abedelrahman-sholi/](https://www.linkedin.com/in/sholi/)
+- 🌐 **LinkedIn:** Connect with me at [LinkedIn](https://www.linkedin.com/in/sholi/)
 
 ## Portfolio Highlights
 
