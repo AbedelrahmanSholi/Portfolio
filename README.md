@@ -1,41 +1,70 @@
-# Portfolio
+# Abedelrahman Sholi - QA Automation Engineer Portfolio
 
-Welcome to my personal portfolio! This is an evolving project showcasing my expertise as a Quality Assurance (QA) Engineer. The current version has been optimized for performance and clarity, with ongoing enhancements planned to add more features and polish.
+Welcome to my professional portfolio! This repository showcases my expertise in Quality Assurance, Test Automation, and Software Testing.
 
-## About Me
+## 🌐 Live Portfolio
+Visit my portfolio at: [https://abedelrahmansholi.github.io/Portfolio/](https://abedelrahmansholi.github.io/Portfolio/)
 
-👋 Hi, I'm **Abedelrahman Sholi**, a passionate QA Engineer originally from Palestine, now based in Dubai, UAE. With over 10 years of experience, I specialize in delivering robust software solutions across industries like aviation, healthcare, telecom, and electronics. My focus is on strategic QA processes, automation, and team leadership.
+## 👨‍💻 About Me
+Senior QA Automation Engineer with 10+ years of experience in software testing and quality leadership across aviation, healthcare, telecom, and electronics industries. Passionate about building robust automation frameworks and mentoring QA teams.
 
-- 👨‍💻 **Projects:** Explore my work on [GitHub](https://github.com/AbedelrahmanSholi)
-- 📫 **Contact:** Reach me at [s.holi_1989@live.com](mailto:s.holi_1989@live.com)
-- 📄 **Resume:** Learn about my experience [here](https://abedelrahmansholi.github.io/Portfolio/resume.html)
-- 🌐 **LinkedIn:** Connect with me at [LinkedIn](https://www.linkedin.com/in/sholi/)
+## 🛠️ Technical Skills
+- **Test Automation:** Selenium WebDriver, RestAssured, TestNG, Cucumber, BDD
+- **Programming:** Java, Object-Oriented Programming (OOP)
+- **CI/CD & DevOps:** Jenkins, Git, Maven, SauceLabs
+- **Test Management:** JIRA, QMetry, TestRail
+- **Testing Approaches:** API Testing, E2E Testing, Test Metrics & Reporting
+- **Process Frameworks:** Agile/Scrum, SDLC, STLC, Microservices Testing
 
-## Portfolio Highlights
+## 📄 Portfolio Features
+- **Professional Summary** - Overview of my experience and expertise
+- **Technical Skills** - Comprehensive list of technologies and tools
+- **Professional Experience** - Detailed work history with achievements
+- **Projects Showcase** - Key projects and accomplishments
+- **Resume** - Downloadable resume in HTML format
+- **Contact Information** - Ways to get in touch
 
-This portfolio is built with HTML, CSS, and JavaScript, featuring:
-- **Interactive Design:** Typewriter animations, bubble clusters for industry experience, and a dynamic skills section.
-- **Optimized Code:** Recently cleaned up to remove unused files and improve efficiency.
-- **Responsive Layout:** Adapts seamlessly across devices.
+## 🔧 SEO & Analytics
+This portfolio is optimized for search engines and includes:
+- Comprehensive meta tags for social media sharing
+- Google Analytics 4 integration for visitor tracking
+- Structured data markup
+- Sitemap and robots.txt for better indexing
+- Open Graph and Twitter Card support
 
-## QA Skills
+## 📱 Responsive Design
+The portfolio is fully responsive and optimized for:
+- Desktop computers
+- Tablets
+- Mobile devices
 
-- **Testing Frameworks:** Selenium, Cypress, RestAssured, JMeter, Postman
-- **Automation:** Designed and implemented automation frameworks for UI, API, and performance testing
-- **CI/CD:** Jenkins, Docker (pipeline integration and containerized testing)
-- **Bug Tracking & Reporting:** Jira, QMetry, Allure Reports (detailed analytics and dashboards)
-- **Programming:** Java, JavaScript (scripting for automation)
-- **Databases:** MySQL, Oracle (data validation and reconciliation)
-- **Methodologies:** Agile, Scrum, SDLC, STLC
-- **Operating Systems:** Linux (test environment management)
-- **Other:** API testing, system integration, risk management, team mentorship
+## 🚀 Technologies Used
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Analytics:** Google Analytics 4
+- **SEO:** Meta tags, Open Graph, Twitter Cards, Structured Data
+- **Hosting:** GitHub Pages
 
-## Contact Me
-Have questions or suggestions? Reach out via email or connect with me on LinkedIn:
+## 📞 Contact Information
+- **Location:** Dubai, UAE
+- **Email:** s.holi_1989@live.com
+- **Phone:** +971569538533
+- **LinkedIn:** [https://linkedin.com/in/sholi](https://linkedin.com/in/sholi)
+- **Portfolio:** [https://abedelrahmansholi.github.io/Portfolio/](https://abedelrahmansholi.github.io/Portfolio/)
 
-- 📫 Email: [s.holi_1989@live.com](mailto:s.holi_1989@live.com)
-- 🌐 [LinkedIn](https://www.linkedin.com/in/sholi/)
+## 🎯 Career Objective
+Seeking to leverage my extensive QA automation experience and leadership skills in a Senior QA Engineer, SDET, or QA Manager role where I can drive quality excellence and mentor teams.
+
+## 📈 Key Achievements
+- Improved test pass rates from 50% to 75% for regression testing
+- Led QA teams of up to 6 members across multiple projects
+- Reduced response times by 30% through performance testing
+- Mentored multiple QA teams across 6 groups
+- Architected microservices-based testing frameworks
+
+## 🔄 Updates
+This portfolio is regularly updated with new projects, skills, and achievements. Last updated: January 2025
 
 ---
 
-**Last Updated:** February 25, 2025
+*This portfolio demonstrates my commitment to quality, attention to detail, and technical expertise in QA automation. Feel free to explore and reach out for opportunities!*
+
