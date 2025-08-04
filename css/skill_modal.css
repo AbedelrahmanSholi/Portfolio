@@ -1,0 +1,260 @@
+/* Skill Modal Styles */
+.skill-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.skill-modal-content {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    margin: 2% auto;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.3s ease;
+    position: relative;
+}
+
+.skill-modal-header {
+    background: linear-gradient(135deg, #26a69a 0%, #4db8ff 100%);
+    padding: 1.5rem 2rem;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.skill-modal-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.skill-modal-close {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.skill-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.skill-modal-body {
+    padding: 2rem;
+    color: #ffffff;
+}
+
+.skill-overview {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-level-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #26a69a, #4db8ff);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.skill-experience {
+    margin-bottom: 1rem;
+    color: #b0b0b0;
+    font-size: 1rem;
+}
+
+.skill-experience strong {
+    color: #26a69a;
+}
+
+.skill-overview p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+.skill-details-section,
+.skill-projects-section,
+.skill-certifications-section {
+    margin-bottom: 2rem;
+}
+
+.skill-details-section h3,
+.skill-projects-section h3,
+.skill-certifications-section h3 {
+    color: #26a69a;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(38, 166, 154, 0.3);
+}
+
+.skill-details-section ul,
+.skill-projects-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-details-section li,
+.skill-projects-section li {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 0.8rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #26a69a;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.skill-details-section li:hover,
+.skill-projects-section li:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.skill-details-section li::before,
+.skill-projects-section li::before {
+    content: '✓';
+    color: #26a69a;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.certification-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #4db8ff, #26a69a);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    margin: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.certification-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .skill-modal-content {
+        width: 95%;
+        margin: 5% auto;
+        max-height: 85vh;
+    }
+    
+    .skill-modal-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .skill-modal-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .skill-modal-body {
+        padding: 1.5rem;
+    }
+    
+    .skill-details-section li,
+    .skill-projects-section li {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-modal-content {
+        width: 98%;
+        margin: 2% auto;
+    }
+    
+    .skill-modal-header {
+        padding: 1rem;
+    }
+    
+    .skill-modal-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .skill-modal-body {
+        padding: 1rem;
+    }
+    
+    .certification-badge {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Custom scrollbar for modal content */
+.skill-modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.skill-modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.skill-modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #26a69a, #4db8ff);
+    border-radius: 4px;
+}
+
+.skill-modal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #4db8ff, #26a69a);
+}
+

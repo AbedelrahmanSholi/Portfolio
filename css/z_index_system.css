@@ -1,0 +1,92 @@
+/* Consolidated CSS for z-index hierarchy */
+
+/* ===== Z-INDEX SYSTEM ===== */
+:root {
+    /* Base z-index values for different layers */
+    --z-index-background: -1;
+    --z-index-base: 1;
+    --z-index-content: 10;
+    --z-index-navigation: 100;
+    --z-index-bubble: 50;
+    --z-index-bubble-hover: 200;
+    --z-index-bubble-details: 1000;
+    --z-index-tooltip: 1500;
+    --z-index-modal: 2000;
+}
+
+/* ===== BACKGROUND ELEMENTS ===== */
+.background-container,
+.stars,
+.twinkling,
+.clouds {
+    z-index: var(--z-index-background);
+}
+
+/* ===== CONTENT ELEMENTS ===== */
+.page,
+.scroll-section,
+#home,
+#myStackPage,
+.side-by-side-container,
+.project-section,
+.achievements-section,
+.skills-section {
+    position: relative;
+    z-index: var(--z-index-content);
+}
+
+/* ===== NAVIGATION ELEMENTS ===== */
+.slider-section-right,
+.nav__wrapper,
+#side_nav {
+    position: relative;
+    z-index: var(--z-index-navigation);
+}
+
+/* ===== INTERACTIVE ELEMENTS ===== */
+.card,
+.project-card,
+.achievement-card,
+.skill-category-card,
+.timeline-content {
+    position: relative;
+    z-index: var(--z-index-base);
+}
+
+.card:hover,
+.project-card:hover,
+.achievement-card:hover,
+.skill-category-card:hover,
+.timeline-content:hover {
+    z-index: var(--z-index-bubble-hover);
+}
+
+/* ===== BUBBLE ELEMENTS ===== */
+.bubble-cluster {
+    position: relative;
+    z-index: var(--z-index-bubble);
+}
+
+.bubble-cluster:hover {
+    z-index: var(--z-index-bubble-hover);
+}
+
+.bubble-details {
+    z-index: var(--z-index-bubble-details);
+}
+
+/* ===== TOOLTIP ELEMENTS ===== */
+[data-tooltip]:before,
+[data-tooltip]:after {
+    z-index: var(--z-index-tooltip);
+}
+
+/* ===== MODAL ELEMENTS ===== */
+.modal {
+    z-index: var(--z-index-modal);
+}
+
+/* ===== UTILITY ELEMENTS ===== */
+.back-to-top {
+    z-index: var(--z-index-navigation);
+}

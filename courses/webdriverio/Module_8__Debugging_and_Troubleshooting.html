@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css/courses/comprehensive_course_styling.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 8: Debugging and Troubleshooting</title>
+    <link rel="stylesheet" href="../../css/courses/enhanced_course_styling.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script src="../../js/courses/mermaid_loader.js"></script>
+</head>
+
+<body>
+    <div class="course-content-wrapper">
+        <div class="module-navigation">
+            <a href="Module_7__WebDriverIO_with_Cucumber_Integration.html" class="nav-btn prev-btn">
+                <i class="fas fa-chevron-left"></i> Previous: WebDriverIO with Cucumber Integration
+            </a>
+            <a href="Module_9__Custom_Commands_and_Utilities.html" class="nav-btn next-btn">
+                Next: Custom Commands and Utilities <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+        <h1 id="module-8-debugging-and-troubleshooting">Module 8: Debugging and Troubleshooting</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>Even the most carefully designed test automation frameworks will encounter failures and issues that require debugging. This module explores advanced debugging and troubleshooting techniques for WebDriverIO tests, helping you identify and resolve common problems efficiently.</p>
+
+<h2 id="learning-objectives">Learning Objectives</h2>
+
+<p>By the end of this module, you will be able to:</p>
+
+<ol>
+<li>Apply systematic debugging approaches to WebDriverIO test failures</li>
+<li>Utilize WebDriverIO's built-in debugging tools</li>
+<li>Implement advanced logging strategies</li>
+<li>Troubleshoot common WebDriverIO issues</li>
+<li>Create self-healing test mechanisms</li>
+<li>Optimize test performance and reliability</li>
+</ol>
+
+<h2 id="91-systematic-debugging-approach">9.1 Systematic Debugging Approach</h2>
+
+<h3 id="understanding-test-failures">Understanding Test Failures</h3>
+
+<p>When a test fails, it's important to understand the nature of the failure:</p>
+
+<ol>
+<li><strong>Assertion Failures</strong>: The test executed successfully but an assertion failed</li>
+<li><strong>Execution Failures</strong>: The test couldn't complete due to an error</li>
+<li><strong>Timeout Failures</strong>: The test exceeded the allocated time</li>
+<li><strong>Setup/Teardown Failures</strong>: Issues occurred before or after the actual test</li>
+<li><strong>Infrastructure Failures</strong>: Problems with the test environment or browser</li>
+</ol>
+
+<h3 id="debugging-workflow">Debugging Workflow</h3>
+
+<p>A systematic approach to debugging test failures:</p>
+
+<ol>
+<li><strong>Analyze the Error Message</strong>: Understand what the error is telling you</li>
+<li><strong>Check Screenshots and Logs</strong>: Review automatically captured evidence</li>
+<li><strong>Reproduce the Issue</strong>: Try to reproduce the issue consistently</li>
+<li><strong>Isolate the Problem</strong>: Narrow down to the specific component or step</li>
+<li><strong>Test Hypotheses</strong>: Make changes to verify your understanding of the issue</li>
+<li><strong>Fix and Verify</strong>: Implement a fix and verify it resolves the issue</li>
+<li><strong>Prevent Recurrence</strong>: Add safeguards to prevent similar issues</li>
+</ol>
+
+<pre><code>// Example of a debugging workflow in practice
+describe('Debugging Example', () =&gt; {
+    it('should demonstrate debugging workflow', async () =&gt; {
+        try {
+            // Step that might fail
+            await $('#non-existent-element').click();
+        } catch (error) {
+            // 1. Analyze the error
+            console.error('Error type:', error.name);
+            console.error('Error message:', error.message);
+
+            // 2. Capture evidence
+            await browser.saveScreenshot('./debug/error-screenshot.png');
+
+            // 3. Get additional context
+            const html = await browser.execute(() =&gt; document.body.innerHTML);
+            console.log('Current HTML:', html);
+
+            // 4. Check element state
+            const exists = await $('#non-existent-element').isExisting();
+            console.log('Element exists:', exists);
+
+            // Re-throw to fail the test
+            throw error;
+        }
+    });
+});
+</code></pre>
+
+<h2 id="92-webdriverio-debugging-tools">9.2 WebDriverIO Debugging Tools</h2>
+
+<h3 id="browserdebug">Browser.debug()</h3>
+
+<p>The <code>browser.debug()</code> command pauses test execution and opens a REPL interface:</p>
+
+<pre><code>it('should debug element interaction', async () =&gt; {
+    await browser.url('/login');
+
+    // Pause execution for debugging
+    await browser.debug();
+
+    // After debugging, continue with the test
+    await $('#username').setValue('testuser');
+    await $('#password').setValue('password');
+    await $('#login-button').click();
+});
+</code></pre>
+
+<p>In the REPL, you can:</p>
+
+<ul>
+<li>Inspect variables</li>
+<li>Execute WebDriverIO commands</li>
+<li>Evaluate JavaScript expressions</li>
+<li>Use <code>browser</code> and <code>$</code>/<code>$$</code> selectors</li>
+</ul>
+
+<h3 id="debugging-configuration">Debugging Configuration</h3>
+
+<p>Configure WebDriverIO for better debugging:</p>
+
+<pre><code>// wdio.conf.js
+exports.config = {
+    // ...
+    logLevel: 'debug', // 'trace' | 'debug' | 'info' | 'warn' | 'error' | 'silent'
+    outputDir: './logs',
+
+    // Capture more detailed logs
+    reporters: [
+        'spec',
+        ['junit', {
+            outputDir: './reports',
+            outputFileFormat: (options) =&gt; {
+                return `results-${options.cid}.xml`;
+            }
+        }]
+    ],
+
+    // Take screenshots on failure
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+        if (error) {
+            await browser.takeScreenshot();
+        }
+    },
+    // ...
+};
+</code></pre>
+
+<h3 id="chrome-devtools-protocol">Chrome DevTools Protocol</h3>
+
+<p>WebDriverIO provides access to Chrome DevTools Protocol for advanced debugging:</p>
+
+<pre><code>// Network monitoring
+await browser.cdp('Network', 'enable');
+
+browser.on('Network.responseReceived', (params) =&gt; {
+    console.log(`URL: ${params.response.url}`);
+    console.log(`Status: ${params.response.status}`);
+    console.log(`Type: ${params.type}`);
+});
+
+// Performance monitoring
+await browser.cdp('Performance', 'enable');
+const performanceMetrics = await browser.cdp('Performance', 'getMetrics');
+console.log('Performance metrics:', performanceMetrics.metrics);
+
+// Console monitoring
+await browser.cdp('Console', 'enable');
+browser.on('Console.messageAdded', (params) =&gt; {
+    console.log(`Browser console [${params.message.level}]: ${params.message.text}`);
+});
+
+// JavaScript errors
+await browser.cdp('Runtime', 'enable');
+browser.on('Runtime.exceptionThrown', (params) =&gt; {
+    console.log('JavaScript error:', params.exceptionDetails.text);
+    console.log('Stack trace:', params.exceptionDetails.stackTrace);
+});
+</code></pre>
+
+<h3 id="visual-debugging-tools">Visual Debugging Tools</h3>
+
+<pre><code>// utils/debugHelper.js
+class DebugHelper {
+    static async highlightElement(selector) {
+        const element = await $(selector);
+        await browser.execute((el) =&gt; {
+            const originalStyle = el.getAttribute('style') || '';
+            el.setAttribute('style', `${originalStyle}; border: 2px solid red; background-color: yellow;`);
+
+            // Reset after 2 seconds
+            setTimeout(() =&gt; {
+                el.setAttribute('style', originalStyle);
+            }, 2000);
+        }, element);
+
+        // Wait for visual confirmation
+        await browser.pause(2000);
+    }
+
+    static async takeElementScreenshot(selector, filename) {
+        const element = await $(selector);
+        await element.saveScreenshot(`./debug/${filename}.png`);
+    }
+
+    static async logElementState(selector) {
+        const element = await $(selector);
+
+        const state = {
+            selector,
+            exists: await element.isExisting(),
+            displayed: await element.isDisplayed(),
+            enabled: await element.isEnabled(),
+            text: await element.getText(),
+            value: await element.getValue(),
+            location: await element.getLocation(),
+            size: await element.getSize()
+        };
+
+        console.log('Element state:', JSON.stringify(state, null, 2));
+        return state;
+    }
+
+    static async logPageState() {
+        const url = await browser.getUrl();
+        const title = await browser.getTitle();
+        const html = await browser.execute(() =&gt; document.documentElement.outerHTML);
+
+        console.log(`Current URL: ${url}`);
+        console.log(`Page title: ${title}`);
+
+        // Save HTML to file
+        const fs = require('fs');
+        fs.writeFileSync(`./debug/page-${Date.now()}.html`, html);
+
+        // Take full page screenshot
+        await browser.saveScreenshot(`./debug/page-${Date.now()}.png`);
+    }
+}
+
+module.exports = DebugHelper;
+
+// Usage in tests
+const DebugHelper = require('../utils/debugHelper');
+
+it('should debug form submission', async () =&gt; {
+    await browser.url('/form');
+
+    // Highlight element being interacted with
+    await DebugHelper.highlightElement('#username');
+    await $('#username').setValue('testuser');
+
+    // Log element state
+    await DebugHelper.logElementState('#submit-button');
+
+    // Take screenshot of specific element
+    await DebugHelper.takeElementScreenshot('#form', 'form-before-submit');
+
+    // Submit form
+    await $('#submit-button').click();
+
+    // Log page state after submission
+    await DebugHelper.logPageState();
+});
+</code></pre>
+
+<h2 id="93-advanced-logging-strategies">9.3 Advanced Logging Strategies</h2>
+
+<h3 id="custom-logger-implementation">Custom Logger Implementation</h3>
+
+<pre><code>// utils/logger.js
+const winston = require('winston');
+const path = require('path');
+const fs = require('fs');
+
+// Create logs directory if it doesn't exist
+const logsDir = path.join(process.cwd(), 'logs');
+if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir);
+}
+
+// Create logger
+const logger = winston.createLogger({
+    level: process.env.LOG_LEVEL || 'info',
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+    ),
+    defaultMeta: { service: 'wdio-tests' },
+    transports: [
+        // Console output
+        new winston.transports.Console({
+            format: winston.format.combine(
+                winston.format.colorize(),
+                winston.format.simple()
+            )
+        }),
+        // File output
+        new winston.transports.File({
+            filename: path.join(logsDir, 'error.log'),
+            level: 'error'
+        }),
+        new winston.transports.File({
+            filename: path.join(logsDir, 'combined.log')
+        })
+    ]
+});
+
+// Add test context information
+logger.addTestContext = function(context) {
+    this.defaultMeta = {
+        ...this.defaultMeta,
+        ...context
+    };
+};
+
+// Log test step
+logger.step = function(message) {
+    this.info(`STEP: ${message}`);
+};
+
+// Log test action
+logger.action = function(message) {
+    this.debug(`ACTION: ${message}`);
+};
+
+// Log assertion
+logger.assertion = function(message) {
+    this.debug(`ASSERT: ${message}`);
+};
+
+module.exports = logger;
+
+// Usage in tests
+const logger = require('../utils/logger');
+
+describe('Login Tests', () =&gt; {
+    beforeEach(async function() {
+        // Add test context
+        logger.addTestContext({
+            test: this.currentTest.title,
+            suite: this.test.parent.title
+        });
+
+        await browser.url('/login');
+        logger.step('Navigated to login page');
+    });
+
+    it('should login with valid credentials', async () =&gt; {
+        logger.step('Entering username and password');
+        logger.action('Setting username');
+        await $('#username').setValue('testuser');
+
+        logger.action('Setting password');
+        await $('#password').setValue('password');
+
+        logger.step('Submitting login form');
+        await $('#login-button').click();
+
+        logger.step('Verifying successful login');
+        logger.assertion('Dashboard should be displayed');
+        const dashboardHeader = await $('.dashboard-header');
+        await dashboardHeader.waitForDisplayed();
+        expect(await dashboardHeader.isDisplayed()).toBe(true);
+    });
+});
+</code></pre>
+
+<h3 id="contextual-logging">Contextual Logging</h3>
+
+<pre><code>// utils/contextLogger.js
+class ContextLogger {
+    constructor(baseLogger) {
+        this.logger = baseLogger;
+        this.context = {};
+    }
+
+    setContext(context) {
+        this.context = {
+            ...this.context,
+            ...context
+        };
+        return this;
+    }
+
+    clearContext() {
+        this.context = {};
+        return this;
+    }
+
+    formatMessage(message) {
+        const contextStr = Object.entries(this.context)
+            .map(([key, value]) =&gt; `[${key}:${value}]`)
+            .join(' ');
+
+        return contextStr ? `${contextStr} ${message}` : message;
+    }
+
+    debug(message) {
+        this.logger.debug(this.formatMessage(message));
+        return this;
+    }
+
+    info(message) {
+        this.logger.info(this.formatMessage(message));
+        return this;
+    }
+
+    warn(message) {
+        this.logger.warn(this.formatMessage(message));
+        return this;
+    }
+
+    error(message, error) {
+        const formattedMessage = this.formatMessage(message);
+        if (error) {
+            this.logger.error(`${formattedMessage}: ${error.message}`, { stack: error.stack });
+        } else {
+            this.logger.error(formattedMessage);
+        }
+        return this;
+    }
+
+    step(message) {
+        return this.info(`STEP: ${message}`);
+    }
+
+    action(message) {
+        return this.debug(`ACTION: ${message}`);
+    }
+
+    assertion(message) {
+        return this.debug(`ASSERT: ${message}`);
+    }
+}
+
+module.exports = ContextLogger;
+
+// Usage in page objects
+const logger = require('../utils/logger');
+const ContextLogger = require('../utils/contextLogger');
+
+class LoginPage {
+    constructor() {
+        this.logger = new ContextLogger(logger).setContext({ page: 'LoginPage' });
+        this.usernameInput = $('#username');
+        this.passwordInput = $('#password');
+        this.loginButton = $('#login-button');
+        this.errorMessage = $('.error-message');
+    }
+
+    async login(username, password) {
+        this.logger.setContext({ action: 'login', username });
+
+        this.logger.action('Setting username');
+        await this.usernameInput.setValue(username);
+
+        this.logger.action('Setting password');
+        await this.passwordInput.setValue(password);
+
+        this.logger.action('Clicking login button');
+        await this.loginButton.click();
+
+        this.logger.info('Login attempt completed');
+        return this;
+    }
+
+    async getErrorMessage() {
+        this.logger.action('Getting error message');
+        if (await this.errorMessage.isExisting()) {
+            const message = await this.errorMessage.getText();
+            this.logger.info(`Error message: ${message}`);
+            return message;
+        }
+
+        this.logger.info('No error message found');
+        return null;
+    }
+}
+</code></pre>
+
+<h3 id="execution-tracing">Execution Tracing</h3>
+
+<pre><code>// utils/tracer.js
+class ExecutionTracer {
+    constructor() {
+        this.steps = [];
+        this.startTime = Date.now();
+        this.currentStep = null;
+    }
+
+    startStep(description) {
+        // Complete previous step if exists
+        if (this.currentStep) {
+            this.completeStep();
+        }
+
+        this.currentStep = {
+            description,
+            startTime: Date.now(),
+            endTime: null,
+            duration: null,
+            status: 'running',
+            error: null,
+            screenshot: null
+        };
+
+        console.log(`STEP START: ${description}`);
+        return this;
+    }
+
+    async completeStep(error = null) {
+        if (!this.currentStep) {
+            return this;
+        }
+
+        this.currentStep.endTime = Date.now();
+        this.currentStep.duration = this.currentStep.endTime - this.currentStep.startTime;
+        this.currentStep.status = error ? 'failed' : 'passed';
+        this.currentStep.error = error ? {
+            message: error.message,
+            stack: error.stack
+        } : null;
+
+        // Take screenshot if step failed
+        if (error) {
+            try {
+                const screenshotPath = `./debug/step-${this.steps.length + 1}-failed.png`;
+                await browser.saveScreenshot(screenshotPath);
+                this.currentStep.screenshot = screenshotPath;
+            } catch (screenshotError) {
+                console.error('Failed to take screenshot:', screenshotError.message);
+            }
+        }
+
+        this.steps.push(this.currentStep);
+        console.log(`STEP ${this.currentStep.status.toUpperCase()}: ${this.currentStep.description} (${this.currentStep.duration}ms)`);
+
+        this.currentStep = null;
+        return this;
+    }
+
+    async executeStep(description, action) {
+        this.startStep(description);
+
+        try {
+            const result = await action();
+            await this.completeStep();
+            return result;
+        } catch (error) {
+            await this.completeStep(error);
+            throw error;
+        }
+    }
+
+    getReport() {
+        const endTime = Date.now();
+        const totalDuration = endTime - this.startTime;
+
+        return {
+            startTime: new Date(this.startTime).toISOString(),
+            endTime: new Date(endTime).toISOString(),
+            totalDuration,
+            steps: this.steps,
+            passedSteps: this.steps.filter(step =&gt; step.status === 'passed').length,
+            failedSteps: this.steps.filter(step =&gt; step.status === 'failed').length
+        };
+    }
+
+    saveReport(filename = `execution-report-${Date.now()}.json`) {
+        const fs = require('fs');
+        const report = this.getReport();
+        fs.writeFileSync(`./reports/${filename}`, JSON.stringify(report, null, 2));
+        return report;
+    }
+}
+
+module.exports = ExecutionTracer;
+
+// Usage in tests
+const ExecutionTracer = require('../utils/tracer');
+
+describe('Checkout Process', () =&gt; {
+    let tracer;
+
+    beforeEach(() =&gt; {
+        tracer = new ExecutionTracer();
+    });
+
+    it('should complete checkout process', async () =&gt; {
+        await tracer.executeStep('Navigate to product page', async () =&gt; {
+            await browser.url('/products/1');
+        });
+
+        await tracer.executeStep('Add product to cart', async () =&gt; {
+            await $('#add-to-cart').click();
+            await $('.cart-confirmation').waitForDisplayed();
+        });
+
+        await tracer.executeStep('Navigate to cart', async () =&gt; {
+            await $('#cart-icon').click();
+            await $('.cart-page').waitForDisplayed();
+        });
+
+        await tracer.executeStep('Proceed to checkout', async () =&gt; {
+            await $('#checkout-button').click();
+            await $('.checkout-page').waitForDisplayed();
+        });
+
+        await tracer.executeStep('Fill shipping information', async () =&gt; {
+            await $('#name').setValue('Test User');
+            await $('#address').setValue('123 Test St');
+            await $('#city').setValue('Test City');
+            await $('#zip').setValue('12345');
+            await $('#continue-button').click();
+        });
+
+        await tracer.executeStep('Complete payment', async () =&gt; {
+            await $('#card-number').setValue('4111111111111111');
+            await $('#card-expiry').setValue('12/25');
+            await $('#card-cvc').setValue('123');
+            await $('#payment-button').click();
+        });
+
+        await tracer.executeStep('Verify order confirmation', async () =&gt; {
+            await $('.confirmation-page').waitForDisplayed();
+            const confirmationText = await $('.confirmation-message').getText();
+            expect(confirmationText).toContain('Your order has been placed');
+        });
+
+        // Save execution report
+        tracer.saveReport('checkout-execution.json');
+    });
+
+    afterEach(async function() {
+        // If test failed, save the execution report
+        if (this.currentTest.state === 'failed') {
+            tracer.saveReport(`failed-${this.currentTest.title.replace(/\s+/g, '-')}.json`);
+        }
+    });
+});
+</code></pre>
+
+<h2 id="94-common-webdriverio-issues-and-solutions">9.4 Common WebDriverIO Issues and Solutions</h2>
+
+<h3 id="element-not-found-issues">Element Not Found Issues</h3>
+
+<pre><code>// Common issue: Element not found
+it('should handle element not found', async () =&gt; {
+    await browser.url('/dynamic-page');
+
+    // Problem: Element might not be in DOM yet
+    // await $('#dynamic-element').click(); // This might fail
+
+    // Solution 1: Wait for element to exist
+    await $('#dynamic-element').waitForExist({ timeout: 10000 });
+    await $('#dynamic-element').click();
+
+    // Solution 2: Use try-catch with retry
+    const clickWithRetry = async (selector, maxRetries = 3) =&gt; {
+        let retries = 0;
+        while (retries &lt; maxRetries) {
+            try {
+                const element = await $(selector);
+                await element.waitForExist({ timeout: 2000 });
+                await element.click();
+                return;
+            } catch (error) {
+                retries++;
+                if (retries &gt;= maxRetries) {
+                    throw new Error(`Failed to click ${selector} after ${maxRetries} retries: ${error.message}`);
+                }
+                console.log(`Retry ${retries}/${maxRetries} for ${selector}`);
+                await browser.pause(1000);
+            }
+        }
+    };
+
+    await clickWithRetry('#another-dynamic-element');
+});
+</code></pre>
+
+<h3 id="stale-element-reference-issues">Stale Element Reference Issues</h3>
+
+<pre><code>// Common issue: Stale element reference
+it('should handle stale element references', async () =&gt; {
+    await browser.url('/page-with-updates');
+
+    // Problem: Element reference becomes stale after page update
+    const element = await $('#updating-element');
+    await browser.execute(() =&gt; {
+        // Simulate page update that causes element to become stale
+        document.getElementById('updating-element').innerHTML = 'Updated content';
+    });
+
+    // This might fail with stale element reference error
+    // await element.click();
+
+    // Solution 1: Re-query the element
+    await $('#updating-element').click();
+
+    // Solution 2: Create a wrapper function that handles stale elements
+    const clickWithStaleProtection = async (selector) =&gt; {
+        try {
+            const element = await $(selector);
+            await element.click();
+        } catch (error) {
+            if (error.message.includes('stale element reference')) {
+                console.log('Encountered stale element, retrying with fresh reference');
+                const freshElement = await $(selector);
+                await freshElement.click();
+            } else {
+                throw error;
+            }
+        }
+    };
+
+    await clickWithStaleProtection('#another-updating-element');
+});
+</code></pre>
+
+<h3 id="timing-and-synchronization-issues">Timing and Synchronization Issues</h3>
+
+<pre><code>// Common issue: Timing and synchronization
+it('should handle timing and synchronization issues', async () =&gt; {
+    await browser.url('/async-page');
+
+    // Problem: Element is in DOM but not visible/clickable yet
+    // await $('#loading-button').click(); // This might fail
+
+    // Solution 1: Wait for element to be clickable
+    await $('#loading-button').waitForClickable({ timeout: 10000 });
+    await $('#loading-button').click();
+
+    // Problem: Need to wait for an AJAX request to complete
+    await $('#trigger-ajax').click();
+
+    // Solution 2: Wait for specific condition
+    await browser.waitUntil(async () =&gt; {
+        const text = await $('#ajax-result').getText();
+        return text !== 'Loading...';
+    }, {
+        timeout: 10000,
+        timeoutMsg: 'Expected AJAX request to complete'
+    });
+
+    // Problem: Need to wait for animation to complete
+    await $('#animate-button').click();
+
+    // Solution 3: Wait for animation attribute/class to change
+    await browser.waitUntil(async () =&gt; {
+        const className = await $('#animated-element').getAttribute('class');
+        return !className.includes('animating');
+    }, {
+        timeout: 5000,
+        timeoutMsg: 'Expected animation to complete'
+    });
+});
+</code></pre>
+
+<h3 id="selector-issues">Selector Issues</h3>
+
+<pre><code>// Common issue: Selector problems
+it('should handle selector issues', async () =&gt; {
+    await browser.url('/complex-page');
+
+    // Problem: Complex or dynamic selectors
+    // Solution 1: Use different selector strategies
+
+    // CSS selector
+    await $('button.submit-button').click();
+
+    // XPath
+    await $('//button[contains(text(), "Submit")]').click();
+
+    // Element with specific text
+    await $('button=Submit').click();
+
+    // Element containing text
+    await $('button*=Sub').click();
+
+    // Problem: Need to find element within another element
+
+    // Solution 2: Use element chaining
+    const form = await $('#registration-form');
+    const submitButton = await form.$('.submit-button');
+    await submitButton.click();
+
+    // Problem: Multiple elements match selector
+
+    // Solution 3: Use specific index
+    const buttons = await $$('.action-button');
+    await buttons[2].click(); // Click the third button
+
+    // Solution 4: Filter elements
+    const visibleButtons = await $$('.action-button').filter(async (button) =&gt; {
+        return await button.isDisplayed();
+    });
+    await visibleButtons[0].click(); // Click the first visible button
+});
+</code></pre>
+
+<h3 id="browser-and-environment-issues">Browser and Environment Issues</h3>
+
+<pre><code>// Common issue: Browser and environment problems
+it('should handle browser and environment issues', async () =&gt; {
+    // Problem: Browser window size affecting element visibility
+
+    // Solution 1: Set specific window size
+    await browser.setWindowSize(1920, 1080);
+
+    await browser.url('/responsive-page');
+
+    // Problem: Browser-specific behavior
+
+    // Solution 2: Check browser and adapt behavior
+    const browserName = browser.capabilities.browserName;
+    if (browserName === 'chrome') {
+        // Chrome-specific code
+        await $('.chrome-element').click();
+    } else if (browserName === 'firefox') {
+        // Firefox-specific code
+        await $('.firefox-element').click();
+    }
+
+    // Problem: Handling alerts
+
+    // Solution 3: Try-catch for alerts
+    try {
+        await $('#alert-button').click();
+        await browser.acceptAlert();
+    } catch (error) {
+        if (!error.message.includes('no such alert')) {
+            throw error;
+        }
+        // No alert present, continue
+    }
+
+    // Problem: Handling file uploads
+
+    // Solution 4: Use remote file path
+    const filePath = '/path/to/file.jpg';
+    const remoteFilePath = await browser.uploadFile(filePath);
+    await $('#file-input').setValue(remoteFilePath);
+});
+</code></pre>
+
+<h2 id="95-self-healing-test-mechanisms">9.5 Self-Healing Test Mechanisms</h2>
+
+<h3 id="implementing-self-healing-selectors">Implementing Self-Healing Selectors</h3>
+
+<pre><code>// utils/selfHealingElement.js
+class SelfHealingElement {
+    constructor(selectors, name = '') {
+        this.selectors = Array.isArray(selectors) ? selectors : [selectors];
+        this.name = name || this.selectors[0];
+        this.lastUsedSelector = null;
+    }
+
+    async find() {
+        let element = null;
+        let lastError = null;
+
+        // Try each selector in order
+        for (const selector of this.selectors) {
+            try {
+                element = await $(selector);
+                if (await element.isExisting()) {
+                    this.lastUsedSelector = selector;
+                    return element;
+                }
+            } catch (error) {
+                lastError = error;
+                // Continue to next selector
+            }
+        }
+
+        // If we get here, no selector worked
+        throw new Error(`Could not find element "${this.name}" using any of the provided selectors: ${this.selectors.join(', ')}. Last error: ${lastError?.message}`);
+    }
+
+    async click() {
+        const element = await this.find();
+        await element.click();
+    }
+
+    async setValue(value) {
+        const element = await this.find();
+        await element.setValue(value);
+    }
+
+    async getText() {
+        const element = await this.find();
+        return element.getText();
+    }
+
+    async waitForDisplayed(options = {}) {
+        const element = await this.find();
+        return element.waitForDisplayed(options);
+    }
+
+    async waitForExist(options = {}) {
+        const element = await this.find();
+        return element.waitForExist(options);
+    }
+
+    async waitForClickable(options = {}) {
+        const element = await this.find();
+        return element.waitForClickable(options);
+    }
+
+    // Add more methods as needed
+}
+
+module.exports = SelfHealingElement;
+
+// Usage in page objects
+const SelfHealingElement = require('../utils/selfHealingElement');
+
+class LoginPage {
+    constructor() {
+        // Define elements with multiple selector strategies
+        this.usernameInput = new SelfHealingElement([
+            '#username',
+            '[name="username"]',
+            '//input[@placeholder="Username"]',
+            '.username-field'
+        ], 'Username Input');
+
+        this.passwordInput = new SelfHealingElement([
+            '#password',
+            '[name="password"]',
+            '//input[@type="password"]',
+            '.password-field'
+        ], 'Password Input');
+
+        this.loginButton = new SelfHealingElement([
+            '#login-button',
+            '.login-btn',
+            'button=Login',
+            '//button[contains(text(), "Login")]'
+        ], 'Login Button');
+    }
+
+    async login(username, password) {
+        await this.usernameInput.setValue(username);
+        await this.passwordInput.setValue(password);
+        await this.loginButton.click();
+    }
+}
+</code></pre>
+
+<h3 id="smart-waiting-strategies">Smart Waiting Strategies</h3>
+
+<pre><code>// utils/smartWait.js
+class SmartWait {
+    static async forElement(selector, options = {}) {
+        const defaultOptions = {
+            timeout: 10000,
+            interval: 500,
+            condition: 'exist', // 'exist', 'visible', 'clickable'
+            message: `Waiting for element "${selector}" to be ${options.condition || 'exist'}`
+        };
+
+        const opts = { ...defaultOptions, ...options };
+        console.log(opts.message);
+
+        try {
+            const element = await $(selector);
+
+            switch (opts.condition) {
+                case 'visible':
+                    await element.waitForDisplayed({ timeout: opts.timeout });
+                    break;
+                case 'clickable':
+                    await element.waitForClickable({ timeout: opts.timeout });
+                    break;
+                case 'exist':
+                default:
+                    await element.waitForExist({ timeout: opts.timeout });
+            }
+
+            return element;
+        } catch (error) {
+            console.error(`Smart wait failed for "${selector}": ${error.message}`);
+            throw error;
+        }
+    }
+
+    static async forText(selector, text, options = {}) {
+        const defaultOptions = {
+            timeout: 10000,
+            interval: 500,
+            contains: true, // true for contains, false for exact match
+            message: `Waiting for element "${selector}" to ${options.contains ? 'contain' : 'have exact'} text "${text}"`
+        };
+
+        const opts = { ...defaultOptions, ...options };
+        console.log(opts.message);
+
+        await browser.waitUntil(async () =&gt; {
+            const element = await $(selector);
+            const actualText = await element.getText();
+
+            return opts.contains 
+                ? actualText.includes(text)
+                : actualText === text;
+        }, {
+            timeout: opts.timeout,
+            interval: opts.interval,
+            timeoutMsg: `Expected element "${selector}" to ${opts.contains ? 'contain' : 'have exact'} text "${text}"`
+        });
+
+        return $(selector);
+    }
+
+    static async forUrlToContain(fragment, options = {}) {
+        const defaultOptions = {
+            timeout: 10000,
+            interval: 500,
+            message: `Waiting for URL to contain "${fragment}"`
+        };
+
+        const opts = { ...defaultOptions, ...options };
+        console.log(opts.message);
+
+        await browser.waitUntil(async () =&gt; {
+            const url = await browser.getUrl();
+            return url.includes(fragment);
+        }, {
+            timeout: opts.timeout,
+            interval: opts.interval,
+            timeoutMsg: `Expected URL to contain "${fragment}"`
+        });
+    }
+
+    static async forPageLoad(options = {}) {
+        const defaultOptions = {
+            timeout: 30000,
+            interval: 500,
+            message: 'Waiting for page to load completely'
+        };
+
+        const opts = { ...defaultOptions, ...options };
+        console.log(opts.message);
+
+        await browser.waitUntil(async () =&gt; {
+            return await browser.execute(() =&gt; document.readyState === 'complete');
+        }, {
+            timeout: opts.timeout,
+            interval: opts.interval,
+            timeoutMsg: 'Expected page to load completely'
+        });
+    }
+
+    static async forAjaxCompletion(options = {}) {
+        const defaultOptions = {
+            timeout: 10000,
+            interval: 500,
+            message: 'Waiting for AJAX requests to complete'
+        };
+
+        const opts = { ...defaultOptions, ...options };
+        console.log(opts.message);
+
+        await browser.waitUntil(async () =&gt; {
+            return await browser.execute(() =&gt; {
+                // For jQuery
+                if (typeof jQuery !== 'undefined') {
+                    return jQuery.active === 0;
+                }
+
+                // For Fetch API (simplified check)
+                if (window._activeFetchRequests === 0) {
+                    return true;
+                }
+
+                // For XMLHttpRequest
+                return document.querySelectorAll('.xhr-in-progress').length === 0;
+            });
+        }, {
+            timeout: opts.timeout,
+            interval: opts.interval,
+            timeoutMsg: 'Expected AJAX requests to complete'
+        });
+    }
+}
+
+module.exports = SmartWait;
+
+// Usage in tests
+const SmartWait = require('../utils/smartWait');
+
+it('should use smart waiting strategies', async () =&gt; {
+    await browser.url('/dynamic-page');
+
+    // Wait for page to load
+    await SmartWait.forPageLoad();
+
+    // Click button that triggers AJAX
+    await $('#load-data').click();
+
+    // Wait for AJAX to complete
+    await SmartWait.forAjaxCompletion();
+
+    // Wait for specific element to be clickable
+    const button = await SmartWait.forElement('#dynamic-button', {
+        condition: 'clickable',
+        timeout: 15000
+    });
+
+    // Click the button
+    await button.click();
+
+    // Wait for URL to change
+    await SmartWait.forUrlToContain('/result');
+
+    // Wait for specific text to appear
+    await SmartWait.forText('.result-message', 'Success', {
+        contains: true,
+        timeout: 20000
+    });
+});
+</code></pre>
+
+<h3 id="automatic-retry-mechanism">Automatic Retry Mechanism</h3>
+
+<pre><code>// utils/retryHelper.js
+class RetryHelper {
+    static async retry(action, options = {}) {
+        const defaultOptions = {
+            maxRetries: 3,
+            interval: 1000,
+            exponentialBackoff: true,
+            description: 'action'
+        };
+
+        const opts = { ...defaultOptions, ...options };
+        let lastError;
+
+        for (let attempt = 1; attempt &lt;= opts.maxRetries; attempt++) {
+            try {
+                return await action();
+            } catch (error) {
+                lastError = error;
+
+                if (attempt &lt; opts.maxRetries) {
+                    console.log(`Retry ${attempt}/${opts.maxRetries} for ${opts.description} failed: ${error.message}`);
+
+                    // Calculate wait time (with exponential backoff if enabled)
+                    const waitTime = opts.exponentialBackoff
+                        ? opts.interval * Math.pow(2, attempt - 1)
+                        : opts.interval;
+
+                    await browser.pause(waitTime);
+                }
+            }
+        }
+
+        throw new Error(`${opts.description} failed after ${opts.maxRetries} attempts. Last error: ${lastError.message}`);
+    }
+
+    static async retryClick(selector, options = {}) {
+        return this.retry(async () =&gt; {
+            const element = await $(selector);
+            await element.waitForClickable({ timeout: options.timeout || 5000 });
+            await element.click();
+        }, {
+            ...options,
+            description: `clicking element "${selector}"`
+        });
+    }
+
+    static async retrySetValue(selector, value, options = {}) {
+        return this.retry(async () =&gt; {
+            const element = await $(selector);
+            await element.waitForExist({ timeout: options.timeout || 5000 });
+            await element.setValue(value);
+        }, {
+            ...options,
+            description: `setting value "${value}" on element "${selector}"`
+        });
+    }
+
+    static async retryGetText(selector, options = {}) {
+        return this.retry(async () =&gt; {
+            const element = await $(selector);
+            await element.waitForExist({ timeout: options.timeout || 5000 });
+            return element.getText();
+        }, {
+            ...options,
+            description: `getting text from element "${selector}"`
+        });
+    }
+
+    static async retryAssertion(assertion, options = {}) {
+        return this.retry(async () =&gt; {
+            await assertion();
+        }, {
+            ...options,
+            description: 'assertion'
+        });
+    }
+}
+
+module.exports = RetryHelper;
+
+// Usage in tests
+const RetryHelper = require('../utils/retryHelper');
+
+it('should use retry mechanisms', async () =&gt; {
+    await browser.url('/flaky-page');
+
+    // Retry clicking a potentially flaky button
+    await RetryHelper.retryClick('#flaky-button', {
+        maxRetries: 5,
+        interval: 500
+    });
+
+    // Retry setting a value
+    await RetryHelper.retrySetValue('#flaky-input', 'test value');
+
+    // Retry getting text
+    const text = await RetryHelper.retryGetText('#flaky-text');
+
+    // Retry an assertion
+    await RetryHelper.retryAssertion(async () =&gt; {
+        const result = await $('#result').getText();
+        expect(result).toContain('Success');
+    }, {
+        maxRetries: 10,
+        interval: 1000
+    });
+});
+</code></pre>
+
+<h2 id="96-performance-optimization">9.6 Performance Optimization</h2>
+
+<h3 id="test-execution-optimization">Test Execution Optimization</h3>
+
+<pre><code>// wdio.conf.js
+exports.config = {
+    // ...
+
+    // Run tests in parallel
+    maxInstances: 5,
+
+    // Group tests by capability
+    maxInstancesPerCapability: 3,
+
+    // Optimize browser startup
+    connectionRetryTimeout: 120000,
+    connectionRetryCount: 3,
+
+    // Optimize test execution
+    waitforTimeout: 10000,
+
+    // Optimize framework settings
+    framework: 'mocha',
+    mochaOpts: {
+        ui: 'bdd',
+        timeout: 60000,
+        bail: true // Stop after first test failure
+    },
+
+    // Optimize hooks
+    beforeSession: function() {
+        // Set up environment
+    },
+
+    before: function() {
+        // Set up browser
+        browser.setTimeout({
+            'pageLoad': 10000,
+            'script': 5000,
+            'implicit': 0 // Disable implicit waits
+        });
+    },
+
+    beforeTest: function() {
+        // Set up test
+    },
+
+    // ...
+};
+</code></pre>
+
+<h3 id="browser-performance-optimization">Browser Performance Optimization</h3>
+
+<pre><code>// utils/performanceHelper.js
+class PerformanceHelper {
+    static async disableAnimations() {
+        await browser.execute(() =&gt; {
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                * {
+                    transition-duration: 0s !important;
+                    transition-delay: 0s !important;
+                    animation-duration: 0s !important;
+                    animation-delay: 0s !important;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    }
+
+    static async disableImages() {
+        await browser.execute(() =&gt; {
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                img {
+                    visibility: hidden;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    }
+
+    static async disableLogging() {
+        await browser.execute(() =&gt; {
+            console.log = console.warn = console.error = () =&gt; {};
+        });
+    }
+
+    static async blockThirdPartyRequests() {
+        // Using Chrome DevTools Protocol to block third-party requests
+        if (browser.capabilities.browserName === 'chrome') {
+            await browser.cdp('Network', 'enable');
+            await browser.cdp('Network', 'setBlockedURLs', {
+                urls: [
+                    '*google-analytics.com*',
+                    '*doubleclick.net*',
+                    '*facebook.net*',
+                    '*hotjar.com*'
+                ]
+            });
+        }
+    }
+
+    static async clearBrowserData() {
+        // Clear cookies
+        await browser.deleteAllCookies();
+
+        // Clear local storage
+        await browser.execute(() =&gt; {
+            localStorage.clear();
+            sessionStorage.clear();
+        });
+
+        // Clear cache (Chrome only)
+        if (browser.capabilities.browserName === 'chrome') {
+            await browser.cdp('Network', 'clearBrowserCache');
+        }
+    }
+
+    static async measurePageLoad() {
+        const metrics = await browser.execute(() =&gt; {
+            const perfData = window.performance.timing;
+            const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+            const domLoadTime = perfData.domContentLoadedEventEnd - perfData.navigationStart;
+
+            return {
+                pageLoadTime,
+                domLoadTime,
+                networkLatency: perfData.responseEnd - perfData.requestStart,
+                processingTime: perfData.loadEventEnd - perfData.responseEnd,
+                backendTime: perfData.responseStart - perfData.navigationStart
+            };
+        });
+
+        console.log('Performance metrics:', metrics);
+        return metrics;
+    }
+}
+
+module.exports = PerformanceHelper;
+
+// Usage in tests
+const PerformanceHelper = require('../utils/performanceHelper');
+
+describe('Performance Optimized Tests', () =&gt; {
+    before(async () =&gt; {
+        // Set up performance optimizations
+        await PerformanceHelper.disableAnimations();
+        await PerformanceHelper.disableImages();
+        await PerformanceHelper.blockThirdPartyRequests();
+    });
+
+    beforeEach(async () =&gt; {
+        // Clear data before each test
+        await PerformanceHelper.clearBrowserData();
+    });
+
+    it('should measure page load performance', async () =&gt; {
+        await browser.url('/');
+
+        const metrics = await PerformanceHelper.measurePageLoad();
+
+        // Assert on performance metrics
+        expect(metrics.pageLoadTime).toBeLessThan(3000);
+        expect(metrics.domLoadTime).toBeLessThan(1500);
+    });
+});
+</code></pre>
+
+<h2 id="97-practical-exercises">9.7 Practical Exercises</h2>
+
+<h3 id="exercise-1-debugging-toolkit">Exercise 1: Debugging Toolkit</h3>
+
+<p>Create a comprehensive debugging toolkit that includes:</p>
+
+<ul>
+<li>Custom logger with contextual information</li>
+<li>Visual debugging helpers (element highlighting, screenshots)</li>
+<li>Execution tracer for step-by-step analysis</li>
+<li>Browser console monitoring</li>
+</ul>
+
+<h3 id="exercise-2-self-healing-framework">Exercise 2: Self-Healing Framework</h3>
+
+<p>Develop a self-healing test framework that includes:</p>
+
+<ul>
+<li>Multi-strategy selectors for elements</li>
+<li>Automatic retry mechanisms for flaky operations</li>
+<li>Smart waiting strategies for different scenarios</li>
+<li>Error recovery mechanisms</li>
+</ul>
+
+<h3 id="exercise-3-performance-analysis">Exercise 3: Performance Analysis</h3>
+
+<p>Implement a performance analysis framework that:</p>
+
+<ul>
+<li>Measures and reports page load times</li>
+<li>Tracks test execution performance</li>
+<li>Identifies bottlenecks in test execution</li>
+<li>Provides recommendations for optimization</li>
+</ul>
+
+<h2 id="summary">Summary</h2>
+
+<p>This module explored advanced debugging and troubleshooting techniques for WebDriverIO tests. By implementing systematic debugging approaches, advanced logging strategies, self-healing mechanisms, and performance optimizations, you can create more robust and reliable test automation frameworks.</p>
+
+<p>Key takeaways:</p>
+
+<ol>
+<li>A systematic debugging approach helps identify and resolve issues efficiently</li>
+<li>WebDriverIO provides powerful built-in debugging tools like browser.debug() and Chrome DevTools Protocol integration</li>
+<li>Advanced logging strategies provide better visibility into test execution</li>
+<li>Self-healing mechanisms make tests more resilient to changes in the application</li>
+<li>Performance optimization techniques improve test execution speed and reliability</li>
+</ol>
+
+<p>In the next module, we'll explore how to implement a real-world project using WebDriverIO, applying all the concepts and techniques learned throughout the course.</p>
+
+    </div>
+
+    <script>
+        // Initialize syntax highlighting
+        hljs.highlightAll();
+        
+        // Initialize Mermaid diagrams
+        mermaid.initialize({ 
+            theme: 'dark',
+            startOnLoad: true 
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Execution Flow</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            background-color: #1e1e2e;
+            color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .mermaid {
+            background-color: #1e1e2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="mermaid">
+sequenceDiagram
+    participant Test as Test Script
+    participant Browser as WebDriverIO Browser
+    participant Web as Web Page
+    participant API as Backend API
+    
+    Test->>Browser: Navigate to page
+    Browser->>Web: HTTP Request
+    Web-->>Browser: HTML Response
+    Browser-->>Test: Page loaded
+    
+    Test->>Browser: Find element
+    Browser->>Web: Query DOM
+    Web-->>Browser: Element reference
+    Browser-->>Test: Element
+    
+    Test->>Browser: Click element
+    Browser->>Web: Trigger click event
+    Web->>API: AJAX Request
+    API-->>Web: JSON Response
+    Web-->>Browser: DOM updated
+    Browser-->>Test: Action completed
+    
+    Test->>Browser: Assert condition
+    Browser->>Web: Check state
+    Web-->>Browser: Current state
+    Browser-->>Test: Assertion result
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: {
+                primaryColor: '#3498db',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#1f77b4',
+                lineColor: '#f8f9fa',
+                secondaryColor: '#6c757d',
+                tertiaryColor: '#2c3e50',
+                background: '#1e1e2e',
+                mainBkg: '#2c3e50',
+                nodeBorder: '#3498db',
+                clusterBkg: 'rgba(52, 152, 219, 0.2)',
+                clusterBorder: '#3498db',
+                titleColor: '#3498db'
+            }
+        });
+    </script>
+</body>
+</html>

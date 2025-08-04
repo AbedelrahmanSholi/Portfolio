@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css/courses/comprehensive_course_styling.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Enhanced SEO Meta Tags for WebDriverIO Module 1 -->
+    <meta name="description" content="WebDriverIO Fundamentals - Learn WebDriverIO architecture, setup, configuration, and write your first automated test. Complete guide to modern test automation with WebDriverIO.">
+    <meta name="keywords" content="WebDriverIO, Test Automation, JavaScript Testing, Browser Automation, WebDriver Protocol, Node.js Testing, Selenium Alternative, Modern Test Automation">
+    <meta name="author" content="Abedelrahman Sholi">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="WebDriverIO Fundamentals - Module 1 | Modern Test Automation">
+    <meta property="og:description" content="Master WebDriverIO fundamentals including architecture, setup, and configuration. Learn to write your first automated test with this modern testing framework.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://abedelrahman-sholi-qa-portfolio.com/courses/webdriverio/Module_1__WebDriverIO_Fundamentals.html">
+    <meta property="og:image" content="https://abedelrahman-sholi-qa-portfolio.com/images/webdriverio-course-preview.jpg">
+    <meta property="og:site_name" content="Abedelrahman Sholi - QA Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WebDriverIO Fundamentals - Module 1">
+    <meta name="twitter:description" content="Learn WebDriverIO architecture, setup, and write your first automated test.">
+    <meta name="twitter:image" content="https://abedelrahman-sholi-qa-portfolio.com/images/webdriverio-course-preview.jpg">
+    
+    <!-- Module-specific Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LearningResource",
+        "name": "WebDriverIO Fundamentals - Module 1",
+        "description": "Learn WebDriverIO architecture, setup, configuration, and write your first automated test",
+        "educationalLevel": "Beginner to Intermediate",
+        "learningResourceType": "Module",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "WebDriverIO Core Concepts Mastery"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Abedelrahman Sholi",
+            "jobTitle": "Senior QA Automation Engineer"
+        },
+        "about": [
+            "WebDriverIO Architecture",
+            "Test Environment Setup",
+            "Browser Configuration",
+            "First Automated Test"
+        ]
+    }
+    </script>
+    
+    <!-- Google Analytics for WebDriverIO Modules -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            page_title: 'WebDriverIO Module 1',
+            page_location: window.location.href,
+            content_group1: 'Course',
+            content_group2: 'WebDriverIO'
+        });
+        
+        // Track module navigation
+        function trackModuleNavigation(direction, targetModule) {
+            gtag('event', 'module_navigation', {
+                event_category: 'course_engagement',
+                event_label: 'WebDriverIO - ' + direction + ' to ' + targetModule,
+                value: 1
+            });
+        }
+    </script>
+    
+    <title>WebDriverIO Fundamentals - Module 1 | Modern Test Automation Framework</title>
+    <link rel="stylesheet" href="../../css/courses/enhanced_course_styling.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script src="../../js/courses/mermaid_loader.js"></script>
+</head>
+
+<body>
+    <div class="course-content-wrapper">
+        <div class="module-navigation">
+            <a href="../index.html#courses" class="nav-btn prev-btn">
+                <i class="fas fa-chevron-left"></i> Previous: Course Overview
+            </a>
+            <a href="Module_2__Selectors_and_Element_Interactions.html" class="nav-btn next-btn">
+                Next: Selectors and Element Interactions <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+        <h1>Module 1: WebDriverIO Fundamentals</h1>
+
+        <h2>Learning Objectives</h2>
+        <ul>
+            <li>Understand WebDriverIO architecture and core concepts</li>
+            <li>Set up WebDriverIO development environment</li>
+            <li>Configure WebDriverIO for different browsers</li>
+            <li>Write your first WebDriverIO test</li>
+            <li>Understand the WebDriver protocol</li>
+        </ul>
+
+        <h2>1.1 Introduction to WebDriverIO</h2>
+        
+        <h3>What is WebDriverIO?</h3>
+        <p>WebDriverIO is a progressive automation framework for web and mobile applications. It's built on Node.js and implements the WebDriver protocol, providing a simple and powerful API for browser automation.</p>
+
+        <h3>Key Features</h3>
+        <ul>
+            <li><strong>Cross-browser support</strong>: Chrome, Firefox, Safari, Edge, and more</li>
+            <li><strong>Mobile testing</strong>: iOS and Android applications</li>
+            <li><strong>Multiple test runners</strong>: Mocha, Jasmine, Cucumber</li>
+            <li><strong>Built-in services</strong>: Selenium Grid, Appium, BrowserStack</li>
+            <li><strong>Rich ecosystem</strong>: Extensive plugin and service support</li>
+        </ul>
+
+        <h2>1.2 WebDriverIO Architecture</h2>
+        
+        <div class="diagram-container">
+            <iframe src="/courses/resources/diagrams/webdriverio_architecture.html" 
+                    width="100%" height="400" frameborder="0">
+            </iframe>
+        </div>
+
+        <h3>Architecture Components</h3>
+        <ul>
+            <li><strong>Test Runner</strong>: Manages test execution and configuration</li>
+            <li><strong>WebDriver Client</strong>: Communicates with browser drivers</li>
+            <li><strong>Browser Driver</strong>: Controls the actual browser instance</li>
+            <li><strong>Services</strong>: Extend functionality (reporting, screenshots, etc.)</li>
+        </ul>
+
+        <h2>1.3 Installation and Setup</h2>
+
+        <h3>Prerequisites</h3>
+        <pre><code class="language-bash"># Node.js (version 14 or higher)
+node --version
+
+# npm (comes with Node.js)
+npm --version</code></pre>
+
+        <h3>Project Initialization</h3>
+        <pre><code class="language-bash"># Create new project directory
+mkdir webdriverio-tests
+cd webdriverio-tests
+
+# Initialize npm project
+npm init -y
+
+# Install WebDriverIO CLI
+npm install --save-dev @wdio/cli
+
+# Initialize WebDriverIO configuration
+npx wdio config</code></pre>
+
+        <h3>Configuration Options</h3>
+        <p>During configuration, you'll be prompted to choose:</p>
+        <ul>
+            <li>Test runner (Mocha, Jasmine, Cucumber)</li>
+            <li>Browser drivers (Chrome, Firefox, Safari)</li>
+            <li>Services (Selenium Standalone, ChromeDriver)</li>
+            <li>Reporters (Spec, Allure, JUnit)</li>
+        </ul>
+
+        <h2>1.4 Basic Configuration</h2>
+
+        <h3>wdio.conf.js Structure</h3>
+        <pre><code class="language-javascript">exports.config = {
+    // Test runner configuration
+    runner: 'local',
+    
+    // Specify test files
+    specs: [
+        './test/specs/**/*.js'
+    ],
+    
+    // Browser capabilities
+    capabilities: [{
+        maxInstances: 5,
+        browserName: 'chrome',
+        acceptInsecureCerts: true
+    }],
+    
+    // Test framework
+    framework: 'mocha',
+    
+    // Mocha options
+    mochaOpts: {
+        ui: 'bdd',
+        timeout: 60000
+    },
+    
+    // Services
+    services: ['chromedriver'],
+    
+    // Reporters
+    reporters: ['spec']
+};</code></pre>
+
+        <h2>1.5 Your First Test</h2>
+
+        <h3>Basic Test Structure</h3>
+        <pre><code class="language-javascript">// test/specs/basic.test.js
+describe('My First WebDriverIO Test', () => {
+    it('should open Google and verify title', async () => {
+        // Navigate to Google
+        await browser.url('https://www.google.com');
+        
+        // Verify page title
+        const title = await browser.getTitle();
+        expect(title).toBe('Google');
+        
+        // Take a screenshot
+        await browser.saveScreenshot('./screenshots/google.png');
+    });
+    
+    it('should perform a search', async () => {
+        // Navigate to Google
+        await browser.url('https://www.google.com');
+        
+        // Find search input and enter text
+        const searchInput = await $('input[name="q"]');
+        await searchInput.setValue('WebDriverIO');
+        
+        // Submit search
+        await browser.keys('Enter');
+        
+        // Wait for results
+        await $('h3').waitForDisplayed();
+        
+        // Verify results are displayed
+        const results = await $$('h3');
+        expect(results.length).toBeGreaterThan(0);
+    });
+});</code></pre>
+
+        <h3>Running Tests</h3>
+        <pre><code class="language-bash"># Run all tests
+npx wdio run wdio.conf.js
+
+# Run specific test file
+npx wdio run wdio.conf.js --spec test/specs/basic.test.js
+
+# Run tests in headless mode
+npx wdio run wdio.conf.js --headless</code></pre>
+
+        <h2>1.6 Browser Object and Commands</h2>
+
+        <h3>Browser Commands</h3>
+        <pre><code class="language-javascript">// Navigation
+await browser.url('https://example.com');
+await browser.back();
+await browser.forward();
+await browser.refresh();
+
+// Window management
+await browser.maximizeWindow();
+await browser.setWindowSize(1024, 768);
+const windowSize = await browser.getWindowSize();
+
+// Page information
+const title = await browser.getTitle();
+const url = await browser.getUrl();
+const source = await browser.getPageSource();
+
+// Screenshots
+await browser.saveScreenshot('./screenshot.png');
+
+// Cookies
+await browser.setCookies({
+    name: 'test',
+    value: 'value'
+});
+const cookies = await browser.getCookies();</code></pre>
+
+        <h2>1.7 Element Selection Basics</h2>
+
+        <h3>Finding Elements</h3>
+        <pre><code class="language-javascript">// Single element
+const element = await $('button');
+const elementById = await $('#submit-btn');
+const elementByClass = await $('.btn-primary');
+
+// Multiple elements
+const elements = await $$('button');
+const listItems = await $$('li');
+
+// Element within element
+const form = await $('form');
+const submitButton = await form.$('button[type="submit"]');</code></pre>
+
+        <h3>Element Interactions</h3>
+        <pre><code class="language-javascript">// Click actions
+await element.click();
+await element.doubleClick();
+await element.rightClick();
+
+// Input actions
+await element.setValue('text');
+await element.addValue('more text');
+await element.clearValue();
+
+// Element properties
+const text = await element.getText();
+const value = await element.getValue();
+const isDisplayed = await element.isDisplayed();
+const isEnabled = await element.isEnabled();</code></pre>
+
+        <h2>Practical Exercises</h2>
+
+        <h3>Exercise 1: Environment Setup</h3>
+        <ol>
+            <li>Install Node.js and npm on your system</li>
+            <li>Create a new WebDriverIO project</li>
+            <li>Configure WebDriverIO for Chrome browser</li>
+            <li>Run the configuration wizard and understand each option</li>
+        </ol>
+
+        <h3>Exercise 2: First Test</h3>
+        <ol>
+            <li>Write a test that navigates to a website of your choice</li>
+            <li>Verify the page title</li>
+            <li>Take a screenshot</li>
+            <li>Run the test and verify it passes</li>
+        </ol>
+
+        <h3>Exercise 3: Basic Interactions</h3>
+        <ol>
+            <li>Create a test that interacts with a form</li>
+            <li>Fill in input fields</li>
+            <li>Click buttons</li>
+            <li>Verify the results</li>
+        </ol>
+
+        <h2>Next Steps</h2>
+        <p>In the next module, we'll dive deeper into element selection strategies and advanced interaction patterns. You'll learn about different locator strategies and how to handle complex UI elements effectively.</p>
+
+        <div class="module-navigation">
+            <a href="../index.html#courses" class="nav-btn prev-btn">
+                <i class="fas fa-chevron-left"></i> Previous: Course Overview
+            </a>
+            <a href="Module_2__Selectors_and_Element_Interactions.html" class="nav-btn next-btn">
+                Next: Selectors and Element Interactions <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            hljs.highlightAll();
+        });
+    </script>
+</body>
+</html>
+

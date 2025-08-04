@@ -1,0 +1,47 @@
+/* Ensure all text is justified */
+p, .project-description, .project-outcome p, .about-me p, .timeline-description {
+    text-align: justify !important;
+}
+
+/* Fix for any remaining horizontal scroll issues */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.page, .scroll-section, .side-by-side-container, .project-section, 
+.achievements-section, .skills-bar-container, .timeline-container, 
+.skills-container, .carousel-container {
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* Additional fixes for any container that might cause horizontal scroll */
+.project-grid, .achievements-container, .skill-badges-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* Ensure proper padding and margins */
+.side-by-side-container {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#home, #myStackPage {
+    padding: 20px 5% !important;
+}
+
+/* Fix for mobile responsiveness */
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skill-badges-container {
+        justify-content: space-around;
+    }
+}

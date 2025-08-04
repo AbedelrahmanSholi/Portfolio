@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css/courses/comprehensive_course_styling.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 11: Real-World Project Implementation</title>
+    <link rel="stylesheet" href="../../css/courses/enhanced_course_styling.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script src="../../js/courses/mermaid_loader.js"></script>
+</head>
+
+<body>
+    <div class="course-content-wrapper">
+        <div class="module-navigation">
+            <a href="Module_10__TestNG_Integration.html" class="nav-btn prev-btn">
+                <i class="fas fa-chevron-left"></i> Previous: TestNG Integration
+            </a>
+            <a href="../../index.html#courses" class="nav-btn next-btn">
+                Back to Courses <i class="fas fa-home"></i>
+            </a>
+        </div>
+
+        <h1 id="module-11-real-world-project-implementation">Module 11: Real-World Project Implementation</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>This module brings together all the concepts and techniques you've learned throughout the WebDriverIO course into a comprehensive real-world project. You'll build a complete test automation framework for an e-commerce application, implementing page objects, custom commands, data-driven testing, visual regression, and reporting.</p>
+
+<h2 id="learning-objectives">Learning Objectives</h2>
+
+<p>By the end of this module, you will be able to:</p>
+
+<ol>
+<li>Design and implement a complete test automation framework using WebDriverIO</li>
+<li>Apply best practices for test organization, maintainability, and reliability</li>
+<li>Implement various testing types including functional, visual, and API testing</li>
+<li>Create comprehensive reporting and documentation for your test framework</li>
+<li>Deploy and run tests in a CI/CD pipeline</li>
+</ol>
+
+<h2 id="101-project-setup-and-structure">10.1 Project Setup and Structure</h2>
+
+<h3 id="project-requirements">Project Requirements</h3>
+
+<p>Our project will create a test automation framework for an e-commerce website with the following requirements:</p>
+
+<ul>
+<li>Test critical user journeys (account management, product browsing, checkout)</li>
+<li>Support multiple browsers and environments</li>
+<li>Implement reporting with screenshots for failed tests</li>
+<li>Support parallel test execution</li>
+<li>Integrate with CI/CD pipeline</li>
+<li>Follow best practices for maintainability and reliability</li>
+</ul>
+
+<h3 id="framework-architecture">Framework Architecture</h3>
+
+<p>We'll implement a layered architecture:</p>
+
+<pre><code>e-commerce-tests/
+├── config/                  # Configuration files
+│   ├── wdio.conf.js         # Base WebDriverIO configuration
+│   ├── wdio.local.conf.js   # Local execution configuration
+│   └── wdio.ci.conf.js      # CI execution configuration
+├── test/                    # Test files
+│   ├── specs/               # Test specifications
+│   │   ├── account/         # Account management tests
+│   │   ├── product/         # Product browsing tests
+│   │   └── checkout/        # Checkout process tests
+│   └── visual/              # Visual regression tests
+├── pages/                   # Page objects
+│   ├── base.page.js         # Base page object
+│   ├── home.page.js         # Home page object
+│   ├── product.page.js      # Product page object
+│   └── checkout.page.js     # Checkout page object
+├── components/              # Reusable UI components
+│   ├── header.component.js  # Header component
+│   ├── footer.component.js  # Footer component
+│   └── cart.component.js    # Shopping cart component
+├── utils/                   # Utility functions
+│   ├── selectors.js         # Selector helpers
+│   ├── waits.js             # Custom wait functions
+│   └── dataGenerator.js     # Test data generation
+├── data/                    # Test data
+│   ├── users.json           # User credentials
+│   └── products.json        # Product information
+├── reports/                 # Test reports
+├── screenshots/             # Screenshots for failed tests
+├── .eslintrc.js             # ESLint configuration
+├── .gitignore               # Git ignore file
+├── package.json             # Project dependencies
+└── README.md                # Project documentation
+</code></pre>
+
+<h3 id="initial-setup">Initial Setup</h3>
+
+<p>Let's start by setting up the project:</p>
+
+<pre><code># Create project directory
+mkdir e-commerce-tests
+cd e-commerce-tests
+
+# Initialize npm project
+npm init -y
+
+# Install WebDriverIO and dependencies
+npm install @wdio/cli --save-dev
+npx wdio config
+
+# Install additional dependencies
+npm install faker chai axios moment lodash --save-dev
+npm install eslint eslint-plugin-wdio --save-dev
+</code></pre>
+
+<h3 id="base-configuration">Base Configuration</h3>
+
+<p>Create the base WebDriverIO configuration:</p>
+
+<pre><code>// config/wdio.conf.js
+const path = require('path');
+const moment = require('moment');
+
+exports.config = {
+    //
+    // ====================
+    // Runner Configuration
+    // ====================
+    runner: 'local',
+
+    //
+    // ==================
+    // Specify Test Files
+    // ==================
+    specs: [
+        './test/specs/**/*.js'
+    ],
+    exclude: [],
+
+    //
+    // ============
+    // Capabilities
+    // ============
+    maxInstances: 5,
+    capabilities: [{
+        maxInstances: 5,
+        browserName: 'chrome',
+        acceptInsecureCerts: true,
+        'goog:chromeOptions': {
+            args: ['--headless', '--disable-gpu', '--window-size=1920,1080']
+        }
+    }],
+
+    //
+    // ===================
+    // Test Configurations
+    // ===================
+    logLevel: 'info',
+    bail: 0,
+    baseUrl: 'https://www.saucedemo.com',
+    waitforTimeout: 10000,
+    connectionRetryTimeout: 120000,
+    connectionRetryCount: 3,
+
+    //
+    // Test framework
+    framework: 'mocha',
+    mochaOpts: {
+        ui: 'bdd',
+        timeout: 60000
+    },
+
+    //
+    // =====
+    // Hooks
+    // =====
+    before: function (capabilities, specs) {
+        // Add custom commands
+        require('../utils/commands');
+
+        // Set up chai
+        const chai = require('chai');
+        global.expect = chai.expect;
+    },
+
+    beforeTest: function (test, context) {
+        // Setup for test
+    },
+
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+        // Take screenshot if test fails
+        if (error) {
+            const timestamp = moment().format('YYYYMMDD-HHmmss');
+            const testName = test.title.replace(/\s+/g, '-');
+            const screenshotPath = path.join(
+                process.cwd(),
+                'screenshots',
+                `${testName}-${timestamp}.png`
+            );
+
+            await browser.saveScreenshot(screenshotPath);
+            console.log(`Screenshot saved to: ${screenshotPath}`);
+        }
+    },
+
+    //
+    // =====
+    // Reporters
+    // =====
+    reporters: [
+        'spec',
+        ['allure', {
+            outputDir: './reports/allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+        }],
+        ['junit', {
+            outputDir: './reports/junit',
+            outputFileFormat: function(options) {
+                return `results-${options.cid}.xml`;
+            }
+        }]
+    ],
+};
+</code></pre>
+
+<h3 id="environment-specific-configurations">Environment-Specific Configurations</h3>
+
+<p>Create configurations for different environments:</p>
+
+<pre><code>// config/wdio.local.conf.js
+const { config } = require('./wdio.conf');
+
+exports.config = {
+    ...config,
+    maxInstances: 1,
+    capabilities: [{
+        maxInstances: 1,
+        browserName: 'chrome',
+        acceptInsecureCerts: true,
+        'goog:chromeOptions': {
+            args: ['--window-size=1920,1080']
+        }
+    }],
+    baseUrl: 'https://www.saucedemo.com',
+    logLevel: 'info'
+};
+</code></pre>
+
+<pre><code>// config/wdio.ci.conf.js
+const { config } = require('./wdio.conf');
+
+exports.config = {
+    ...config,
+    maxInstances: 5,
+    capabilities: [{
+        maxInstances: 5,
+        browserName: 'chrome',
+        acceptInsecureCerts: true,
+        'goog:chromeOptions': {
+            args: ['--headless', '--disable-gpu', '--window-size=1920,1080', '--no-sandbox']
+        }
+    }],
+    baseUrl: 'https://www.saucedemo.com',
+    logLevel: 'error'
+};
+</code></pre>
+
+<h2 id="102-page-objects-and-components">10.2 Page Objects and Components</h2>
+
+<h3 id="base-page-object">Base Page Object</h3>
+
+<p>Create a base page object that all other page objects will extend:</p>
+
+<pre><code>// pages/base.page.js
+class BasePage {
+    constructor() {
+        this.url = '/';
+    }
+
+    async open() {
+        await browser.url(this.url);
+    }
+
+    async waitForPageLoad() {
+        await browser.waitUntil(
+            async () =&gt; await browser.execute(() =&gt; document.readyState === 'complete'),
+            {
+                timeout: 30000,
+                timeoutMsg: 'Page did not finish loading'
+            }
+        );
+    }
+
+    async getTitle() {
+        return browser.getTitle();
+    }
+
+    async getUrl() {
+        return browser.getUrl();
+    }
+
+    async scrollToElement(element) {
+        await element.scrollIntoView();
+    }
+
+    async waitForElementDisplayed(element, timeout = 10000) {
+        await element.waitForDisplayed({ timeout });
+    }
+
+    async waitForElementClickable(element, timeout = 10000) {
+        await element.waitForClickable({ timeout });
+    }
+
+    async waitForElementExist(element, timeout = 10000) {
+        await element.waitForExist({ timeout });
+    }
+}
+
+module.exports = BasePage;
+</code></pre>
+
+<h3 id="header-component">Header Component</h3>
+
+<p>Create a reusable header component:</p>
+
+<pre><code>// components/header.component.js
+class HeaderComponent {
+    constructor() {
+        this.logo = $('.app_logo');
+        this.shoppingCart = $('.shopping_cart_link');
+        this.burgerMenu = $('#react-burger-menu-btn');
+        this.logoutLink = $('#logout_sidebar_link');
+        this.resetAppLink = $('#reset_sidebar_link');
+        this.allItemsLink = $('#inventory_sidebar_link');
+    }
+
+    async getCartItemCount() {
+        const badge = await $('.shopping_cart_badge');
+        if (await badge.isExisting()) {
+            return parseInt(await badge.getText());
+        }
+        return 0;
+    }
+
+    async openCart() {
+        await this.shoppingCart.click();
+    }
+
+    async openMenu() {
+        await this.burgerMenu.click();
+        // Wait for menu to open
+        await $('#logout_sidebar_link').waitForDisplayed({ timeout: 5000 });
+    }
+
+    async logout() {
+        await this.openMenu();
+        await this.logoutLink.click();
+    }
+
+    async resetApp() {
+        await this.openMenu();
+        await this.resetAppLink.click();
+    }
+
+    async goToAllItems() {
+        await this.openMenu();
+        await this.allItemsLink.click();
+    }
+}
+
+module.exports = HeaderComponent;
+</code></pre>
+
+<h3 id="login-page-object">Login Page Object</h3>
+
+<p>Create a page object for the login page:</p>
+
+<pre><code>// pages/login.page.js
+const BasePage = require('./base.page');
+
+class LoginPage extends BasePage {
+    constructor() {
+        super();
+        this.url = '/';
+        this.usernameInput = $('#user-name');
+        this.passwordInput = $('#password');
+        this.loginButton = $('#login-button');
+        this.errorMessage = $('.error-message-container');
+    }
+
+    async login(username, password) {
+        await this.usernameInput.setValue(username);
+        await this.passwordInput.setValue(password);
+        await this.loginButton.click();
+    }
+
+    async getErrorMessage() {
+        if (await this.errorMessage.isDisplayed()) {
+            return this.errorMessage.getText();
+        }
+        return null;
+    }
+
+    async isErrorDisplayed() {
+        return this.errorMessage.isDisplayed();
+    }
+}
+
+module.exports = LoginPage;
+</code></pre>
+
+<h3 id="products-page-object">Products Page Object</h3>
+
+<p>Create a page object for the products page:</p>
+
+<pre><code>// pages/products.page.js
+const BasePage = require('./base.page');
+const HeaderComponent = require('../components/header.component');
+
+class ProductsPage extends BasePage {
+    constructor() {
+        super();
+        this.url = '/inventory.html';
+        this.header = new HeaderComponent();
+        this.productItems = $('.inventory_item');
+        this.productTitles = $('.inventory_item_name');
+        this.productPrices = $('.inventory_item_price');
+        this.addToCartButtons = $('.btn_inventory');
+        this.sortDropdown = $('.product_sort_container');
+    }
+
+    async getProductCount() {
+        return (await $$('.inventory_item')).length;
+    }
+
+    async getProductTitle(index) {
+        const titles = await $$('.inventory_item_name');
+        if (index &lt; titles.length) {
+            return titles[index].getText();
+        }
+        throw new Error(`Product index ${index} out of bounds`);
+    }
+
+    async getProductPrice(index) {
+        const prices = await $$('.inventory_item_price');
+        if (index &lt; prices.length) {
+            const priceText = await prices[index].getText();
+            return parseFloat(priceText.replace('$', ''));
+        }
+        throw new Error(`Product index ${index} out of bounds`);
+    }
+
+    async addProductToCart(index) {
+        const buttons = await $$('.btn_inventory');
+        if (index &lt; buttons.length) {
+            await buttons[index].click();
+        } else {
+            throw new Error(`Product index ${index} out of bounds`);
+        }
+    }
+
+    async openProductDetails(index) {
+        const titles = await $$('.inventory_item_name');
+        if (index &lt; titles.length) {
+            await titles[index].click();
+        } else {
+            throw new Error(`Product index ${index} out of bounds`);
+        }
+    }
+
+    async sortProducts(option) {
+        await this.sortDropdown.click();
+        await $(`option[value="${option}"]`).click();
+    }
+
+    async getAllProductTitles() {
+        const titles = await $$('.inventory_item_name');
+        return Promise.all(titles.map(title =&gt; title.getText()));
+    }
+
+    async getAllProductPrices() {
+        const prices = await $$('.inventory_item_price');
+        return Promise.all(prices.map(async (price) =&gt; {
+            const priceText = await price.getText();
+            return parseFloat(priceText.replace('$', ''));
+        }));
+    }
+}
+
+module.exports = ProductsPage;
+</code></pre>
+
+<h3 id="product-details-page-object">Product Details Page Object</h3>
+
+<p>Create a page object for the product details page:</p>
+
+<pre><code>// pages/product-details.page.js
+const BasePage = require('./base.page');
+const HeaderComponent = require('../components/header.component');
+
+class ProductDetailsPage extends BasePage {
+    constructor() {
+        super();
+        this.header = new HeaderComponent();
+        this.productTitle = $('.inventory_details_name');
+        this.productDescription = $('.inventory_details_desc');
+        this.productPrice = $('.inventory_details_price');
+        this.addToCartButton = $('.btn_inventory');
+        this.backButton = $('#back-to-products');
+    }
+
+    async getProductTitle() {
+        return this.productTitle.getText();
+    }
+
+    async getProductDescription() {
+        return this.productDescription.getText();
+    }
+
+    async getProductPrice() {
+        const priceText = await this.productPrice.getText();
+        return parseFloat(priceText.replace('$', ''));
+    }
+
+    async addToCart() {
+        await this.addToCartButton.click();
+    }
+
+    async goBack() {
+        await this.backButton.click();
+    }
+
+    async isAddToCartButtonDisplayed() {
+        return this.addToCartButton.isDisplayed();
+    }
+}
+
+module.exports = ProductDetailsPage;
+</code></pre>
+
+<h3 id="cart-page-object">Cart Page Object</h3>
+
+<p>Create a page object for the shopping cart page:</p>
+
+<pre><code>// pages/cart.page.js
+const BasePage = require('./base.page');
+const HeaderComponent = require('../components/header.component');
+
+class CartPage extends BasePage {
+    constructor() {
+        super();
+        this.url = '/cart.html';
+        this.header = new HeaderComponent();
+        this.cartItems = $('.cart_item');
+        this.checkoutButton = $('#checkout');
+        this.continueShoppingButton = $('#continue-shopping');
+        this.removeButtons = $('.cart_button');
+    }
+
+    async getCartItemCount() {
+        return (await $$('.cart_item')).length;
+    }
+
+    async getCartItemTitle(index) {
+        const titles = await $$('.inventory_item_name');
+        if (index &lt; titles.length) {
+            return titles[index].getText();
+        }
+        throw new Error(`Cart item index ${index} out of bounds`);
+    }
+
+    async getCartItemPrice(index) {
+        const prices = await $$('.inventory_item_price');
+        if (index &lt; prices.length) {
+            const priceText = await prices[index].getText();
+            return parseFloat(priceText.replace('$', ''));
+        }
+        throw new Error(`Cart item index ${index} out of bounds`);
+    }
+
+    async removeCartItem(index) {
+        const buttons = await $$('.cart_button');
+        if (index &lt; buttons.length) {
+            await buttons[index].click();
+        } else {
+            throw new Error(`Cart item index ${index} out of bounds`);
+        }
+    }
+
+    async proceedToCheckout() {
+        await this.checkoutButton.click();
+    }
+
+    async continueShopping() {
+        await this.continueShoppingButton.click();
+    }
+
+    async getAllCartItemTitles() {
+        const titles = await $$('.inventory_item_name');
+        return Promise.all(titles.map(title =&gt; title.getText()));
+    }
+
+    async getTotalPrice() {
+        const prices = await $$('.inventory_item_price');
+        const priceValues = await Promise.all(prices.map(async (price) =&gt; {
+            const priceText = await price.getText();
+            return parseFloat(priceText.replace('$', ''));
+        }));
+
+        return priceValues.reduce((total, price) =&gt; total + price, 0);
+    }
+}
+
+module.exports = CartPage;
+</code></pre>
+
+<h3 id="checkout-pages">Checkout Pages</h3>
+
+<p>Create page objects for the checkout process:</p>
+
+<pre><code>// pages/checkout-step-one.page.js
+const BasePage = require('./base.page');
+const HeaderComponent = require('../components/header.component');
+
+class CheckoutStepOnePage extends BasePage {
+    constructor() {
+        super();
+        this.url = '/checkout-step-one.html';
+        this.header = new HeaderComponent();
+        this.firstNameInput = $('#first-name');
+        this.lastNameInput = $('#last-name');
+        this.postalCodeInput = $('#postal-code');
+        this.continueButton = $('#continue');
+        this.cancelButton = $('#cancel');
+        this.errorMessage = $('.error-message-container');
+    }
+
+    async fillShippingInfo(firstName, lastName, postalCode) {
+        await this.firstNameInput.setValue(firstName);
+        await this.lastNameInput.setValue(lastName);
+        await this.postalCodeInput.setValue(postalCode);
+    }
+
+    async continue() {
+        await this.continueButton.click();
+    }
+
+    async cancel() {
+        await this.cancelButton.click();
+    }
+
+    async getErrorMessage() {
+        if (await this.errorMessage.isDisplayed()) {
+            return this.errorMessage.getText();
+        }
+        return null;
+    }
+}
+
+module.exports = CheckoutStepOnePage;
+</code></pre>
+
+<pre><code>// pages/checkout-step-two.page.js
+const BasePage = require('./base.page');
+const HeaderComponent = require('../components/header.component');
+
+class CheckoutStepTwoPage extends BasePage {
+    constructor() {
+        super();
+        this.url = '/checkout-step-two.html';
+        this.header = new HeaderComponent();
+        this.cartItems = $('.cart_item');
+        this.finishButton = $('#finish');
+        this.cancelButton = $('#cancel');
+        this.subtotalLabel = $('.summary_subtotal_label');
+        this.taxLabel = $('.summary_tax_label');
+        this.totalLabel = $('.summary_total_label');
+    }
+
+    async getCartItemCount() {
+        return (await $$('.cart_item')).length;
+    }
+
+    async getSubtotal() {
+        const subtotalText = await this.subtotalLabel.getText();
+        return parseFloat(subtotalText.replace('Item total: $', ''));
+    }
+
+    async getTax() {
+        const taxText = await this.taxLabel.getText();
+        return parseFloat(taxText.replace('Tax: $', ''));
+    }
+
+    async getTotal() {
+        const totalText = await this.totalLabel.getText();
+        return parseFloat(totalText.replace('Total: $', ''));
+    }
+
+    async finish() {
+        await this.finishButton.click();
+    }
+
+    async cancel() {
+        await this.cancelButton.click();
+    }
+}
+
+module.exports = CheckoutStepTwoPage;
+</code></pre>
+
+<pre><code>// pages/checkout-complete.page.js
+const BasePage = require('./base.page');
+const HeaderComponent = require('../components/header.component');
+
+class CheckoutCompletePage extends BasePage {
+    constructor() {
+        super();
+        this.url = '/checkout-complete.html';
+        this.header = new HeaderComponent();
+        this.thankYouHeader = $('.complete-header');
+        this.completeText = $('.complete-text');
+        this.backHomeButton = $('#back-to-products');
+    }
+
+    async getThankYouMessage() {
+        return this.thankYouHeader.getText();
+    }
+
+    async getCompleteText() {
+        return this.completeText.getText();
+    }
+
+    async backToHome() {
+        await this.backHomeButton.click();
+    }
+
+    async isOrderCompleted() {
+        return this.thankYouHeader.isDisplayed();
+    }
+}
+
+module.exports = CheckoutCompletePage;
+</code></pre>
+
+<h2 id="103-utility-functions-and-custom-commands">10.3 Utility Functions and Custom Commands</h2>
+
+<h3 id="custom-commands">Custom Commands</h3>
+
+<p>Create custom commands to extend WebDriverIO functionality:</p>
+
+<pre><code>// utils/commands.js
+browser.addCommand('waitForPageLoad', async function() {
+    await browser.waitUntil(
+        async () =&gt; await browser.execute(() =&gt; document.readyState === 'complete'),
+        {
+            timeout: 30000,
+            timeoutMsg: 'Page did not finish loading'
+        }
+    );
+});
+
+browser.addCommand('waitForUrlContains', async function(fragment, timeout = 10000) {
+    await browser.waitUntil(
+        async () =&gt; {
+            const url = await browser.getUrl();
+            return url.includes(fragment);
+        },
+        {
+            timeout,
+            timeoutMsg: `URL did not contain "${fragment}" within ${timeout}ms`
+        }
+    );
+});
+
+browser.addCommand('waitForTextContains', async function(selector, text, timeout = 10000) {
+    const element = await $(selector);
+    await browser.waitUntil(
+        async () =&gt; {
+            const elementText = await element.getText();
+            return elementText.includes(text);
+        },
+        {
+            timeout,
+            timeoutMsg: `Element "${selector}" text did not contain "${text}" within ${timeout}ms`
+        }
+    );
+});
+
+browser.addCommand('login', async function(username, password) {
+    await browser.url('/');
+    await $('#user-name').setValue(username);
+    await $('#password').setValue(password);
+    await $('#login-button').click();
+    await browser.waitForUrlContains('/inventory.html');
+});
+
+browser.addCommand('logout', async function() {
+    await $('#react-burger-menu-btn').click();
+    await $('#logout_sidebar_link').waitForDisplayed({ timeout: 5000 });
+    await $('#logout_sidebar_link').click();
+    await browser.waitForUrlContains('/');
+});
+
+browser.addCommand('resetApp', async function() {
+    await $('#react-burger-menu-btn').click();
+    await $('#reset_sidebar_link').waitForDisplayed({ timeout: 5000 });
+    await $('#reset_sidebar_link').click();
+});
+
+browser.addCommand('addProductToCart', async function(index) {
+    const buttons = await $$('.btn_inventory');
+    if (index &lt; buttons.length) {
+        await buttons[index].click();
+    } else {
+        throw new Error(`Product index ${index} out of bounds`);
+    }
+});
+
+browser.addCommand('getCartCount', async function() {
+    const badge = await $('.shopping_cart_badge');
+    if (await badge.isExisting()) {
+        return parseInt(await badge.getText());
+    }
+    return 0;
+});
+</code></pre>
+
+<h3 id="test-data-generator">Test Data Generator</h3>
+
+<p>Create a utility for generating test data:</p>
+
+<pre><code>// utils/dataGenerator.js
+const faker = require('faker');
+
+class DataGenerator {
+    static generateUser() {
+        return {
+            firstName: faker.name.firstName(),
+            lastName: faker.name.lastName(),
+            postalCode: faker.address.zipCode()
+        };
+    }
+
+    static generateCreditCard() {
+        return {
+            number: faker.finance.creditCardNumber(),
+            expiry: `${faker.datatype.number({ min: 1, max: 12 })}/25`,
+            cvv: faker.finance.creditCardCVV()
+        };
+    }
+
+    static generateAddress() {
+        return {
+            street: faker.address.streetAddress(),
+            city: faker.address.city(),
+            state: faker.address.state(),
+            zipCode: faker.address.zipCode()
+        };
+    }
+}
+
+module.exports = DataGenerator;
+</code></pre>
+
+<h3 id="wait-utilities">Wait Utilities</h3>
+
+<p>Create custom wait functions:</p>
+
+<pre><code>// utils/waits.js
+class WaitUtils {
+    static async forElementDisplayed(selector, timeout = 10000) {
+        const element = await $(selector);
+        await element.waitForDisplayed({ timeout });
+        return element;
+    }
+
+    static async forElementClickable(selector, timeout = 10000) {
+        const element = await $(selector);
+        await element.waitForClickable({ timeout });
+        return element;
+    }
+
+    static async forElementExist(selector, timeout = 10000) {
+        const element = await $(selector);
+        await element.waitForExist({ timeout });
+        return element;
+    }
+
+    static async forTextContains(selector, text, timeout = 10000) {
+        const element = await $(selector);
+        await browser.waitUntil(
+            async () =&gt; {
+                const elementText = await element.getText();
+                return elementText.includes(text);
+            },
+            {
+                timeout,
+                timeoutMsg: `Element "${selector}" text did not contain "${text}" within ${timeout}ms`
+            }
+        );
+        return element;
+    }
+
+    static async forUrlContains(fragment, timeout = 10000) {
+        await browser.waitUntil(
+            async () =&gt; {
+                const url = await browser.getUrl();
+                return url.includes(fragment);
+            },
+            {
+                timeout,
+                timeoutMsg: `URL did not contain "${fragment}" within ${timeout}ms`
+            }
+        );
+    }
+
+    static async forElementCount(selector, count, timeout = 10000) {
+        await browser.waitUntil(
+            async () =&gt; {
+                const elements = await $$(selector);
+                return elements.length === count;
+            },
+            {
+                timeout,
+                timeoutMsg: `Element count for "${selector}" did not equal ${count} within ${timeout}ms`
+            }
+        );
+    }
+}
+
+module.exports = WaitUtils;
+</code></pre>
+
+<h2 id="104-test-implementation">10.4 Test Implementation</h2>
+
+<h3 id="1-login-tests">1. Login Tests</h3>
+
+<p>Create tests for the login functionality:</p>
+
+<pre><code>// test/specs/account/login.spec.js
+const LoginPage = require('../../../pages/login.page');
+const ProductsPage = require('../../../pages/products.page');
+
+describe('Login Functionality', () =&gt; {
+    let loginPage;
+    let productsPage;
+
+    beforeEach(async () =&gt; {
+        loginPage = new LoginPage();
+        productsPage = new ProductsPage();
+        await loginPage.open();
+    });
+
+    it('should login with valid credentials', async () =&gt; {
+        await loginPage.login('standard_user', 'secret_sauce');
+
+        // Verify redirect to products page
+        const url = await browser.getUrl();
+        expect(url).to.include('/inventory.html');
+
+        // Verify products are displayed
+        const productCount = await productsPage.getProductCount();
+        expect(productCount).to.be.greaterThan(0);
+    });
+
+    it('should show error with invalid credentials', async () =&gt; {
+        await loginPage.login('invalid_user', 'invalid_password');
+
+        // Verify error message
+        const errorMessage = await loginPage.getErrorMessage();
+        expect(errorMessage).to.include('Username and password do not match');
+
+        // Verify still on login page
+        const url = await browser.getUrl();
+        expect(url).not.to.include('/inventory.html');
+    });
+
+    it('should show error with locked out user', async () =&gt; {
+        await loginPage.login('locked_out_user', 'secret_sauce');
+
+        // Verify error message
+        const errorMessage = await loginPage.getErrorMessage();
+        expect(errorMessage).to.include('locked out');
+
+        // Verify still on login page
+        const url = await browser.getUrl();
+        expect(url).not.to.include('/inventory.html');
+    });
+
+    it('should login and logout successfully', async () =&gt; {
+        await loginPage.login('standard_user', 'secret_sauce');
+
+        // Verify login successful
+        const url = await browser.getUrl();
+        expect(url).to.include('/inventory.html');
+
+        // Logout
+        await browser.logout();
+
+        // Verify back on login page
+        const loginUrl = await browser.getUrl();
+        expect(loginUrl).not.to.include('/inventory.html');
+        expect(await loginPage.usernameInput.isDisplayed()).to.be.true;
+    });
+});
+</code></pre>
+
+<h3 id="2-product-browsing-tests">2. Product Browsing Tests</h3>
+
+<p>Create tests for product browsing functionality:</p>
+
+<pre><code>// test/specs/product/product-browsing.spec.js
+const LoginPage = require('../../../pages/login.page');
+const ProductsPage = require('../../../pages/products.page');
+const ProductDetailsPage = require('../../../pages/product-details.page');
+
+describe('Product Browsing', () =&gt; {
+    let productsPage;
+    let productDetailsPage;
+
+    before(async () =&gt; {
+        // Login before all tests
+        await browser.login('standard_user', 'secret_sauce');
+    });
+
+    beforeEach(async () =&gt; {
+        productsPage = new ProductsPage();
+        productDetailsPage = new ProductDetailsPage();
+        await productsPage.open();
+    });
+
+    it('should display correct number of products', async () =&gt; {
+        const productCount = await productsPage.getProductCount();
+        expect(productCount).to.equal(6);
+    });
+
+    it('should sort products by price low to high', async () =&gt; {
+        await productsPage.sortProducts('lohi');
+
+        const prices = await productsPage.getAllProductPrices();
+
+        // Verify prices are in ascending order
+        for (let i = 0; i &lt; prices.length - 1; i++) {
+            expect(prices[i]).to.be.at.most(prices[i + 1]);
+        }
+    });
+
+    it('should sort products by price high to low', async () =&gt; {
+        await productsPage.sortProducts('hilo');
+
+        const prices = await productsPage.getAllProductPrices();
+
+        // Verify prices are in descending order
+        for (let i = 0; i &lt; prices.length - 1; i++) {
+            expect(prices[i]).to.be.at.least(prices[i + 1]);
+        }
+    });
+
+    it('should sort products alphabetically', async () =&gt; {
+        await productsPage.sortProducts('az');
+
+        const titles = await productsPage.getAllProductTitles();
+
+        // Verify titles are in alphabetical order
+        const sortedTitles = [...titles].sort();
+        expect(titles).to.deep.equal(sortedTitles);
+    });
+
+    it('should sort products reverse alphabetically', async () =&gt; {
+        await productsPage.sortProducts('za');
+
+        const titles = await productsPage.getAllProductTitles();
+
+        // Verify titles are in reverse alphabetical order
+        const sortedTitles = [...titles].sort().reverse();
+        expect(titles).to.deep.equal(sortedTitles);
+    });
+
+    it('should open product details page', async () =&gt; {
+        const productTitle = await productsPage.getProductTitle(0);
+        await productsPage.openProductDetails(0);
+
+        // Verify on product details page
+        const detailsTitle = await productDetailsPage.getProductTitle();
+        expect(detailsTitle).to.equal(productTitle);
+    });
+
+    it('should add product to cart from products page', async () =&gt; {
+        // Get initial cart count
+        const initialCartCount = await browser.getCartCount();
+
+        // Add product to cart
+        await productsPage.addProductToCart(0);
+
+        // Verify cart count increased
+        const newCartCount = await browser.getCartCount();
+        expect(newCartCount).to.equal(initialCartCount + 1);
+    });
+
+    it('should add product to cart from details page', async () =&gt; {
+        // Open product details
+        await productsPage.openProductDetails(1);
+
+        // Get initial cart count
+        const initialCartCount = await browser.getCartCount();
+
+        // Add product to cart
+        await productDetailsPage.addToCart();
+
+        // Verify cart count increased
+        const newCartCount = await browser.getCartCount();
+        expect(newCartCount).to.equal(initialCartCount + 1);
+    });
+
+    after(async () =&gt; {
+        // Reset app state after all tests
+        await browser.resetApp();
+    });
+});
+</code></pre>
+
+<h3 id="3-shopping-cart-tests">3. Shopping Cart Tests</h3>
+
+<p>Create tests for the shopping cart functionality:</p>
+
+<pre><code>// test/specs/product/cart.spec.js
+const ProductsPage = require('../../../pages/products.page');
+const CartPage = require('../../../pages/cart.page');
+
+describe('Shopping Cart', () =&gt; {
+    let productsPage;
+    let cartPage;
+
+    before(async () =&gt; {
+        // Login before all tests
+        await browser.login('standard_user', 'secret_sauce');
+    });
+
+    beforeEach(async () =&gt; {
+        productsPage = new ProductsPage();
+        cartPage = new CartPage();
+
+        // Reset app state before each test
+        await browser.resetApp();
+        await productsPage.open();
+    });
+
+    it('should add products to cart', async () =&gt; {
+        // Add two products to cart
+        await productsPage.addProductToCart(0);
+        await productsPage.addProductToCart(1);
+
+        // Verify cart count
+        const cartCount = await browser.getCartCount();
+        expect(cartCount).to.equal(2);
+
+        // Open cart
+        await productsPage.header.openCart();
+
+        // Verify cart items
+        const cartItemCount = await cartPage.getCartItemCount();
+        expect(cartItemCount).to.equal(2);
+    });
+
+    it('should remove products from cart', async () =&gt; {
+        // Add two products to cart
+        await productsPage.addProductToCart(0);
+        await productsPage.addProductToCart(1);
+
+        // Open cart
+        await productsPage.header.openCart();
+
+        // Verify initial cart items
+        const initialCartItemCount = await cartPage.getCartItemCount();
+        expect(initialCartItemCount).to.equal(2);
+
+        // Remove one item
+        await cartPage.removeCartItem(0);
+
+        // Verify cart count updated
+        const updatedCartItemCount = await cartPage.getCartItemCount();
+        expect(updatedCartItemCount).to.equal(1);
+    });
+
+    it('should continue shopping from cart', async () =&gt; {
+        // Add product to cart
+        await productsPage.addProductToCart(0);
+
+        // Open cart
+        await productsPage.header.openCart();
+
+        // Continue shopping
+        await cartPage.continueShopping();
+
+        // Verify back on products page
+        const url = await browser.getUrl();
+        expect(url).to.include('/inventory.html');
+    });
+
+    it('should calculate correct total price', async () =&gt; {
+        // Add two products to cart
+        await productsPage.addProductToCart(0);
+        await productsPage.addProductToCart(1);
+
+        // Get product prices
+        const price1 = await productsPage.getProductPrice(0);
+        const price2 = await productsPage.getProductPrice(1);
+        const expectedTotal = price1 + price2;
+
+        // Open cart
+        await productsPage.header.openCart();
+
+        // Get total price
+        const totalPrice = await cartPage.getTotalPrice();
+
+        // Verify total price
+        expect(totalPrice).to.equal(expectedTotal);
+    });
+
+    after(async () =&gt; {
+        // Reset app state after all tests
+        await browser.resetApp();
+    });
+});
+</code></pre>
+
+<h3 id="4-checkout-process-tests">4. Checkout Process Tests</h3>
+
+<p>Create tests for the checkout process:</p>
+
+<pre><code>// test/specs/checkout/checkout-process.spec.js
+const ProductsPage = require('../../../pages/products.page');
+const CartPage = require('../../../pages/cart.page');
+const CheckoutStepOnePage = require('../../../pages/checkout-step-one.page');
+const CheckoutStepTwoPage = require('../../../pages/checkout-step-two.page');
+const CheckoutCompletePage = require('../../../pages/checkout-complete.page');
+const DataGenerator = require('../../../utils/dataGenerator');
+
+describe('Checkout Process', () =&gt; {
+    let productsPage;
+    let cartPage;
+    let checkoutStepOnePage;
+    let checkoutStepTwoPage;
+    let checkoutCompletePage;
+
+    before(async () =&gt; {
+        // Login before all tests
+        await browser.login('standard_user', 'secret_sauce');
+    });
+
+    beforeEach(async () =&gt; {
+        productsPage = new ProductsPage();
+        cartPage = new CartPage();
+        checkoutStepOnePage = new CheckoutStepOnePage();
+        checkoutStepTwoPage = new CheckoutStepTwoPage();
+        checkoutCompletePage = new CheckoutCompletePage();
+
+        // Reset app state before each test
+        await browser.resetApp();
+        await productsPage.open();
+
+        // Add products to cart
+        await productsPage.addProductToCart(0);
+        await productsPage.addProductToCart(1);
+
+        // Go to cart
+        await productsPage.header.openCart();
+    });
+
+    it('should complete checkout process with valid information', async () =&gt; {
+        // Proceed to checkout
+        await cartPage.proceedToCheckout();
+
+        // Generate user data
+        const userData = DataGenerator.generateUser();
+
+        // Fill shipping information
+        await checkoutStepOnePage.fillShippingInfo(
+            userData.firstName,
+            userData.lastName,
+            userData.postalCode
+        );
+        await checkoutStepOnePage.continue();
+
+        // Verify on checkout step two
+        const stepTwoUrl = await browser.getUrl();
+        expect(stepTwoUrl).to.include('/checkout-step-two.html');
+
+        // Verify cart items
+        const cartItemCount = await checkoutStepTwoPage.getCartItemCount();
+        expect(cartItemCount).to.equal(2);
+
+        // Verify totals
+        const subtotal = await checkoutStepTwoPage.getSubtotal();
+        const tax = await checkoutStepTwoPage.getTax();
+        const total = await checkoutStepTwoPage.getTotal();
+
+        expect(total).to.equal(subtotal + tax);
+
+        // Complete checkout
+        await checkoutStepTwoPage.finish();
+
+        // Verify on checkout complete page
+        const completeUrl = await browser.getUrl();
+        expect(completeUrl).to.include('/checkout-complete.html');
+
+        // Verify thank you message
+        const thankYouMessage = await checkoutCompletePage.getThankYouMessage();
+        expect(thankYouMessage).to.include('THANK YOU');
+
+        // Verify order completed
+        const isOrderCompleted = await checkoutCompletePage.isOrderCompleted();
+        expect(isOrderCompleted).to.be.true;
+    });
+
+    it('should show error with missing information', async () =&gt; {
+        // Proceed to checkout
+        await cartPage.proceedToCheckout();
+
+        // Submit without filling information
+        await checkoutStepOnePage.continue();
+
+        // Verify error message
+        const errorMessage = await checkoutStepOnePage.getErrorMessage();
+        expect(errorMessage).to.include('First Name is required');
+
+        // Fill only first name
+        await checkoutStepOnePage.fillShippingInfo('John', '', '');
+        await checkoutStepOnePage.continue();
+
+        // Verify error message
+        const lastNameError = await checkoutStepOnePage.getErrorMessage();
+        expect(lastNameError).to.include('Last Name is required');
+
+        // Fill first and last name
+        await checkoutStepOnePage.fillShippingInfo('John', 'Doe', '');
+        await checkoutStepOnePage.continue();
+
+        // Verify error message
+        const postalCodeError = await checkoutStepOnePage.getErrorMessage();
+        expect(postalCodeError).to.include('Postal Code is required');
+    });
+
+    it('should cancel checkout and return to cart', async () =&gt; {
+        // Proceed to checkout
+        await cartPage.proceedToCheckout();
+
+        // Cancel checkout
+        await checkoutStepOnePage.cancel();
+
+        // Verify back on cart page
+        const cartUrl = await browser.getUrl();
+        expect(cartUrl).to.include('/cart.html');
+    });
+
+    it('should cancel checkout at review step', async () =&gt; {
+        // Proceed to checkout
+        await cartPage.proceedToCheckout();
+
+        // Generate user data
+        const userData = DataGenerator.generateUser();
+
+        // Fill shipping information
+        await checkoutStepOnePage.fillShippingInfo(
+            userData.firstName,
+            userData.lastName,
+            userData.postalCode
+        );
+        await checkoutStepOnePage.continue();
+
+        // Cancel at review step
+        await checkoutStepTwoPage.cancel();
+
+        // Verify back on products page
+        const productsUrl = await browser.getUrl();
+        expect(productsUrl).to.include('/inventory.html');
+    });
+
+    it('should navigate back to home after order completion', async () =&gt; {
+        // Proceed to checkout
+        await cartPage.proceedToCheckout();
+
+        // Generate user data
+        const userData = DataGenerator.generateUser();
+
+        // Fill shipping information
+        await checkoutStepOnePage.fillShippingInfo(
+            userData.firstName,
+            userData.lastName,
+            userData.postalCode
+        );
+        await checkoutStepOnePage.continue();
+
+        // Complete checkout
+        await checkoutStepTwoPage.finish();
+
+        // Back to home
+        await checkoutCompletePage.backToHome();
+
+        // Verify back on products page
+        const productsUrl = await browser.getUrl();
+        expect(productsUrl).to.include('/inventory.html');
+
+        // Verify cart is empty
+        const cartCount = await browser.getCartCount();
+        expect(cartCount).to.equal(0);
+    });
+
+    after(async () =&gt; {
+        // Reset app state after all tests
+        await browser.resetApp();
+    });
+});
+</code></pre>
+
+<h3 id="5-end-to-end-tests">5. End-to-End Tests</h3>
+
+<p>Create end-to-end tests that cover complete user journeys:</p>
+
+<pre><code>// test/specs/e2e/complete-purchase.spec.js
+const LoginPage = require('../../../pages/login.page');
+const ProductsPage = require('../../../pages/products.page');
+const ProductDetailsPage = require('../../../pages/product-details.page');
+const CartPage = require('../../../pages/cart.page');
+const CheckoutStepOnePage = require('../../../pages/checkout-step-one.page');
+const CheckoutStepTwoPage = require('../../../pages/checkout-step-two.page');
+const CheckoutCompletePage = require('../../../pages/checkout-complete.page');
+const DataGenerator = require('../../../utils/dataGenerator');
+
+describe('End-to-End Purchase Flow', () =&gt; {
+    let loginPage;
+    let productsPage;
+    let productDetailsPage;
+    let cartPage;
+    let checkoutStepOnePage;
+    let checkoutStepTwoPage;
+    let checkoutCompletePage;
+
+    beforeEach(async () =&gt; {
+        loginPage = new LoginPage();
+        productsPage = new ProductsPage();
+        productDetailsPage = new ProductDetailsPage();
+        cartPage = new CartPage();
+        checkoutStepOnePage = new CheckoutStepOnePage();
+        checkoutStepTwoPage = new CheckoutStepTwoPage();
+        checkoutCompletePage = new CheckoutCompletePage();
+
+        // Start from login page
+        await loginPage.open();
+    });
+
+    it('should complete purchase flow from product listing', async () =&gt; {
+        // Step 1: Login
+        await loginPage.login('standard_user', 'secret_sauce');
+
+        // Step 2: Add products to cart
+        await productsPage.addProductToCart(0);
+        await productsPage.addProductToCart(1);
+
+        // Step 3: Go to cart
+        await productsPage.header.openCart();
+
+        // Step 4: Proceed to checkout
+        await cartPage.proceedToCheckout();
+
+        // Step 5: Fill shipping information
+        const userData = DataGenerator.generateUser();
+        await checkoutStepOnePage.fillShippingInfo(
+            userData.firstName,
+            userData.lastName,
+            userData.postalCode
+        );
+        await checkoutStepOnePage.continue();
+
+        // Step 6: Review and complete order
+        await checkoutStepTwoPage.finish();
+
+        // Step 7: Verify order completion
+        const thankYouMessage = await checkoutCompletePage.getThankYouMessage();
+        expect(thankYouMessage).to.include('THANK YOU');
+
+        // Step 8: Return to home
+        await checkoutCompletePage.backToHome();
+
+        // Verify back on products page with empty cart
+        const productsUrl = await browser.getUrl();
+        expect(productsUrl).to.include('/inventory.html');
+
+        const cartCount = await browser.getCartCount();
+        expect(cartCount).to.equal(0);
+    });
+
+    it('should complete purchase flow from product details', async () =&gt; {
+        // Step 1: Login
+        await loginPage.login('standard_user', 'secret_sauce');
+
+        // Step 2: Open product details
+        await productsPage.openProductDetails(0);
+
+        // Step 3: Add product to cart from details page
+        await productDetailsPage.addToCart();
+
+        // Step 4: Go back to products
+        await productDetailsPage.goBack();
+
+        // Step 5: Open another product details
+        await productsPage.openProductDetails(1);
+
+        // Step 6: Add second product to cart
+        await productDetailsPage.addToCart();
+
+        // Step 7: Go to cart
+        await productDetailsPage.header.openCart();
+
+        // Step 8: Proceed to checkout
+        await cartPage.proceedToCheckout();
+
+        // Step 9: Fill shipping information
+        const userData = DataGenerator.generateUser();
+        await checkoutStepOnePage.fillShippingInfo(
+            userData.firstName,
+            userData.lastName,
+            userData.postalCode
+        );
+        await checkoutStepOnePage.continue();
+
+        // Step 10: Review and complete order
+        await checkoutStepTwoPage.finish();
+
+        // Step 11: Verify order completion
+        const thankYouMessage = await checkoutCompletePage.getThankYouMessage();
+        expect(thankYouMessage).to.include('THANK YOU');
+    });
+
+    after(async () =&gt; {
+        // Reset app state after all tests
+        await browser.resetApp();
+    });
+});
+</code></pre>
+
+<h2 id="105-visual-regression-testing">10.5 Visual Regression Testing</h2>
+
+<p>Implement visual regression tests using WebDriverIO's image comparison service:</p>
+
+<pre><code>// test/visual/visual.spec.js
+const LoginPage = require('../../pages/login.page');
+const ProductsPage = require('../../pages/products.page');
+const ProductDetailsPage = require('../../pages/product-details.page');
+const CartPage = require('../../pages/cart.page');
+
+describe('Visual Regression Tests', () =&gt; {
+    let loginPage;
+    let productsPage;
+    let productDetailsPage;
+    let cartPage;
+
+    before(async () =&gt; {
+        loginPage = new LoginPage();
+        productsPage = new ProductsPage();
+        productDetailsPage = new ProductDetailsPage();
+        cartPage = new CartPage();
+    });
+
+    it('should match login page baseline', async () =&gt; {
+        await loginPage.open();
+
+        // Take screenshot of entire page
+        const result = await browser.checkFullPageScreen('login-page');
+        expect(result).toEqual(0);
+    });
+
+    it('should match products page baseline', async () =&gt; {
+        await browser.login('standard_user', 'secret_sauce');
+
+        // Take screenshot of entire page
+        const result = await browser.checkFullPageScreen('products-page');
+        expect(result).toEqual(0);
+    });
+
+    it('should match product details baseline', async () =&gt; {
+        await browser.login('standard_user', 'secret_sauce');
+        await productsPage.openProductDetails(0);
+
+        // Take screenshot of entire page
+        const result = await browser.checkFullPageScreen('product-details-page');
+        expect(result).toEqual(0);
+    });
+
+    it('should match cart page baseline', async () =&gt; {
+        await browser.login('standard_user', 'secret_sauce');
+        await productsPage.addProductToCart(0);
+        await productsPage.header.openCart();
+
+        // Take screenshot of entire page
+        const result = await browser.checkFullPageScreen('cart-page');
+        expect(result).toEqual(0);
+    });
+
+    it('should match specific components', async () =&gt; {
+        await browser.login('standard_user', 'secret_sauce');
+
+        // Check header component
+        const headerResult = await browser.checkElement('.primary_header', 'header-component');
+        expect(headerResult).toEqual(0);
+
+        // Check product card
+        const productCardResult = await browser.checkElement('.inventory_item:nth-child(1)', 'product-card');
+        expect(productCardResult).toEqual(0);
+
+        // Check footer
+        const footerResult = await browser.checkElement('.footer', 'footer-component');
+        expect(footerResult).toEqual(0);
+    });
+
+    after(async () =&gt; {
+        // Reset app state after all tests
+        await browser.resetApp();
+    });
+});
+</code></pre>
+
+<h2 id="106-api-testing-integration">10.6 API Testing Integration</h2>
+
+<p>Implement API tests to complement UI tests:</p>
+
+<pre><code>// utils/apiClient.js
+const axios = require('axios');
+
+class ApiClient {
+    constructor(baseUrl = 'https://www.saucedemo.com/api') {
+        this.baseUrl = baseUrl;
+        this.token = null;
+    }
+
+    async login(username, password) {
+        try {
+            const response = await axios.post(`${this.baseUrl}/login`, {
+                username,
+                password
+            });
+
+            this.token = response.data.token;
+            return response.data;
+        } catch (error) {
+            console.error('Login API error:', error.message);
+            throw error;
+        }
+    }
+
+    async getProducts() {
+        try {
+            const response = await axios.get(`${this.baseUrl}/products`, {
+                headers: this.getAuthHeader()
+            });
+
+            return response.data;
+        } catch (error) {
+            console.error('Get products API error:', error.message);
+            throw error;
+        }
+    }
+
+    async getProductDetails(productId) {
+        try {
+            const response = await axios.get(`${this.baseUrl}/products/${productId}`, {
+                headers: this.getAuthHeader()
+            });
+
+            return response.data;
+        } catch (error) {
+            console.error('Get product details API error:', error.message);
+            throw error;
+        }
+    }
+
+    async addToCart(productId) {
+        try {
+            const response = await axios.post(`${this.baseUrl}/cart`, {
+                productId
+            }, {
+                headers: this.getAuthHeader()
+            });
+
+            return response.data;
+        } catch (error) {
+            console.error('Add to cart API error:', error.message);
+            throw error;
+        }
+    }
+
+    async getCart() {
+        try {
+            const response = await axios.get(`${this.baseUrl}/cart`, {
+                headers: this.getAuthHeader()
+            });
+
+            return response.data;
+        } catch (error) {
+            console.error('Get cart API error:', error.message);
+            throw error;
+        }
+    }
+
+    async checkout(checkoutInfo) {
+        try {
+            const response = await axios.post(`${this.baseUrl}/checkout`, checkoutInfo, {
+                headers: this.getAuthHeader()
+            });
+
+            return response.data;
+        } catch (error) {
+            console.error('Checkout API error:', error.message);
+            throw error;
+        }
+    }
+
+    getAuthHeader() {
+        return this.token ? { Authorization: `Bearer ${this.token}` } : {};
+    }
+}
+
+module.exports = ApiClient;
+</code></pre>
+
+<pre><code>// test/specs/api/api.spec.js
+const ApiClient = require('../../../utils/apiClient');
+const DataGenerator = require('../../../utils/dataGenerator');
+
+describe('API Tests', () =&gt; {
+    let apiClient;
+
+    before(async () =&gt; {
+        apiClient = new ApiClient();
+
+        // Note: In a real implementation, you would use actual API endpoints
+        // This is a mock implementation for demonstration purposes
+    });
+
+    it('should login via API', async () =&gt; {
+        try {
+            const loginResponse = await apiClient.login('standard_user', 'secret_sauce');
+            expect(loginResponse.token).to.exist;
+        } catch (error) {
+            // Skip test if API is not available
+            console.log('API not available, skipping test');
+            this.skip();
+        }
+    });
+
+    it('should get products via API', async () =&gt; {
+        try {
+            await apiClient.login('standard_user', 'secret_sauce');
+            const products = await apiClient.getProducts();
+
+            expect(products).to.be.an('array');
+            expect(products.length).to.be.greaterThan(0);
+
+            // Verify product structure
+            const firstProduct = products[0];
+            expect(firstProduct).to.have.property('id');
+            expect(firstProduct).to.have.property('name');
+            expect(firstProduct).to.have.property('price');
+        } catch (error) {
+            // Skip test if API is not available
+            console.log('API not available, skipping test');
+            this.skip();
+        }
+    });
+
+    it('should add product to cart via API', async () =&gt; {
+        try {
+            await apiClient.login('standard_user', 'secret_sauce');
+            const products = await apiClient.getProducts();
+
+            // Add first product to cart
+            const addToCartResponse = await apiClient.addToCart(products[0].id);
+            expect(addToCartResponse.success).to.be.true;
+
+            // Get cart and verify product was added
+            const cart = await apiClient.getCart();
+            expect(cart.items).to.be.an('array');
+            expect(cart.items.length).to.equal(1);
+            expect(cart.items[0].id).to.equal(products[0].id);
+        } catch (error) {
+            // Skip test if API is not available
+            console.log('API not available, skipping test');
+            this.skip();
+        }
+    });
+
+    it('should complete checkout via API', async () =&gt; {
+        try {
+            await apiClient.login('standard_user', 'secret_sauce');
+            const products = await apiClient.getProducts();
+
+            // Add product to cart
+            await apiClient.addToCart(products[0].id);
+
+            // Generate checkout data
+            const userData = DataGenerator.generateUser();
+
+            // Complete checkout
+            const checkoutResponse = await apiClient.checkout({
+                firstName: userData.firstName,
+                lastName: userData.lastName,
+                postalCode: userData.postalCode
+            });
+
+            expect(checkoutResponse.success).to.be.true;
+            expect(checkoutResponse.orderNumber).to.exist;
+        } catch (error) {
+            // Skip test if API is not available
+            console.log('API not available, skipping test');
+            this.skip();
+        }
+    });
+});
+</code></pre>
+
+<h2 id="107-cicd-integration">10.7 CI/CD Integration</h2>
+
+<p>Set up CI/CD integration for the test framework:</p>
+
+<h3 id="github-actions-workflow">GitHub Actions Workflow</h3>
+
+<pre><code># .github/workflows/wdio-tests.yml
+name: WebDriverIO Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Chrome
+      run: |
+        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+
+    - name: Run WebDriverIO tests
+      run: npm test
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: test-results
+        path: |
+          reports/
+          screenshots/
+
+    - name: Generate Allure Report
+      if: always()
+      run: npx allure generate reports/allure-results --clean -o allure-report
+
+    - name: Upload Allure Report
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: allure-report
+        path: allure-report
+</code></pre>
+
+<h3 id="jenkins-pipeline">Jenkins Pipeline</h3>
+
+<pre><code>// Jenkinsfile
+pipeline {
+    agent {
+        docker {
+            image 'node:14-buster'
+            args '-p 5900:5900 -v /dev/shm:/dev/shm'
+        }
+    }
+
+    stages {
+        stage('Setup') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                sh 'npm run lint'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'screenshots/**/*', allowEmptyArchive: true
+                    junit 'reports/junit/*.xml'
+                }
+            }
+        }
+
+        stage('Generate Report') {
+            steps {
+                sh 'npx allure generate reports/allure-results --clean -o allure-report'
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'allure-report/**/*', allowEmptyArchive: true
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
+</code></pre>
+
+<h2 id="108-documentation">10.8 Documentation</h2>
+
+<p>Create comprehensive documentation for the test framework:</p>
+
+<h3 id="readmemd">README.md</h3>
+
+<pre><code># E-Commerce Test Automation Framework
+
+This repository contains an automated testing framework for the Sauce Demo e-commerce website using WebDriverIO.
+
+## Features
+
+- Page Object Model design pattern
+- Custom commands and utilities
+- Data-driven testing
+- Visual regression testing
+- API testing integration
+- Comprehensive reporting
+- CI/CD integration
+
+## Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+- Chrome browser
+
+## Installation
+
+1. Clone the repository:
+  
+</code></pre>
+
+<p>git clone https://github.com/yourusername/e-commerce-tests.git
+   cd e-commerce-tests</p>
+
+<pre><code>
+2. Install dependencies:
+</code></pre>
+
+<p>npm install
+   ```</p>
+
+<h2 id="running-tests">Running Tests</h2>
+
+<h3 id="run-all-tests">Run all tests:</h3>
+
+<pre><code>npm test
+</code></pre>
+
+<h3 id="run-specific-test-suite">Run specific test suite:</h3>
+
+<pre><code>npm run test:login
+npm run test:products
+npm run test:cart
+npm run test:checkout
+</code></pre>
+
+<h3 id="run-tests-in-specific-environment">Run tests in specific environment:</h3>
+
+<pre><code>npm run test:local
+npm run test:ci
+</code></pre>
+
+<h3 id="run-visual-regression-tests">Run visual regression tests:</h3>
+
+<pre><code>npm run test:visual
+</code></pre>
+
+<h2 id="project-architecture">Project Architecture</h2>
+
+<p><iframe sandbox="allow-scripts allow-same-origin" src="../resources/diagrams/test_framework_architecture.html" width="100%" height="500px" frameborder="0"></iframe></p>
+
+<h2 id="project-structure">Project Structure</h2>
+
+<ul>
+<li><code>config/</code>: WebDriverIO configuration files</li>
+<li><code>test/specs/</code>: Test specifications
+<ul>
+<li><code>account/</code>: Account management tests</li>
+<li><code>product/</code>: Product browsing tests</li>
+<li><code>checkout/</code>: Checkout process tests</li>
+</ul></li>
+<li><code>test/visual/</code>: Visual regression tests</li>
+<li><code>pages/</code>: Page objects</li>
+<li><code>components/</code>: Reusable UI components</li>
+<li><code>utils/</code>: Utility functions</li>
+<li><code>data/</code>: Test data</li>
+<li><code>reports/</code>: Test reports</li>
+<li><code>screenshots/</code>: Screenshots for failed tests</li>
+</ul>
+
+<h2 id="page-objects">Page Objects</h2>
+
+<p>The framework uses the Page Object Model pattern to create an abstraction layer for the web pages. Each page object represents a page or a component of the application and encapsulates the page structure and behavior.</p>
+
+<p>Example:</p>
+
+<pre><code>class LoginPage extends BasePage {
+    constructor() {
+        super();
+        this.url = '/';
+        this.usernameInput = $('#user-name');
+        this.passwordInput = $('#password');
+        this.loginButton = $('#login-button');
+    }
+
+    async login(username, password) {
+        await this.usernameInput.setValue(username);
+        await this.passwordInput.setValue(password);
+        await this.loginButton.click();
+    }
+}
+</code></pre>
+
+<h2 id="custom-commands-2">Custom Commands</h2>
+
+<p>The framework extends WebDriverIO with custom commands to simplify test scripts:</p>
+
+<p>Example:</p>
+
+<pre><code>browser.addCommand('login', async function(username, password) {
+    await browser.url('/');
+    await $('#user-name').setValue(username);
+    await $('#password').setValue(password);
+    await $('#login-button').click();
+});
+</code></pre>
+
+<h2 id="reports">Reports</h2>
+
+<p>Test reports are generated in multiple formats:</p>
+
+<ul>
+<li>Spec reporter: Console output</li>
+<li>Allure reporter: Interactive HTML report</li>
+<li>JUnit reporter: XML report for CI integration</li>
+</ul>
+
+<p>To generate and open the Allure report:</p>
+
+<pre><code>npm run report
+</code></pre>
+
+<h2 id="cicd-integration">CI/CD Integration</h2>
+
+<p>The framework includes configuration files for:</p>
+
+<ul>
+<li>GitHub Actions</li>
+<li>Jenkins</li>
+</ul>
+
+<h2 id="contributing">Contributing</h2>
+
+<ol>
+<li>Fork the repository</li>
+<li>Create your feature branch (<code>git checkout -b feature/amazing-feature</code>)</li>
+<li>Commit your changes (<code>git commit -m 'Add some amazing feature'</code>)</li>
+<li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
+<li>Open a Pull Request</li>
+</ol>
+
+<h2 id="license">License</h2>
+
+<p>This project is licensed under the MIT License - see the LICENSE file for details.
+```</p>
+
+<h2 id="109-practical-exercises">10.9 Practical Exercises</h2>
+
+<h3 id="exercise-1-add-new-test-cases">Exercise 1: Add New Test Cases</h3>
+
+<p>Extend the test suite with additional test cases:</p>
+
+<ol>
+<li>Test product filtering functionality</li>
+<li>Test user profile management</li>
+<li>Test error scenarios during checkout</li>
+<li>Test performance metrics for critical pages</li>
+</ol>
+
+<h3 id="exercise-2-enhance-reporting">Exercise 2: Enhance Reporting</h3>
+
+<p>Improve the reporting capabilities:</p>
+
+<ol>
+<li>Add custom Allure annotations for better test categorization</li>
+<li>Implement a custom reporter that sends results to Slack</li>
+<li>Add video recording for test execution</li>
+<li>Create a dashboard for test results visualization</li>
+</ol>
+
+<h3 id="exercise-3-implement-cross-browser-testing">Exercise 3: Implement Cross-Browser Testing</h3>
+
+<p>Set up cross-browser testing:</p>
+
+<ol>
+<li>Configure WebDriverIO to run tests on multiple browsers (Chrome, Firefox, Safari)</li>
+<li>Implement browser-specific code where necessary</li>
+<li>Set up parallel execution across browsers</li>
+<li>Create a report that compares test results across browsers</li>
+</ol>
+
+<h2 id="summary">Summary</h2>
+
+<p>This module provided a comprehensive real-world project that brings together all the concepts and techniques learned throughout the WebDriverIO course. By implementing a complete test automation framework for an e-commerce application, you've applied best practices for test organization, maintainability, and reliability.</p>
+
+<p>Key takeaways:</p>
+
+<ol>
+<li>A well-structured test framework improves maintainability and scalability</li>
+<li>Page Object Model provides a clean abstraction of the application under test</li>
+<li>Custom commands and utilities enhance test readability and reduce code duplication</li>
+<li>Multiple testing approaches (UI, visual, API) provide comprehensive coverage</li>
+<li>CI/CD integration ensures continuous quality assurance</li>
+<li>Proper documentation makes the framework accessible to all team members</li>
+</ol>
+
+<p>You now have the skills and knowledge to design, implement, and maintain professional-grade test automation frameworks using WebDriverIO.</p>
+
+    </div>
+
+    <script>
+        // Initialize syntax highlighting
+        hljs.highlightAll();
+        
+        // Initialize Mermaid diagrams
+        mermaid.initialize({ 
+            theme: 'dark',
+            startOnLoad: true 
+        });
+    </script>
+</body>
+</html>
+

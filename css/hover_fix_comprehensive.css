@@ -1,0 +1,193 @@
+/* Comprehensive fix for hover functionality and stacking issues */
+
+/* ===== BUBBLE AND HOVER STYLES ===== */
+.bubble-clusters {
+    max-width: 100%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    overflow: visible; /* Changed from overflow-x: hidden to ensure hover content is visible */
+    position: relative; /* Create stacking context */
+    z-index: 10; /* Base z-index for the container */
+}
+
+.bubble-cluster {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    background: rgba(38, 38, 38, 0.9);
+    border: 2px solid var(--highlight-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(38, 166, 154, 0.2);
+    /* Base z-index for the bubble */
+    z-index: 50;
+    transform: translate3d(0, 0, 0); /* Force hardware acceleration and create a new stacking context */
+}
+
+.bubble-cluster:hover {
+    transform: scale(1.05) translate3d(0, 0, 0); /* Maintain the 3D transform to preserve stacking context */
+    background: rgba(38, 166, 154, 0.1);
+    box-shadow: 0 6px 20px rgba(38, 166, 154, 0.4);
+    /* Increased hover z-index to ensure it stacks above other elements */
+    z-index: 1000;
+}
+
+/* Overlay effect when hovering */
+.bubble-cluster:hover::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1; /* Place behind the bubble details but above other content */
+    pointer-events: none;
+}
+
+.bubble-details {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid var(--highlight-color);
+    border-radius: 8px;
+    padding: 20px;
+    color: #FFFFFF;
+    font-family: 'Courier New', monospace;
+    width: 280px;
+    /* Significantly increased z-index to ensure it appears above all other content */
+    z-index: 9999;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    isolation: isolate; /* Create a new stacking context */
+    pointer-events: auto; /* Ensure the details are interactive */
+    will-change: transform, opacity; /* Hint to browser about properties that will animate */
+}
+
+.bubble-cluster:hover .bubble-details {
+    display: block;
+}
+
+.bubble-details h2 {
+    font-size: 22px;
+    color: var(--highlight-color);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.bubble-details .role {
+    font-style: italic;
+    font-size: 14px;
+    color: var(--comment-color);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.bubble-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.bubble-details li {
+    font-size: 14px;
+    margin: 8px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.bubble-details li:before {
+    content: '>';
+    color: var(--highlight-color);
+    position: absolute;
+    left: 0;
+}
+
+/* ===== INDUSTRY SECTION LAYOUT ===== */
+#myStackPage {
+    flex: 1;
+    min-width: 0;
+    padding: 2% 5% 2% 2%; /* Reduced padding to match working version */
+    box-sizing: border-box;
+    max-width: 55%;
+    overflow: visible; /* Changed from overflow-x: hidden to ensure hover content is visible */
+    /* Create a new stacking context with position relative */
+    position: relative;
+    /* Base z-index for the section */
+    z-index: 1;
+    transform: translate3d(0, 0, 0); /* Force hardware acceleration and create a new stacking context */
+}
+
+.side-by-side-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 1200px;
+    padding: 2% 0 2% 2%;
+    margin: 0;
+    margin-left: 10px;
+    gap: 15px;
+    overflow: visible; /* Changed from overflow-x: hidden to ensure hover content is visible */
+    /* Create a new stacking context with position relative */
+    position: relative;
+    /* Base z-index for the container */
+    z-index: 1;
+    transform: translate3d(0, 0, 0); /* Force hardware acceleration and create a new stacking context */
+}
+
+/* Fix for the body and html to prevent overflow issues but allow hover content */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    position: relative; /* Create stacking context */
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+    .bubble-clusters {
+        max-width: 100%;
+        gap: 30px;
+    }
+    
+    .bubble-cluster {
+        width: 140px;
+        height: 140px;
+        font-size: 20px;
+    }
+    
+    .bubble-details {
+        width: 260px;
+    }
+    
+    .bubble-details h2 { font-size: 28px; }
+    .bubble-details .role { font-size: 18px; }
+    .bubble-details li { font-size: 16px; }
+    
+    .side-by-side-container {
+        flex-direction: column;
+        padding: 2% 3%;
+        gap: 15px;
+        margin-left: 0;
+        overflow: visible; /* Ensure hover content is visible */
+    }
+    
+    #home, #myStackPage {
+        max-width: 100%;
+        padding: 3% 3%;
+        margin-right: 0;
+        overflow: visible; /* Ensure hover content is visible */
+    }
+}

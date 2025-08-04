@@ -1,0 +1,507 @@
+/* Space-themed CSS for enhanced portfolio components */
+
+/* Common Variables */
+:root {
+    --main-bg-color: rgba(0, 0, 0, 0.7);
+    --text-color: #A1A1AA;
+    --highlight-color: #26a69a;
+    --comment-color: #4db8ff;
+    --card-bg-color: rgba(255, 255, 255, 0.03);
+    --card-border-color: rgba(255, 255, 255, 0.1);
+    --card-hover-border-color: rgba(255, 255, 255, 0.2);
+    --section-padding: 2rem;
+}
+
+/* Project Showcase Styles */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--card-border-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--card-hover-border-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.project-category {
+    display: inline-block;
+    background-color: rgba(38, 166, 154, 0.1);
+    color: var(--highlight-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.project-description {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tech-tag {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.project-outcome {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(77, 184, 255, 0.05);
+    border-radius: 8px;
+}
+
+.outcome-title {
+    font-weight: 600;
+    color: var(--comment-color);
+    margin-bottom: 0.5rem;
+}
+
+.project-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-shine {
+    opacity: 1;
+}
+
+/* Achievements Styles */
+.achievements-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.achievement-card {
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--card-border-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--card-hover-border-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-category {
+    display: inline-block;
+    background-color: rgba(77, 184, 255, 0.1);
+    color: var(--comment-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.achievement-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.achievement-title {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.metric-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.metric-circle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(var(--highlight-color) var(--percentage), rgba(255, 255, 255, 0.05) 0);
+    mask: radial-gradient(transparent 55%, black 56%);
+    -webkit-mask: radial-gradient(transparent 55%, black 56%);
+}
+
+.metric-value {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.achievement-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.achievement-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.achievement-card:hover .achievement-shine {
+    opacity: 1;
+}
+
+/* Technical Skills Visualization Styles */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skill-category {
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--card-border-color);
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    border-color: var(--card-hover-border-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.category-title {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.skill-item {
+    margin-bottom: 1.2rem;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.skill-level {
+    color: var(--highlight-color);
+}
+
+.skill-bar {
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--highlight-color), var(--comment-color));
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+}
+
+/* Timeline Styles */
+.timeline-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: var(--card-border-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    border-radius: 3px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--highlight-color);
+    border: 4px solid var(--card-bg-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-left {
+    left: 0;
+}
+
+.timeline-right {
+    left: 50%;
+}
+
+.timeline-left::after {
+    right: -10px;
+}
+
+.timeline-right::after {
+    left: -10px;
+}
+
+.timeline-content {
+    padding: 1.5rem;
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    border: 1px solid var(--card-border-color);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: var(--card-hover-border-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-date {
+    color: var(--comment-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-company {
+    color: var(--highlight-color);
+    margin-bottom: 1rem;
+}
+
+.timeline-description {
+    line-height: 1.6;
+}
+
+/* Resume Styles - Space Theme Adaptation */
+.resume-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    border: 1px solid var(--card-border-color);
+}
+
+.resume-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--highlight-color);
+    padding-bottom: 1rem;
+}
+
+.resume-name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+}
+
+.resume-contact {
+    margin: 1rem 0;
+    color: var(--text-color);
+}
+
+.resume-contact a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.resume-contact a:hover {
+    color: var(--comment-color);
+}
+
+.resume-section-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--highlight-color);
+    text-transform: uppercase;
+    margin: 2rem 0 1rem 0;
+    border-bottom: 1px solid var(--card-border-color);
+    padding-bottom: 0.5rem;
+}
+
+.resume-summary {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.resume-skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.resume-skills-column {
+    flex: 0 0 48%;
+}
+
+.resume-skills-item {
+    margin-bottom: 0.8rem;
+}
+
+.resume-skills-title {
+    font-weight: bold;
+    color: var(--comment-color);
+}
+
+.resume-experience-item {
+    margin-bottom: 2rem;
+}
+
+.resume-job-title {
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.resume-company-info {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+    margin-bottom: 0.8rem;
+}
+
+.resume-company {
+    font-weight: bold;
+    color: var(--highlight-color);
+}
+
+.resume-dates {
+    color: var(--comment-color);
+}
+
+.resume-list {
+    margin-top: 0.8rem;
+    padding-left: 1.5rem;
+}
+
+.resume-list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .project-grid,
+    .achievements-container,
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-container::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    
+    .timeline-item::after {
+        left: 21px;
+    }
+    
+    .timeline-right {
+        left: 0;
+    }
+    
+    .resume-skills-container {
+        flex-direction: column;
+    }
+    
+    .resume-skills-column {
+        flex: 0 0 100%;
+    }
+    
+    .resume-company-info {
+        flex-direction: column;
+    }
+}

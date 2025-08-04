@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="description" content="Abedelrahman Sholi - Senior QA Automation Engineer with 10+ years experience. Expert in Selenium WebDriver, Java, TestNG, REST API testing, and CI/CD integration. Comprehensive test automation courses and learning resources.">
+    <meta name="keywords" content="QA Engineer, Test Automation, Selenium WebDriver, Java, TestNG, REST API Testing, Quality Assurance, Software Testing, WebDriverIO, Cucumber, Jenkins, CI/CD, Test Framework, Automation Engineer, QA Courses, Test Automation Training">
+    <meta name="author" content="Abedelrahman Sholi">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Abedelrahman Sholi - Senior QA Automation Engineer | Test Automation Expert">
+    <meta property="og:description" content="Senior QA Automation Engineer with 10+ years experience across aviation, healthcare, telecom industries. Comprehensive test automation courses covering Selenium, Java, WebDriverIO, and QA best practices.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://abedelrahmansholi.github.io/Portfolio">
+    <meta property="og:image" content="https://abedelrahmansholi.github.io/Portfolio/favicon.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Abedelrahman Sholi - QA Portfolio">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Abedelrahman Sholi - Senior QA Automation Engineer">
+    <meta name="twitter:description" content="Expert QA Automation Engineer with comprehensive test automation courses and 10+ years industry experience.">
+    <meta name="twitter:image" content="https://abedelrahmansholi.github.io/Portfolio/favicon.png">
+    <meta name="twitter:creator" content="@AbedelrahmanQA">
+    
+    <!-- LinkedIn Meta Tags -->
+    <meta property="article:author" content="Abedelrahman Sholi">
+    <meta property="article:section" content="Technology">
+    <meta property="article:tag" content="QA Engineering, Test Automation, Software Quality">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Abedelrahman Sholi",
+        "jobTitle": "Senior QA Automation Engineer",
+        "description": "Senior QA Automation Engineer with 10+ years experience in test automation, Selenium WebDriver, Java, and quality assurance across multiple industries.",
+        "url": "https://abedelrahmansholi.github.io/Portfolio",
+        "sameAs": [
+            "https://linkedin.com/in/sholi",
+            "https://github.com/abedelrahman-sholi"
+        ],
+        "knowsAbout": [
+            "Test Automation",
+            "Selenium WebDriver", 
+            "Java Programming",
+            "Quality Assurance",
+            "WebDriverIO",
+            "API Testing",
+            "CI/CD Integration"
+        ],
+        "alumniOf": "An-Najah National University",
+        "workLocation": "UAE"
+    }
+    </script>
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+     gtag(\'config\', \'G-8HMPQC056M\', {            page_title: 'QA Portfolio Home',
+            page_location: window.location.href,
+            content_group1: 'Portfolio',
+            content_group2: 'Main Page'
+        });
+        
+        // Custom event tracking for course interactions
+        function trackCourseClick(courseName) {
+            gtag('event', 'course_click', {
+                event_category: 'engagement',
+                event_label: courseName,
+                value: 1
+            });
+        }
+        
+        // Track skill card interactions
+        function trackSkillClick(skillName) {
+            gtag('event', 'skill_click', {
+                event_category: 'engagement',
+                event_label: skillName,
+                value: 1
+            });
+        }
+        
+        // Track contact form interactions
+        function trackContactClick() {
+            gtag('event', 'contact_click', {
+                event_category: 'conversion',
+                event_label: 'contact_button',
+                value: 1
+            });
+        }
+    </script>
+    
+    <title>Abedelrahman Sholi - Senior QA Automation Engineer | Test Automation Expert & Educator</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <!-- Base styles -->
+    <link href="css/general_root.css" rel="stylesheet" />
+    <link href="css/background_effect.css" rel="stylesheet" />
+    
+    <!-- Consolidated hover and z-index styles - loaded early to establish hierarchy -->
+    <link href="css/z_index_system.css" rel="stylesheet" />
+    <link href="css/hover_fix_comprehensive.css" rel="stylesheet" />
+    <link href="css/tooltip_hover.css" rel="stylesheet" />
+    
+    <!-- Component styles -->
+    <link href="css/slider.css" rel="stylesheet" />
+    <link href="css/enhanced_components.css" rel="stylesheet" />
+    <link href="css/skills_alternative.css" rel="stylesheet" />
+    <link href="css/timeline.css" rel="stylesheet" />
+    <link href="css/project_showcase_fixed.css" rel="stylesheet" />
+    <link href="css/technical_skills_fixed.css" rel="stylesheet" />
+    
+    <!-- Fixes and enhancements -->
+    <link href="css/mobile_responsive.css" rel="stylesheet" />
+    <link href="css/design_fixes.css" rel="stylesheet" />
+    <link href="css/skills_icons_fix.css" rel="stylesheet" />
+    <link href="css/layout_fixes.css" rel="stylesheet" />
+    <link href="css/contact_fix.css" rel="stylesheet" />
+    <link href="css/final_fixes.css" rel="stylesheet" />
+    <link href="css/skill_modal.css" rel="stylesheet" />
+    
+    <!-- External resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Courses section styles -->
+    <link href="css/courses/courses.css" rel="stylesheet" />
+    
+    <!-- Social Media Sharing Styles -->
+    <link href="css/social_sharing.css" rel="stylesheet" />
+    
+    <!-- Syntax highlighting for code blocks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+<div class="slider-section-right">
+    <a class="btn_light" href="#endPage" onclick="trackContactClick()">Contact</a>
+    <nav class="nav__wrapper">
+        <ul id="side_nav">
+            <li class="active"><a href="#sideBySide" title="home">00</a></li>
+            <li><a href="#projects" title="projects">01</a></li>
+            <li><a href="#achievements" title="achievements">02</a></li>
+            <li><a href="#technical-skills" title="technical-skills">03</a></li>
+            <li><a href="#timeline" title="timeline">04</a></li>
+            <li><a href="#skills" title="skills">05</a></li>
+            <li><a href="#courses" title="courses">06</a></li>
+            <li><a href="#blogCarousel" title="insights">07</a></li>
+            <li><a href="#endPage" title="contact">08</a></li>
+        </ul>
+    </nav>
+    <div class="btn_down" id="scrollDownButton">
+        <span>Scroll Down</span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="aliceblue"></path>
+        </svg>
+    </div>
+</div>
+
+<div class="background-container">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+</div>
+
+<!-- Courses section will be positioned after skills section -->
+
+<div class="side-by-side-container" id="sideBySide">
+    <header class="scroll-section" id="home">
+        <h1 id="greeting"></h1>
+        <div class="about-me">
+            <p class="comment" id="summary"></p>
+            <p id="details"></p>
+        </div>
+        <p class="hint" id="hint">//Click anywhere to stop animation!</p>
+    </header>
+
+    <section class="page scroll-section" id="myStackPage">
+        <h1>My Industry Journey</h1>
+        <p>Discover how I've shaped quality assurance across key sectors.</p>
+        <p class="comment">Hover to explore my contributions!</p>
+
+        <div class="bubble-clusters">
+            <div class="bubble-cluster" data-industry="Telecom">
+                <span>Telecom</span>
+                <div class="bubble-details">
+                    <h2>Telecom</h2>
+                    <p class="role">Ooredoo Group - Systems Integration Engineer (2015-2019)</p>
+                    <ul>
+                        <li>Enhanced system integration by refining API testing strategies.</li>
+                        <li>Streamlined reporting processes through automation.</li>
+                        <li>Elevated data reconciliation standards for operational excellence.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bubble-cluster" data-industry="Electronics">
+                <span>Electronics</span>
+                <div class="bubble-details">
+                    <h2>Electronics</h2>
+                    <p class="role">ProGineer Technologies - QA Engineer (2019-2021)</p>
+                    <ul>
+                        <li>Improved product reliability with strategic test planning.</li>
+                        <li>Boosted deployment efficiency through automation initiatives.</li>
+                        <li>Ensured hardware quality with rigorous testing protocols.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bubble-cluster" data-industry="Healthcare">
+                <span>Healthcare</span>
+                <div class="bubble-details">
+                    <h2>Healthcare</h2>
+                    <p class="role">IQVIA - Senior QA Engineer (2021-2024)</p>
+                    <ul>
+                        <li>Led QA efforts to deliver scalable healthcare solutions.</li>
+                        <li>Optimized system performance and minimized defects.</li>
+                        <li>Collaborated with teams to meet stringent regulatory standards.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bubble-cluster" data-industry="Aviation">
+                <span>Aviation</span>
+                <div class="bubble-details">
+                    <h2>Aviation</h2>
+                    <p class="role">Emirates Group - Senior QA Engineer (2024-Present)</p>
+                    <ul>
+                        <li>Oversaw QA for a critical reservation system.</li>
+                        <li>Enhanced global efficiency through team mentorship.</li>
+                        <li>Integrated advanced processes to accelerate delivery.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- Project Showcase Section -->
+<section id="projects" class="project-section page scroll-section">
+    <h1>Project Showcase</h1>
+    <p>Explore my technical approach and outcomes across various projects.</p>
+    <p class="comment">Each project highlights key technologies and methodologies used.</p>
+    
+    <div class="project-grid">
+        <div class="project-card">
+            <div class="project-card-content">
+                <h3 class="project-title">Test Automation Framework</h3>
+                <span class="project-category">QA Infrastructure</span>
+                <p class="project-description">Designed and implemented a modular test automation framework supporting UI, API, and performance testing with centralized reporting.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Selenium</span>
+                    <span class="tech-tag">RestAssured</span>
+                    <span class="tech-tag">JMeter</span>
+                    <span class="tech-tag">Jenkins</span>
+                    <span class="tech-tag">Allure</span>
+                </div>
+                <div class="project-outcome">
+                    <div class="outcome-title">Key Outcomes:</div>
+                    <p>Reduced test execution time by 60% and improved defect detection by implementing parallel execution and smart waiting strategies.</p>
+                </div>
+            </div>
+            <div class="project-shine"></div>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-card-content">
+                <h3 class="project-title">CI/CD Pipeline Integration</h3>
+                <span class="project-category">DevOps & QA</span>
+                <p class="project-description">Integrated automated testing into CI/CD pipelines, enabling continuous quality validation with every code commit.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Jenkins</span>
+                    <span class="tech-tag">GitLab</span>
+                    <span class="tech-tag">TestNG</span>
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">Maven</span>
+                </div>
+                <div class="project-outcome">
+                    <div class="outcome-title">Key Outcomes:</div>
+                    <p>Decreased release cycle time by 40% while maintaining quality standards through automated quality gates and test result analysis.</p>
+                </div>
+            </div>
+            <div class="project-shine"></div>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-card-content">
+                <h3 class="project-title">API Testing Framework</h3>
+                <span class="project-category">Service Integration</span>
+                <p class="project-description">Created a data-driven API testing framework for microservices architecture, enabling comprehensive validation of service contracts.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">RestAssured</span>
+                    <span class="tech-tag">Postman</span>
+                    <span class="tech-tag">Newman</span>
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">JSON Schema</span>
+                </div>
+                <div class="project-outcome">
+                    <div class="outcome-title">Key Outcomes:</div>
+                    <p>Achieved 95% API test coverage and reduced integration issues by 70% through automated contract validation and regression testing.</p>
+                </div>
+            </div>
+            <div class="project-shine"></div>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-card-content">
+                <h3 class="project-title">Test Data Management Solution</h3>
+                <span class="project-category">QA Infrastructure</span>
+                <p class="project-description">Implemented an automated test data management solution that generates, maintains, and cleans test data across multiple environments.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">TestNG</span>
+                    <span class="tech-tag">Jenkins</span>
+                    <span class="tech-tag">Maven</span>
+                </div>
+                <div class="project-outcome">
+                    <div class="outcome-title">Key Outcomes:</div>
+                    <p>Reduced test data preparation time by 80% and eliminated data-related test failures through consistent, on-demand test data provisioning.</p>
+                </div>
+            </div>
+            <div class="project-shine"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Professional Achievements Section -->
+<section id="achievements" class="achievements-section page scroll-section">
+    <h1>Professional Achievements</h1>
+    <p>Measurable outcomes from my quality assurance initiatives.</p>
+    <p class="comment">Each metric represents improvements achieved through strategic QA implementations.</p>
+    
+    <div class="achievements-container">
+        <div class="achievement-card">
+            <span class="achievement-category">Automation</span>
+            <div class="achievement-content">
+                <h3 class="achievement-title">Test Pass Rate Improvement</h3>
+                <div class="metric-circle" style="--percentage: 75%;">
+                    <span class="metric-value">75%</span>
+                </div>
+                <div class="metric-label">Increased from 50% to 75%</div>
+                <p class="achievement-description">Enhanced test reliability by implementing robust automation frameworks with proper synchronization and error handling.</p>
+            </div>
+            <div class="achievement-shine"></div>
+        </div>
+        
+        <div class="achievement-card">
+            <span class="achievement-category">Performance</span>
+            <div class="achievement-content">
+                <h3 class="achievement-title">Response Time Reduction</h3>
+                <div class="metric-circle" style="--percentage: 30%;">
+                    <span class="metric-value">30%</span>
+                </div>
+                <div class="metric-label">System performance improvement</div>
+                <p class="achievement-description">Identified and resolved performance bottlenecks through systematic load testing and optimization recommendations.</p>
+            </div>
+            <div class="achievement-shine"></div>
+        </div>
+        
+        <div class="achievement-card">
+            <span class="achievement-category">Efficiency</span>
+            <div class="achievement-content">
+                <h3 class="achievement-title">Deployment Time Reduction</h3>
+                <div class="metric-circle" style="--percentage: 50%;">
+                    <span class="metric-value">50%</span>
+                </div>
+                <div class="metric-label">Cut deployment time in half</div>
+                <p class="achievement-description">Built Java-based automation tools that streamlined deployment processes and reduced manual intervention.</p>
+            </div>
+            <div class="achievement-shine"></div>
+        </div>
+        
+        <div class="achievement-card">
+            <span class="achievement-category">Quality</span>
+            <div class="achievement-content">
+                <h3 class="achievement-title">Defect Leakage Reduction</h3>
+                <div class="metric-circle" style="--percentage: 70%;">
+                    <span class="metric-value">70%</span>
+                </div>
+                <div class="metric-label">Fewer production defects</div>
+                <p class="achievement-description">Implemented shift-left testing practices and comprehensive test coverage to catch issues earlier in development.</p>
+            </div>
+            <div class="achievement-shine"></div>
+        </div>
+        
+        <div class="achievement-card">
+            <span class="achievement-category">Productivity</span>
+            <div class="achievement-content">
+                <h3 class="achievement-title">Manual Effort Reduction</h3>
+                <div class="metric-circle" style="--percentage: 40%;">
+                    <span class="metric-value">40%</span>
+                </div>
+                <div class="metric-label">Reporting process automation</div>
+                <p class="achievement-description">Automated daily reporting processes, improving accuracy and freeing up team resources for higher-value activities.</p>
+            </div>
+            <div class="achievement-shine"></div>
+        </div>
+        
+        <div class="achievement-card">
+            <span class="achievement-category">Coverage</span>
+            <div class="achievement-content">
+                <h3 class="achievement-title">API Test Coverage</h3>
+                <div class="metric-circle" style="--percentage: 95%;">
+                    <span class="metric-value">95%</span>
+                </div>
+                <div class="metric-label">Comprehensive API validation</div>
+                <p class="achievement-description">Achieved near-complete API test coverage through systematic contract testing and automated regression suites.</p>
+            </div>
+            <div class="achievement-shine"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Skills Visualization (Alternative to Radar Chart) -->
+<section id="technical-skills" class="page scroll-section">
+    <h1>Technical Skills</h1>
+    <p>Expertise across testing technologies and methodologies.</p>
+    <p class="comment">Developed through hands-on experience in diverse industry environments.</p>
+    
+    <div class="skills-bar-container">
+        <div class="skill-category-card animate-on-scroll">
+            <h3 class="skill-category-title">Test Automation</h3>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Selenium WebDriver</span>
+                    <span class="skill-level">95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">RestAssured</span>
+                    <span class="skill-level">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">TestNG</span>
+                    <span class="skill-level">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Cucumber/BDD</span>
+                    <span class="skill-level">80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">JMeter</span>
+                    <span class="skill-level">75%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 75%;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="skill-category-card animate-on-scroll">
+            <h3 class="skill-category-title">Programming</h3>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Java</span>
+                    <span class="skill-level">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Object-Oriented Programming</span>
+                    <span class="skill-level">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">SQL</span>
+                    <span class="skill-level">80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Maven</span>
+                    <span class="skill-level">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">XML/JSON</span>
+                    <span class="skill-level">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="skill-category-card animate-on-scroll">
+            <h3 class="skill-category-title">CI/CD & DevOps</h3>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Jenkins</span>
+                    <span class="skill-level">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Git</span>
+                    <span class="skill-level">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Maven</span>
+                    <span class="skill-level">80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">GitLab</span>
+                    <span class="skill-level">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Allure Reporting</span>
+                    <span class="skill-level">80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="skill-category-card animate-on-scroll">
+            <h3 class="skill-category-title">Test Management</h3>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">JIRA</span>
+                    <span class="skill-level">95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">QMetry</span>
+                    <span class="skill-level">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">TestRail</span>
+                    <span class="skill-level">80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Test Case Management</span>
+                    <span class="skill-level">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Defect Management</span>
+                    <span class="skill-level">95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 95%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="skill-badges-container">
+        <div class="skill-badge">
+            <div class="skill-badge-icon">
+                <img src="images/icons/java.png" alt="Java" width="40" height="40">
+            </div>
+            <div class="skill-badge-name">Java</div>
+        </div>
+        <div class="skill-badge">
+            <div class="skill-badge-icon">
+                <img src="images/icons/selenium.png" alt="Selenium" width="40" height="40">
+            </div>
+            <div class="skill-badge-name">Selenium</div>
+        </div>
+        <div class="skill-badge">
+            <div class="skill-badge-icon">
+                <img src="images/icons/api.png" alt="API Testing" width="40" height="40">
+            </div>
+            <div class="skill-badge-name">API Testing</div>
+        </div>
+        <div class="skill-badge">
+            <div class="skill-badge-icon">
+                <img src="images/icons/testmanagement.png" alt="Test Management" width="40" height="40">
+            </div>
+            <div class="skill-badge-name">Test Management</div>
+        </div>
+        <div class="skill-badge">
+            <div class="skill-badge-icon">
+                <img src="images/icons/jenkins.png" alt="Jenkins" width="40" height="40">
+            </div>
+            <div class="skill-badge-name">Jenkins</div>
+        </div>
+        <div class="skill-badge">
+            <div class="skill-badge-icon">
+                <img src="images/icons/gitlab.png" alt="GitLab" width="40" height="40">
+            </div>
+            <div class="skill-badge-name">GitLab</div>
+        </div>
+        <div class="skill-badge">
+            <div class="skill-badge-icon">
+                <img src="images/icons/allure.png" alt="Allure" width="40" height="40">
+            </div>
+            <div class="skill-badge-name">Allure</div>
+        </div>
+        <div class="skill-badge">
+            <div class="skill-badge-icon">
+                <img src="images/icons/postman.png" alt="Postman" width="40" height="40">
+            </div>
+            <div class="skill-badge-name">Postman</div>
+        </div>
+    </div>
+</section>
+
+<!-- Professional Timeline Section -->
+<section id="timeline" class="page scroll-section">
+    <h1>Professional Timeline</h1>
+    <p>My career journey in quality assurance and test automation.</p>
+    <p class="comment">Explore my professional growth and key milestones.</p>
+    
+    <div class="timeline-container">
+        <div class="timeline-item timeline-left">
+            <div class="timeline-content">
+                <div class="timeline-date">May 2015 - Nov 2019</div>
+                <h3 class="timeline-title">Systems Integration Engineer</h3>
+                <div class="timeline-company">Ooredoo Group, UAE</div>
+                <p class="timeline-description">Started my career in telecommunications, focusing on API testing and system integration. Automated daily reporting processes and improved data reconciliation efficiency through custom automation solutions.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item timeline-right">
+            <div class="timeline-content">
+                <div class="timeline-date">Nov 2019 - Sep 2021</div>
+                <h3 class="timeline-title">QA Engineer</h3>
+                <div class="timeline-company">ProGineer Technologies, UAE</div>
+                <p class="timeline-description">Expanded my testing expertise in the electronics industry. Developed comprehensive test plans and built Java-based automation tools that cut deployment time by 50%. Established standardized QA processes for the team.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item timeline-left">
+            <div class="timeline-content">
+                <div class="timeline-date">Sep 2021 - Jan 2024</div>
+                <h3 class="timeline-title">Senior QA Engineer</h3>
+                <div class="timeline-company">IQVIA, Remote (Oman Project)</div>
+                <p class="timeline-description">Led a QA team of 6 in delivering healthcare products. Designed automation frameworks with Selenium and RestAssured, implemented performance testing with JMeter, and defined QA metrics that drove continuous improvement.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item timeline-right">
+            <div class="timeline-content">
+                <div class="timeline-date">Jan 2024 - Present</div>
+                <h3 class="timeline-title">Senior QA Automation Engineer</h3>
+                <div class="timeline-company">Emirates Group, Dubai, UAE</div>
+                <p class="timeline-description">Currently leading testing initiatives for high-volume flight reservation systems. Architected UI/API automation frameworks that improved test pass rates from 50% to 75%. Mentoring multiple QA teams across 6 groups.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item timeline-left">
+            <div class="timeline-content">
+                <div class="timeline-date">May 2015 - May 2016</div>
+                <h3 class="timeline-title">Certified Ethical Hacker (CEH)</h3>
+                <div class="timeline-company">Arab German Academy, UAE</div>
+                <p class="timeline-description">Obtained CEH certification, applying ethical hacking principles to enhance test case design and exploratory testing approaches. This knowledge has been valuable for security-focused testing throughout my career.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item timeline-right">
+            <div class="timeline-content">
+                <div class="timeline-date">Sep 2010 - May 2015</div>
+                <h3 class="timeline-title">BSc Telecommunication Engineering</h3>
+                <div class="timeline-company">An-Najah National University, Palestine</div>
+                <p class="timeline-description">Specialized in telecommunications systems, signal processing, and engineering. Completed coursework in Software Engineering, Programming Fundamentals, and Network Security, building a strong technical foundation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section (Original) -->
+<section id="skills" class="page scroll-section">
+    <h1>Skills</h1>
+    <p>Explore my technical expertise and professional capabilities.</p>
+    <p class="comment">Click on a skill to learn more!</p>
+    <div class="skills-container">
+        <div class="skill-box">
+            <div class="skill-title">
+                <div class="img">
+                    <img src="images/icons/java.png" class="skill-icon" alt="Java">
+                </div>
+                <h3>Java</h3>
+            </div>
+            <p>Expert in Java programming for building robust test automation frameworks and tools.</p>
+        </div>
+        <div class="skill-box">
+            <div class="skill-title">
+                <div class="img">
+                    <img src="images/icons/selenium.png" class="skill-icon" alt="Selenium">
+                </div>
+                <h3>Selenium</h3>
+            </div>
+            <p>Advanced expertise in Selenium WebDriver for creating stable and maintainable UI test automation.</p>
+        </div>
+        <div class="skill-box">
+            <div class="skill-title">
+                <div class="img">
+                    <img src="images/icons/api.png" class="skill-icon" alt="API Testing">
+                </div>
+                <h3>API Testing</h3>
+            </div>
+            <p>Proficient in API testing using RestAssured and Postman for comprehensive service validation.</p>
+        </div>
+        <div class="skill-box">
+            <div class="skill-title">
+                <div class="img">
+                    <img src="images/icons/jenkins.png" class="skill-icon" alt="Jenkins">
+                </div>
+                <h3>Jenkins</h3>
+            </div>
+            <p>Skilled in configuring and maintaining Jenkins pipelines for continuous integration and test automation.</p>
+        </div>
+        <div class="skill-box">
+            <div class="skill-title">
+                <div class="img">
+                    <img src="images/icons/gitlab.png" class="skill-icon" alt="GitLab">
+                </div>
+                <h3>GitLab</h3>
+            </div>
+            <p>Experienced with GitLab for version control, CI/CD pipelines, and collaborative development.</p>
+        </div>
+        <div class="skill-box">
+            <div class="skill-title">
+                <div class="img">
+                    <img src="images/icons/allure.png" class="skill-icon" alt="Allure">
+                </div>
+                <h3>Allure</h3>
+            </div>
+            <p>Proficient in generating detailed, interactive test reports with Allure for enhanced visibility.</p>
+        </div>
+        <div class="skill-box">
+            <div class="skill-title">
+                <div class="img">
+                    <img src="images/icons/postman.png" class="skill-icon" alt="Postman">
+                </div>
+                <h3>Postman</h3>
+            </div>
+            <p>Expert in using Postman for API testing, documentation, and automated test collections.</p>
+        </div>
+        <div class="skill-box">
+            <div class="skill-title">
+                <div class="img">
+                    <img src="images/icons/testmanagement.png" class="skill-icon" alt="Test Management">
+                </div>
+                <h3>Test Management</h3>
+            </div>
+            <p>Skilled in test management tools like JIRA, QMetry, and TestRail for comprehensive test planning and execution.</p>
+        </div>
+    </div>
+</section>
+
+</script>
+
+<!-- Learning Journey Section -->
+<section id="courses" class="courses-section page scroll-section">
+    <h1>Learning Journey</h1>
+    <p>Explore my in-depth learning materials and technical expertise.</p>
+    <p class="comment">Each course represents comprehensive knowledge in key QA automation areas.</p>
+    
+    <div class="courses-container">
+        <div class="course-card">
+            <div class="course-card-content">
+                <h3 class="course-title">Advanced Java for Test Automation</h3>
+                <span class="course-category">Programming</span>
+                <p class="course-description">Master advanced Java concepts essential for building robust test automation frameworks, including lambda expressions, streams API, and asynchronous operations.</p>
+                <div class="course-tech">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">Lambda</span>
+                    <span class="tech-tag">Streams</span>
+                    <span class="tech-tag">CompletableFuture</span>
+                    <span class="tech-tag">Reflection</span>
+                </div>
+                <div class="course-modules">
+                    <span class="modules-count">6 Modules</span> with practical exercises and checkpoints
+                </div>
+                <div class="course-action">
+                    <a href="#" class="explore-btn" data-course="java" onclick="trackCourseClick('Advanced Java for Test Automation')">Explore Course</a>
+                </div>
+            </div>
+            <div class="course-shine"></div>
+        </div>
+        
+        <div class="course-card">
+            <div class="course-card-content">
+                <h3 class="course-title">WebDriverIO Core Concepts Mastery</h3>
+                <span class="course-category">Test Automation</span>
+                <p class="course-description">Comprehensive guide to WebDriverIO for modern test automation, covering selectors, asynchronous testing, page object model, and integration with testing frameworks.</p>
+                <div class="course-tech">
+                    <span class="tech-tag">WebDriverIO</span>
+                    <span class="tech-tag">Selenium</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Cucumber</span>
+                    <span class="tech-tag">TestNG</span>
+                </div>
+                <div class="course-modules">
+                    <span class="modules-count">11 Modules</span> with real-world project implementation
+                </div>
+                <div class="course-action">
+                    <a href="#" class="explore-btn" data-course="webdriverio" onclick="trackCourseClick('WebDriverIO Core Concepts Mastery')">Explore Course</a>
+                </div>
+            </div>
+            <div class="course-shine"></div>
+        </div>
+        
+        <div class="course-card">
+            <div class="course-card-content">
+                <h3 class="course-title">QA Automation Learning Roadmap</h3>
+                <span class="course-category">Career Development</span>
+                <p class="course-description">Strategic learning path for mastering test automation, with focus on design frameworks, best practices, and career progression in quality assurance.</p>
+                <div class="course-tech">
+                    <span class="tech-tag">Career Path</span>
+                    <span class="tech-tag">Learning Plan</span>
+                    <span class="tech-tag">Skill Development</span>
+                    <span class="tech-tag">Best Practices</span>
+                </div>
+                <div class="course-modules">
+                    <span class="modules-count">Comprehensive Guide</span> with visual learning paths
+                </div>
+                <div class="course-action">
+                    <a href="#" class="explore-btn" data-course="roadmap" onclick="trackCourseClick('QA Automation Learning Roadmap')">Explore Roadmap</a>
+                </div>
+            </div>
+            <div class="course-shine"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Carousel Section -->
+<section id="blogCarousel" class="page scroll-section">
+    <h1>Insights & Articles</h1>
+    <p>Explore my thoughts on quality assurance and test automation.</p>
+    <p class="comment">Click on an article to read more!</p>
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <div class="carousel-card">
+                <div class="carousel-content">
+                    <h3>Selenium WebDriver: Best Practices</h3>
+                    <p>Explore strategies for building robust, maintainable Selenium test frameworks.</p>
+                    <a href="blogs/selenium.html" target="_blank" class="read-more">Read More</a>
+                </div>
+            </div>
+            <div class="carousel-card">
+                <div class="carousel-content">
+                    <h3>The Role of Design in QA</h3>
+                    <p>How design thinking can transform your approach to quality assurance.</p>
+                    <a href="blogs/design.html" target="_blank" class="read-more">Read More</a>
+                </div>
+            </div>
+            <div class="carousel-card">
+                <div class="carousel-content">
+                    <h3>The Evolution of Test Automation</h3>
+                    <p>From record-and-playback to AI-assisted testing: the journey of automation.</p>
+                    <a href="blogs/automation.html" target="_blank" class="read-more">Read More</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-button prev">&#10094;</button>
+        <button class="carousel-button next">&#10095;</button>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="endPage" class="page scroll-section">
+    <h1>Contact</h1>
+    <p>Let's connect and discuss how I can contribute to your quality assurance needs.</p>
+    <p class="comment">I'm open to new opportunities and collaborations!</p>
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>s.holi_1989@live.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+971 56 953 8533</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dubai, UAE</span>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/abedelrahman-sholi" target="_blank">sholi</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-file-alt"></i>
+                <a href="resume.html" target="_blank">View My Resume</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="js/Animation.js"></script>
+<script src="js/ui_enhancements.js"></script>
+
+
+<!-- Courses section scripts -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+<script src="js/courses/mermaid_loader.js"></script>
+<script src="js/courses/mermaid_renderer.js"></script>
+<script src="js/courses/courses.js"></script>
+<script src="js/courses/content_loader.js"></script>
+
+
+<script src="js/courses/diagram_loader.js"></script>
+
+<!-- Course Modals -->
+
+
+
+
+
+
+<script>
+    // Initialize course modals and content
+    document.addEventListener('DOMContentLoaded', function() {
+        // Update navigation to include courses
+        const sideNav = document.getElementById('side_nav');
+        if (sideNav) {
+            // Check if courses nav item already exists to prevent duplicates
+            const existingCourses = sideNav.querySelector('a[href="#courses"]');
+            if (!existingCourses) {
+                // Find the insights nav item (index 6)
+                const insightsItem = sideNav.children[6];
+                
+                // Update indices for all items after courses (insights and contact)
+                for (let i = 6; i < sideNav.children.length; i++) {
+                    if (sideNav.children[i]) {
+                        const link = sideNav.children[i].querySelector('a');
+                        if (link) {
+                            const currentNum = parseInt(link.textContent);
+                            if (!isNaN(currentNum)) {
+                                link.textContent = (currentNum + 1).toString().padStart(2, '0');
+                            }
+                        }
+                    }
+                }
+                
+                // Create new courses nav item
+                const coursesItem = document.createElement('li');
+                const coursesLink = document.createElement('a');
+                coursesLink.href = '#courses';
+                coursesLink.title = 'learning-journey';
+                coursesLink.textContent = '06';
+                coursesItem.appendChild(coursesLink);
+                
+                // Insert before insights
+                sideNav.insertBefore(coursesItem, insightsItem);
+            }
+        }
+        
+
+    });
+</script>
+
+<!-- Scroll position retention script -->
+<script src="js/scroll_position.js"></script>
+
+<!-- Social Media Sharing Script -->
+<script src="js/social_sharing.js"></script>
+
+</body>
+</html>

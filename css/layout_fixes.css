@@ -1,0 +1,63 @@
+/* Fix for padding at top of screen */
+body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.side-by-side-container {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+header.page {
+    padding-top: 20px !important;
+}
+
+/* Fix for horizontal scrolling */
+.page {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* Text justification for all paragraphs */
+p {
+    text-align: justify !important;
+}
+
+/* Left alignment for Project Showcase section */
+.project-section {
+    text-align: left !important;
+    padding: 4rem 5% !important;
+    overflow-x: hidden !important;
+}
+
+.project-section h1, 
+.project-section p {
+    text-align: left !important;
+}
+
+/* Left alignment for Contact section */
+#endPage {
+    text-align: left !important;
+    overflow-x: hidden !important;
+}
+
+#endPage h1, 
+#endPage p {
+    text-align: left !important;
+}
+
+.contact-container {
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+.contact-info {
+    align-items: flex-start !important;
+    text-align: left !important;
+}

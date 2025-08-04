@@ -1,0 +1,41 @@
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.contact-item i {
+    width: 20px;
+    color: var(--highlight-color);
+}
+
+.contact-item a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #4dd0e1;
+    text-decoration: underline;
+}
+
+.contact-item span {
+    color: var(--text-color);
+}

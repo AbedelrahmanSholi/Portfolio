@@ -1,0 +1,216 @@
+/* Social Media Sharing Buttons */
+.social-sharing-container {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(26, 32, 44, 0.9);
+    padding: 15px 10px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.social-sharing-title {
+    color: #4fd1c7;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.social-share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-share-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-share-btn:hover::before {
+    opacity: 1;
+}
+
+.social-share-btn:hover {
+    transform: translateX(5px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* LinkedIn */
+.social-share-btn.linkedin {
+    background: linear-gradient(135deg, #0077b5, #005885);
+}
+
+.social-share-btn.linkedin:hover::before {
+    background: linear-gradient(135deg, #0088cc, #0066aa);
+}
+
+/* Twitter */
+.social-share-btn.twitter {
+    background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+}
+
+.social-share-btn.twitter:hover::before {
+    background: linear-gradient(135deg, #2db3ff, #1a9aef);
+}
+
+/* Facebook */
+.social-share-btn.facebook {
+    background: linear-gradient(135deg, #1877f2, #166fe5);
+}
+
+.social-share-btn.facebook:hover::before {
+    background: linear-gradient(135deg, #2985ff, #1a7cff);
+}
+
+/* WhatsApp */
+.social-share-btn.whatsapp {
+    background: linear-gradient(135deg, #25d366, #20ba5a);
+}
+
+.social-share-btn.whatsapp:hover::before {
+    background: linear-gradient(135deg, #2ee673, #25d366);
+}
+
+/* Email */
+.social-share-btn.email {
+    background: linear-gradient(135deg, #ea4335, #d33b2c);
+}
+
+.social-share-btn.email:hover::before {
+    background: linear-gradient(135deg, #f55145, #ea4335);
+}
+
+/* Copy Link */
+.social-share-btn.copy-link {
+    background: linear-gradient(135deg, #4fd1c7, #38b2ac);
+}
+
+.social-share-btn.copy-link:hover::before {
+    background: linear-gradient(135deg, #5de4da, #4fd1c7);
+}
+
+/* Tooltip */
+.social-share-btn .tooltip {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 1001;
+}
+
+.social-share-btn .tooltip::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-right-color: rgba(0, 0, 0, 0.9);
+}
+
+.social-share-btn:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    left: 65px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .social-sharing-container {
+        position: fixed;
+        left: auto;
+        right: 20px;
+        top: auto;
+        bottom: 20px;
+        transform: none;
+        flex-direction: row;
+        padding: 10px 15px;
+        gap: 8px;
+    }
+    
+    .social-share-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .social-share-btn:hover {
+        transform: translateY(-3px) scale(1.05);
+    }
+    
+    .social-share-btn .tooltip {
+        left: 50%;
+        top: -45px;
+        transform: translateX(-50%);
+    }
+    
+    .social-share-btn .tooltip::before {
+        right: auto;
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+        border-right-color: transparent;
+        border-top-color: rgba(0, 0, 0, 0.9);
+    }
+    
+    .social-share-btn:hover .tooltip {
+        left: 50%;
+        top: -50px;
+    }
+}
+
+/* Animation for copy success */
+.copy-success {
+    animation: copySuccess 0.6s ease;
+}
+
+@keyframes copySuccess {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); background: #48bb78; }
+    100% { transform: scale(1); }
+}
+
+/* Hide on very small screens */
+@media (max-width: 480px) {
+    .social-sharing-container {
+        display: none;
+    }
+}
+

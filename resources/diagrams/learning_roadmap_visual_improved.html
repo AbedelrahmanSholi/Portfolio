@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Learning Roadmap Visual</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            background-color: #18181B;
+            color: #A1A1AA;
+            font-family: 'Poppins', sans-serif;
+            padding: 0;
+            margin: 0;
+            overflow: auto;
+        }
+        .mermaid {
+            background-color: #18181B;
+            width: 100%;
+            height: 100%;
+        }
+        .diagram-container {
+            width: 100%;
+            height: 100vh;
+            overflow: auto;
+        }
+        .controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(24, 24, 27, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        button {
+            background-color: #26a69a;
+            color: #FFFFFF;
+            border: none;
+            padding: 5px 10px;
+            margin: 2px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+        button:hover {
+            background-color: #2bbbad;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button id="zoomIn">Zoom In (+)</button>
+        <button id="zoomOut">Zoom Out (-)</button>
+        <button id="resetZoom">Reset</button>
+    </div>
+    
+    <div class="diagram-container">
+        <div class="mermaid">
+%%{init: {'flowchart': {'nodeSpacing': 50, 'rankSpacing': 100, 'curve': 'basis'}}}%%
+graph LR
+    Start[Start Here] --> P1[Phase 1: Foundation Strengthening]
+    P1 --> P1.1[1.1 Advanced Java Concepts]
+    P1 --> P1.2[1.2 WebDriverIO Core Concepts]
+    P1 --> P1.3[1.3 TestNG Advanced Features]
+    P1 --> P1.4[1.4 Cucumber BDD Techniques]
+    
+    P1 --> P2[Phase 2: Design Patterns Implementation]
+    P2 --> P2.1[2.1 Page Object Model]
+    P2 --> P2.2[2.2 Fluent Page Object Model]
+    P2 --> P2.3[2.3 Singleton Pattern]
+    P2 --> P2.4[2.4 Factory Pattern]
+    P2 --> P2.5[2.5 Builder Pattern]
+    P2 --> P2.6[2.6 Strategy Pattern]
+    P2 --> P2.7[2.7 Facade Pattern]
+    P2 --> P2.8[2.8 Command Pattern]
+    P2 --> P2.9[2.9 Observer Pattern]
+    
+    P2 --> P3[Phase 3: Framework Architecture Design]
+    P3 --> P3.1[3.1 Base Framework Components]
+    P3 --> P3.2[3.2 Advanced Framework Structure]
+    P3 --> P3.3[3.3 Configuration Management]
+    P3 --> P3.4[3.4 Test Data Management]
+    P3 --> P3.5[3.5 Reporting and Logging]
+    P3 --> P3.6[3.6 Utilities and Helpers]
+    
+    P3 --> P4[Phase 4: Advanced Framework Techniques]
+    P4 --> P4.1[4.1 Custom Commands and Extensions]
+    P4 --> P4.2[4.2 Dynamic Waits and Synchronization]
+    P4 --> P4.3[4.3 Parallel Execution]
+    P4 --> P4.4[4.4 Cross-Browser Testing]
+    P4 --> P4.5[4.5 Test Stability Mechanisms]
+    P4 --> P4.6[4.6 Performance Optimization]
+    
+    P4 --> P5[Phase 5: Integration and Deployment]
+    P5 --> P5.1[5.1 CI/CD Integration]
+    P5 --> P5.2[5.2 Docker and Containerization]
+    P5 --> P5.3[5.3 Cloud Integration]
+    P5 --> P5.4[5.4 API Testing Integration]
+    P5 --> P5.5[5.5 Database Integration]
+    
+    P5 --> P6[Phase 6: Advanced Topics and Specialization]
+    P6 --> P6.1[6.1 Security Testing Integration]
+    P6 --> P6.2[6.2 Accessibility Testing]
+    P6 --> P6.3[6.3 Visual Testing]
+    P6 --> P6.4[6.4 Performance Metrics Collection]
+    P6 --> P6.5[6.5 Mobile Testing Integration]
+    P6 --> P6.6[6.6 AI and ML in Test Automation]
+    
+    P6 --> P7[Phase 7: Framework Maintenance and Evolution]
+    P7 --> P7.1[7.1 Code Quality and Refactoring]
+    P7 --> P7.2[7.2 Framework Versioning]
+    P7 --> P7.3[7.3 Documentation]
+    P7 --> P7.4[7.4 Team Collaboration]
+    P7 --> P7.5[7.5 Continuous Improvement]
+    
+    P7 --> Mastery[Mastery Achieved!]
+    
+    classDef phase fill:#26a69a,stroke:#333,stroke-width:2px,color:#FFFFFF;
+    classDef module fill:#2c3e50,stroke:#333,stroke-width:1px,color:#FFFFFF;
+    classDef milestone fill:#4db8ff,stroke:#333,stroke-width:2px,color:#000000;
+    
+    class P1,P2,P3,P4,P5,P6,P7 phase;
+    class P1.1,P1.2,P1.3,P1.4,P2.1,P2.2,P2.3,P2.4,P2.5,P2.6,P2.7,P2.8,P2.9,P3.1,P3.2,P3.3,P3.4,P3.5,P3.6,P4.1,P4.2,P4.3,P4.4,P4.5,P4.6,P5.1,P5.2,P5.3,P5.4,P5.5,P6.1,P6.2,P6.3,P6.4,P6.5,P6.6,P7.1,P7.2,P7.3,P7.4,P7.5 module;
+    class Start,Mastery milestone;
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            logLevel: 'error',
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: 16,
+            themeVariables: {
+                primaryColor: '#26a69a',
+                primaryTextColor: '#FFFFFF',
+                primaryBorderColor: '#333333',
+                lineColor: '#A1A1AA',
+                secondaryColor: '#2c3e50',
+                tertiaryColor: '#4db8ff',
+                background: '#18181B',
+                mainBkg: '#2c3e50',
+                nodeBorder: '#333333',
+                clusterBkg: 'rgba(38, 166, 154, 0.2)',
+                clusterBorder: '#26a69a',
+                titleColor: '#FFFFFF',
+                edgeLabelBackground: '#18181B',
+                textColor: '#FFFFFF'
+            }
+        });
+
+        // Zoom functionality
+        let currentZoom = 1;
+        const mermaidDiv = document.querySelector('.mermaid');
+        const zoomStep = 0.1;
+
+        document.getElementById('zoomIn').addEventListener('click', () => {
+            currentZoom += zoomStep;
+            applyZoom();
+        });
+
+        document.getElementById('zoomOut').addEventListener('click', () => {
+            if (currentZoom > zoomStep) {
+                currentZoom -= zoomStep;
+                applyZoom();
+            }
+        });
+
+        document.getElementById('resetZoom').addEventListener('click', () => {
+            currentZoom = 1;
+            applyZoom();
+        });
+
+        function applyZoom() {
+            mermaidDiv.style.transform = `scale(${currentZoom})`;
+            mermaidDiv.style.transformOrigin = 'top left';
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '+' || e.key === '=') {
+                document.getElementById('zoomIn').click();
+            } else if (e.key === '-' || e.key === '_') {
+                document.getElementById('zoomOut').click();
+            } else if (e.key === '0') {
+                document.getElementById('resetZoom').click();
+            }
+        });
+    </script>
+</body>
+</html>

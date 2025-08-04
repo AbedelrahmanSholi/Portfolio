@@ -1,0 +1,174 @@
+/* Mobile Responsive Enhancements */
+
+/* Global responsive adjustments */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .page {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .page {
+        padding: 1rem;
+    }
+    
+    /* Project section responsive */
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Achievements section responsive */
+    .achievements-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Skills section responsive */
+    .skills-bar-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Timeline section responsive */
+    .timeline-container::after {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    
+    .timeline-item::after {
+        left: 21px;
+    }
+    
+    .timeline-right {
+        left: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    /* Navigation adjustments */
+    .slider-section-right {
+        width: 40px;
+    }
+    
+    .nav__wrapper ul li a {
+        font-size: 0.8rem;
+    }
+    
+    /* Project cards adjustments */
+    .project-card {
+        padding: 1rem;
+    }
+    
+    .project-title {
+        font-size: 1.3rem;
+    }
+    
+    /* Achievement cards adjustments */
+    .achievement-card {
+        padding: 1.5rem;
+    }
+    
+    .metric-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .metric-value {
+        font-size: 1.5rem;
+    }
+    
+    /* Skill badges adjustments */
+    .skill-badge {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .skill-badge-icon {
+        font-size: 1.3rem;
+    }
+    
+    .skill-badge-name {
+        font-size: 0.65rem;
+    }
+    
+    /* Resume adjustments */
+    .resume-container {
+        padding: 1rem;
+    }
+    
+    .resume-name {
+        font-size: 1.5rem;
+    }
+    
+    .resume-contact {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Touch-friendly adjustments for mobile */
+@media (hover: none) {
+    /* Make cards touch-friendly */
+    .project-card,
+    .achievement-card,
+    .skill-category-card,
+    .timeline-content,
+    .resume-experience-item {
+        transform: none !important;
+    }
+    
+    /* Increase touch target sizes */
+    .tech-tag,
+    .skill-badge,
+    .resume-language-item {
+        padding: 0.5rem 0.8rem;
+    }
+    
+    /* Adjust hover states for touch */
+    .project-card:active,
+    .achievement-card:active,
+    .skill-category-card:active,
+    .timeline-content:active,
+    .resume-experience-item:active {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+    .page {
+        min-height: auto;
+        padding: 1rem;
+    }
+    
+    .metric-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .timeline-container {
+        margin: 1rem auto;
+    }
+}
+
+/* High-resolution screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .stars, .twinkling, .clouds {
+        background-size: contain;
+    }
+}

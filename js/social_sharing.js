@@ -1,0 +1,188 @@
+// Social Media Sharing Functionality
+class SocialSharing {
+    constructor() {
+        this.currentUrl = encodeURIComponent(window.location.href);
+        this.currentTitle = encodeURIComponent(document.title);
+        this.currentDescription = this.getMetaDescription();
+        this.init();
+    }
+
+    getMetaDescription() {
+        const metaDesc = document.querySelector('meta[name="description"]');
+        return metaDesc ? encodeURIComponent(metaDesc.content) : encodeURIComponent('Check out this amazing QA automation content!');
+    }
+
+    init() {
+        this.createSharingContainer();
+        this.attachEventListeners();
+    }
+
+    createSharingContainer() {
+        const sharingHTML = `
+            <div class="social-sharing-container" id="socialSharing">
+                <div class="social-sharing-title">Share</div>
+                
+                <a href="#" class="social-share-btn linkedin" data-platform="linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span class="tooltip">Share on LinkedIn</span>
+                </a>
+                
+                <a href="#" class="social-share-btn twitter" data-platform="twitter">
+                    <i class="fab fa-twitter"></i>
+                    <span class="tooltip">Share on Twitter</span>
+                </a>
+                
+                <a href="#" class="social-share-btn facebook" data-platform="facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span class="tooltip">Share on Facebook</span>
+                </a>
+                
+                <a href="#" class="social-share-btn whatsapp" data-platform="whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span class="tooltip">Share on WhatsApp</span>
+                </a>
+                
+                <a href="#" class="social-share-btn email" data-platform="email">
+                    <i class="fas fa-envelope"></i>
+                    <span class="tooltip">Share via Email</span>
+                </a>
+                
+                <a href="#" class="social-share-btn copy-link" data-platform="copy">
+                    <i class="fas fa-link"></i>
+                    <span class="tooltip">Copy Link</span>
+                </a>
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', sharingHTML);
+    }
+
+    attachEventListeners() {
+        const shareButtons = document.querySelectorAll('.social-share-btn');
+        shareButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const platform = button.getAttribute('data-platform');
+                this.share(platform);
+                
+                // Track sharing events with Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'share', {
+                        event_category: 'social_sharing',
+                        event_label: platform,
+                        value: 1
+                    });
+                }
+            });
+        });
+    }
+
+    share(platform) {
+        const shareUrls = {
+            linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${this.currentUrl}`,
+            twitter: `https://twitter.com/intent/tweet?url=${this.currentUrl}&text=${this.currentTitle}`,
+            facebook: `https://www.facebook.com/sharer/sharer.php?u=${this.currentUrl}`,
+            whatsapp: `https://wa.me/?text=${this.currentTitle}%20${this.currentUrl}`,
+            email: `mailto:?subject=${this.currentTitle}&body=Check out this amazing QA automation content: ${this.currentUrl}`
+        };
+
+        switch (platform) {
+            case 'copy':
+                this.copyToClipboard();
+                break;
+            case 'email':
+                window.location.href = shareUrls.email;
+                break;
+            default:
+                if (shareUrls[platform]) {
+                    window.open(shareUrls[platform], '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+                }
+        }
+    }
+
+    async copyToClipboard() {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            this.showCopySuccess();
+        } catch (err) {
+            // Fallback for older browsers
+            this.fallbackCopyToClipboard();
+        }
+    }
+
+    fallbackCopyToClipboard() {
+        const textArea = document.createElement('textarea');
+        textArea.value = window.location.href;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+            document.execCommand('copy');
+            this.showCopySuccess();
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+            alert('Failed to copy link. Please copy manually: ' + window.location.href);
+        }
+        
+        document.body.removeChild(textArea);
+    }
+
+    showCopySuccess() {
+        const copyButton = document.querySelector('.social-share-btn.copy-link');
+        const tooltip = copyButton.querySelector('.tooltip');
+        const originalText = tooltip.textContent;
+        
+        copyButton.classList.add('copy-success');
+        tooltip.textContent = 'Copied!';
+        
+        setTimeout(() => {
+            copyButton.classList.remove('copy-success');
+            tooltip.textContent = originalText;
+        }, 2000);
+    }
+
+    // Method to update sharing content dynamically (useful for SPAs)
+    updateContent(title, description, url) {
+        this.currentTitle = encodeURIComponent(title || document.title);
+        this.currentDescription = encodeURIComponent(description || this.getMetaDescription());
+        this.currentUrl = encodeURIComponent(url || window.location.href);
+    }
+
+    // Method to hide/show sharing buttons
+    toggle(show = null) {
+        const container = document.getElementById('socialSharing');
+        if (container) {
+            if (show === null) {
+                container.style.display = container.style.display === 'none' ? 'flex' : 'none';
+            } else {
+                container.style.display = show ? 'flex' : 'none';
+            }
+        }
+    }
+
+    // Method to destroy the sharing widget
+    destroy() {
+        const container = document.getElementById('socialSharing');
+        if (container) {
+            container.remove();
+        }
+    }
+}
+
+// Auto-initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Only initialize if not already present
+    if (!document.getElementById('socialSharing')) {
+        window.socialSharing = new SocialSharing();
+    }
+});
+
+// Export for module systems
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = SocialSharing;
+}
+

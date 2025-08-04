@@ -1,0 +1,31 @@
+# Robots.txt for Abedelrahman Sholi QA Portfolio
+# Generated on 2025-08-04
+
+User-agent: *
+Allow: /
+
+# Disallow access to certain directories
+Disallow: /css/
+Disallow: /js/
+Disallow: /*.css$
+Disallow: /*.js$
+Disallow: /screenshots/
+Disallow: /temp/
+Disallow: /backup/
+
+# Allow important files for rendering
+Allow: /css/general_root.css
+Allow: /css/courses/
+Allow: /js/social_sharing.js
+
+# Sitemap location
+Sitemap: https://abedelrahman-sholi-qa-portfolio.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+
+# Allow course content
+Allow: /courses/
+
+# Host directive
+Host: https://abedelrahmansholi.github.io/Portfolio

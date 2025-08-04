@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Design Patterns</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            background-color: #1e1e2e;
+            color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .mermaid {
+            background-color: #1e1e2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="mermaid">
+graph TD
+    A[Design Patterns in Test Automation] --> B[Creational Patterns]
+    A --> C[Structural Patterns]
+    A --> D[Behavioral Patterns]
+    
+    B --> B1[Factory Pattern]
+    B --> B2[Singleton Pattern]
+    B --> B3[Builder Pattern]
+    
+    C --> C1[Page Object Pattern]
+    C --> C2[Decorator Pattern]
+    C --> C3[Adapter Pattern]
+    
+    D --> D1[Strategy Pattern]
+    D --> D2[Observer Pattern]
+    D --> D3[Command Pattern]
+    
+    C1 --> E[Framework Architecture]
+    B1 --> E
+    D1 --> E
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:1px
+    style C fill:#bbf,stroke:#333,stroke-width:1px
+    style D fill:#bbf,stroke:#333,stroke-width:1px
+    style E fill:#ddf,stroke:#333,stroke-width:1px
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: {
+                primaryColor: '#3498db',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#1f77b4',
+                lineColor: '#f8f9fa',
+                secondaryColor: '#6c757d',
+                tertiaryColor: '#2c3e50',
+                background: '#1e1e2e',
+                mainBkg: '#2c3e50',
+                nodeBorder: '#3498db',
+                clusterBkg: 'rgba(52, 152, 219, 0.2)',
+                clusterBorder: '#3498db',
+                titleColor: '#3498db'
+            }
+        });
+    </script>
+</body>
+</html>

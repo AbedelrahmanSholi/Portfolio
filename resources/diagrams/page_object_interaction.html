@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Object Interaction</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            background-color: #1e1e2e;
+            color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .mermaid {
+            background-color: #1e1e2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="mermaid">
+sequenceDiagram
+    participant Test as Test Class
+    participant LoginPage as LoginPage
+    participant HomePage as HomePage
+    participant ProfilePage as ProfilePage
+    
+    Test->>LoginPage: new LoginPage(driver)
+    Test->>LoginPage: open()
+    LoginPage->>LoginPage: navigate to login URL
+    LoginPage->>LoginPage: wait for page load
+    Test->>LoginPage: login("username", "password")
+    LoginPage->>LoginPage: enterUsername("username")
+    LoginPage->>LoginPage: enterPassword("password")
+    LoginPage->>LoginPage: clickLoginButton()
+    LoginPage->>HomePage: return new HomePage(driver)
+    Test->>HomePage: navigateToProfile()
+    HomePage->>HomePage: click profile link
+    HomePage->>ProfilePage: return new ProfilePage(driver)
+    Test->>ProfilePage: getUserName()
+    ProfilePage->>Test: return "User Name"
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: {
+                primaryColor: '#3498db',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#1f77b4',
+                lineColor: '#f8f9fa',
+                secondaryColor: '#6c757d',
+                tertiaryColor: '#2c3e50',
+                background: '#1e1e2e',
+                mainBkg: '#2c3e50',
+                nodeBorder: '#3498db',
+                clusterBkg: 'rgba(52, 152, 219, 0.2)',
+                clusterBorder: '#3498db',
+                titleColor: '#3498db'
+            }
+        });
+    </script>
+</body>
+</html>

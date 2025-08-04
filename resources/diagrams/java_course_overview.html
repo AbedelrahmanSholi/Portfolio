@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Java Course Overview</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            background-color: #1e1e2e;
+            color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .mermaid {
+            background-color: #1e1e2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="mermaid">
+graph TD
+    Start[Start Here] --> M1[Module 1: Java Fundamentals Review]
+    M1 --> M2[Module 2: Lambda Expressions and Functional Interfaces]
+    M2 --> M3[Module 3: Streams API for Data Processing]
+    M3 --> M4[Module 4: Optional Class for Null Handling]
+    M4 --> M5[Module 5: CompletableFuture for Asynchronous Operations]
+    M5 --> M6[Module 6: Reflection API for Dynamic Test Frameworks]
+    M6 --> PE[Practical Exercises]
+    PE --> End[Course Completed]
+    
+    classDef module fill:#bbf,stroke:#333,stroke-width:1px;
+    classDef milestone fill:#bfb,stroke:#333,stroke-width:2px;
+    
+    class M1,M2,M3,M4,M5,M6 module;
+    class Start,PE,End milestone;
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: {
+                primaryColor: '#3498db',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#1f77b4',
+                lineColor: '#f8f9fa',
+                secondaryColor: '#6c757d',
+                tertiaryColor: '#2c3e50',
+                background: '#1e1e2e',
+                mainBkg: '#2c3e50',
+                nodeBorder: '#3498db',
+                clusterBkg: 'rgba(52, 152, 219, 0.2)',
+                clusterBorder: '#3498db',
+                titleColor: '#3498db'
+            }
+        });
+    </script>
+</body>
+</html>

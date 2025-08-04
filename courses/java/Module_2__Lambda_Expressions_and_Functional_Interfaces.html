@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../css/courses/comprehensive_course_styling.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: Lambda Expressions and Functional Interfaces</title>
+    <!-- Base styles -->
+    <link href="/css/general_root.css" rel="stylesheet" />
+    <link href="/css/background_effect.css" rel="stylesheet" />
+    
+    <!-- Consolidated hover and z-index styles - loaded early to establish hierarchy -->
+    <link href="/css/z_index_system.css" rel="stylesheet" />
+    <link href="/css/hover_fix_comprehensive.css" rel="stylesheet" />
+    <link href="/css/tooltip_hover.css" rel="stylesheet" />
+    
+    <!-- Component styles -->
+    <link href="/css/slider.css" rel="stylesheet" />
+    <link href="/css/enhanced_components.css" rel="stylesheet" />
+    <link href="/css/skills_alternative.css" rel="stylesheet" />
+    <link href="/css/timeline.css" rel="stylesheet" />
+    <link href="/css/project_showcase_fixed.css" rel="stylesheet" />
+    <link href="/css/technical_skills_fixed.css" rel="stylesheet" />
+    
+    <!-- Fixes and enhancements -->
+    <link href="/css/mobile_responsive.css" rel="stylesheet" />
+    <link href="/css/design_fixes.css" rel="stylesheet" />
+    <link href="/css/skills_icons_fix.css" rel="stylesheet" />
+    <link href="/css/layout_fixes.css" rel="stylesheet" />
+    <link href="/css/contact_fix.css" rel="stylesheet" />
+    <link href="/css/final_fixes.css" rel="stylesheet" />
+    
+    <!-- External resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Courses section styles -->
+    <link href="/css/courses/courses.css" rel="stylesheet" />
+    <link href="/css/courses/enhanced_course_styling.css" rel="stylesheet" />
+    
+    <!-- Syntax highlighting for code blocks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+    <div class="course-content-wrapper">
+        <div class="module-navigation">
+            <a href="intro.html" class="nav-btn prev-btn">
+                <i class="fas fa-chevron-left"></i> Previous: Introduction to Advanced Java
+            </a>
+            <a href="Module_3__Stream_API_and_Collections.html" class="nav-btn next-btn">
+                Next: Stream API and Collections <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+        <h1 id="module-2-lambda-expressions-and-functional-interfaces">Module 2: Lambda Expressions and Functional Interfaces</h1>
+
+        <h2 id="learning-objectives">Learning Objectives</h2>
+        <ul>
+            <li>Understand lambda expressions and their syntax</li>
+            <li>Master functional interfaces and their applications</li>
+            <li>Apply lambda expressions in test automation scenarios</li>
+            <li>Create custom functional interfaces for testing</li>
+            <li>Use method references effectively</li>
+        </ul>
+
+        <h2 id="21-introduction-to-lambda-expressions">2.1 Introduction to Lambda Expressions</h2>
+
+        <h3 id="what-are-lambda-expressions">What are Lambda Expressions?</h3>
+        <p>Lambda expressions are anonymous functions that can be used to create delegates or expression tree types. They provide a concise way to represent one method interface using an expression.</p>
+
+        <h3 id="basic-syntax">Basic Syntax</h3>
+        <pre><code>// Basic lambda syntax
+(parameters) -> expression
+(parameters) -> { statements; }
+
+// Examples
+() -> System.out.println("Hello World")
+(x) -> x * 2
+(x, y) -> x + y
+(String s) -> s.length()
+</code></pre>
+
+        <h3 id="lambda-in-test-automation">Lambda in Test Automation</h3>
+        <p>Lambda expressions can significantly simplify test code, especially when working with collections, event handling, and asynchronous operations.</p>
+
+        <pre><code>// Traditional approach
+@Test
+public void testUserFiltering() {
+    List&lt;User&gt; users = getUserList();
+    List&lt;User&gt; activeUsers = new ArrayList&lt;&gt;();
+    
+    for (User user : users) {
+        if (user.isActive()) {
+            activeUsers.add(user);
+        }
+    }
+    
+    assertEquals(5, activeUsers.size());
+}
+
+// Lambda approach
+@Test
+public void testUserFiltering() {
+    List&lt;User&gt; users = getUserList();
+    
+    long activeUserCount = users.stream()
+        .filter(User::isActive)
+        .count();
+    
+    assertEquals(5, activeUserCount);
+}
+</code></pre>
+
+        <h2 id="22-functional-interfaces">2.2 Functional Interfaces</h2>
+
+        <h3 id="built-in-functional-interfaces">Built-in Functional Interfaces</h3>
+        <p>Java 8 provides several built-in functional interfaces in the java.util.function package:</p>
+
+        <ul>
+            <li><strong>Predicate&lt;T&gt;</strong>: Takes one argument and returns boolean</li>
+            <li><strong>Function&lt;T,R&gt;</strong>: Takes one argument and returns a result</li>
+            <li><strong>Consumer&lt;T&gt;</strong>: Takes one argument and returns void</li>
+            <li><strong>Supplier&lt;T&gt;</strong>: Takes no arguments and returns a result</li>
+        </ul>
+
+        <pre><code>// Predicate example
+Predicate&lt;User&gt; isActive = user -> user.isActive();
+Predicate&lt;User&gt; isAdmin = user -> "admin".equals(user.getRole());
+
+// Function example
+Function&lt;User, String&gt; getUserEmail = user -> user.getEmail();
+
+// Consumer example
+Consumer&lt;User&gt; printUser = user -> System.out.println(user.getName());
+
+// Supplier example
+Supplier&lt;User&gt; createTestUser = () -> new User("test", "test@example.com");
+</code></pre>
+
+        <h2 id="23-practical-examples">2.3 Practical Examples</h2>
+
+        <h3 id="test-data-validation">Test Data Validation</h3>
+        <pre><code>@Test
+public void testUserValidation() {
+    List&lt;User&gt; users = getUserList();
+    
+    // Check if all users have valid emails
+    boolean allValidEmails = users.stream()
+        .allMatch(user -> user.getEmail().contains("@"));
+    
+    assertTrue("All users should have valid emails", allValidEmails);
+    
+    // Check if any user is admin
+    boolean hasAdmin = users.stream()
+        .anyMatch(user -> "admin".equals(user.getRole()));
+    
+    assertTrue("Should have at least one admin", hasAdmin);
+}
+</code></pre>
+
+        <div class="module-navigation">
+            <a href="intro.html" class="nav-btn prev-btn">
+                <i class="fas fa-chevron-left"></i> Previous: Introduction to Advanced Java
+            </a>
+            <a href="Module_3__Stream_API_and_Collections.html" class="nav-btn next-btn">
+                Next: Stream API and Collections <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <script src="/js/courses/mermaid_loader.js"></script>
+    <script src="/js/courses/mermaid_renderer.js"></script>
+    <script src="/js/courses/content_loader.js"></script>
+    <script src="/js/courses/diagram_loader.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Highlight code blocks
+            document.querySelectorAll("pre code").forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+
+            // Initialize Mermaid diagrams
+            if (typeof mermaid !== "undefined") {
+                mermaid.initialize({
+                    startOnLoad: true,
+                    theme: "dark",
+                    securityLevel: "loose",
+                    themeVariables: {
+                        primaryColor: "#3498db",
+                        primaryTextColor: "#fff",
+                        primaryBorderColor: "#1f77b4",
+                        lineColor: "#f8f9fa",
+                        secondaryColor: "#6c757d",
+                        tertiaryColor: "#2c3e50"
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

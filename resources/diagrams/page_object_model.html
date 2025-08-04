@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Object Model</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            background-color: #1e1e2e;
+            color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .mermaid {
+            background-color: #1e1e2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="mermaid">
+classDiagram
+    class BasePage {
+        +WebDriver driver
+        +wait(element)
+        +click(element)
+        +type(element, text)
+        +getTitle()
+    }
+    
+    class LoginPage {
+        -usernameField
+        -passwordField
+        -loginButton
+        -errorMessage
+        +enterUsername(username)
+        +enterPassword(password)
+        +clickLogin()
+        +login(username, password)
+        +getErrorMessage()
+    }
+    
+    class HomePage {
+        -welcomeMessage
+        -navigationMenu
+        -userProfile
+        +isDisplayed()
+        +navigateTo(section)
+        +getWelcomeText()
+    }
+    
+    class ProductPage {
+        -productList
+        -filterOptions
+        -sortOptions
+        +filterBy(criteria)
+        +sortBy(criteria)
+        +selectProduct(productName)
+    }
+    
+    class CheckoutPage {
+        -addressForm
+        -paymentForm
+        -submitButton
+        +enterShippingDetails(address)
+        +enterPaymentDetails(payment)
+        +completeCheckout()
+    }
+    
+    BasePage <|-- LoginPage
+    BasePage <|-- HomePage
+    BasePage <|-- ProductPage
+    BasePage <|-- CheckoutPage
+    
+    LoginPage --> HomePage : navigates to
+    HomePage --> ProductPage : navigates to
+    ProductPage --> CheckoutPage : navigates to
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: {
+                primaryColor: '#3498db',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#1f77b4',
+                lineColor: '#f8f9fa',
+                secondaryColor: '#6c757d',
+                tertiaryColor: '#2c3e50',
+                background: '#1e1e2e',
+                mainBkg: '#2c3e50',
+                nodeBorder: '#3498db',
+                clusterBkg: 'rgba(52, 152, 219, 0.2)',
+                clusterBorder: '#3498db',
+                titleColor: '#3498db'
+            }
+        });
+    </script>
+</body>
+</html>
