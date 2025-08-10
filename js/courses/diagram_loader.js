@@ -1,5 +1,22 @@
 // Diagram loader for Mermaid markdown files
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize mermaid first
+    if (typeof mermaid !== 'undefined') {
+        mermaid.initialize({ 
+            startOnLoad: false,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: { 
+                primaryColor: "#4fd1c7", 
+                primaryTextColor: "#fff", 
+                primaryBorderColor: "#4fd1c7", 
+                lineColor: "#f8f9fa", 
+                secondaryColor: "#6c757d", 
+                tertiaryColor: "#2c3e50" 
+            } 
+        });
+    }
+    
     // Find all img tags that reference .md files
     const diagramImages = document.querySelectorAll('img[src$=".md"]');
     
@@ -12,11 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.createElement('div');
         container.className = 'mermaid-container';
         container.id = diagramId + '-container';
+        container.style.cssText = 'margin: 20px 0; padding: 20px; background: rgba(26, 32, 44, 0.8); border-radius: 8px; text-align: center;';
         
         // Create the mermaid div
         const mermaidDiv = document.createElement('div');
         mermaidDiv.className = 'mermaid';
         mermaidDiv.id = diagramId;
+        mermaidDiv.style.cssText = 'background: transparent; color: white;';
         
         // Add loading indicator
         mermaidDiv.innerHTML = 'Loading diagram...';
@@ -44,24 +63,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (mermaidCode) {
                     // Set the mermaid code to the div
-                    mermaidDiv.innerHTML = mermaidCode;
+                    mermaidDiv.textContent = mermaidCode;
                     
                     // Render the diagram if mermaid is loaded
                     if (typeof mermaid !== 'undefined') {
                         try {
-                            mermaid.init(undefined, mermaidDiv);
+                            // Use mermaid.render for newer versions
+                            mermaid.render(diagramId + '-svg', mermaidCode).then(function(result) {
+                                mermaidDiv.innerHTML = result.svg;
+                            }).catch(function(error) {
+                                console.error('Mermaid rendering error:', error);
+                                // Fallback to init method
+                                mermaidDiv.innerHTML = mermaidCode;
+                                mermaid.init(undefined, mermaidDiv);
+                            });
                         } catch (error) {
-                            console.error('Error rendering mermaid diagram:', error);
-                            mermaidDiv.innerHTML = 'Error rendering diagram: ' + error.message;
+                            console.error('Mermaid rendering error:', error);
+                            // Fallback to init method
+                            mermaidDiv.innerHTML = mermaidCode;
+                            try {
+                                mermaid.init(undefined, mermaidDiv);
+                            } catch (initError) {
+                                console.error('Mermaid init error:', initError);
+                                mermaidDiv.innerHTML = '<p style="color: #ff6b6b;">Error rendering diagram</p>';
+                            }
                         }
+                    } else {
+                        console.warn('Mermaid library not loaded');
+                        mermaidDiv.innerHTML = '<p style="color: #ffa500;">Mermaid library not loaded</p>';
                     }
                 } else {
-                    mermaidDiv.innerHTML = 'No valid mermaid diagram found in the source file.';
+                    mermaidDiv.innerHTML = '<p style="color: #ff6b6b;">No valid mermaid diagram found in the source file.</p>';
                 }
             })
             .catch(error => {
                 console.error('Error loading diagram:', error);
-                mermaidDiv.innerHTML = 'Error loading diagram: ' + error.message;
+                mermaidDiv.innerHTML = '<p style="color: #ff6b6b;">Error loading diagram: ' + error.message + '</p>';
             });
     });
     

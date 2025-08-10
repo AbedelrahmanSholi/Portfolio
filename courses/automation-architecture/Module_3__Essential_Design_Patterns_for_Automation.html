@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Security Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()">
+
+    <link rel="stylesheet" href="../../css/courses/course_portfolio_style.css">
+    <link rel="stylesheet" href="../../css/courses/enhanced_course_styling.css">
+    <link rel="stylesheet" href="../../css/courses/automation_architecture_fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3: Essential Design Patterns for Automation | Automation Architecture Course</title>
+    <style>
+        .pattern-category {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .pattern-example {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin: 15px 0;
+        .pattern-benefits {
+            background: #e8f5e8;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+        .pattern-drawbacks {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+        .pattern-diagram {
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            text-align: center;
+            font-family: monospace;
+    </style>
+</head>
+<body>
+    <div class="course-container">
+        <!-- Course Header -->
+        <header class="course-header">
+            <div class="course-breadcrumb">
+                <a href="overview.html">Automation Architecture Course</a> > 
+                <span>Module 3: Essential Design Patterns for Automation</span>
+            </div>
+            <h1 class="course-title">Module 3: Essential Design Patterns for Automation</h1>
+            <div class="course-meta">
+                <span class="duration">⏱️ 75 minutes</span>
+                <span class="level">📈 Advanced</span>
+                <span class="type">🎨 Design Patterns</span>
+        </header>
+        <!-- Module Navigation -->
+        <nav class="module-nav">
+            <div class="nav-container">
+                <a href="Module_2__SOLID_Principles_in_Test_Automation.html" class="nav-btn prev">← Module 2: SOLID Principles</a>
+                <span class="nav-progress">Module 3 of 8</span>
+                <a href="Module_4__Advanced_Page_Object_Patterns.html" class="nav-btn next">Module 4: Page Object Patterns →</a>
+        </nav>
+        <!-- Module Content -->
+        <main class="module-content">
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2>🎯 Learning Objectives</h2>
+                <div class="objectives-grid">
+                    <div class="objective-item">
+                        <h3>Master Creational Patterns</h3>
+                        <p>Implement Builder, Factory, and Singleton patterns in automation frameworks</p>
+                    </div>
+                        <h3>Apply Structural Patterns</h3>
+                        <p>Use Adapter, Decorator, and Facade patterns for better code organization</p>
+                        <h3>Implement Behavioral Patterns</h3>
+                        <p>Apply Strategy, Observer, Command, and Template Method patterns</p>
+                        <h3>Choose Appropriate Patterns</h3>
+                        <p>Select the right pattern for specific automation challenges</p>
+                </div>
+            </section>
+            <!-- Introduction -->
+            <section class="content-section">
+                <h2>🎨 Design Patterns in Test Automation</h2>
+                <p>Design patterns are proven solutions to recurring problems in software design. In test automation, they help us create more maintainable, flexible, and robust frameworks. This module covers the most essential patterns for automation engineers.</p>
+                
+                <div class="principle-box">
+                    <h3>💡 Why Design Patterns Matter in Automation</h3>
+                    <ul>
+                        <li><strong>Reusability:</strong> Solve similar problems consistently</li>
+                        <li><strong>Communication:</strong> Provide a common vocabulary for teams</li>
+                        <li><strong>Best Practices:</strong> Leverage proven solutions</li>
+                        <li><strong>Maintainability:</strong> Create more organized, understandable code</li>
+                    </ul>
+            <!-- Creational Patterns -->
+                <div class="pattern-category">
+                    <h2>🏗️ Creational Patterns</h2>
+                    <p>These patterns deal with object creation mechanisms, trying to create objects in a manner suitable to the situation.</p>
+                <!-- Builder Pattern -->
+                <h3>🔨 Builder Pattern</h3>
+                <p>The Builder pattern is perfect for creating complex test objects with many optional parameters.</p>
+                <div class="pattern-example">
+                    <h4>Problem: Complex Test Data Creation</h4>
+                    <div class="code-example">
+                        <pre><code>// ❌ Without Builder - hard to read and maintain
+User user = new User("John", "Doe", "john@example.com", "password123", 
+                    "Admin", "Engineering", "Senior", true, false, 
+                    "2023-01-01", "Manager", "New York", "555-1234");</code></pre>
+                    <h4>✅ Solution: Builder Pattern Implementation</h4>
+                        <pre><code>// Builder for creating test users
+public class UserBuilder {
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String role = "User";  // Default value
+    private String department;
+    private String level;
+    private boolean isActive = true;  // Default value
+    private boolean isVerified = false;  // Default value
+    private String startDate;
+    private String manager;
+    private String location;
+    private String phone;
+    public UserBuilder firstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+    public UserBuilder lastName(String lastName) {
+        this.lastName = lastName;
+    public UserBuilder email(String email) {
+        this.email = email;
+    public UserBuilder password(String password) {
+        this.password = password;
+    public UserBuilder role(String role) {
+        this.role = role;
+    public UserBuilder department(String department) {
+        this.department = department;
+    public UserBuilder asAdmin() {
+        this.role = "Admin";
+        this.isVerified = true;
+    public UserBuilder asManager() {
+        this.role = "Manager";
+    public UserBuilder inDepartment(String department) {
+    public UserBuilder withPhone(String phone) {
+        this.phone = phone;
+    public User build() {
+        // Validation
+        if (firstName == null || lastName == null || email == null) {
+            throw new IllegalStateException("Required fields missing");
+        return new User(firstName, lastName, email, password, role, 
+                       department, level, isActive, isVerified, 
+                       startDate, manager, location, phone);
+}
+// Usage in tests - much more readable
+@Test
+public void testAdminUserCreation() {
+    User admin = new UserBuilder()
+        .firstName("John")
+        .lastName("Doe")
+        .email("john.doe@company.com")
+        .password("securePassword123")
+        .asAdmin()
+        .inDepartment("Engineering")
+        .withPhone("555-1234")
+        .build();
+    // Test admin user creation
+    userService.createUser(admin);
+    Assert.assertTrue(userService.isUserAdmin(admin.getEmail()));
+public void testRegularUserCreation() {
+    User user = new UserBuilder()
+        .firstName("Jane")
+        .lastName("Smith")
+        .email("jane.smith@company.com")
+        .password("password123")
+        .inDepartment("Marketing")
+        .build();  // Uses default role "User"
+    userService.createUser(user);
+    Assert.assertFalse(userService.isUserAdmin(user.getEmail()));
+}</code></pre>
+                <div class="pattern-benefits">
+                    <h4>✅ Builder Pattern Benefits</h4>
+                        <li>Readable and fluent API for object creation</li>
+                        <li>Handles optional parameters elegantly</li>
+                        <li>Provides validation at build time</li>
+                        <li>Supports method chaining for better readability</li>
+                        <li>Easy to add new fields without breaking existing code</li>
+                <!-- Factory Pattern -->
+                <h3>🏭 Factory Pattern</h3>
+                <p>The Factory pattern provides an interface for creating objects without specifying their exact class.</p>
+                    <h4>✅ WebDriver Factory Implementation</h4>
+                        <pre><code>// Abstract factory for WebDriver creation
+public abstract class WebDriverFactory {
+    public abstract WebDriver createDriver();
+    public static WebDriverFactory getFactory(String browserType) {
+        switch (browserType.toLowerCase()) {
+            case "chrome":
+                return new ChromeDriverFactory();
+            case "firefox":
+                return new FirefoxDriverFactory();
+            case "edge":
+                return new EdgeDriverFactory();
+            case "safari":
+                return new SafariDriverFactory();
+            default:
+                throw new IllegalArgumentException("Browser type not supported: " + browserType);
+// Concrete factories
+public class ChromeDriverFactory extends WebDriverFactory {
+    @Override
+    public WebDriver createDriver() {
+        ChromeOptions options = new ChromeOptions();
+        // Add common Chrome options
+        options.addArguments("--disable-web-security");
+        options.addArguments("--disable-features=VizDisplayCompositor");
+        options.addArguments("--no-sandbox");
+        // Add environment-specific options
+        if (isHeadlessMode()) {
+            options.addArguments("--headless");
+        if (isRemoteExecution()) {
+            return new RemoteWebDriver(getRemoteUrl(), options);
+        return new ChromeDriver(options);
+    private boolean isHeadlessMode() {
+        return Boolean.parseBoolean(System.getProperty("headless", "false"));
+    private boolean isRemoteExecution() {
+        return System.getProperty("remote.url") != null;
+    private URL getRemoteUrl() {
+        try {
+            return new URL(System.getProperty("remote.url"));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Invalid remote URL", e);
+public class FirefoxDriverFactory extends WebDriverFactory {
+        FirefoxOptions options = new FirefoxOptions();
+        // Add Firefox-specific options
+        options.addPreference("security.tls.insecure_fallback_hosts", "localhost");
+        options.addPreference("browser.download.folderList", 2);
+        return new FirefoxDriver(options);
+// Usage in tests
+public class BaseTest {
+    protected WebDriver driver;
+    @BeforeMethod
+    public void setUp() {
+        String browserType = System.getProperty("browser", "chrome");
+        WebDriverFactory factory = WebDriverFactory.getFactory(browserType);
+        driver = factory.createDriver();
+    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+                <!-- Singleton Pattern -->
+                <h3>🎯 Singleton Pattern</h3>
+                <p>The Singleton pattern ensures a class has only one instance and provides global access to it.</p>
+                    <h4>✅ Configuration Manager Singleton</h4>
+                        <pre><code>// Thread-safe Singleton for configuration management
+public class ConfigurationManager {
+    private static volatile ConfigurationManager instance;
+    private Properties properties;
+    private static final Object lock = new Object();
+    private ConfigurationManager() {
+        loadConfiguration();
+    public static ConfigurationManager getInstance() {
+        if (instance == null) {
+            synchronized (lock) {
+                if (instance == null) {
+                    instance = new ConfigurationManager();
+                }
+            }
+        return instance;
+    private void loadConfiguration() {
+        properties = new Properties();
+        String environment = System.getProperty("env", "dev");
+        try (InputStream input = getClass().getClassLoader()
+                .getResourceAsStream("config/" + environment + ".properties")) {
+            if (input != null) {
+                properties.load(input);
+            } else {
+                throw new RuntimeException("Configuration file not found for environment: " + environment);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load configuration", e);
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    public String getProperty(String key, String defaultValue) {
+        return properties.getProperty(key, defaultValue);
+    public String getBaseUrl() {
+        return getProperty("base.url");
+    public String getDatabaseUrl() {
+        return getProperty("database.url");
+    public int getTimeout() {
+        return Integer.parseInt(getProperty("timeout", "30"));
+    public boolean isHeadlessMode() {
+        return Boolean.parseBoolean(getProperty("headless", "false"));
+public class LoginTest {
+    private ConfigurationManager config = ConfigurationManager.getInstance();
+    @Test
+    public void testLogin() {
+        driver.get(config.getBaseUrl() + "/login");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(config.getTimeout()));
+        // ... rest of test
+                <div class="pattern-drawbacks">
+                    <h4>⚠️ Singleton Pattern Considerations</h4>
+                        <li>Can make unit testing difficult (global state)</li>
+                        <li>May create hidden dependencies</li>
+                        <li>Consider dependency injection as an alternative</li>
+                        <li>Use sparingly and only when truly needed</li>
+            <!-- Structural Patterns -->
+                    <h2>🏛️ Structural Patterns</h2>
+                    <p>These patterns deal with object composition and typically identify simple ways to realize relationships between entities.</p>
+                <!-- Adapter Pattern -->
+                <h3>🔌 Adapter Pattern</h3>
+                <p>The Adapter pattern allows incompatible interfaces to work together.</p>
+                    <h4>✅ API Response Adapter</h4>
+                        <pre><code>// Different API response formats that need to be unified
+public class LegacyApiResponse {
+    private String status_code;
+    private String response_message;
+    private Object response_data;
+    // Getters and setters
+public class ModernApiResponse {
+    private int statusCode;
+    private String message;
+    private Object data;
+// Common interface for test assertions
+public interface ApiResponse {
+    int getStatusCode();
+    String getMessage();
+    Object getData();
+    boolean isSuccess();
+// Adapters to make different APIs work with common interface
+public class LegacyApiAdapter implements ApiResponse {
+    private LegacyApiResponse legacyResponse;
+    public LegacyApiAdapter(LegacyApiResponse legacyResponse) {
+        this.legacyResponse = legacyResponse;
+    public int getStatusCode() {
+        return Integer.parseInt(legacyResponse.getStatus_code());
+    public String getMessage() {
+        return legacyResponse.getResponse_message();
+    public Object getData() {
+        return legacyResponse.getResponse_data();
+    public boolean isSuccess() {
+        return getStatusCode() >= 200 && getStatusCode() < 300;
+public class ModernApiAdapter implements ApiResponse {
+    private ModernApiResponse modernResponse;
+    public ModernApiAdapter(ModernApiResponse modernResponse) {
+        this.modernResponse = modernResponse;
+        return modernResponse.getStatusCode();
+        return modernResponse.getMessage();
+        return modernResponse.getData();
+// Unified test methods
+public class ApiTestHelper {
+    public void validateSuccessResponse(ApiResponse response) {
+        Assert.assertTrue(response.isSuccess(), 
+            "Expected success but got: " + response.getStatusCode());
+        Assert.assertNotNull(response.getData(), "Response data should not be null");
+    public void validateErrorResponse(ApiResponse response, int expectedCode) {
+        Assert.assertEquals(response.getStatusCode(), expectedCode);
+        Assert.assertFalse(response.isSuccess());
+// Usage in tests - same test logic for different APIs
+public void testLegacyApiSuccess() {
+    LegacyApiResponse legacyResponse = legacyApiClient.getUser("123");
+    ApiResponse response = new LegacyApiAdapter(legacyResponse);
+    apiTestHelper.validateSuccessResponse(response);
+public void testModernApiSuccess() {
+    ModernApiResponse modernResponse = modernApiClient.getUser("123");
+    ApiResponse response = new ModernApiAdapter(modernResponse);
+                <!-- Decorator Pattern -->
+                <h3>🎨 Decorator Pattern</h3>
+                <p>The Decorator pattern allows behavior to be added to objects dynamically without altering their structure.</p>
+                    <h4>✅ Enhanced WebDriver with Logging and Screenshots</h4>
+                        <pre><code>// Base WebDriver interface
+public interface EnhancedWebDriver extends WebDriver {
+    void takeScreenshot(String testName);
+    void logAction(String action);
+// Basic implementation
+public class BasicWebDriver implements EnhancedWebDriver {
+    private WebDriver driver;
+    public BasicWebDriver(WebDriver driver) {
+        this.driver = driver;
+    public void get(String url) {
+        driver.get(url);
+    public WebElement findElement(By by) {
+        return driver.findElement(by);
+    public void takeScreenshot(String testName) {
+        // Basic screenshot implementation
+    public void logAction(String action) {
+        // Basic logging
+    // Delegate other WebDriver methods...
+// Decorator base class
+public abstract class WebDriverDecorator implements EnhancedWebDriver {
+    protected EnhancedWebDriver driver;
+    public WebDriverDecorator(EnhancedWebDriver driver) {
+        driver.takeScreenshot(testName);
+        driver.logAction(action);
+    // Delegate other methods...
+// Concrete decorators
+public class LoggingWebDriverDecorator extends WebDriverDecorator {
+    private Logger logger = LoggerFactory.getLogger(LoggingWebDriverDecorator.class);
+    public LoggingWebDriverDecorator(EnhancedWebDriver driver) {
+        super(driver);
+        logger.info("Navigating to: " + url);
+        long startTime = System.currentTimeMillis();
+        super.get(url);
+        long duration = System.currentTimeMillis() - startTime;
+        logger.info("Navigation completed in " + duration + "ms");
+        logger.info("Finding element: " + by.toString());
+            WebElement element = super.findElement(by);
+            logger.info("Element found successfully");
+            return element;
+        } catch (NoSuchElementException e) {
+            logger.error("Element not found: " + by.toString());
+            throw e;
+public class ScreenshotWebDriverDecorator extends WebDriverDecorator {
+    private int screenshotCounter = 0;
+    public ScreenshotWebDriverDecorator(EnhancedWebDriver driver) {
+        takeScreenshot("after_navigation_" + (++screenshotCounter));
+            return super.findElement(by);
+            takeScreenshot("element_not_found_" + (++screenshotCounter));
+        // Enhanced screenshot with timestamp and test context
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String fileName = testName + "_" + timestamp + ".png";
+        // Implementation to save screenshot
+        super.takeScreenshot(fileName);
+// Usage - can combine multiple decorators
+public void testWithEnhancedDriver() {
+    WebDriver baseDriver = new ChromeDriver();
+    // Wrap with multiple decorators
+    EnhancedWebDriver enhancedDriver = new ScreenshotWebDriverDecorator(
+        new LoggingWebDriverDecorator(
+            new BasicWebDriver(baseDriver)
+        )
+    );
+    // Now every action is logged and screenshots are taken automatically
+    enhancedDriver.get("https://example.com");
+    enhancedDriver.findElement(By.id("username")).sendKeys("testuser");
+                <!-- Facade Pattern -->
+                <h3>🏢 Facade Pattern</h3>
+                <p>The Facade pattern provides a simplified interface to a complex subsystem.</p>
+                    <h4>✅ Test Environment Facade</h4>
+                        <pre><code>// Complex subsystems
+public class DatabaseManager {
+    public void connectToDatabase() { /* implementation */ }
+    public void executeQuery(String sql) { /* implementation */ }
+    public void closeConnection() { /* implementation */ }
+public class ApiClient {
+    public void authenticate() { /* implementation */ }
+    public Response sendRequest(String endpoint) { /* implementation */ }
+    public void logout() { /* implementation */ }
+public class FileManager {
+    public void createTestDataFile() { /* implementation */ }
+    public void cleanupTempFiles() { /* implementation */ }
+public class ReportGenerator {
+    public void initializeReport() { /* implementation */ }
+    public void addTestResult(TestResult result) { /* implementation */ }
+    public void generateFinalReport() { /* implementation */ }
+// Facade to simplify test environment setup
+public class TestEnvironmentFacade {
+    private DatabaseManager dbManager;
+    private ApiClient apiClient;
+    private FileManager fileManager;
+    private ReportGenerator reportGenerator;
+    public TestEnvironmentFacade() {
+        this.dbManager = new DatabaseManager();
+        this.apiClient = new ApiClient();
+        this.fileManager = new FileManager();
+        this.reportGenerator = new ReportGenerator();
+    public void setupTestEnvironment() {
+        System.out.println("Setting up test environment...");
+        // Complex setup process simplified into one method
+        dbManager.connectToDatabase();
+        apiClient.authenticate();
+        fileManager.createTestDataFile();
+        reportGenerator.initializeReport();
+        System.out.println("Test environment ready!");
+    public void executeTestSuite(List&lt;TestCase&gt; testCases) {
+        System.out.println("Executing test suite...");
+        for (TestCase testCase : testCases) {
+            try {
+                // Execute test logic
+                TestResult result = executeTest(testCase);
+                reportGenerator.addTestResult(result);
+            } catch (Exception e) {
+                TestResult failedResult = new TestResult(testCase.getName(), "FAILED", e.getMessage());
+                reportGenerator.addTestResult(failedResult);
+    public void teardownTestEnvironment() {
+        System.out.println("Tearing down test environment...");
+        // Complex cleanup process simplified
+        reportGenerator.generateFinalReport();
+        fileManager.cleanupTempFiles();
+        apiClient.logout();
+        dbManager.closeConnection();
+        System.out.println("Test environment cleaned up!");
+    private TestResult executeTest(TestCase testCase) {
+        // Simplified test execution
+        return new TestResult(testCase.getName(), "PASSED", "Test completed successfully");
+// Usage - complex operations simplified
+public void testCompleteWorkflow() {
+    TestEnvironmentFacade testEnv = new TestEnvironmentFacade();
+    // Simple interface hides complex setup
+    testEnv.setupTestEnvironment();
+    List&lt;TestCase&gt; testCases = Arrays.asList(
+        new TestCase("Login Test"),
+        new TestCase("User Creation Test"),
+        new TestCase("Data Validation Test")
+    testEnv.executeTestSuite(testCases);
+    testEnv.teardownTestEnvironment();
+            <!-- Behavioral Patterns -->
+                    <h2>🎭 Behavioral Patterns</h2>
+                    <p>These patterns focus on communication between objects and the assignment of responsibilities between objects.</p>
+                <!-- Strategy Pattern -->
+                <h3>🎯 Strategy Pattern</h3>
+                <p>The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable.</p>
+                    <h4>✅ Test Data Generation Strategies</h4>
+                        <pre><code>// Strategy interface
+public interface TestDataStrategy {
+    TestData generateTestData(String testType);
+// Concrete strategies
+public class RandomTestDataStrategy implements TestDataStrategy {
+    private Random random = new Random();
+    public TestData generateTestData(String testType) {
+        switch (testType) {
+            case "user":
+                return new TestData()
+                    .put("username", "user" + random.nextInt(10000))
+                    .put("email", "test" + random.nextInt(10000) + "@example.com")
+                    .put("password", generateRandomPassword());
+            case "product":
+                    .put("name", "Product " + random.nextInt(1000))
+                    .put("price", random.nextDouble() * 100)
+                    .put("category", getRandomCategory());
+                throw new IllegalArgumentException("Unknown test type: " + testType);
+    private String generateRandomPassword() {
+        return "Pass" + random.nextInt(10000) + "!";
+    private String getRandomCategory() {
+        String[] categories = {"Electronics", "Books", "Clothing", "Home"};
+        return categories[random.nextInt(categories.length)];
+public class DatabaseTestDataStrategy implements TestDataStrategy {
+    private DatabaseConnection dbConnection;
+    public DatabaseTestDataStrategy(DatabaseConnection dbConnection) {
+        this.dbConnection = dbConnection;
+                return loadUserFromDatabase();
+                return loadProductFromDatabase();
+    private TestData loadUserFromDatabase() {
+        // Load existing user data from database
+        String query = "SELECT * FROM test_users WHERE status = 'active' ORDER BY RAND() LIMIT 1";
+        ResultSet rs = dbConnection.executeQuery(query);
+        return new TestData()
+            .put("username", rs.getString("username"))
+            .put("email", rs.getString("email"))
+            .put("password", rs.getString("password"));
+    private TestData loadProductFromDatabase() {
+        // Load existing product data from database
+        String query = "SELECT * FROM test_products WHERE available = true ORDER BY RAND() LIMIT 1";
+            .put("name", rs.getString("name"))
+            .put("price", rs.getDouble("price"))
+            .put("category", rs.getString("category"));
+public class FileTestDataStrategy implements TestDataStrategy {
+    private String dataFilePath;
+    public FileTestDataStrategy(String dataFilePath) {
+        this.dataFilePath = dataFilePath;
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode rootNode = mapper.readTree(new File(dataFilePath));
+            JsonNode testTypeNode = rootNode.get(testType);
+            
+            if (testTypeNode == null) {
+                throw new IllegalArgumentException("Test type not found in file: " + testType);
+            // Return first available test data
+            JsonNode dataNode = testTypeNode.get(0);
+            TestData testData = new TestData();
+            dataNode.fields().forEachRemaining(entry -> 
+                testData.put(entry.getKey(), entry.getValue().asText()));
+            return testData;
+            throw new RuntimeException("Failed to load test data from file", e);
+// Context class that uses strategies
+public class TestDataGenerator {
+    private TestDataStrategy strategy;
+    public TestDataGenerator(TestDataStrategy strategy) {
+        this.strategy = strategy;
+    public void setStrategy(TestDataStrategy strategy) {
+    public TestData generateData(String testType) {
+        return strategy.generateTestData(testType);
+// Usage in tests - can switch strategies easily
+public class UserRegistrationTest {
+    private TestDataGenerator dataGenerator;
+        // Choose strategy based on test requirements
+        String dataSource = System.getProperty("test.data.source", "random");
+        switch (dataSource) {
+            case "database":
+                dataGenerator = new TestDataGenerator(new DatabaseTestDataStrategy(dbConnection));
+                break;
+            case "file":
+                dataGenerator = new TestDataGenerator(new FileTestDataStrategy("test-data.json"));
+                dataGenerator = new TestDataGenerator(new RandomTestDataStrategy());
+    public void testUserRegistration() {
+        TestData userData = dataGenerator.generateData("user");
+        // Use the generated data in test
+        registrationPage.fillUsername(userData.getString("username"));
+        registrationPage.fillEmail(userData.getString("email"));
+        registrationPage.fillPassword(userData.getString("password"));
+        registrationPage.submit();
+        Assert.assertTrue(registrationPage.isRegistrationSuccessful());
+                <!-- Observer Pattern -->
+                <h3>👁️ Observer Pattern</h3>
+                <p>The Observer pattern defines a one-to-many dependency between objects so that when one object changes state, all dependents are notified.</p>
+                    <h4>✅ Test Execution Observer</h4>
+                        <pre><code>// Observer interface
+public interface TestExecutionObserver {
+    void onTestStart(String testName);
+    void onTestPass(String testName, long duration);
+    void onTestFail(String testName, long duration, String error);
+    void onTestSkip(String testName, String reason);
+// Concrete observers
+public class ConsoleReportObserver implements TestExecutionObserver {
+    public void onTestStart(String testName) {
+        System.out.println("🚀 Starting test: " + testName);
+    public void onTestPass(String testName, long duration) {
+        System.out.println("✅ PASSED: " + testName + " (" + duration + "ms)");
+    public void onTestFail(String testName, long duration, String error) {
+        System.out.println("❌ FAILED: " + testName + " (" + duration + "ms) - " + error);
+    public void onTestSkip(String testName, String reason) {
+        System.out.println("⏭️ SKIPPED: " + testName + " - " + reason);
+public class SlackNotificationObserver implements TestExecutionObserver {
+    private SlackClient slackClient;
+    public SlackNotificationObserver(SlackClient slackClient) {
+        this.slackClient = slackClient;
+        // Only notify for critical tests
+        if (testName.contains("Critical")) {
+            slackClient.sendMessage("🚀 Starting critical test: " + testName);
+        // No notification for passing tests to avoid spam
+        String message = String.format("❌ Test Failed: %s\nDuration: %dms\nError: %s", 
+                                     testName, duration, error);
+        slackClient.sendMessage(message);
+            slackClient.sendMessage("⚠️ Critical test skipped: " + testName + " - " + reason);
+public class DatabaseMetricsObserver implements TestExecutionObserver {
+    private MetricsDatabase metricsDb;
+    public DatabaseMetricsObserver(MetricsDatabase metricsDb) {
+        this.metricsDb = metricsDb;
+        metricsDb.recordTestStart(testName, System.currentTimeMillis());
+        metricsDb.recordTestResult(testName, "PASSED", duration, null);
+        metricsDb.recordTestResult(testName, "FAILED", duration, error);
+        metricsDb.recordTestResult(testName, "SKIPPED", 0, reason);
+// Subject (Observable)
+public class TestExecutionManager {
+    private List&lt;TestExecutionObserver&gt; observers = new ArrayList&lt;&gt;();
+    public void addObserver(TestExecutionObserver observer) {
+        observers.add(observer);
+    public void removeObserver(TestExecutionObserver observer) {
+        observers.remove(observer);
+    private void notifyTestStart(String testName) {
+        observers.forEach(observer -&gt; observer.onTestStart(testName));
+    private void notifyTestPass(String testName, long duration) {
+        observers.forEach(observer -&gt; observer.onTestPass(testName, duration));
+    private void notifyTestFail(String testName, long duration, String error) {
+        observers.forEach(observer -&gt; observer.onTestFail(testName, duration, error));
+    private void notifyTestSkip(String testName, String reason) {
+        observers.forEach(observer -&gt; observer.onTestSkip(testName, reason));
+    public void executeTest(TestCase testCase) {
+        String testName = testCase.getName();
+        notifyTestStart(testName);
+            if (testCase.shouldSkip()) {
+                notifyTestSkip(testName, testCase.getSkipReason());
+                return;
+            testCase.execute();
+            long duration = System.currentTimeMillis() - startTime;
+            notifyTestPass(testName, duration);
+        } catch (Exception e) {
+            notifyTestFail(testName, duration, e.getMessage());
+// Usage
+public void setupTestExecution() {
+    TestExecutionManager manager = new TestExecutionManager();
+    // Add multiple observers
+    manager.addObserver(new ConsoleReportObserver());
+    manager.addObserver(new SlackNotificationObserver(slackClient));
+    manager.addObserver(new DatabaseMetricsObserver(metricsDb));
+    // Execute tests - all observers will be notified automatically
+    List&lt;TestCase&gt; testCases = getTestCases();
+    testCases.forEach(manager::executeTest);
+            <!-- Pattern Selection Guide -->
+                <h2>🎯 Pattern Selection Criteria</h2>
+                <div class="pattern-diagram">
+                    <h3>When to Use Which Pattern</h3>
+                    <div style="text-align: left;">
+                        <p><strong>Builder:</strong> Complex object creation with many optional parameters</p>
+                        <p><strong>Factory:</strong> Creating objects without specifying exact classes</p>
+                        <p><strong>Singleton:</strong> Ensuring single instance (use sparingly)</p>
+                        <p><strong>Adapter:</strong> Making incompatible interfaces work together</p>
+                        <p><strong>Decorator:</strong> Adding behavior dynamically</p>
+                        <p><strong>Facade:</strong> Simplifying complex subsystems</p>
+                        <p><strong>Strategy:</strong> Interchangeable algorithms</p>
+                        <p><strong>Observer:</strong> One-to-many notifications</p>
+            <!-- Key Takeaways -->
+                <h2>🎯 Key Takeaways</h2>
+                <div class="takeaway-grid">
+                    <div class="takeaway-item">
+                        <h3>🏗️ Creational Patterns</h3>
+                        <p>Use Builder for complex objects, Factory for object creation flexibility, Singleton sparingly.</p>
+                        <h3>🏛️ Structural Patterns</h3>
+                        <p>Adapter for compatibility, Decorator for enhancement, Facade for simplification.</p>
+                        <h3>🎭 Behavioral Patterns</h3>
+                        <p>Strategy for algorithms, Observer for notifications, Command for operations.</p>
+                        <h3>🎯 Choose Wisely</h3>
+                        <p>Select patterns based on specific problems, not just because they exist.</p>
+        </main>
+        <!-- Module Navigation Footer -->
+        <nav class="module-nav-footer">
+                <div class="nav-center">
+                    <span class="completion-status">Module 3 Complete! 🎉</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 37.5%"></div>
+    </div>
+    <!-- Course Scripts -->
+    <!-- Course Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="../../js/courses/automation_architecture_fix.js"></script>
+    <script src="../../js/courses/course-navigation.js"></script>
+    <script src="../../js/courses/code-highlighting.js"></script>
+</body>
+</html>

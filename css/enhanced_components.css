@@ -505,3 +505,212 @@
         flex-direction: column;
     }
 }
+
+/* Enhanced Skills Text Alignment */
+.skill-item, .skills-grid .skill-card {
+    text-align: center !important;
+    padding: 15px !important;
+    line-height: 1.4 !important;
+}
+
+.skill-item h4, .skill-card h4 {
+    margin-bottom: 8px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+}
+
+.skill-item .skill-percentage, .skill-card .skill-percentage {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    margin-top: 5px !important;
+}
+
+.skill-progress-bar {
+    margin: 10px 0 !important;
+    height: 8px !important;
+    border-radius: 4px !important;
+}
+
+/* Remove excessive spacing */
+.skills-section .skill-item {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Industry Journey Cards */
+.industry-journey {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.industry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.industry-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.industry-card:hover {
+    transform: translateY(-10px);
+    border-color: #3498db;
+    box-shadow: 0 20px 40px rgba(52, 152, 219, 0.2);
+}
+
+.industry-icon {
+    font-size: 3rem;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.industry-card h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.industry-details {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.industry-card:hover .industry-details {
+    opacity: 1;
+    max-height: 300px;
+    margin-top: 20px;
+}
+
+.industry-details p {
+    color: #bbb;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.industry-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.industry-details li {
+    color: #3498db;
+    padding: 5px 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+.industry-details li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Test Management Icon Fix */
+.test-mgmt-icon {
+    font-size: 3rem !important;
+    color: #3498db !important;
+    margin-bottom: 15px !important;
+    display: block !important;
+    text-align: center !important;
+}
+
+.skill-card .test-mgmt-icon {
+    margin: 0 auto 15px auto !important;
+}
+
+/* Skills Text Spacing and Alignment Fix */
+.skills-section .skill-card {
+    text-align: center !important;
+    padding: 20px 15px !important;
+    line-height: 1.5 !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+}
+
+.skills-section .skill-card h4 {
+    margin-bottom: 12px !important;
+    font-weight: 600 !important;
+    font-size: 1.3rem !important;
+    line-height: 1.3 !important;
+    word-spacing: normal !important;
+    letter-spacing: 0.5px !important;
+}
+
+.skills-section .skill-card p {
+    line-height: 1.6 !important;
+    margin-bottom: 0 !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    text-align: center !important;
+    padding: 0 5px !important;
+}
+
+/* Remove excessive spacing */
+.skills-section .skill-card * {
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+}
+
+/* Ensure proper text wrapping */
+.skills-section .skill-card {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+}
+
+/* Fix any specific spacing issues */
+.skill-card p br {
+    display: none !important;
+}
+
+.skill-card p {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+}
+
+/* Social Media Icons Fix */
+.social-sharing a i {
+    font-size: 1.2rem !important;
+    color: #fff !important;
+    transition: color 0.3s ease !important;
+}
+
+.social-sharing a:hover i {
+    color: #3498db !important;
+}
+
+/* Specific social media colors */
+.social-sharing a[href*="linkedin"] i {
+    color: #0077b5 !important;
+}
+
+.social-sharing a[href*="twitter"] i {
+    color: #1da1f2 !important;
+}
+
+.social-sharing a[href*="facebook"] i {
+    color: #1877f2 !important;
+}
+
+.social-sharing a[href*="whatsapp"] i {
+    color: #25d366 !important;
+}
+
+.social-sharing a[href*="mailto"] i {
+    color: #ea4335 !important;
+}

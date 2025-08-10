@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()">
+
     <link rel="stylesheet" href="../../css/courses/comprehensive_course_styling.css">
+    <link rel="stylesheet" href="../../css/optimized/main.min.css">
+    <link rel="stylesheet" href="../../css/optimized/courses.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Module 5: CompletableFuture for Asynchronous Operations</title>
@@ -39,7 +48,8 @@
     
     <!-- Syntax highlighting for code blocks -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/atom-one-dark.min.css">
-</head>
+
+    <script src="../../js/courses/diagram_loader.js"></script></head>
 
 <body>
     <div class="course-content-wrapper">
@@ -435,26 +445,37 @@ public void testCancellation() {
     </div>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <script src="/js/courses/mermaid_loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Initialize Mermaid for diagram rendering
             if (typeof mermaid !== 'undefined') {
-                mermaid.initialize({ 
-                    startOnLoad: true, 
-                    theme: 'dark', 
-                    securityLevel: 'loose',
-                    themeVariables: {
-                        primaryColor: '#3498db',
-                        primaryTextColor: '#fff',
-                        primaryBorderColor: '#1f77b4',
-                        lineColor: '#f8f9fa',
-                        secondaryColor: '#6c757d',
-                        tertiaryColor: '#2c3e50'
-                    }
-                });
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: {
+                primaryColor: '#3498db',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#1f77b4',
+                lineColor: '#f8f9fa',
+                secondaryColor: '#6c757d',
+                tertiaryColor: '#2c3e50',
+                background: '#1e1e2e',
+                mainBkg: '#2c3e50',
+                nodeBorder: '#3498db',
+                clusterBkg: 'rgba(52, 152, 219, 0.2)',
+                clusterBorder: '#3498db',
+                titleColor: '#3498db'
+            }
+        });
+        
+        // Ensure diagram renders after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.init();
+        });
             }
 
             // Initialize syntax highlighting

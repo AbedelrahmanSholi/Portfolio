@@ -1,0 +1,176 @@
+/* Automation Architecture Course - Code Block Fixes */
+
+/* Fix for code blocks in automation architecture modules only */
+.course-container .code-example pre code {
+    /* Remove inline styles that cause conflicts */
+    border-radius: 8px !important;
+    overflow-x: auto !important;
+    white-space: pre !important;
+    word-break: normal !important;
+    /* Ensure proper text rendering */
+    font-family: 'Roboto Mono', 'Courier New', monospace !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+    /* Prevent HTML processing issues */
+    display: block !important;
+    padding: 1rem !important;
+    margin: 0 !important;
+    background: #1e1e2e !important;
+    color: #f8f9fa !important;
+    border: 1px solid rgba(52, 152, 219, 0.3) !important;
+}
+
+/* Specific fixes for automation architecture course */
+.course-container .code-example {
+    margin: 1.5rem 0 !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    border: 1px solid rgba(52, 152, 219, 0.3) !important;
+}
+
+.course-container .code-example h4 {
+    color: #3498db !important;
+    margin: 0 0 1rem 0 !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+}
+
+/* Ensure proper HTML entity handling */
+.course-container .code-example pre code .hljs-tag,
+.course-container .code-example pre code .hljs-name,
+.course-container .code-example pre code .hljs-attribute {
+    color: #e74c3c !important;
+}
+
+.course-container .code-example pre code .hljs-string {
+    color: #2ecc71 !important;
+}
+
+.course-container .code-example pre code .hljs-comment {
+    color: #95a5a6 !important;
+    font-style: italic !important;
+}
+
+.course-container .code-example pre code .hljs-keyword {
+    color: #9b59b6 !important;
+    font-weight: bold !important;
+}
+
+.course-container .code-example pre code .hljs-number {
+    color: #f39c12 !important;
+}
+
+/* Fix for Mermaid diagrams in automation architecture */
+.course-container .architecture-diagram {
+    margin: 2rem 0 !important;
+    padding: 1rem !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 15px !important;
+    border: 1px solid rgba(52, 152, 219, 0.3) !important;
+}
+
+.course-container .architecture-diagram h4 {
+    color: #3498db !important;
+    text-align: center !important;
+    margin: 0 0 1rem 0 !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+}
+
+.course-container .architecture-diagram .mermaid {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-radius: 10px !important;
+    padding: 1rem !important;
+    text-align: center !important;
+    min-height: 200px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Prevent content bleeding into code blocks */
+.course-container .code-example pre {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Fix for decision matrix and other content sections */
+.course-container .decision-matrix {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 1.5rem !important;
+    margin: 2rem 0 !important;
+}
+
+.course-container .decision-card {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    border: 1px solid rgba(52, 152, 219, 0.3) !important;
+}
+
+.course-container .decision-card h3 {
+    color: #3498db !important;
+    margin: 0 0 1rem 0 !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+}
+
+.course-container .decision-card h4 {
+    color: #f8f9fa !important;
+    margin: 1rem 0 0.5rem 0 !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+}
+
+.course-container .decision-card ul {
+    margin: 0 0 1rem 0 !important;
+    padding-left: 1.5rem !important;
+}
+
+.course-container .decision-card li {
+    color: #e9ecef !important;
+    margin: 0.5rem 0 !important;
+    line-height: 1.5 !important;
+}
+
+/* Ensure proper text separation from code blocks */
+.course-container h2,
+.course-container h3,
+.course-container h4,
+.course-container p {
+    clear: both !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Fix for challenge items */
+.course-container .challenge-item {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin: 1.5rem 0 !important;
+    border: 1px solid rgba(52, 152, 219, 0.3) !important;
+}
+
+.course-container .challenge-item h4 {
+    color: #3498db !important;
+    margin: 0 0 1rem 0 !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+}
+
+.course-container .challenge-item p {
+    color: #e9ecef !important;
+    margin: 0.5rem 0 !important;
+    line-height: 1.6 !important;
+}
+
+.course-container .challenge-item strong {
+    color: #f8f9fa !important;
+    font-weight: 600 !important;
+}
+

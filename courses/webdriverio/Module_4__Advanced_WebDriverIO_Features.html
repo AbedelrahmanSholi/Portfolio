@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../../css/courses/comprehensive_course_styling.css">
+    <!-- Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()">
+
+    <link rel="stylesheet" href="../../css/courses/course_portfolio_style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Module 4: Advanced WebDriverIO Features</title>
@@ -9,7 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
     <script src="../../js/courses/mermaid_loader.js"></script>
 </head>
 
@@ -24,7 +30,7 @@
             </a>
         </div>
 
-        <h1 id="module-3-advanced-webdriverio-features">Module 3: Advanced WebDriverIO Features</h1>
+        <h1 id="module-4-advanced-webdriverio-features">Module 4: Advanced WebDriverIO Features</h1>
 
         <h2 id="learning-objectives">Learning Objectives</h2>
         <ul>
@@ -35,7 +41,7 @@
             <li>Integrate with CI/CD pipelines</li>
         </ul>
 
-        <h2 id="31-advanced-configuration">3.1 Advanced Configuration</h2>
+        <h2 id="41-advanced-configuration">4.1 Advanced Configuration</h2>
 
         <h3 id="multi-browser-configuration">Multi-Browser Configuration</h3>
         <p>Configure WebDriverIO to run tests across multiple browsers simultaneously.</p>
@@ -102,7 +108,7 @@ exports.config = {
 };
 </code></pre>
 
-        <h2 id="32-custom-commands">3.2 Custom Commands</h2>
+        <h2 id="42-custom-commands">4.2 Custom Commands</h2>
 
         <h3 id="browser-custom-commands">Browser Custom Commands</h3>
         <p>Create reusable custom commands to extend WebDriverIO functionality.</p>
@@ -157,7 +163,7 @@ describe('Form Tests', () => {
 });
 </code></pre>
 
-        <h2 id="33-advanced-browser-interactions">3.3 Advanced Browser Interactions</h2>
+        <h2 id="43-advanced-browser-interactions">4.3 Advanced Browser Interactions</h2>
 
         <h3 id="window-and-tab-management">Window and Tab Management</h3>
         <pre><code>describe('Multi-Window Tests', () => {
@@ -206,7 +212,7 @@ describe('Form Tests', () => {
 });
 </code></pre>
 
-        <h2 id="34-performance-optimization">3.4 Performance Optimization</h2>
+        <h2 id="44-performance-optimization">4.4 Performance Optimization</h2>
 
         <h3 id="parallel-test-execution">Parallel Test Execution</h3>
         <pre><code>// wdio.conf.js
@@ -289,7 +295,7 @@ describe('User Management', () => {
 });
 </code></pre>
 
-        <h2 id="35-debugging-and-troubleshooting">3.5 Debugging and Troubleshooting</h2>
+        <h2 id="45-debugging-and-troubleshooting">4.5 Debugging and Troubleshooting</h2>
 
         <h3 id="debug-mode">Debug Mode</h3>
         <pre><code>describe('Debug Example', () => {
@@ -354,7 +360,6 @@ describe('User Management', () => {
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
     <script src="/js/courses/mermaid_loader.js"></script>
     <script src="/js/courses/mermaid_renderer.js"></script>
@@ -385,6 +390,7 @@ describe('User Management', () => {
             }
         });
     </script>
+    <script src="../../js/courses/mermaid_enhanced.js"></script>
 </body>
 </html>
 

@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../../../css/optimized/main.min.css">
+    <link rel="stylesheet" href="../../../css/optimized/courses.min.css">
+    <!-- Security Meta Tags -->    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; base-uri 'self'; form-action 'self';">"
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Object Model Diagram</title>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -17,9 +24,30 @@
             text-align: center;
         }
     </style>
-</head>
+
+    <script src="../../../js/courses/diagram_loader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof mermaid !== 'undefined') {
+                mermaid.initialize({ 
+                    startOnLoad: true,
+                    theme: 'dark',
+                    securityLevel: 'loose',
+                    themeVariables: { 
+                        primaryColor: "#4fd1c7", 
+                        primaryTextColor: "#fff", 
+                        primaryBorderColor: "#4fd1c7", 
+                        lineColor: "#f8f9fa", 
+                        secondaryColor: "#6c757d", 
+                        tertiaryColor: "#2c3e50" 
+                    } 
+                });
+            }
+        });
+    </script></head>
 <body>
     <div class="mermaid">
+        %%{init: {'theme':'dark', 'themeVariables': { 'primaryColor': '#4fd1c7', 'primaryTextColor': '#fff', 'primaryBorderColor': '#4fd1c7', 'lineColor': '#f8f9fa', 'secondaryColor': '#6c757d', 'tertiaryColor': '#2c3e50' }}}%%
         graph TD
             A[Test Class] --> B[Login Page]
             A --> C[Dashboard Page]
@@ -28,20 +56,20 @@
             B --> B1[Username Input]
             B --> B2[Password Input]
             B --> B3[Login Button]
-            B --> B4[login() method]
-            B --> B5[isErrorDisplayed() method]
+            B --> B4[login method]
+            B --> B5[isErrorDisplayed method]
             
             C --> C1[Welcome Message]
             C --> C2[Navigation Menu]
             C --> C3[User Info]
-            C --> C4[logout() method]
-            C --> C5[navigateToProfile() method]
+            C --> C4[logout method]
+            C --> C5[navigateToProfile method]
             
             D --> D1[Name Field]
             D --> D2[Email Field]
             D --> D3[Save Button]
-            D --> D4[updateProfile() method]
-            D --> D5[getProfileData() method]
+            D --> D4[updateProfile method]
+            D --> D5[getProfileData method]
             
             B4 --> E[WebDriver Commands]
             C4 --> E
@@ -59,16 +87,27 @@
     <script>
         mermaid.initialize({
             startOnLoad: true,
-            theme: "dark",
-            securityLevel: "loose",
+            theme: 'dark',
+            securityLevel: 'loose',
             themeVariables: {
-                primaryColor: "#3498db",
-                primaryTextColor: "#fff",
-                primaryBorderColor: "#1f77b4",
-                lineColor: "#f8f9fa",
-                secondaryColor: "#6c757d",
-                tertiaryColor: "#2c3e50"
+                primaryColor: '#3498db',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#1f77b4',
+                lineColor: '#f8f9fa',
+                secondaryColor: '#6c757d',
+                tertiaryColor: '#2c3e50',
+                background: '#1e1e2e',
+                mainBkg: '#2c3e50',
+                nodeBorder: '#3498db',
+                clusterBkg: 'rgba(52, 152, 219, 0.2)',
+                clusterBorder: '#3498db',
+                titleColor: '#3498db'
             }
+        });
+        
+        // Ensure diagram renders after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.init();
         });
     </script>
 </body>

@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../../css/courses/comprehensive_course_styling.css">
+    <!-- Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()">
+
+    <link rel="stylesheet" href="../../css/courses/course_portfolio_style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Module 11: Real-World Project Implementation</title>
@@ -9,9 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
     <script src="../../js/courses/mermaid_loader.js"></script>
-</head>
+
+    <script src="../../js/courses/diagram_loader.js"></script></head>
 
 <body>
     <div class="course-content-wrapper">
@@ -2164,6 +2171,15 @@ npm run test:ci
 
 <p>You now have the skills and knowledge to design, implement, and maintain professional-grade test automation frameworks using WebDriverIO.</p>
 
+        <div class="module-navigation bottom-nav">
+            <a href="Module_10__TestNG_Integration.html" class="nav-btn prev-btn">
+                <i class="fas fa-chevron-left"></i> Previous: TestNG Integration
+            </a>
+            <a href="../java/overview.html" class="nav-btn next-btn">
+                Next: Java Course Overview <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
     </div>
 
     <script>
@@ -2176,6 +2192,7 @@ npm run test:ci
             startOnLoad: true 
         });
     </script>
+    <script src="../../js/courses/mermaid_enhanced.js"></script>
 </body>
 </html>
 

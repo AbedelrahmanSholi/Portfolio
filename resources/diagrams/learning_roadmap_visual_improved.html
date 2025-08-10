@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="../../css/optimized/main.min.css">
+    <!-- Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()">
+
     <title>Learning Roadmap Visual</title>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <style>
         body {
             background-color: #18181B;
@@ -129,25 +137,25 @@ graph LR
             startOnLoad: true,
             theme: 'dark',
             securityLevel: 'loose',
-            logLevel: 'error',
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: 16,
             themeVariables: {
-                primaryColor: '#26a69a',
-                primaryTextColor: '#FFFFFF',
-                primaryBorderColor: '#333333',
-                lineColor: '#A1A1AA',
-                secondaryColor: '#2c3e50',
-                tertiaryColor: '#4db8ff',
-                background: '#18181B',
+                primaryColor: '#3498db',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#1f77b4',
+                lineColor: '#f8f9fa',
+                secondaryColor: '#6c757d',
+                tertiaryColor: '#2c3e50',
+                background: '#1e1e2e',
                 mainBkg: '#2c3e50',
-                nodeBorder: '#333333',
-                clusterBkg: 'rgba(38, 166, 154, 0.2)',
-                clusterBorder: '#26a69a',
-                titleColor: '#FFFFFF',
-                edgeLabelBackground: '#18181B',
-                textColor: '#FFFFFF'
+                nodeBorder: '#3498db',
+                clusterBkg: 'rgba(52, 152, 219, 0.2)',
+                clusterBorder: '#3498db',
+                titleColor: '#3498db'
             }
+        });
+        
+        // Ensure diagram renders after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.init();
         });
 
         // Zoom functionality

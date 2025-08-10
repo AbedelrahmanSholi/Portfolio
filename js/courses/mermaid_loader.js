@@ -33,3 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(mermaidScript);
     }
 });
+
+// Force mermaid initialization
+if (typeof mermaid !== "undefined") { mermaid.init(); }

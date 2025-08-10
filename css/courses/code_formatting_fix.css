@@ -1,0 +1,343 @@
+/* Code Formatting and Presentation Fixes */
+
+/* Code Examples */
+.code-example {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.code-example::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #e74c3c, #f39c12, #9b59b6, #3498db);
+}
+
+.code-example h4 {
+    color: #3498db;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.code-example pre {
+    background: #282a36 !important;
+    border: 2px solid #44475a !important;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: auto;
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #f8f8f2 !important;
+}
+
+.code-example code {
+    background: transparent !important;
+    padding: 0;
+    border: none;
+    font-family: 'Roboto Mono', monospace;
+    color: #f8f8f2 !important;
+}
+
+/* Inline Code */
+code {
+    background: rgba(68, 71, 90, 0.8) !important;
+    color: #74c0fc !important;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9em;
+    border: 1px solid rgba(116, 192, 252, 0.3);
+    font-weight: 600;
+}
+
+/* Best Practice Boxes */
+.best-practice {
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(46, 204, 113, 0.1));
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.best-practice::before {
+    content: '✅';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #27ae60;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.best-practice h4 {
+    color: #27ae60;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.best-practice ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.best-practice li {
+    margin-bottom: 8px;
+    color: #f8f9fa;
+}
+
+/* Principle Boxes */
+.principle-box {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.principle-box::before {
+    content: '💡';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: #3498db;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.principle-box h3 {
+    color: #3498db;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.principle-box p {
+    color: #f8f9fa;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.principle-box ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.principle-box li {
+    margin-bottom: 8px;
+    color: #f8f9fa;
+}
+
+.principle-box strong {
+    color: #3498db;
+    font-weight: 600;
+}
+
+/* Decision Matrix */
+.decision-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.decision-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.decision-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.decision-card h3 {
+    color: #f39c12;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.decision-card h4 {
+    color: #3498db;
+    margin: 20px 0 10px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.decision-card ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.decision-card li {
+    margin-bottom: 8px;
+    color: #f8f9fa;
+    line-height: 1.5;
+}
+
+/* Challenge Items */
+.challenge-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #e74c3c;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 25px 0;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.challenge-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    border-left-color: #e74c3c;
+    transform: translateX(5px);
+}
+
+.challenge-item h4 {
+    color: #e74c3c;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.challenge-item p {
+    color: #f8f9fa;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.challenge-item strong {
+    color: #3498db;
+    font-weight: 600;
+}
+
+/* Architecture Diagrams */
+.architecture-diagram {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    margin: 25px 0;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.architecture-diagram h4 {
+    color: #3498db;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.architecture-diagram .mermaid {
+    background: transparent;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+table th {
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+table td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8f9fa;
+    vertical-align: top;
+}
+
+table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+table code {
+    background: rgba(68, 71, 90, 0.8) !important;
+    color: #74c0fc !important;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 600;
+    border: 1px solid rgba(116, 192, 252, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .decision-matrix {
+        grid-template-columns: 1fr;
+    }
+    
+    .code-example pre {
+        font-size: 0.8rem;
+        padding: 15px;
+    }
+    
+    .challenge-item {
+        padding: 20px;
+    }
+    
+    .best-practice,
+    .principle-box {
+        padding: 20px;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+    
+    table th,
+    table td {
+        padding: 10px;
+    }
+}
+

@@ -1,0 +1,126 @@
+/* Global tooltip detached from rotating orbits */
+
+/* Hide old pseudo tooltips only inside orbital system */
+.orbital-system .tooltip::before,
+.orbital-system .tooltip::after,
+.orbital-system .orbit-item[data-tooltip]::before,
+.orbital-system .orbit-item[data-tooltip]::after,
+.orbital-system .orbit-center[data-tooltip]::before,
+.orbital-system .orbit-center[data-tooltip]::after { display: none !important; }
+
+/* Pause helper - for individual items only */
+.orbit-item.paused { 
+  animation-play-state: paused !important; 
+}
+
+/* Individual orbit item hover pause */
+.orbit-item:hover {
+  animation-play-state: paused !important;
+}
+
+/* Ensure orbit items are above other elements for proper event handling */
+.orbit-item, .orbit-center {
+  z-index: 100 !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure orbit rings don't block events */
+.orbit-ring {
+  pointer-events: none !important;
+}
+
+/* Global tooltip element appended to <body> */
+.global-orbit-tooltip {
+  position: fixed; /* detach from transforms */
+  max-width: 320px;
+  background: rgba(15,15,35,0.96);
+  color: #fff;
+  border: 2px solid #f39c12;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: 1.4;
+  z-index: 5000;
+  pointer-events: none; /* don't steal hover */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  transform: translate(-50%, -8px); /* default above center */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: normal;
+}
+.global-orbit-tooltip.visible { 
+  opacity: 1 !important; 
+}
+
+/* small arrow */
+.global-orbit-tooltip::after{
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -8px;
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #f39c12;
+}
+
+/* when placed below */
+.global-orbit-tooltip.below { transform: translate(-50%, 8px); }
+.global-orbit-tooltip.below::after{ top: -8px; bottom: auto; border-top: none; border-bottom: 8px solid #f39c12; }
+
+@media (max-width: 768px){
+  .global-orbit-tooltip { max-width: 260px; font-size: 12px; }
+}
+
+
+
+/* Global Skills Tooltip Styles */
+.global-skill-tooltip {
+    position: fixed;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 30, 60, 0.95));
+    color: #ffffff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 300px;
+    word-wrap: break-word;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(155, 89, 182, 0.3);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+}
+
+.global-skill-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.95);
+    z-index: -1;
+}
+
+/* Skill circles styling for proper event handling */
+.skill-circle {
+    z-index: 100 !important;
+    position: absolute !important;
+    pointer-events: auto !important;
+}
+
+/* Hide old pseudo tooltips for skills */
+.skills-circular-container .tooltip::before,
+.skills-circular-container .tooltip::after,
+.skills-circular-container .skill-circle[data-tooltip]::before,
+.skills-circular-container .skill-circle[data-tooltip]::after { 
+    display: none !important; 
+}
+

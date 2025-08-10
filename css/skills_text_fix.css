@@ -1,0 +1,83 @@
+/* Skills Text Spacing Fix - Enhanced */
+.skill-box p {
+    line-height: 1.6 !important;
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    text-align: left !important;
+    margin: 15px 0 !important;
+    padding: 0 15px !important;
+    font-size: 14px !important;
+    color: #b8c5d1 !important;
+    font-weight: 400 !important;
+    text-justify: auto !important;
+    hyphens: none !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+}
+
+/* Fix for skills section text alignment */
+.skills-container .skill-box p {
+    text-align: left !important;
+    line-height: 1.7 !important;
+    word-spacing: 0 !important;
+    letter-spacing: 0 !important;
+    white-space: normal !important;
+    padding: 0 20px !important;
+    margin: 15px 0 !important;
+}
+
+/* Ensure proper text wrapping and spacing */
+.skill-box {
+    text-align: left !important;
+    padding: 20px !important;
+}
+
+.skill-box h3 {
+    text-align: center !important;
+    margin-bottom: 15px !important;
+    line-height: 1.3 !important;
+}
+
+/* Fix for any extra spacing in skill descriptions */
+.skill-box p,
+.skills-container p {
+    word-spacing: normal !important;
+    letter-spacing: normal !important;
+    white-space: normal !important;
+    text-align: left !important;
+    line-height: 1.6 !important;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+/* Specific fix for skill card text content */
+.skills-container .skill-box {
+    padding: 25px 20px !important;
+}
+
+.skills-container .skill-box p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    color: #b8c5d1 !important;
+    margin: 15px 0 !important;
+    padding: 0 !important;
+    text-align: justify !important;
+    word-spacing: 0.1em !important;
+    letter-spacing: 0.02em !important;
+}
+
+/* Remove any conflicting styles */
+.skill-box * {
+    box-sizing: border-box !important;
+}
+
+/* Ensure consistent spacing across all skill cards */
+.skills-container {
+    gap: 20px !important;
+}
+
+.skills-container .skill-box {
+    margin-bottom: 20px !important;
+}
+

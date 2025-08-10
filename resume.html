@@ -1,115 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    <!-- Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abedelrahman Sholi - Resume</title>
-    <style>
-        body {
-            font-family: 'Calibri', 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
+        <style>
+        /* Reset and base styles */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            box-sizing: border-box;
         }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif !important;
+            line-height: 1.6 !important;
+            color: #333 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: #f9f9f9 !important;
+            font-size: 14px !important;
+        }
+        
         .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 30px;
-            background-color: white;
+            max-width: 800px !important;
+            margin: 20px auto !important;
+            padding: 30px !important;
+            background-color: white !important;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
+            border-radius: 5px !important;
         }
+        
         .header {
-            text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #2a5885;
-            padding-bottom: 10px;
+            text-align: center !important;
+            margin-bottom: 20px !important;
+            border-bottom: 2px solid #2a5885 !important;
+            padding-bottom: 10px !important;
         }
+        
         .name {
-            font-size: 28px;
-            font-weight: bold;
-            color: #2a5885;
-            margin: 0;
+            font-size: 28px !important;
+            font-weight: bold !important;
+            color: #2a5885 !important;
+            margin: 0 !important;
         }
+        
         .contact-info {
-            margin: 10px 0;
+            margin: 10px 0 !important;
         }
+        
         .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #2a5885;
-            text-transform: uppercase;
-            margin: 20px 0 10px 0;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
+            font-size: 18px !important;
+            font-weight: bold !important;
+            color: #2a5885 !important;
+            text-transform: uppercase !important;
+            margin: 20px 0 10px 0 !important;
+            border-bottom: 1px solid #ddd !important;
+            padding-bottom: 5px !important;
         }
+        
         .summary {
-            margin-bottom: 20px;
-            text-align: justify;
+            margin-bottom: 20px !important;
+            text-align: justify !important;
         }
+        
         .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: flex !important;
+            flex-wrap: wrap !important;
+            justify-content: space-between !important;
         }
+        
         .skills-column {
-            flex: 0 0 48%;
+            flex: 0 0 48% !important;
         }
+        
         .skills-item {
-            margin-bottom: 5px;
+            margin-bottom: 5px !important;
         }
+        
         .skills-title {
-            font-weight: bold;
+            font-weight: bold !important;
         }
+        
         .experience-item {
-            margin-bottom: 20px;
+            margin-bottom: 20px !important;
         }
+        
         .job-title {
-            font-weight: bold;
-            margin-bottom: 5px;
+            font-weight: bold !important;
+            margin-bottom: 5px !important;
         }
+        
         .company-info {
-            display: flex;
-            justify-content: space-between;
-            font-style: italic;
-            margin-bottom: 5px;
+            display: flex !important;
+            justify-content: space-between !important;
+            font-style: italic !important;
+            margin-bottom: 5px !important;
         }
+        
         .company {
-            font-weight: bold;
+            font-weight: bold !important;
         }
+        
+        /* Original simple bullet points */
         ul {
-            margin-top: 5px;
-            padding-left: 20px;
+            margin-top: 5px !important;
+            padding-left: 20px !important;
         }
+        
         li {
-            margin-bottom: 5px;
+            margin-bottom: 5px !important;
         }
+        
         .education-item {
-            margin-bottom: 15px;
+            margin-bottom: 15px !important;
         }
+        
         .degree {
-            font-weight: bold;
+            font-weight: bold !important;
         }
+        
         .school-info {
-            display: flex;
-            justify-content: space-between;
-            font-style: italic;
+            display: flex !important;
+            justify-content: space-between !important;
+            font-style: italic !important;
         }
+        
         .languages {
-            margin-top: 10px;
+            margin-top: 10px !important;
         }
-        .highlight {
-            font-weight: bold;
+        
+        /* Print styles */
+        @media print {
+            body {
+                background-color: white !important;
+                font-size: 12px !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 20px !important;
+            }
+            
+            .section-title {
+                page-break-after: avoid !important;
+            }
+            
+            .job-title {
+                page-break-after: avoid !important;
+            }
         }
-    </style>
+        
+        /* Override any conflicting styles */
+        .container * {
+            font-family: 'Calibri', 'Arial', sans-serif !important;
+        }
+        
+        /* Ensure no background effects interfere */
+        body::before,
+        body::after {
+            display: none !important;
+        }
+        
+        /* Remove any animations or transitions */
+        * {
+            animation: none !important;
+            transition: none !important;
+        }
+    
+        
+            margin: 12px 0 !important;
+            padding-left: 25px !important;
+            list-style-type: none !important;
+        }
+        
+        
+            margin-bottom: 8px !important;
+            line-height: 1.6 !important;
+            position: relative !important;
+            padding-left: 15px !important;
+        }
+        
+        
+            content: "▸" !important;
+            position: absolute !important;
+            left: 0 !important;
+            color: #2a5885 !important;
+            font-weight: bold !important;
+            font-size: 1.1em !important;
+        }
+        
+        
+            background-color: rgba(42, 88, 133, 0.05) !important;
+            padding: 4px 8px !important;
+            border-radius: 3px !important;
+            margin-left: -8px !important;
+            transition: all 0.2s ease !important;
+        }
+        
+        /* Nested lists */
+        
+            margin-top: 8px !important;
+            padding-left: 20px !important;
+        }
+        
+        
+            content: "◦" !important;
+            color: #666 !important;
+        }
+        
+        /* Enhanced Resume Bullet Points */
+        .job-description ul {
+            margin: 15px 0 !important;
+            padding-left: 0 !important;
+            list-style-type: none !important;
+        }
+        
+        .job-description li {
+            margin-bottom: 10px !important;
+            line-height: 1.7 !important;
+            position: relative !important;
+            padding-left: 25px !important;
+            text-align: left !important;
+            text-indent: 0 !important;
+        }
+        
+        .job-description li:before {
+            content: "•" !important;
+            position: absolute !important;
+            left: 8px !important;
+            color: #2a5885 !important;
+            font-weight: bold !important;
+            font-size: 1.2em !important;
+            line-height: 1.4 !important;
+        }
+        
+        .job-description li:hover {
+            background-color: rgba(42, 88, 133, 0.08) !important;
+            padding: 6px 12px 6px 25px !important;
+            border-radius: 4px !important;
+            margin-left: -12px !important;
+            margin-right: -12px !important;
+            transition: all 0.2s ease !important;
+        }
+        
+        /* Nested lists with different bullets */
+        .job-description ul ul {
+            margin-top: 10px !important;
+            margin-bottom: 10px !important;
+            padding-left: 20px !important;
+        }
+        
+        .job-description ul ul li {
+            padding-left: 20px !important;
+        }
+        
+        .job-description ul ul li:before {
+            content: "◦" !important;
+            left: 5px !important;
+            color: #666 !important;
+            font-size: 1.1em !important;
+        }
+        
+        /* Professional Skills section bullets */
+        .professional-skills ul {
+            margin: 10px 0 !important;
+            padding-left: 0 !important;
+        }
+        
+        .professional-skills li {
+            margin-bottom: 8px !important;
+            padding-left: 20px !important;
+            position: relative !important;
+        }
+        
+        .professional-skills li:before {
+            content: "▸" !important;
+            position: absolute !important;
+            left: 0 !important;
+            color: #2a5885 !important;
+            font-weight: bold !important;
+        }
+        
+        /* Ensure proper spacing for all text */
+        .job-description p, .job-description li {
+            margin-bottom: 8px !important;
+            line-height: 1.6 !important;
+        }
+        
+        /* Fix any alignment issues */
+        .resume-content {
+            text-align: left !important;
+        }
+        
+        .resume-content * {
+            text-align: left !important;
+        }
+        </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1 class="name">ABEDELRAHMAN SHOLI</h1>
-            <div class="contact-info">
-                UAE-Dubai | +971569538533 | s.holi_1989@live.com | <a href="https://linkedin.com/in/sholi">LinkedIn</a> | <a href="https://abedelrahmansholi.github.io/Portfolio/">Portfolio</a>
-            </div>
+            <div class="contact-info">UAE-Dubai | +971569538533 | s.holi_1989@live.com | <a href="https://www.linkedin.com/in/sholi/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="https://abedelrahmansholi.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">Portfolio</a></div>
         </div>
 
         <div class="section-title">PROFESSIONAL SUMMARY</div>
@@ -123,6 +325,7 @@
                 <div class="skills-item"><span class="skills-title">Test Automation:</span> Selenium WebDriver, RestAssured, TestNG, Cucumber, BDD</div>
                 <div class="skills-item"><span class="skills-title">Programming:</span> Java, Object-Oriented Programming (OOP)</div>
                 <div class="skills-item"><span class="skills-title">CI/CD & DevOps:</span> Jenkins, Git, Maven, SauceLabs</div>
+                <div class="skills-item"><span class="skills-title">Monitoring & Observability:</span> Splunk (Expert), ELK Stack, Prometheus, Grafana</div>
             </div>
             <div class="skills-column">
                 <div class="skills-item"><span class="skills-title">Test Management:</span> JIRA, QMetry, TestRail, Test Case Management</div>
@@ -137,11 +340,13 @@
                 <div class="skills-item">• <span class="highlight">Quality Assurance Strategy</span> & Planning</div>
                 <div class="skills-item">• <span class="highlight">Defect Management</span> & Root Cause Analysis</div>
                 <div class="skills-item">• <span class="highlight">Cross-functional Team</span> Collaboration</div>
+                <div class="skills-item">• <span class="highlight">Production Monitoring</span> & System Analysis</div>
             </div>
             <div class="skills-column">
                 <div class="skills-item">• <span class="highlight">QA Team Leadership</span> & Mentoring</div>
                 <div class="skills-item">• <span class="highlight">Test Metrics</span> & Reporting</div>
                 <div class="skills-item">• <span class="highlight">Risk-based Testing</span> Approach</div>
+                <div class="skills-item">• <span class="highlight">Log Analysis</span> & Troubleshooting</div>
             </div>
         </div>
 
@@ -160,6 +365,7 @@
                 <li>Architected UI/API automation frameworks (Selenium, TestNG & RestAssured), improving test pass rates from 50% to 75% for regression testing and enhancing overall test reliability.</li>
                 <li>Introduced Allure reporting to create comprehensive test execution reports, enhancing visibility into automation outcomes and enabling data-driven defect trend analysis for stakeholders.</li>
                 <li>Developed real-time QA dashboards by integrating data from QMetry and Jira, empowering stakeholders with actionable insights into test execution progress and quality metrics.</li>
+                <li>Utilized Splunk for comprehensive log analysis and transaction monitoring across production systems, enabling rapid identification and diagnosis of complex system issues.</li>
                 <li>Implemented QA strategy and collaborated with DevOps team to implement CI/CD pipelines (Jenkins, SauceLabs) and monitor executions, significantly enhancing shift-left testing capabilities.</li>
                 <li>Translated complex technical findings into actionable insights for non-technical stakeholders, improving cross-departmental collaboration and accelerating issue resolution.</li>
                 <li>Mentored multiple QA teams across 6 groups, fostering knowledge sharing, professional growth, and a culture of quality and collaboration.</li>

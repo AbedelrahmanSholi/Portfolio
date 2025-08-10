@@ -1,0 +1,378 @@
+/* Unified Course Styling - Matches Portfolio Style */
+
+/* Import the main portfolio fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@400&display=swap');
+
+/* Use the same CSS variables as the main portfolio */
+body {
+    font-family: var(--main-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    position: relative;
+}
+
+/* Course Container - matches portfolio page structure */
+.course-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 4% 5%;
+    align-items: stretch;
+    justify-content: start;
+    max-width: 100%;
+    width: 100%;
+    text-align: left;
+    min-height: 100vh;
+}
+
+/* Course Header - matches portfolio h1 styling */
+.course-header {
+    margin-bottom: 2rem;
+}
+
+.course-title {
+    font: var(--h1);
+    margin: 0;
+    padding-bottom: 1.5rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.course-breadcrumb {
+    font: var(--p);
+    margin-bottom: 1rem;
+    color: var(--comment-color);
+}
+
+.course-breadcrumb a {
+    color: var(--highlight-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.course-breadcrumb a:hover {
+    color: #4dd0e1;
+}
+
+.course-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.course-meta span {
+    font: var(--p);
+    color: var(--comment-color);
+}
+
+/* Module Navigation - styled like portfolio cards */
+.module-nav {
+    margin-bottom: 3rem;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-btn {
+    background-color: var(--card-background-color);
+    box-shadow: 0px var(--card-box-shadow-1-y) var(--card-box-shadow-1-blur) var(--card-box-shadow-1),
+                0px var(--card-box-shadow-2-y) var(--card-box-shadow-2-blur) var(--card-box-shadow-2),
+                0 0 0 1px var(--card-border-color);
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: box-shadow .25s;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-color);
+    font: var(--p);
+    border: none;
+}
+
+.nav-btn:hover {
+    box-shadow: 0px 3px 6px var(--card-hover-box-shadow-1),
+                0px var(--card-hover-box-shadow-2-y) var(--card-hover-box-shadow-2-blur) var(--card-hover-box-shadow-2),
+                0 0 0 1px var(--card-hover-border-color);
+    color: var(--highlight-color);
+}
+
+.nav-progress {
+    font: var(--p);
+    color: var(--comment-color);
+}
+
+/* Module Content - matches portfolio page structure */
+.module-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Content Sections */
+.content-section {
+    margin-bottom: 3rem;
+}
+
+.content-section h2 {
+    font: var(--h2);
+    margin: 0;
+    padding-bottom: 1rem;
+    color: var(--text-color);
+    border-left: 4px solid var(--highlight-color);
+    padding-left: 15px;
+}
+
+.content-section h3 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--comment-color);
+}
+
+.content-section h4 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--highlight-color);
+}
+
+.content-section p {
+    font: var(--p);
+    margin-bottom: 1rem;
+}
+
+.content-section ul, .content-section ol {
+    font: var(--p);
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.content-section li {
+    margin-bottom: 0.5rem;
+}
+
+/* Learning Objectives - styled like portfolio cards */
+.learning-objectives {
+    background-color: var(--card-background-color);
+    box-shadow: 0px var(--card-box-shadow-1-y) var(--card-box-shadow-1-blur) var(--card-box-shadow-1),
+                0px var(--card-box-shadow-2-y) var(--card-box-shadow-2-blur) var(--card-box-shadow-2),
+                0 0 0 1px var(--card-border-color);
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.learning-objectives::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    background-color: var(--card-background-color);
+}
+
+.learning-objectives h2 {
+    border-left: 4px solid var(--highlight-color);
+    padding-left: 15px;
+    margin-bottom: 1.5rem;
+}
+
+.objectives-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.objective-item {
+    background-color: rgba(255, 255, 255, 0.02);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.objective-item h3 {
+    color: var(--highlight-color);
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.objective-item p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Code Examples - using portfolio code styling */
+.code-example {
+    margin: 2rem 0;
+}
+
+.code-example h4 {
+    color: var(--comment-color);
+    margin-bottom: 1rem;
+}
+
+.code-example pre {
+    font-family: var(--code-font);
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--card-border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.code-example code {
+    font-family: var(--code-font);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Special Content Boxes */
+.principle-box, .best-practice, .anti-pattern {
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    border-left: 4px solid;
+}
+
+.principle-box {
+    background-color: rgba(77, 184, 255, 0.1);
+    border-left-color: var(--comment-color);
+}
+
+.best-practice {
+    background-color: rgba(38, 166, 154, 0.1);
+    border-left-color: var(--highlight-color);
+}
+
+.anti-pattern {
+    background-color: rgba(255, 77, 77, 0.1);
+    border-left-color: #ff4d4d;
+}
+
+.principle-box h3, .best-practice h4, .anti-pattern h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Decision Matrix */
+.decision-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.decision-card {
+    background-color: var(--card-background-color);
+    box-shadow: 0px var(--card-box-shadow-1-y) var(--card-box-shadow-1-blur) var(--card-box-shadow-1),
+                0px var(--card-box-shadow-2-y) var(--card-box-shadow-2-blur) var(--card-box-shadow-2),
+                0 0 0 1px var(--card-border-color);
+    padding: 1.5rem;
+    border-radius: 15px;
+    position: relative;
+}
+
+.decision-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    background-color: var(--card-background-color);
+}
+
+.decision-card h3 {
+    position: relative;
+    z-index: 2;
+    color: var(--highlight-color);
+    margin-bottom: 1rem;
+}
+
+.decision-card h4 {
+    position: relative;
+    z-index: 2;
+    color: var(--comment-color);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.decision-card ul {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1rem;
+}
+
+/* Architecture Diagrams */
+.architecture-diagram {
+    background-color: var(--card-background-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.architecture-diagram h4 {
+    color: var(--highlight-color);
+    margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .course-container {
+        padding: 3% 3%;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .course-meta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .objectives-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .decision-matrix {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .course-title {
+        font-size: 2rem;
+    }
+    
+    .content-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .code-example pre {
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+}
+

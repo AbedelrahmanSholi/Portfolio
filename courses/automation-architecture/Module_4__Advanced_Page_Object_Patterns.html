@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Security Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()">
+
+    <link rel="stylesheet" href="../../css/courses/course_portfolio_style.css">
+    <link rel="stylesheet" href="../../css/courses/enhanced_course_styling.css">
+    <link rel="stylesheet" href="../../css/courses/automation_architecture_fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 4: Advanced Page Object Patterns | Automation Architecture Course</title>
+    <style>
+        .pattern-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .pattern-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+        .traditional-pattern {
+            border-left: 4px solid #dc3545;
+        .modern-pattern {
+            border-left: 4px solid #28a745;
+        .screenplay-flow {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        .component-hierarchy {
+            background: #fff3e0;
+            border: 1px solid #ff9800;
+    </style>
+</head>
+<body>
+    <div class="course-container">
+        <!-- Course Header -->
+        <header class="course-header">
+            <div class="course-breadcrumb">
+                <a href="overview.html">Automation Architecture Course</a> > 
+                <span>Module 4: Advanced Page Object Patterns</span>
+            </div>
+            <h1 class="course-title">Module 4: Advanced Page Object Patterns</h1>
+            <div class="course-meta">
+                <span class="duration">⏱️ 50 minutes</span>
+                <span class="level">📈 Advanced</span>
+                <span class="type">🎭 Page Object Patterns</span>
+        </header>
+        <!-- Module Navigation -->
+        <nav class="module-nav">
+            <div class="nav-container">
+                <a href="Module_3__Essential_Design_Patterns_for_Automation.html" class="nav-btn prev">← Module 3: Design Patterns</a>
+                <span class="nav-progress">Module 4 of 8</span>
+                <a href="Module_5__Data_Driven_Architecture_Design.html" class="nav-btn next">Module 5: Data-Driven Architecture →</a>
+        </nav>
+        <!-- Module Content -->
+        <main class="module-content">
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2>🎯 Learning Objectives</h2>
+                <div class="objectives-grid">
+                    <div class="objective-item">
+                        <h3>Understand Traditional POM Limitations</h3>
+                        <p>Identify problems with traditional Page Object Model implementations</p>
+                    </div>
+                        <h3>Implement Page Factory Pattern</h3>
+                        <p>Use Page Factory for cleaner element initialization and management</p>
+                        <h3>Master Screenplay Pattern</h3>
+                        <p>Apply behavior-driven design with the Screenplay pattern</p>
+                        <h3>Build Component-Based Objects</h3>
+                        <p>Create reusable UI components for maintainable automation</p>
+                </div>
+            </section>
+            <!-- Introduction -->
+            <section class="content-section">
+                <h2>🎭 Evolution of Page Object Patterns</h2>
+                <p>The Page Object Model (POM) has evolved significantly since its introduction. While the traditional approach solved many problems, modern applications require more sophisticated patterns to handle complex UIs, dynamic content, and maintainable test code.</p>
+                
+                <div class="principle-box">
+                    <h3>💡 Why Advanced Page Object Patterns Matter</h3>
+                    <ul>
+                        <li><strong>Maintainability:</strong> Easier to update when UI changes</li>
+                        <li><strong>Reusability:</strong> Components can be shared across pages</li>
+                        <li><strong>Readability:</strong> Tests express business intent clearly</li>
+                        <li><strong>Scalability:</strong> Patterns that grow with application complexity</li>
+                    </ul>
+            <!-- Traditional POM Limitations -->
+                <h2>⚠️ Traditional Page Object Model Limitations</h2>
+                <div class="pattern-comparison">
+                    <div class="pattern-card traditional-pattern">
+                        <h3>❌ Traditional POM Problems</h3>
+                        <ul>
+                            <li>Large, monolithic page classes</li>
+                            <li>Tight coupling between tests and UI</li>
+                            <li>Difficult to handle dynamic content</li>
+                            <li>Poor reusability of common components</li>
+                            <li>Hard to maintain as application grows</li>
+                        </ul>
+                    
+                    <div class="pattern-card modern-pattern">
+                        <h3>✅ Modern Pattern Solutions</h3>
+                            <li>Component-based architecture</li>
+                            <li>Behavior-driven design</li>
+                            <li>Dynamic element handling</li>
+                            <li>Reusable UI components</li>
+                            <li>Scalable and maintainable structure</li>
+                <h3>Example: Traditional POM Problems</h3>
+                <div class="code-example">
+                    <pre><code>// ❌ Traditional POM - Large, monolithic class
+public class EcommercePage {
+    private WebDriver driver;
+    // Header elements
+    @FindBy(id = "logo")
+    private WebElement logo;
+    @FindBy(id = "searchBox")
+    private WebElement searchBox;
+    @FindBy(id = "cartIcon")
+    private WebElement cartIcon;
+    @FindBy(id = "userMenu")
+    private WebElement userMenu;
+    // Navigation elements
+    @FindBy(className = "nav-categories")
+    private List&lt;WebElement&gt; categories;
+    @FindBy(id = "homeLink")
+    private WebElement homeLink;
+    // Product listing elements
+    @FindBy(className = "product-card")
+    private List&lt;WebElement&gt; productCards;
+    @FindBy(id = "sortDropdown")
+    private WebElement sortDropdown;
+    @FindBy(id = "filterSidebar")
+    private WebElement filterSidebar;
+    // Footer elements
+    @FindBy(className = "footer-links")
+    private List&lt;WebElement&gt; footerLinks;
+    @FindBy(id = "newsletter")
+    private WebElement newsletterSignup;
+    // Hundreds of methods for different page sections...
+    public void searchForProduct(String productName) { /* implementation */ }
+    public void addToCart(String productName) { /* implementation */ }
+    public void navigateToCategory(String category) { /* implementation */ }
+    public void applyFilter(String filterType, String value) { /* implementation */ }
+    public void sortProducts(String sortOption) { /* implementation */ }
+    public void subscribeToNewsletter(String email) { /* implementation */ }
+    // ... many more methods
+}</code></pre>
+            <!-- Page Factory Pattern -->
+                <h2>🏭 Page Factory Pattern</h2>
+                <p>The Page Factory pattern improves upon traditional POM by providing lazy initialization of elements and better element management.</p>
+                    <h4>✅ Page Factory Implementation</h4>
+                    <pre><code>// Base page with common functionality
+public abstract class BasePage {
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        PageFactory.initElements(driver, this);
+    }
+    protected void waitForElementToBeVisible(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    protected void waitForElementToBeClickable(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    protected void scrollToElement(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+}
+// Login page using Page Factory
+public class LoginPage extends BasePage {
+    @FindBy(id = "username")
+    private WebElement usernameField;
+    @FindBy(id = "password")
+    private WebElement passwordField;
+    @FindBy(id = "loginButton")
+    private WebElement loginButton;
+    @FindBy(className = "error-message")
+    private WebElement errorMessage;
+    @FindBy(linkText = "Forgot Password?")
+    private WebElement forgotPasswordLink;
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    public LoginPage enterUsername(String username) {
+        waitForElementToBeVisible(usernameField);
+        usernameField.clear();
+        usernameField.sendKeys(username);
+        return this;
+    public LoginPage enterPassword(String password) {
+        waitForElementToBeVisible(passwordField);
+        passwordField.clear();
+        passwordField.sendKeys(password);
+    public DashboardPage clickLogin() {
+        waitForElementToBeClickable(loginButton);
+        loginButton.click();
+        return new DashboardPage(driver);
+    public LoginPage clickLoginExpectingError() {
+    public String getErrorMessage() {
+        waitForElementToBeVisible(errorMessage);
+        return errorMessage.getText();
+    public boolean isErrorMessageDisplayed() {
+        try {
+            return errorMessage.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+    public ForgotPasswordPage clickForgotPassword() {
+        waitForElementToBeClickable(forgotPasswordLink);
+        forgotPasswordLink.click();
+        return new ForgotPasswordPage(driver);
+    // Fluent interface for chaining
+    public DashboardPage loginWith(String username, String password) {
+        return enterUsername(username)
+                .enterPassword(password)
+                .clickLogin();
+// Advanced Page Factory with dynamic elements
+public class ProductListingPage extends BasePage {
+    @FindBy(className = "pagination")
+    private WebElement pagination;
+    public ProductListingPage(WebDriver driver) {
+    // Dynamic element finding
+    public WebElement getProductByName(String productName) {
+        String xpath = String.format("//div[@class='product-card']//h3[text()='%s']", productName);
+        return driver.findElement(By.xpath(xpath));
+    public WebElement getProductPrice(String productName) {
+        String xpath = String.format("//div[@class='product-card']//h3[text()='%s']/following-sibling::span[@class='price']", productName);
+    public WebElement getAddToCartButton(String productName) {
+        String xpath = String.format("//div[@class='product-card']//h3[text()='%s']/following-sibling::button[contains(@class,'add-to-cart')]", productName);
+    public ProductListingPage addProductToCart(String productName) {
+        WebElement addToCartBtn = getAddToCartButton(productName);
+        scrollToElement(addToCartBtn);
+        waitForElementToBeClickable(addToCartBtn);
+        addToCartBtn.click();
+        // Wait for cart update animation
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loading-spinner")));
+    public ProductDetailsPage clickProduct(String productName) {
+        WebElement product = getProductByName(productName);
+        scrollToElement(product);
+        waitForElementToBeClickable(product);
+        product.click();
+        return new ProductDetailsPage(driver);
+    public ProductListingPage sortBy(String sortOption) {
+        waitForElementToBeClickable(sortDropdown);
+        Select select = new Select(sortDropdown);
+        select.selectByVisibleText(sortOption);
+        // Wait for page to reload with sorted results
+        wait.until(ExpectedConditions.stalenessOf(productCards.get(0)));
+    public int getProductCount() {
+        return productCards.size();
+    public List&lt;String&gt; getAllProductNames() {
+        return productCards.stream()
+                .map(card -&gt; card.findElement(By.tagName("h3")).getText())
+                .collect(Collectors.toList());
+                <div class="pattern-benefits">
+                    <h4>✅ Page Factory Benefits</h4>
+                        <li>Lazy initialization of elements (found when first accessed)</li>
+                        <li>Cleaner element declaration with annotations</li>
+                        <li>Automatic StaleElementReferenceException handling</li>
+                        <li>Better performance with lazy loading</li>
+                        <li>Fluent interface support for method chaining</li>
+            <!-- Screenplay Pattern -->
+                <h2>🎬 Screenplay Pattern</h2>
+                <p>The Screenplay pattern focuses on behavior rather than structure, making tests more readable and maintainable by expressing what actors do rather than how they do it.</p>
+                <div class="screenplay-flow">
+                    <h3>🎭 Screenplay Pattern Components</h3>
+                    <div style="text-align: left;">
+                        <p><strong>Actor:</strong> The user or system performing actions</p>
+                        <p><strong>Ability:</strong> What the actor can do (browse web, call APIs)</p>
+                        <p><strong>Task:</strong> High-level business activities</p>
+                        <p><strong>Action:</strong> Low-level interactions with the system</p>
+                        <p><strong>Question:</strong> Queries about the current state</p>
+                    <h4>✅ Screenplay Pattern Implementation</h4>
+                    <pre><code>// Actor - represents a user of the system
+public class Actor {
+    private String name;
+    private Map&lt;Class&lt;? extends Ability&gt;, Ability&gt; abilities = new HashMap&lt;&gt;();
+    public Actor(String name) {
+        this.name = name;
+    public Actor can(Ability ability) {
+        abilities.put(ability.getClass(), ability);
+    public &lt;T extends Ability&gt; T abilityTo(Class&lt;T&gt; abilityClass) {
+        return abilityClass.cast(abilities.get(abilityClass));
+    public &lt;T extends Performable&gt; Actor attemptsTo(T... tasks) {
+        for (T task : tasks) {
+            task.performAs(this);
+    public &lt;T&gt; T asksFor(Question&lt;T&gt; question) {
+        return question.answeredBy(this);
+    public String getName() {
+        return name;
+// Ability - what an actor can do
+public interface Ability {
+public class BrowseTheWeb implements Ability {
+    public BrowseTheWeb(WebDriver driver) {
+    public WebDriver getDriver() {
+        return driver;
+    public static BrowseTheWeb with(WebDriver driver) {
+        return new BrowseTheWeb(driver);
+// Performable interface for tasks and actions
+public interface Performable {
+    void performAs(Actor actor);
+// Task - high-level business activity
+public class Login implements Performable {
+    private String username;
+    private String password;
+    public Login(String username, String password) {
+        this.username = username;
+        this.password = password;
+    public static Login withCredentials(String username, String password) {
+        return new Login(username, password);
+    @Override
+    public void performAs(Actor actor) {
+        actor.attemptsTo(
+            NavigateTo.theLoginPage(),
+            Enter.theValue(username).into(LoginPageElements.USERNAME_FIELD),
+            Enter.theValue(password).into(LoginPageElements.PASSWORD_FIELD),
+            Click.on(LoginPageElements.LOGIN_BUTTON)
+        );
+// Action - low-level interaction
+public class Enter implements Performable {
+    private String value;
+    private Target target;
+    private Enter(String value) {
+        this.value = value;
+    public static Enter theValue(String value) {
+        return new Enter(value);
+    public Enter into(Target target) {
+        this.target = target;
+        WebDriver driver = actor.abilityTo(BrowseTheWeb.class).getDriver();
+        WebElement element = target.resolveFor(driver);
+        element.clear();
+        element.sendKeys(value);
+public class Click implements Performable {
+    private Click(Target target) {
+    public static Click on(Target target) {
+        return new Click(target);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        element.click();
+public class NavigateTo implements Performable {
+    private String url;
+    private NavigateTo(String url) {
+        this.url = url;
+    public static NavigateTo theLoginPage() {
+        return new NavigateTo("/login");
+    public static NavigateTo theUrl(String url) {
+        return new NavigateTo(url);
+        String baseUrl = System.getProperty("base.url", "https://example.com");
+        driver.get(baseUrl + url);
+// Target - represents UI elements
+public class Target {
+    private String description;
+    private By locator;
+    private Target(String description, By locator) {
+        this.description = description;
+        this.locator = locator;
+    public static Target the(String description) {
+        return new Target(description, null);
+    public Target locatedBy(By locator) {
+        return new Target(this.description, locator);
+    public Target locatedBy(String xpath) {
+        return new Target(this.description, By.xpath(xpath));
+    public WebElement resolveFor(WebDriver driver) {
+        return driver.findElement(locator);
+    public List&lt;WebElement&gt; resolveAllFor(WebDriver driver) {
+        return driver.findElements(locator);
+// Page elements as targets
+public class LoginPageElements {
+    public static final Target USERNAME_FIELD = Target.the("username field")
+            .locatedBy(By.id("username"));
+    public static final Target PASSWORD_FIELD = Target.the("password field")
+            .locatedBy(By.id("password"));
+    public static final Target LOGIN_BUTTON = Target.the("login button")
+            .locatedBy(By.id("loginButton"));
+    public static final Target ERROR_MESSAGE = Target.the("error message")
+            .locatedBy(By.className("error-message"));
+// Question - queries about the current state
+public interface Question&lt;T&gt; {
+    T answeredBy(Actor actor);
+public class TheText implements Question&lt;String&gt; {
+    private TheText(Target target) {
+    public static TheText of(Target target) {
+        return new TheText(target);
+    public String answeredBy(Actor actor) {
+        return target.resolveFor(driver).getText();
+public class TheVisibility implements Question&lt;Boolean&gt; {
+    private TheVisibility(Target target) {
+    public static TheVisibility of(Target target) {
+        return new TheVisibility(target);
+    public Boolean answeredBy(Actor actor) {
+            return target.resolveFor(driver).isDisplayed();
+// Usage in tests - very readable and expressive
+public class LoginTests {
+    private Actor user;
+    @BeforeMethod
+    public void setUp() {
+        driver = new ChromeDriver();
+        user = Actor.named("Test User").can(BrowseTheWeb.with(driver));
+    @Test
+    public void userCanLoginWithValidCredentials() {
+        user.attemptsTo(
+            Login.withCredentials("testuser", "password123")
+        // Verify login success
+        Assert.assertTrue(
+            user.asksFor(TheVisibility.of(DashboardPageElements.WELCOME_MESSAGE)),
+            "User should see welcome message after successful login"
+    public void userSeesErrorMessageWithInvalidCredentials() {
+            Login.withCredentials("invalid", "invalid")
+        String errorMessage = user.asksFor(TheText.of(LoginPageElements.ERROR_MESSAGE));
+        Assert.assertEquals(errorMessage, "Invalid username or password");
+    @AfterMethod
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+                    <h4>✅ Screenplay Pattern Benefits</h4>
+                        <li>Tests read like business requirements</li>
+                        <li>Clear separation between what and how</li>
+                        <li>Highly reusable actions and tasks</li>
+                        <li>Easy to maintain and extend</li>
+                        <li>Better reporting and debugging</li>
+            <!-- Component-Based Page Objects -->
+                <h2>🧩 Component-Based Page Objects</h2>
+                <p>Component-based page objects break down pages into reusable components, making maintenance easier and promoting code reuse across different pages.</p>
+                <div class="component-hierarchy">
+                    <h3>🏗️ Component Hierarchy</h3>
+                        <p><strong>Page:</strong> Contains multiple components</p>
+                        <p><strong>Component:</strong> Reusable UI element (header, footer, modal)</p>
+                        <p><strong>Element:</strong> Individual UI controls (button, input, dropdown)</p>
+                    <h4>✅ Component-Based Implementation</h4>
+                    <pre><code>// Base component class
+public abstract class BaseComponent {
+    protected WebElement rootElement;
+    public BaseComponent(WebDriver driver, WebElement rootElement) {
+        this.rootElement = rootElement;
+    protected WebElement findElement(By locator) {
+        return rootElement.findElement(locator);
+    protected List&lt;WebElement&gt; findElements(By locator) {
+        return rootElement.findElements(locator);
+    protected void waitForElementToBeVisible(By locator) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    protected void waitForElementToBeClickable(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+// Header component - reusable across pages
+public class HeaderComponent extends BaseComponent {
+    private static final By LOGO = By.className("logo");
+    private static final By SEARCH_BOX = By.id("searchBox");
+    private static final By SEARCH_BUTTON = By.id("searchButton");
+    private static final By CART_ICON = By.id("cartIcon");
+    private static final By USER_MENU = By.id("userMenu");
+    private static final By CART_COUNT = By.className("cart-count");
+    public HeaderComponent(WebDriver driver, WebElement rootElement) {
+        super(driver, rootElement);
+    public HeaderComponent searchFor(String searchTerm) {
+        WebElement searchBox = findElement(SEARCH_BOX);
+        searchBox.clear();
+        searchBox.sendKeys(searchTerm);
+        waitForElementToBeClickable(SEARCH_BUTTON);
+        findElement(SEARCH_BUTTON).click();
+    public CartPage openCart() {
+        waitForElementToBeClickable(CART_ICON);
+        findElement(CART_ICON).click();
+        return new CartPage(driver);
+    public int getCartItemCount() {
+            String countText = findElement(CART_COUNT).getText();
+            return Integer.parseInt(countText);
+            return 0;
+    public UserMenuComponent openUserMenu() {
+        waitForElementToBeClickable(USER_MENU);
+        findElement(USER_MENU).click();
+        WebElement userMenuDropdown = driver.findElement(By.className("user-menu-dropdown"));
+        return new UserMenuComponent(driver, userMenuDropdown);
+    public boolean isLogoDisplayed() {
+        return findElement(LOGO).isDisplayed();
+// User menu component
+public class UserMenuComponent extends BaseComponent {
+    private static final By PROFILE_LINK = By.linkText("Profile");
+    private static final By ORDERS_LINK = By.linkText("My Orders");
+    private static final By SETTINGS_LINK = By.linkText("Settings");
+    private static final By LOGOUT_LINK = By.linkText("Logout");
+    public UserMenuComponent(WebDriver driver, WebElement rootElement) {
+    public ProfilePage goToProfile() {
+        waitForElementToBeClickable(PROFILE_LINK);
+        findElement(PROFILE_LINK).click();
+        return new ProfilePage(driver);
+    public OrdersPage goToOrders() {
+        waitForElementToBeClickable(ORDERS_LINK);
+        findElement(ORDERS_LINK).click();
+        return new OrdersPage(driver);
+    public SettingsPage goToSettings() {
+        waitForElementToBeClickable(SETTINGS_LINK);
+        findElement(SETTINGS_LINK).click();
+        return new SettingsPage(driver);
+    public LoginPage logout() {
+        waitForElementToBeClickable(LOGOUT_LINK);
+        findElement(LOGOUT_LINK).click();
+        return new LoginPage(driver);
+// Product card component - reusable in listings
+public class ProductCardComponent extends BaseComponent {
+    private static final By PRODUCT_NAME = By.className("product-name");
+    private static final By PRODUCT_PRICE = By.className("product-price");
+    private static final By PRODUCT_IMAGE = By.className("product-image");
+    private static final By ADD_TO_CART_BUTTON = By.className("add-to-cart");
+    private static final By QUICK_VIEW_BUTTON = By.className("quick-view");
+    private static final By RATING = By.className("rating");
+    public ProductCardComponent(WebDriver driver, WebElement rootElement) {
+    public String getProductName() {
+        return findElement(PRODUCT_NAME).getText();
+    public String getProductPrice() {
+        return findElement(PRODUCT_PRICE).getText();
+    public double getProductPriceAsNumber() {
+        String priceText = getProductPrice().replaceAll("[^\\d.]", "");
+        return Double.parseDouble(priceText);
+    public ProductCardComponent addToCart() {
+        waitForElementToBeClickable(ADD_TO_CART_BUTTON);
+        findElement(ADD_TO_CART_BUTTON).click();
+        // Wait for add to cart animation
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loading")));
+    public ProductDetailsPage clickProduct() {
+        waitForElementToBeClickable(PRODUCT_IMAGE);
+        findElement(PRODUCT_IMAGE).click();
+    public QuickViewModal openQuickView() {
+        waitForElementToBeClickable(QUICK_VIEW_BUTTON);
+        findElement(QUICK_VIEW_BUTTON).click();
+        WebElement modalElement = driver.findElement(By.className("quick-view-modal"));
+        return new QuickViewModal(driver, modalElement);
+    public double getRating() {
+            String ratingText = findElement(RATING).getAttribute("data-rating");
+            return Double.parseDouble(ratingText);
+            return 0.0;
+// Page that uses components
+    private static final By HEADER_SECTION = By.className("header");
+    private static final By PRODUCT_CARDS = By.className("product-card");
+    private static final By SORT_DROPDOWN = By.id("sortDropdown");
+    private static final By FILTER_SIDEBAR = By.className("filter-sidebar");
+    private HeaderComponent header;
+    private FilterSidebarComponent filterSidebar;
+        initializeComponents();
+    private void initializeComponents() {
+        WebElement headerElement = driver.findElement(HEADER_SECTION);
+        this.header = new HeaderComponent(driver, headerElement);
+        WebElement filterElement = driver.findElement(FILTER_SIDEBAR);
+        this.filterSidebar = new FilterSidebarComponent(driver, filterElement);
+    public HeaderComponent getHeader() {
+        return header;
+    public FilterSidebarComponent getFilterSidebar() {
+        return filterSidebar;
+    public List&lt;ProductCardComponent&gt; getProductCards() {
+        List&lt;WebElement&gt; cardElements = driver.findElements(PRODUCT_CARDS);
+        return cardElements.stream()
+                .map(element -&gt; new ProductCardComponent(driver, element))
+    public ProductCardComponent getProductCard(String productName) {
+        return getProductCards().stream()
+                .filter(card -&gt; card.getProductName().equals(productName))
+                .findFirst()
+                .orElseThrow(() -&gt; new NoSuchElementException("Product not found: " + productName));
+        Select sortSelect = new Select(driver.findElement(SORT_DROPDOWN));
+        sortSelect.selectByVisibleText(sortOption);
+        // Wait for page to reload
+        wait.until(ExpectedConditions.stalenessOf(driver.findElements(PRODUCT_CARDS).get(0)));
+        return getProductCards().size();
+                .map(ProductCardComponent::getProductName)
+// Usage in tests - clean and maintainable
+@Test
+public void userCanAddProductToCartFromListing() {
+    ProductListingPage listingPage = new ProductListingPage(driver);
+    // Use header component
+    listingPage.getHeader().searchFor("laptop");
+    // Use filter component
+    listingPage.getFilterSidebar()
+            .selectCategory("Electronics")
+            .setPriceRange(500, 1500)
+            .selectBrand("Dell");
+    // Use product card component
+    ProductCardComponent laptopCard = listingPage.getProductCard("Dell Laptop XPS 13");
+    laptopCard.addToCart();
+    // Verify cart count updated
+    Assert.assertEquals(listingPage.getHeader().getCartItemCount(), 1);
+                    <h4>✅ Component-Based Benefits</h4>
+                        <li>Reusable components across multiple pages</li>
+                        <li>Easier maintenance when UI changes</li>
+                        <li>Better organization and structure</li>
+                        <li>Encapsulation of component-specific logic</li>
+                        <li>Improved test readability and maintainability</li>
+            <!-- Dynamic Page Object Generation -->
+                <h2>⚡ Dynamic Page Object Generation</h2>
+                <p>For applications with dynamic content or similar page structures, dynamic page object generation can reduce code duplication and improve maintainability.</p>
+                    <h4>✅ Dynamic Page Object Factory</h4>
+                    <pre><code>// Generic page object for similar structures
+public class GenericFormPage extends BasePage {
+    private Map&lt;String, By&gt; fieldLocators = new HashMap&lt;&gt;();
+    private Map&lt;String, By&gt; buttonLocators = new HashMap&lt;&gt;();
+    public GenericFormPage(WebDriver driver, Map&lt;String, By&gt; fieldLocators, Map&lt;String, By&gt; buttonLocators) {
+        this.fieldLocators = fieldLocators;
+        this.buttonLocators = buttonLocators;
+    public GenericFormPage fillField(String fieldName, String value) {
+        By locator = fieldLocators.get(fieldName);
+        if (locator == null) {
+            throw new IllegalArgumentException("Field not found: " + fieldName);
+        WebElement field = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        field.clear();
+        field.sendKeys(value);
+    public GenericFormPage clickButton(String buttonName) {
+        By locator = buttonLocators.get(buttonName);
+            throw new IllegalArgumentException("Button not found: " + buttonName);
+        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        button.click();
+    public String getFieldValue(String fieldName) {
+        WebElement field = driver.findElement(locator);
+        return field.getAttribute("value");
+    public boolean isFieldDisplayed(String fieldName) {
+            return driver.findElement(locator).isDisplayed();
+// Factory for creating dynamic page objects
+public class PageObjectFactory {
+    public static GenericFormPage createRegistrationForm(WebDriver driver) {
+        Map&lt;String, By&gt; fields = new HashMap&lt;&gt;();
+        fields.put("firstName", By.id("firstName"));
+        fields.put("lastName", By.id("lastName"));
+        fields.put("email", By.id("email"));
+        fields.put("password", By.id("password"));
+        fields.put("confirmPassword", By.id("confirmPassword"));
+        Map&lt;String, By&gt; buttons = new HashMap&lt;&gt;();
+        buttons.put("register", By.id("registerButton"));
+        buttons.put("cancel", By.id("cancelButton"));
+        return new GenericFormPage(driver, fields, buttons);
+    public static GenericFormPage createContactForm(WebDriver driver) {
+        fields.put("name", By.id("contactName"));
+        fields.put("email", By.id("contactEmail"));
+        fields.put("subject", By.id("subject"));
+        fields.put("message", By.id("message"));
+        buttons.put("send", By.id("sendButton"));
+        buttons.put("clear", By.id("clearButton"));
+    public static GenericFormPage createProfileForm(WebDriver driver) {
+        fields.put("displayName", By.id("displayName"));
+        fields.put("bio", By.id("bio"));
+        fields.put("website", By.id("website"));
+        fields.put("location", By.id("location"));
+        buttons.put("save", By.id("saveButton"));
+// Usage in tests
+public void testUserRegistration() {
+    GenericFormPage registrationForm = PageObjectFactory.createRegistrationForm(driver);
+    registrationForm
+        .fillField("firstName", "John")
+        .fillField("lastName", "Doe")
+        .fillField("email", "john.doe@example.com")
+        .fillField("password", "securePassword123")
+        .fillField("confirmPassword", "securePassword123")
+        .clickButton("register");
+    // Verify registration success
+    Assert.assertTrue(driver.getCurrentUrl().contains("/welcome"));
+public void testContactFormSubmission() {
+    GenericFormPage contactForm = PageObjectFactory.createContactForm(driver);
+    contactForm
+        .fillField("name", "Jane Smith")
+        .fillField("email", "jane.smith@example.com")
+        .fillField("subject", "Product Inquiry")
+        .fillField("message", "I would like more information about your products.")
+        .clickButton("send");
+    // Verify form submission
+    WebElement successMessage = wait.until(
+        ExpectedConditions.presenceOfElementLocated(By.className("success-message"))
+    );
+    Assert.assertTrue(successMessage.isDisplayed());
+            <!-- Key Takeaways -->
+                <h2>🎯 Key Takeaways</h2>
+                <div class="takeaway-grid">
+                    <div class="takeaway-item">
+                        <h3>🏭 Page Factory</h3>
+                        <p>Use Page Factory for cleaner element management and lazy initialization.</p>
+                        <h3>🎬 Screenplay Pattern</h3>
+                        <p>Focus on behavior and business intent rather than technical implementation.</p>
+                        <h3>🧩 Component-Based</h3>
+                        <p>Break pages into reusable components for better maintainability.</p>
+                        <h3>⚡ Dynamic Generation</h3>
+                        <p>Use dynamic page objects for similar structures to reduce duplication.</p>
+        </main>
+        <!-- Module Navigation Footer -->
+        <nav class="module-nav-footer">
+                <div class="nav-center">
+                    <span class="completion-status">Module 4 Complete! 🎉</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 50%"></div>
+    </div>
+    <!-- Course Scripts -->
+    <!-- Course Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="../../js/courses/automation_architecture_fix.js"></script>
+    <script src="../../js/courses/course-navigation.js"></script>
+    <script src="../../js/courses/code-highlighting.js"></script>
+</body>
+</html>

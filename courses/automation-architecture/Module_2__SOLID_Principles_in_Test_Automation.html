@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Security Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), speaker=()">
+
+    <link rel="stylesheet" href="../../css/courses/course_portfolio_style.css">
+    <link rel="stylesheet" href="../../css/courses/enhanced_course_styling.css">
+    <link rel="stylesheet" href="../../css/courses/automation_architecture_fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: SOLID Principles in Test Automation | Automation Architecture Course</title>
+    <style>
+        .solid-principle {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .principle-letter {
+            font-size: 3em;
+            font-weight: bold;
+            float: left;
+            margin-right: 15px;
+            line-height: 1;
+        .violation-example {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 15px 0;
+        .good-example {
+            background: #e8f5e8;
+            border-left: 4px solid #4caf50;
+        .refactoring-steps {
+            background: #fff3e0;
+            border: 1px solid #ff9800;
+            border-radius: 8px;
+            padding: 20px;
+    </style>
+</head>
+<body>
+    <div class="course-container">
+        <!-- Course Header -->
+        <header class="course-header">
+            <div class="course-breadcrumb">
+                <a href="overview.html">Automation Architecture Course</a> > 
+                <span>Module 2: SOLID Principles in Test Automation</span>
+            </div>
+            <h1 class="course-title">Module 2: SOLID Principles in Test Automation</h1>
+            <div class="course-meta">
+                <span class="duration">⏱️ 60 minutes</span>
+                <span class="level">📈 Advanced</span>
+                <span class="type">🎯 Design Principles</span>
+        </header>
+        <!-- Module Navigation -->
+        <nav class="module-nav">
+            <div class="nav-container">
+                <a href="Module_1__Foundation_of_Automation_Architecture.html" class="nav-btn prev">← Module 1: Foundation</a>
+                <span class="nav-progress">Module 2 of 8</span>
+                <a href="Module_3__Essential_Design_Patterns_for_Automation.html" class="nav-btn next">Module 3: Design Patterns →</a>
+        </nav>
+        <!-- Module Content -->
+        <main class="module-content">
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2>🎯 Learning Objectives</h2>
+                <div class="objectives-grid">
+                    <div class="objective-item">
+                        <h3>Apply Single Responsibility Principle</h3>
+                        <p>Design test components with single, well-defined responsibilities</p>
+                    </div>
+                        <h3>Implement Open/Closed Principle</h3>
+                        <p>Create extensible frameworks without modifying existing code</p>
+                        <h3>Use Liskov Substitution</h3>
+                        <p>Design proper inheritance hierarchies in page object models</p>
+                        <h3>Apply Interface Segregation</h3>
+                        <p>Create focused interfaces for test utilities and services</p>
+                </div>
+            </section>
+            <!-- Introduction -->
+            <section class="content-section">
+                <h2>🏗️ SOLID Principles in Test Automation Context</h2>
+                <p>The SOLID principles, originally designed for object-oriented programming, are incredibly powerful when applied to test automation. They help create maintainable, extensible, and robust automation frameworks that can evolve with your application and team needs.</p>
+                
+                <div class="principle-box">
+                    <h3>💡 Why SOLID Matters in Test Automation</h3>
+                    <ul>
+                        <li><strong>Maintainability:</strong> Changes in one area don't break unrelated tests</li>
+                        <li><strong>Extensibility:</strong> Easy to add new features without major refactoring</li>
+                        <li><strong>Testability:</strong> Components can be easily unit tested</li>
+                        <li><strong>Team Collaboration:</strong> Clear responsibilities make parallel development easier</li>
+                    </ul>
+            <!-- Single Responsibility Principle -->
+                <div class="solid-principle">
+                    <div class="principle-letter">S</div>
+                    <div>
+                        <h2>Single Responsibility Principle (SRP)</h2>
+                        <p><em>"A class should have only one reason to change."</em></p>
+                        <p>In test automation: Each test class, page object, or utility should have a single, well-defined purpose.</p>
+                <h3>❌ SRP Violation Example</h3>
+                <div class="violation-example">
+                    <div class="code-example">
+                        <pre><code>// ❌ This class has too many responsibilities
+public class LoginPageTest {
+    private WebDriver driver;
+    // Responsibility 1: Test execution
+    @Test
+    public void testLogin() {
+        navigateToLoginPage();
+        enterCredentials("user", "pass");
+        clickLoginButton();
+        validateLogin();
+        generateReport();
+        sendEmailNotification();
+    }
+    // Responsibility 2: Page interactions
+    private void navigateToLoginPage() {
+        driver.get("https://example.com/login");
+    private void enterCredentials(String username, String password) {
+        driver.findElement(By.id("username")).sendKeys(username);
+        driver.findElement(By.id("password")).sendKeys(password);
+    // Responsibility 3: Validation logic
+    private void validateLogin() {
+        WebElement welcomeMsg = driver.findElement(By.className("welcome"));
+        Assert.assertTrue(welcomeMsg.isDisplayed());
+    // Responsibility 4: Reporting
+    private void generateReport() {
+        // Report generation logic
+    // Responsibility 5: Notifications
+    private void sendEmailNotification() {
+        // Email sending logic
+}</code></pre>
+                <h3>✅ SRP Compliant Solution</h3>
+                <div class="good-example">
+                        <pre><code>// ✅ Each class has a single responsibility
+// Responsibility: Page interactions only
+public class LoginPage {
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+    public void navigateTo() {
+    public void enterUsername(String username) {
+    public void enterPassword(String password) {
+    public DashboardPage clickLoginButton() {
+        driver.findElement(By.id("loginBtn")).click();
+        return new DashboardPage(driver);
+}
+// Responsibility: Dashboard page interactions only
+public class DashboardPage {
+    public DashboardPage(WebDriver driver) {
+    public boolean isWelcomeMessageDisplayed() {
+        return driver.findElement(By.className("welcome")).isDisplayed();
+// Responsibility: Test execution only
+public class LoginTest {
+    private LoginPage loginPage;
+    private TestReporter reporter;
+    private NotificationService notificationService;
+    public void testSuccessfulLogin() {
+        loginPage.navigateTo();
+        loginPage.enterUsername("user");
+        loginPage.enterPassword("pass");
+        DashboardPage dashboard = loginPage.clickLoginButton();
+        Assert.assertTrue(dashboard.isWelcomeMessageDisplayed());
+// Responsibility: Reporting only
+public class TestReporter {
+    public void generateReport(TestResult result) {
+// Responsibility: Notifications only
+public class NotificationService {
+    public void sendTestCompletionEmail(TestSummary summary) {
+            <!-- Open/Closed Principle -->
+                    <div class="principle-letter">O</div>
+                        <h2>Open/Closed Principle (OCP)</h2>
+                        <p><em>"Software entities should be open for extension but closed for modification."</em></p>
+                        <p>In test automation: Design frameworks that can be extended with new functionality without modifying existing code.</p>
+                <h3>✅ OCP Implementation: Extensible Test Reporting</h3>
+                        <pre><code>// Base reporter interface - closed for modification
+public interface TestReporter {
+    void reportTestStart(String testName);
+    void reportTestResult(TestResult result);
+    void reportTestSuite(TestSuiteResult suiteResult);
+// Base implementation - closed for modification
+public abstract class BaseTestReporter implements TestReporter {
+    protected String formatTimestamp(Date timestamp) {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(timestamp);
+    protected String formatDuration(long durationMs) {
+        return String.format("%.2f seconds", durationMs / 1000.0);
+// Extensions - open for extension
+public class ConsoleReporter extends BaseTestReporter {
+    @Override
+    public void reportTestResult(TestResult result) {
+        System.out.println(String.format("[%s] %s - %s (%s)",
+            formatTimestamp(result.getTimestamp()),
+            result.getTestName(),
+            result.getStatus(),
+            formatDuration(result.getDuration())
+        ));
+public class HtmlReporter extends BaseTestReporter {
+        // Generate HTML report
+        String html = String.format(
+            "&lt;tr&gt;&lt;td&gt;%s&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;td&gt;%s&lt;/td&gt;&lt;/tr&gt;",
+        );
+        writeToHtmlFile(html);
+public class SlackReporter extends BaseTestReporter {
+    public void reportTestSuite(TestSuiteResult suiteResult) {
+        String message = String.format(
+            "Test Suite: %s\nPassed: %d, Failed: %d, Duration: %s",
+            suiteResult.getSuiteName(),
+            suiteResult.getPassedCount(),
+            suiteResult.getFailedCount(),
+            formatDuration(suiteResult.getTotalDuration())
+        sendToSlack(message);
+// Reporter manager - can use any reporter without modification
+public class ReporterManager {
+    private List&lt;TestReporter&gt; reporters = new ArrayList&lt;&gt;();
+    public void addReporter(TestReporter reporter) {
+        reporters.add(reporter);
+    public void reportResult(TestResult result) {
+        reporters.forEach(reporter -&gt; reporter.reportTestResult(result));
+                <h3>✅ OCP Implementation: Extensible Driver Management</h3>
+                        <pre><code>// Base driver factory - closed for modification
+public abstract class WebDriverFactory {
+    public abstract WebDriver createDriver();
+    protected void setCommonCapabilities(DesiredCapabilities capabilities) {
+        capabilities.setCapability("acceptSslCerts", true);
+        capabilities.setCapability("acceptInsecureCerts", true);
+// Extensions for different browsers - open for extension
+public class ChromeDriverFactory extends WebDriverFactory {
+    public WebDriver createDriver() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-web-security");
+        options.addArguments("--disable-features=VizDisplayCompositor");
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        setCommonCapabilities(capabilities);
+        options.merge(capabilities);
+        return new ChromeDriver(options);
+public class FirefoxDriverFactory extends WebDriverFactory {
+        FirefoxOptions options = new FirefoxOptions();
+        options.addPreference("security.tls.insecure_fallback_hosts", "localhost");
+        return new FirefoxDriver(options);
+// New browser support can be added without modifying existing code
+public class EdgeDriverFactory extends WebDriverFactory {
+        EdgeOptions options = new EdgeOptions();
+        return new EdgeDriver(options);
+            <!-- Liskov Substitution Principle -->
+                    <div class="principle-letter">L</div>
+                        <h2>Liskov Substitution Principle (LSP)</h2>
+                        <p><em>"Objects of a superclass should be replaceable with objects of a subclass without breaking the application."</em></p>
+                        <p>In test automation: Subclasses should be able to replace their parent classes without changing the correctness of the program.</p>
+                <h3>❌ LSP Violation Example</h3>
+                        <pre><code>// ❌ LSP violation - subclass changes expected behavior
+public class BasePage {
+    protected WebDriver driver;
+    public BasePage(WebDriver driver) {
+    public void navigateTo(String url) {
+        driver.get(url);
+        waitForPageLoad();
+    protected void waitForPageLoad() {
+        // Wait for page to load
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(webDriver -&gt; ((JavascriptExecutor) webDriver)
+            .executeScript("return document.readyState").equals("complete"));
+public class LoginPage extends BasePage {
+        super(driver);
+        // ❌ Violation: Changes the contract by not calling waitForPageLoad
+        // Intentionally not calling waitForPageLoad() - breaks LSP
+// This will fail because LoginPage doesn't behave like BasePage
+public void testNavigation() {
+    BasePage page = new LoginPage(driver);  // Should work with any BasePage
+    page.navigateTo("https://example.com");
+    // Expects page to be loaded, but LoginPage doesn't wait
+    WebElement element = driver.findElement(By.id("username")); // May fail
+                <h3>✅ LSP Compliant Solution</h3>
+                        <pre><code>// ✅ LSP compliant - all subclasses maintain the contract
+public abstract class BasePage {
+    protected WebDriverWait wait;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        waitForPageSpecificElements();
+    // Template method - subclasses can customize without breaking contract
+    protected abstract void waitForPageSpecificElements();
+    public abstract boolean isPageLoaded();
+    protected void waitForPageSpecificElements() {
+        // Wait for login-specific elements
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("username")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("password")));
+    public boolean isPageLoaded() {
+        return driver.findElement(By.id("username")).isDisplayed() &&
+               driver.findElement(By.id("password")).isDisplayed();
+public class DashboardPage extends BasePage {
+        // Wait for dashboard-specific elements
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.className("dashboard")));
+        return driver.findElement(By.className("dashboard")).isDisplayed();
+// Now any BasePage can be substituted without breaking functionality
+    BasePage page = new LoginPage(driver);  // Or any other BasePage subclass
+    Assert.assertTrue(page.isPageLoaded());  // Will work for any subclass
+            <!-- Interface Segregation Principle -->
+                    <div class="principle-letter">I</div>
+                        <h2>Interface Segregation Principle (ISP)</h2>
+                        <p><em>"Clients should not be forced to depend on interfaces they do not use."</em></p>
+                        <p>In test automation: Create focused, specific interfaces rather than large, monolithic ones.</p>
+                <h3>❌ ISP Violation Example</h3>
+                        <pre><code>// ❌ Fat interface - forces clients to implement methods they don't need
+public interface TestUtilities {
+    // Database operations
+    void connectToDatabase();
+    void executeQuery(String sql);
+    void closeDatabase();
+    // File operations
+    void readFromFile(String path);
+    void writeToFile(String path, String content);
+    void deleteFile(String path);
+    // API operations
+    Response sendGetRequest(String url);
+    Response sendPostRequest(String url, String body);
+    void validateResponse(Response response);
+    // UI operations
+    void takeScreenshot();
+    void highlightElement(WebElement element);
+    void scrollToElement(WebElement element);
+    // Reporting operations
+    void generateReport();
+    void sendEmailReport();
+    void uploadToCloud();
+// ❌ Classes forced to implement methods they don't use
+public class DatabaseTestHelper implements TestUtilities {
+    // Only needs database methods but forced to implement everything
+    public void connectToDatabase() { /* Implementation */ }
+    public void executeQuery(String sql) { /* Implementation */ }
+    public void closeDatabase() { /* Implementation */ }
+    // ❌ Forced to implement methods not needed
+    public void readFromFile(String path) { 
+        throw new UnsupportedOperationException("Not needed");
+    public Response sendGetRequest(String url) { 
+    // ... many more unnecessary implementations
+                <h3>✅ ISP Compliant Solution</h3>
+                        <pre><code>// ✅ Segregated interfaces - focused and specific
+public interface DatabaseOperations {
+public interface FileOperations {
+public interface ApiOperations {
+public interface UiOperations {
+public interface ReportingOperations {
+// ✅ Classes implement only what they need
+public class DatabaseTestHelper implements DatabaseOperations {
+    public void connectToDatabase() {
+        // Implementation
+    public void executeQuery(String sql) {
+    public void closeDatabase() {
+public class ApiTestHelper implements ApiOperations {
+    public Response sendGetRequest(String url) {
+    public Response sendPostRequest(String url, String body) {
+    public void validateResponse(Response response) {
+// ✅ Classes can implement multiple focused interfaces if needed
+public class ComprehensiveTestHelper implements DatabaseOperations, FileOperations {
+    // Implements only the interfaces it actually needs
+    public void readFromFile(String path) { /* Implementation */ }
+    public void writeToFile(String path, String content) { /* Implementation */ }
+    public void deleteFile(String path) { /* Implementation */ }
+            <!-- Dependency Inversion Principle -->
+                    <div class="principle-letter">D</div>
+                        <h2>Dependency Inversion Principle (DIP)</h2>
+                        <p><em>"High-level modules should not depend on low-level modules. Both should depend on abstractions."</em></p>
+                        <p>In test automation: Depend on interfaces and abstractions, not concrete implementations.</p>
+                <h3>❌ DIP Violation Example</h3>
+                        <pre><code>// ❌ High-level class depends on low-level concrete classes
+public class TestExecutor {
+    private ChromeDriver driver;           // ❌ Depends on concrete class
+    private MySQLDatabase database;        // ❌ Depends on concrete class
+    private FileLogger logger;             // ❌ Depends on concrete class
+    public TestExecutor() {
+        // ❌ Tightly coupled to specific implementations
+        this.driver = new ChromeDriver();
+        this.database = new MySQLDatabase();
+        this.logger = new FileLogger();
+    public void executeTest(String testName) {
+        logger.log("Starting test: " + testName);
+        // Test execution logic
+        driver.get("https://example.com");
+        // Database validation
+        database.connect();
+        String result = database.query("SELECT * FROM users");
+        database.disconnect();
+        logger.log("Test completed: " + testName);
+                <h3>✅ DIP Compliant Solution</h3>
+                        <pre><code>// ✅ Depend on abstractions
+public interface WebDriverProvider {
+    WebDriver getDriver();
+    void quitDriver();
+public interface DatabaseProvider {
+    void connect();
+    String executeQuery(String sql);
+    void disconnect();
+public interface Logger {
+    void log(String message);
+    void error(String message);
+// ✅ High-level class depends on abstractions
+    private final WebDriverProvider driverProvider;
+    private final DatabaseProvider databaseProvider;
+    private final Logger logger;
+    // ✅ Dependencies injected through constructor
+    public TestExecutor(WebDriverProvider driverProvider, 
+                       DatabaseProvider databaseProvider, 
+                       Logger logger) {
+        this.driverProvider = driverProvider;
+        this.databaseProvider = databaseProvider;
+        this.logger = logger;
+        WebDriver driver = driverProvider.getDriver();
+        databaseProvider.connect();
+        String result = databaseProvider.executeQuery("SELECT * FROM users");
+        databaseProvider.disconnect();
+// ✅ Concrete implementations
+public class ChromeDriverProvider implements WebDriverProvider {
+    public WebDriver getDriver() {
+        if (driver == null) {
+            driver = new ChromeDriver();
+        return driver;
+    public void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+public class MySQLDatabaseProvider implements DatabaseProvider {
+    private Connection connection;
+    public void connect() {
+        // MySQL connection logic
+    public String executeQuery(String sql) {
+        // MySQL query execution
+        return "result";
+    public void disconnect() {
+        // MySQL disconnection logic
+public class ConsoleLogger implements Logger {
+    public void log(String message) {
+        System.out.println("[INFO] " + message);
+    public void error(String message) {
+        System.err.println("[ERROR] " + message);
+// ✅ Easy to test with mocks and easy to change implementations
+public class TestExecutorTest {
+    public void testExecuteTest() {
+        // ✅ Can easily inject mocks for testing
+        WebDriverProvider mockDriverProvider = mock(WebDriverProvider.class);
+        DatabaseProvider mockDatabaseProvider = mock(DatabaseProvider.class);
+        Logger mockLogger = mock(Logger.class);
+        TestExecutor executor = new TestExecutor(
+            mockDriverProvider, 
+            mockDatabaseProvider, 
+            mockLogger
+        executor.executeTest("sample test");
+        verify(mockLogger).log("Starting test: sample test");
+        verify(mockLogger).log("Test completed: sample test");
+            <!-- Practical Refactoring Exercise -->
+                <h2>🔧 Practical Refactoring Exercise</h2>
+                <div class="refactoring-steps">
+                    <h3>🎯 Exercise: Refactor Legacy Test Class</h3>
+                    <p>Take the following legacy test class and refactor it to follow all SOLID principles:</p>
+                    
+                        <pre><code>// Legacy code to refactor
+public class UserManagementTest {
+    private WebDriver driver = new ChromeDriver();
+    public void testUserCreation() {
+        // Navigate to user management page
+        driver.get("https://example.com/admin/users");
+        // Fill user form
+        driver.findElement(By.id("firstName")).sendKeys("John");
+        driver.findElement(By.id("lastName")).sendKeys("Doe");
+        driver.findElement(By.id("email")).sendKeys("john@example.com");
+        driver.findElement(By.id("role")).sendKeys("Admin");
+        driver.findElement(By.id("submitBtn")).click();
+        // Validate in UI
+        WebElement successMsg = driver.findElement(By.className("success"));
+        Assert.assertTrue(successMsg.isDisplayed());
+        // Validate in database
+        try {
+            Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/testdb", "user", "pass");
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(
+                "SELECT * FROM users WHERE email='john@example.com'");
+            Assert.assertTrue(rs.next());
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        // Generate report
+            FileWriter writer = new FileWriter("test-report.html");
+            writer.write("&lt;html&gt;&lt;body&gt;Test Passed&lt;/body&gt;&lt;/html&gt;");
+            writer.close();
+        } catch (IOException e) {
+        // Send notification
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            Session session = Session.getDefaultInstance(props);
+            MimeMessage message = new MimeMessage(session);
+            message.setSubject("Test Completed");
+            Transport.send(message);
+        } catch (MessagingException e) {
+                    <h4>Refactoring Steps:</h4>
+                    <ol>
+                        <li><strong>Identify SRP violations:</strong> List all the responsibilities in the class</li>
+                        <li><strong>Create abstractions:</strong> Define interfaces for each responsibility</li>
+                        <li><strong>Implement OCP:</strong> Make the solution extensible</li>
+                        <li><strong>Apply LSP:</strong> Ensure proper inheritance hierarchies</li>
+                        <li><strong>Use ISP:</strong> Create focused interfaces</li>
+                        <li><strong>Apply DIP:</strong> Inject dependencies through abstractions</li>
+                    </ol>
+            <!-- Key Takeaways -->
+                <h2>🎯 Key Takeaways</h2>
+                <div class="takeaway-grid">
+                    <div class="takeaway-item">
+                        <h3>🎯 Single Responsibility</h3>
+                        <p>Each class should have one reason to change. Separate concerns into focused components.</p>
+                        <h3>🔓 Open/Closed</h3>
+                        <p>Design for extension without modification. Use abstractions and polymorphism.</p>
+                        <h3>🔄 Liskov Substitution</h3>
+                        <p>Subclasses must be substitutable for their base classes without breaking functionality.</p>
+                        <h3>🎛️ Interface Segregation</h3>
+                        <p>Create focused, specific interfaces rather than large, monolithic ones.</p>
+                        <h3>🔄 Dependency Inversion</h3>
+                        <p>Depend on abstractions, not concretions. Use dependency injection for flexibility.</p>
+                        <h3>🏗️ Better Architecture</h3>
+                        <p>SOLID principles lead to more maintainable, testable, and extensible automation frameworks.</p>
+        </main>
+        <!-- Module Navigation Footer -->
+        <nav class="module-nav-footer">
+                <div class="nav-center">
+                    <span class="completion-status">Module 2 Complete! 🎉</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 25%"></div>
+    </div>
+    <!-- Course Scripts -->
+    <!-- Course Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="../../js/courses/automation_architecture_fix.js"></script>
+    <script src="../../js/courses/course-navigation.js"></script>
+    <script src="../../js/courses/code-highlighting.js"></script>
+</body>
+</html>

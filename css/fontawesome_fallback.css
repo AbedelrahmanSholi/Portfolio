@@ -1,0 +1,21 @@
+/* FontAwesome Fallback CSS - Disabled to allow proper FontAwesome loading */
+
+/* Contact section icons only - keep these for contact section */
+.fa-phone::before {
+    content: "📞" !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 16px !important;
+}
+
+.fa-map-marker-alt::before {
+    content: "📍" !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 16px !important;
+}
+
+.fa-file-alt::before {
+    content: "📄" !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 16px !important;
+}
+

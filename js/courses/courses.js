@@ -42,6 +42,9 @@ function openCourseContentInNewTab(courseId) {
         case 'webdriverio':
             url = 'courses/webdriverio/Module_1__WebDriverIO_Fundamentals.html'; // WebDriverIO course main page
             break;
+        case 'automation-architecture':
+            url = 'courses/automation-architecture/overview.html'; // Automation Architecture course overview
+            break;
         case 'roadmap':
             url = 'courses/roadmap/enhanced.html'; // Or a main Roadmap page
             break;

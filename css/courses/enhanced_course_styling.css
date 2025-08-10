@@ -127,29 +127,39 @@
     color: #3498db;
 }
 
-/* Code Block Enhancements */
+/* Code Block Enhancements - Apply styling only to code content */
 .course-content-wrapper pre {
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+.course-content-wrapper pre code {
+    display: block;
     background: #1a1a2e;
     border: 1px solid #3498db;
     border-radius: 8px;
     padding: 1.5rem;
-    margin: 1.5rem 0;
-    overflow-x: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.course-content-wrapper code {
     font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
     font-size: 0.95rem;
     line-height: 1.5;
+    color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow-x: auto;
 }
 
 .course-content-wrapper p code {
+    display: inline;
     background: rgba(52, 152, 219, 0.2);
     color: #3498db;
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
     font-size: 0.9rem;
+    border: none;
+    box-shadow: none;
 }
 
 /* Table Styling */

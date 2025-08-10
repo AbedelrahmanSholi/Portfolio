@@ -1,0 +1,455 @@
+/* Enhanced Code Block Visibility for Automation Architecture Modules */
+
+/* Code Examples with Better Contrast */
+.code-example {
+    background: linear-gradient(135deg, rgba(30, 30, 46, 0.95), rgba(40, 42, 54, 0.95));
+    border: 2px solid rgba(68, 71, 90, 0.8);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.code-example::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e74c3c, #f39c12, #f1c40f, #27ae60, #3498db, #9b59b6);
+}
+
+.code-example h4 {
+    color: #74c0fc;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.code-example pre {
+    background: #282a36;
+    border: 2px solid #44475a;
+    border-radius: 12px;
+    padding: 25px;
+    overflow-x: auto;
+    margin: 0;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #f8f8f2;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.code-example code {
+    background: transparent;
+    padding: 0;
+    border: none;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+    color: #f8f8f2;
+    text-shadow: none;
+}
+
+/* Syntax Highlighting Enhancement */
+.code-example pre code {
+    display: block;
+    white-space: pre;
+}
+
+/* Comments */
+.code-example pre .comment {
+    color: #6272a4;
+    font-style: italic;
+}
+
+/* Keywords */
+.code-example pre .keyword {
+    color: #ff79c6;
+    font-weight: 600;
+}
+
+/* Strings */
+.code-example pre .string {
+    color: #f1fa8c;
+}
+
+/* Numbers */
+.code-example pre .number {
+    color: #bd93f9;
+}
+
+/* Functions */
+.code-example pre .function {
+    color: #50fa7b;
+}
+
+/* Classes */
+.code-example pre .class {
+    color: #8be9fd;
+}
+
+/* Improved Inline Code */
+code {
+    background: linear-gradient(135deg, rgba(68, 71, 90, 0.8), rgba(98, 114, 164, 0.6));
+    color: #74c0fc;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+    font-size: 0.9em;
+    border: 1px solid rgba(116, 192, 252, 0.3);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Best Practice Boxes */
+.best-practice {
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.15), rgba(46, 204, 113, 0.15));
+    border: 2px solid rgba(39, 174, 96, 0.5);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    position: relative;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(39, 174, 96, 0.1);
+}
+
+.best-practice::before {
+    content: '✅';
+    position: absolute;
+    top: -15px;
+    left: 25px;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+
+.best-practice h4 {
+    color: #2ecc71;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.best-practice ul {
+    margin: 20px 0;
+    padding-left: 25px;
+}
+
+.best-practice li {
+    margin-bottom: 12px;
+    color: #ecf0f1;
+    line-height: 1.6;
+    position: relative;
+}
+
+.best-practice li::marker {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+/* Enhanced Principle Boxes */
+.principle-box {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.15), rgba(155, 89, 182, 0.15));
+    border: 2px solid rgba(52, 152, 219, 0.5);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    position: relative;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(52, 152, 219, 0.1);
+}
+
+.principle-box::before {
+    content: '💡';
+    position: absolute;
+    top: -15px;
+    left: 25px;
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.principle-box h3 {
+    color: #74c0fc;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.principle-box p {
+    color: #ecf0f1;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+.principle-box ul {
+    margin: 20px 0;
+    padding-left: 25px;
+}
+
+.principle-box li {
+    margin-bottom: 12px;
+    color: #ecf0f1;
+    line-height: 1.6;
+}
+
+.principle-box li::marker {
+    color: #74c0fc;
+    font-weight: bold;
+}
+
+.principle-box strong {
+    color: #74c0fc;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Decision Cards */
+.decision-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.decision-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.decision-card:hover {
+    border-color: rgba(116, 192, 252, 0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.decision-card h3 {
+    color: #f39c12;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.decision-card h4 {
+    color: #74c0fc;
+    margin: 25px 0 15px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.decision-card ul {
+    margin: 15px 0;
+    padding-left: 25px;
+}
+
+.decision-card li {
+    margin-bottom: 10px;
+    color: #ecf0f1;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.decision-card li::marker {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+/* Enhanced Challenge Items */
+.challenge-item {
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(192, 57, 43, 0.1));
+    border: 2px solid rgba(231, 76, 60, 0.4);
+    border-left: 6px solid #e74c3c;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 30px 0;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(231, 76, 60, 0.1);
+}
+
+.challenge-item:hover {
+    border-color: rgba(231, 76, 60, 0.6);
+    border-left-color: #e74c3c;
+    transform: translateX(8px);
+    box-shadow: 0 12px 40px rgba(231, 76, 60, 0.2);
+}
+
+.challenge-item h4 {
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.challenge-item p {
+    color: #ecf0f1;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+.challenge-item strong {
+    color: #74c0fc;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Architecture Diagrams */
+.architecture-diagram {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.architecture-diagram h4 {
+    color: #74c0fc;
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.architecture-diagram .mermaid {
+    background: transparent;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+/* Enhanced Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+table th {
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+    color: white;
+    padding: 20px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+table td {
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ecf0f1;
+    vertical-align: top;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+table tr:hover {
+    background: rgba(116, 192, 252, 0.1);
+}
+
+table code {
+    background: rgba(68, 71, 90, 0.8);
+    color: #74c0fc;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    border: 1px solid rgba(116, 192, 252, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .decision-matrix {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .code-example pre {
+        font-size: 0.85rem;
+        padding: 20px;
+    }
+    
+    .challenge-item,
+    .best-practice,
+    .principle-box {
+        padding: 25px;
+    }
+    
+    .code-example,
+    .architecture-diagram {
+        padding: 25px;
+    }
+    
+    table {
+        font-size: 0.95rem;
+    }
+    
+    table th,
+    table td {
+        padding: 15px;
+    }
+    
+    .decision-card {
+        padding: 25px;
+    }
+}
+
+/* Dark Theme Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #2980b9, #8e44ad);
+}
+
