@@ -1,70 +1,90 @@
-# Abedelrahman Sholi - QA Automation Engineer Portfolio
+# Abedelrahman Sholi — QA Lead & Quality Architecture Portfolio
 
-Welcome to my professional portfolio! This repository showcases my expertise in Quality Assurance, Test Automation, and Software Testing.
+Welcome to my professional QA portfolio repository. This space reflects my experience in quality leadership, automation architecture, CI/CD quality integration, and distributed team delivery across aviation, healthcare, and telecom systems.
 
 ## 🌐 Live Portfolio
-Visit my portfolio at: [https://abedelrahmansholi.github.io/Portfolio/](https://abedelrahmansholi.github.io/Portfolio/)
+**Portfolio Website:** [https://abedelrahmansholi.github.io/Portfolio/](https://abedelrahmansholi.github.io/Portfolio/)
 
 ## 👨‍💻 About Me
-Senior QA Automation Engineer with 10+ years of experience in software testing and quality leadership across aviation, healthcare, telecom, and electronics industries. Passionate about building robust automation frameworks and mentoring QA teams.
+I am a QA Lead / Quality Architect with 11+ years of experience designing automation strategies, strengthening release reliability, and leading distributed QA teams for enterprise platforms.
 
-## 🛠️ Technical Skills
-- **Test Automation:** Selenium WebDriver, RestAssured, TestNG, Cucumber, BDD
-- **Programming:** Java, Object-Oriented Programming (OOP)
-- **CI/CD & DevOps:** Jenkins, Git, Maven, SauceLabs
-- **Test Management:** JIRA, QMetry, TestRail
-- **Testing Approaches:** API Testing, E2E Testing, Test Metrics & Reporting
-- **Process Frameworks:** Agile/Scrum, SDLC, STLC, Microservices Testing
+My work focuses on:
+* Designing scalable automation frameworks
+* Establishing CI/CD quality gates
+* Governing vendor QA delivery and SLAs
+* Improving release predictability and risk visibility
+* Embedding quality early in the SDLC (“shift-left”)
 
-## 📄 Portfolio Features
-- **Professional Summary** - Overview of my experience and expertise
-- **Technical Skills** - Comprehensive list of technologies and tools
-- **Professional Experience** - Detailed work history with achievements
-- **Projects Showcase** - Key projects and accomplishments
-- **Resume** - Downloadable resume in HTML format
-- **Contact Information** - Ways to get in touch
+I combine hands-on technical work with leadership responsibilities, supporting teams across multiple time zones and complex system landscapes.
 
-## 🔧 SEO & Analytics
-This portfolio is optimized for search engines and includes:
-- Comprehensive meta tags for social media sharing
-- Google Analytics 4 integration for visitor tracking
-- Structured data markup
-- Sitemap and robots.txt for better indexing
-- Open Graph and Twitter Card support
+## 🛠️ Core Technical Areas
+
+**Automation & Testing**
+* Selenium WebDriver
+* RestAssured (API automation)
+* Appium (mobile automation exposure)
+* TestNG, Cucumber, BDD approaches
+* Hybrid UI/API automation frameworks
+
+**Programming / Scripting**
+* Java (primary automation language)
+* JavaScript / Node.js (automation tooling & scripting)
+* Python (validation, tooling, data handling)
+* SQL (MySQL validation)
+
+**CI/CD & DevOps**
+* GitLab CI/CD
+* GitHub Actions
+* Jenkins
+* Maven, Git
+* SauceLabs
+* Familiar with Docker & Kubernetes
+
+**Quality Governance & Monitoring**
+* Jira
+* QMetry
+* TestRail
+* Splunk
+* Confluence
+* Agile / Scrum delivery models
+
+## 📄 What This Portfolio Contains
+This portfolio website includes:
+* **Professional Summary** — Overview of my QA leadership approach
+* **Core Skills** — Tools, frameworks, and technical capabilities
+* **Professional Experience** — Real project contributions and responsibilities
+* **Automation & Quality Approach** — How I structure testing strategy
+* **Resume Section** — Downloadable CV
+* **Contact Information** — Ways to reach me
+
+The goal of this portfolio is not just to list tools, but to show how I approach quality at system level.
+
+## 🚀 Technologies Used in Portfolio
+* HTML5, CSS3, JavaScript
+* GitHub Pages hosting
+* SEO meta tags & structured data
+* Responsive layout for desktop/mobile viewing
 
 ## 📱 Responsive Design
-The portfolio is fully responsive and optimized for:
-- Desktop computers
-- Tablets
-- Mobile devices
+The portfolio is designed to be accessible across:
+* Desktop
+* Tablet
+* Mobile devices
 
-## 🚀 Technologies Used
-- **Frontend:** HTML5, CSS3, JavaScript
-- **Analytics:** Google Analytics 4
-- **SEO:** Meta tags, Open Graph, Twitter Cards, Structured Data
-- **Hosting:** GitHub Pages
+## 📞 Contact
+* **Location:** Dubai, United Arab Emirates
+* **Email:** [s.holi_1989@live.com](mailto:s.holi_1989@live.com)
+* **Phone:** +971569538533
+* **LinkedIn:** [https://linkedin.com/in/sholi](https://linkedin.com/in/sholi)
+* **Portfolio:** [https://abedelrahmansholi.github.io/Portfolio/](https://abedelrahmansholi.github.io/Portfolio/)
 
-## 📞 Contact Information
-- **Location:** Dubai, UAE
-- **Email:** s.holi_1989@live.com
-- **Phone:** +971569538533
-- **LinkedIn:** [https://linkedin.com/in/sholi](https://linkedin.com/in/sholi)
-- **Portfolio:** [https://abedelrahmansholi.github.io/Portfolio/](https://abedelrahmansholi.github.io/Portfolio/)
+## 🎯 Professional Focus
+I am currently interested in roles where I can contribute in:
+* QA Lead / Quality Architect positions
+* Automation strategy and CI/CD quality integration
+* Distributed team leadership
+* Enterprise platform reliability improvement
+* Fintech, SaaS, and large-scale system environments
 
-## 🎯 Career Objective
-Seeking to leverage my extensive QA automation experience and leadership skills in a Senior QA Engineer, SDET, or QA Manager role where I can drive quality excellence and mentor teams.
-
-## 📈 Key Achievements
-- Improved test pass rates from 50% to 75% for regression testing
-- Led QA teams of up to 6 members across multiple projects
-- Reduced response times by 30% through performance testing
-- Mentored multiple QA teams across 6 groups
-- Architected microservices-based testing frameworks
-
-## 🔄 Updates
-This portfolio is regularly updated with new projects, skills, and achievements. Last updated: January 2025
-
----
-
-*This portfolio demonstrates my commitment to quality, attention to detail, and technical expertise in QA automation. Feel free to explore and reach out for opportunities!*
-
+## 🔄 Repository Updates
+This repository is updated as my portfolio evolves and reflects my current experience and responsibilities. Thanks for visiting my portfolio repository.
