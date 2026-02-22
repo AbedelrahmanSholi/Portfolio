@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <!-- Security Meta Tags -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -12,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abedelrahman Sholi - Resume</title>
-        <style>
+    <style>
         /* Reset and base styles */
         * {
             margin: 0;
@@ -57,6 +55,15 @@
             margin: 10px 0 !important;
         }
         
+        .contact-info a {
+            color: #2a5885;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
         .section-title {
             font-size: 18px !important;
             font-weight: bold !important;
@@ -76,6 +83,7 @@
             display: flex !important;
             flex-wrap: wrap !important;
             justify-content: space-between !important;
+            margin-bottom: 20px !important;
         }
         
         .skills-column {
@@ -83,11 +91,13 @@
         }
         
         .skills-item {
-            margin-bottom: 5px !important;
+            margin-bottom: 8px !important;
+            line-height: 1.5 !important;
         }
         
         .skills-title {
             font-weight: bold !important;
+            color: #333 !important;
         }
         
         .experience-item {
@@ -97,27 +107,17 @@
         .job-title {
             font-weight: bold !important;
             margin-bottom: 5px !important;
+            font-size: 15px !important;
+            color: #2a5885 !important;
         }
         
         .company-info {
             display: flex !important;
             justify-content: space-between !important;
             font-style: italic !important;
-            margin-bottom: 5px !important;
-        }
-        
-        .company {
+            margin-bottom: 10px !important;
             font-weight: bold !important;
-        }
-        
-        /* Original simple bullet points */
-        ul {
-            margin-top: 5px !important;
-            padding-left: 20px !important;
-        }
-        
-        li {
-            margin-bottom: 5px !important;
+            color: #444 !important;
         }
         
         .education-item {
@@ -126,6 +126,7 @@
         
         .degree {
             font-weight: bold !important;
+            color: #2a5885 !important;
         }
         
         .school-info {
@@ -134,8 +135,35 @@
             font-style: italic !important;
         }
         
-        .languages {
-            margin-top: 10px !important;
+        /* Bullet point styling */
+        ul {
+            margin: 10px 0 15px 0 !important;
+            padding-left: 0 !important;
+            list-style-type: none !important;
+        }
+        
+        li {
+            margin-bottom: 8px !important;
+            line-height: 1.6 !important;
+            position: relative !important;
+            padding-left: 20px !important;
+        }
+        
+        li::before {
+            content: "▸" !important;
+            position: absolute !important;
+            left: 0 !important;
+            color: #2a5885 !important;
+            font-weight: bold !important;
+            font-size: 1.1em !important;
+        }
+        
+        li:hover {
+            background-color: rgba(42, 88, 133, 0.05) !important;
+            padding: 4px 8px 4px 20px !important;
+            border-radius: 3px !important;
+            margin-left: -8px !important;
+            transition: all 0.2s ease !important;
         }
         
         /* Print styles */
@@ -148,267 +176,98 @@
             .container {
                 box-shadow: none !important;
                 margin: 0 !important;
-                padding: 20px !important;
+                padding: 10px 20px !important;
             }
             
             .section-title {
                 page-break-after: avoid !important;
             }
             
-            .job-title {
+            .job-title, .company-info {
                 page-break-after: avoid !important;
             }
+            
+            li:hover {
+                background-color: transparent !important;
+                padding: 0 0 0 20px !important;
+                margin-left: 0 !important;
+            }
         }
-        
-        /* Override any conflicting styles */
-        .container * {
-            font-family: 'Calibri', 'Arial', sans-serif !important;
-        }
-        
-        /* Ensure no background effects interfere */
-        body::before,
-        body::after {
-            display: none !important;
-        }
-        
-        /* Remove any animations or transitions */
-        * {
-            animation: none !important;
-            transition: none !important;
-        }
-    
-        
-            margin: 12px 0 !important;
-            padding-left: 25px !important;
-            list-style-type: none !important;
-        }
-        
-        
-            margin-bottom: 8px !important;
-            line-height: 1.6 !important;
-            position: relative !important;
-            padding-left: 15px !important;
-        }
-        
-        
-            content: "▸" !important;
-            position: absolute !important;
-            left: 0 !important;
-            color: #2a5885 !important;
-            font-weight: bold !important;
-            font-size: 1.1em !important;
-        }
-        
-        
-            background-color: rgba(42, 88, 133, 0.05) !important;
-            padding: 4px 8px !important;
-            border-radius: 3px !important;
-            margin-left: -8px !important;
-            transition: all 0.2s ease !important;
-        }
-        
-        /* Nested lists */
-        
-            margin-top: 8px !important;
-            padding-left: 20px !important;
-        }
-        
-        
-            content: "◦" !important;
-            color: #666 !important;
-        }
-        
-        /* Enhanced Resume Bullet Points */
-        .job-description ul {
-            margin: 15px 0 !important;
-            padding-left: 0 !important;
-            list-style-type: none !important;
-        }
-        
-        .job-description li {
-            margin-bottom: 10px !important;
-            line-height: 1.7 !important;
-            position: relative !important;
-            padding-left: 25px !important;
-            text-align: left !important;
-            text-indent: 0 !important;
-        }
-        
-        .job-description li:before {
-            content: "•" !important;
-            position: absolute !important;
-            left: 8px !important;
-            color: #2a5885 !important;
-            font-weight: bold !important;
-            font-size: 1.2em !important;
-            line-height: 1.4 !important;
-        }
-        
-        .job-description li:hover {
-            background-color: rgba(42, 88, 133, 0.08) !important;
-            padding: 6px 12px 6px 25px !important;
-            border-radius: 4px !important;
-            margin-left: -12px !important;
-            margin-right: -12px !important;
-            transition: all 0.2s ease !important;
-        }
-        
-        /* Nested lists with different bullets */
-        .job-description ul ul {
-            margin-top: 10px !important;
-            margin-bottom: 10px !important;
-            padding-left: 20px !important;
-        }
-        
-        .job-description ul ul li {
-            padding-left: 20px !important;
-        }
-        
-        .job-description ul ul li:before {
-            content: "◦" !important;
-            left: 5px !important;
-            color: #666 !important;
-            font-size: 1.1em !important;
-        }
-        
-        /* Professional Skills section bullets */
-        .professional-skills ul {
-            margin: 10px 0 !important;
-            padding-left: 0 !important;
-        }
-        
-        .professional-skills li {
-            margin-bottom: 8px !important;
-            padding-left: 20px !important;
-            position: relative !important;
-        }
-        
-        .professional-skills li:before {
-            content: "▸" !important;
-            position: absolute !important;
-            left: 0 !important;
-            color: #2a5885 !important;
-            font-weight: bold !important;
-        }
-        
-        /* Ensure proper spacing for all text */
-        .job-description p, .job-description li {
-            margin-bottom: 8px !important;
-            line-height: 1.6 !important;
-        }
-        
-        /* Fix any alignment issues */
-        .resume-content {
-            text-align: left !important;
-        }
-        
-        .resume-content * {
-            text-align: left !important;
-        }
-        </style>
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1 class="name">ABEDELRAHMAN SHOLI</h1>
-            <div class="contact-info">UAE-Dubai | +971569538533 | s.holi_1989@live.com | <a href="https://www.linkedin.com/in/sholi/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="https://abedelrahmansholi.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">Portfolio</a></div>
+            <div class="contact-info">
+                UAE – Dubai | +971569538533 | s.holi_1989@live.com | 
+                <a href="https://www.linkedin.com/in/sholi/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | 
+                <a href="https://abedelrahmansholi.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+            </div>
         </div>
 
         <div class="section-title">PROFESSIONAL SUMMARY</div>
         <div class="summary">
-            Experienced Senior QA Automation Engineer with 10+ years in software testing and quality leadership across aviation, healthcare, telecom, and electronics industries. Proven expertise in designing robust automation frameworks using Selenium, Java, and CI/CD pipelines, with significant improvements in test efficiency and defect detection. Passionate about elevating software quality through strategic test planning, mentoring QA teams, and implementing cutting-edge automation solutions. Seeking to oversee quality assurance initiatives as a QA Manager/Lead in a dynamic organization.
+            Quality Architect and QA Lead with 11+ years of experience designing automation strategy, building CI/CD quality gates, and leading distributed QA teams for high‑traffic enterprise systems. Strong background in vendor governance, payment flow validation, and shift‑left testing across Aviation, Healthcare, and Telecom environments. Known for improving release reliability, strengthening test infrastructure security, and driving critical go/no-go release decisions for revenue‑critical platforms. Hands‑on technical foundation in Java, Python, and JavaScript/Node.js, supported by Certified Ethical Hacker (CEH) credentials.
         </div>
 
-        <div class="section-title">TECHNICAL SKILLS</div>
+        <div class="section-title">CORE SKILLS</div>
         <div class="skills-container">
             <div class="skills-column">
-                <div class="skills-item"><span class="skills-title">Test Automation:</span> Selenium WebDriver, RestAssured, TestNG, Cucumber, BDD</div>
-                <div class="skills-item"><span class="skills-title">Programming:</span> Java, Object-Oriented Programming (OOP)</div>
-                <div class="skills-item"><span class="skills-title">CI/CD & DevOps:</span> Jenkins, Git, Maven, SauceLabs</div>
-                <div class="skills-item"><span class="skills-title">Monitoring & Observability:</span> Splunk (Expert), ELK Stack, Prometheus, Grafana</div>
+                <div class="skills-item"><span class="skills-title">Quality Leadership:</span> Remote team leadership, vendor governance, release risk ownership, SLA definition, cross‑functional delivery.</div>
+                <div class="skills-item"><span class="skills-title">Programming:</span> Java (Expert), JavaScript/Node.js, TypeScript, Python, SQL (MySQL), HTML/CSS.</div>
+                <div class="skills-item"><span class="skills-title">Tools & Monitoring:</span> Jira, QMetry, TestRail, Splunk, Confluence, Agile/Scrum delivery.</div>
             </div>
             <div class="skills-column">
-                <div class="skills-item"><span class="skills-title">Test Management:</span> JIRA, QMetry, TestRail, Test Case Management</div>
-                <div class="skills-item"><span class="skills-title">Testing Approaches:</span> Black Box Testing, White Box Testing, Exploratory Testing, Smoke Testing, Sanity Testing</div>
-                <div class="skills-item"><span class="skills-title">Process Frameworks:</span> Agile/Scrum, SDLC, STLC, Microservices Testing</div>
+                <div class="skills-item"><span class="skills-title">Automation Architecture:</span> Selenium, Appium, RestAssured, TestNG, Cucumber, API/UI automation, hybrid frameworks.</div>
+                <div class="skills-item"><span class="skills-title">CI/CD & DevOps:</span> GitLab (Expert), GitHub Actions, CI/CD Pipelines, Jenkins, Maven, Git, SauceLabs, Docker/Kubernetes (Familiar).</div>
             </div>
         </div>
 
-        <div class="section-title">PROFESSIONAL SKILLS</div>
-        <div class="skills-container">
-            <div class="skills-column">
-                <div class="skills-item">• <span class="highlight">Quality Assurance Strategy</span> & Planning</div>
-                <div class="skills-item">• <span class="highlight">Defect Management</span> & Root Cause Analysis</div>
-                <div class="skills-item">• <span class="highlight">Cross-functional Team</span> Collaboration</div>
-                <div class="skills-item">• <span class="highlight">Production Monitoring</span> & System Analysis</div>
-            </div>
-            <div class="skills-column">
-                <div class="skills-item">• <span class="highlight">QA Team Leadership</span> & Mentoring</div>
-                <div class="skills-item">• <span class="highlight">Test Metrics</span> & Reporting</div>
-                <div class="skills-item">• <span class="highlight">Risk-based Testing</span> Approach</div>
-                <div class="skills-item">• <span class="highlight">Log Analysis</span> & Troubleshooting</div>
-            </div>
-        </div>
-
-        <div style="page-break-before: always;"></div>
         <div class="section-title">PROFESSIONAL EXPERIENCE</div>
         
         <div class="experience-item">
-            <div class="job-title">Senior QA Automation Engineer</div>
+            <div class="job-title">Senior QA – dnata International Team</div>
             <div class="company-info">
-                <span class="company">Emirates Group, Dubai, UAE</span>
+                <span class="company">Emirates Group, Dubai</span>
                 <span class="dates">Jan 2024 – Present</span>
             </div>
             <ul>
-                <li>Spearheaded testing initiatives for a high-volume flight reservation system processing approximately 1 million transactions daily, ensuring a seamless user experience.</li>
-                <li>Orchestrated testing strategies for mission-critical systems, aligning QA efforts with organizational goals and implementing shift-left testing practices to identify defects earlier in the development cycle.</li>
-                <li>Architected UI/API automation frameworks (Selenium, TestNG & RestAssured), improving test pass rates from 50% to 75% for regression testing and enhancing overall test reliability.</li>
-                <li>Introduced Allure reporting to create comprehensive test execution reports, enhancing visibility into automation outcomes and enabling data-driven defect trend analysis for stakeholders.</li>
-                <li>Developed real-time QA dashboards by integrating data from QMetry and Jira, empowering stakeholders with actionable insights into test execution progress and quality metrics.</li>
-                <li>Utilized Splunk for comprehensive log analysis and transaction monitoring across production systems, enabling rapid identification and diagnosis of complex system issues.</li>
-                <li>Implemented QA strategy and collaborated with DevOps team to implement CI/CD pipelines (Jenkins, SauceLabs) and monitor executions, significantly enhancing shift-left testing capabilities.</li>
-                <li>Translated complex technical findings into actionable insights for non-technical stakeholders, improving cross-departmental collaboration and accelerating issue resolution.</li>
-                <li>Mentored multiple QA teams across 6 groups, fostering knowledge sharing, professional growth, and a culture of quality and collaboration.</li>
-                <li>Applied knowledge from CEH certification to enhance test case implementation and exploratory testing approaches, strengthening overall test coverage and security awareness.</li>
-                <li>Engineered microservices-based testing architecture, substantially improving system flexibility and reducing test maintenance efforts.</li>
+                <li>Direct global QA operations for enterprise airport platforms deployed across Europe, Middle East, and Asia, managing internal engineers and governing vendor QA delivery.</li>
+                <li>Led quality architecture and risk validation for enterprise payment gateway modernization, safeguarding transaction reliability during migration from legacy XML to JSON‑based services.</li>
+                <li>Built secure IATA‑792 compliant barcode generator/decoder tooling (Python/Node.js) to create synthetic boarding data, eliminating PII exposure in lower environments.</li>
+                <li>Architected scalable UI/API automation (Selenium, Appium, JS) integrated into deployment workflows, increasing automated test coverage by 30% and reducing regression time by 80%.</li>
+                <li>Audited vendor testing models and system architecture, defining SLAs and quality gates that reduced production defect leakage and improved release confidence.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-title">Senior QA Engineer</div>
+            <div class="company-info">
+                <span class="company">IQVIA, Palestine – Remote</span>
+                <span class="dates">Sep 2021 – Jan 2024</span>
+            </div>
+            <ul>
+                <li>Led QA delivery for a distributed team of 8 engineers across multiple time zones supporting 8 enterprise healthcare systems.</li>
+                <li>Designed modular automation architecture for microservices platforms, cutting execution time from 8h to 4h and improving release cadence.</li>
+                <li>Implemented quality dashboards and automated test gates to track key QA KPIs (e.g., defect density, test coverage, pass rate, and release readiness), improving stakeholder visibility into defect trends.</li>
             </ul>
         </div>
 
         <div style="page-break-before: always;"></div>
-        <div class="experience-item">
-            <div class="job-title">Senior QA Engineer</div>
-            <div class="company-info">
-                <span class="company">IQVIA, Remote (Oman Project)</span>
-                <span class="dates">Sep 2021 – Jan 2024</span>
-            </div>
-            <ul>
-                <li>Led QA team of 6 in delivering 8 healthcare products, significantly reducing defect leakage and ensuring compliance with healthcare industry regulations.</li>
-                <li>Designed automation scripts (Selenium, RestAssured, TestNG) achieving substantial test coverage and considerably reducing regression testing time.</li>
-                <li>Implemented JMeter performance tests, reducing response times by 30% and improving overall system stability under peak loads.</li>
-                <li>Defined QA tracking metrics and KPIs, driving continuous process improvement and increasing testing efficiency.</li>
-                <li>Delivered data-driven test reports, aiding scalable healthcare solutions and enabling informed decision-making for product releases.</li>
-                <li>Applied healthcare domain knowledge to ensure compliance with industry regulations and data privacy requirements.</li>
-                <li>Collaborated with product owners and developers to refine requirements and establish acceptance criteria, notably reducing requirement-related defects.</li>
-                <li>Tracked and resolved defects in collaboration with development teams, ensuring timely delivery of robust solutions and maintaining a high on-time release rate.</li>
-            </ul>
-        </div>
 
         <div class="experience-item">
             <div class="job-title">QA Engineer</div>
             <div class="company-info">
-                <span class="company">ProGineer Technologies, UAE</span>
+                <span class="company">ProGineer Technologies, Palestine – Remote</span>
                 <span class="dates">Nov 2019 – Sep 2021</span>
             </div>
             <ul>
-                <li>Developed comprehensive test plans & cases, ensuring thorough functional & non-functional coverage across multiple projects.</li>
-                <li>Built Java-based automation tools, cutting deployment time by 50% and increasing test reliability.</li>
-                <li>Conducted functional, regression, & integration testing, collaborating with cross-functional teams to deliver high-quality software products.</li>
-                <li>Implemented exploratory testing techniques, uncovering numerous critical defects that might have been missed with traditional scripted testing approaches.</li>
-                <li>Established standardized QA processes, significantly reducing onboarding time for new team members.</li>
+                <li>Built Java‑based automation tooling and executed backend database validation for enterprise web platforms.</li>
+                <li>Standardized QA documentation, templates, and workflows while mentoring engineers, improving onboarding speed and process consistency.</li>
             </ul>
         </div>
 
-        <div style="page-break-before: always;"></div>
         <div class="experience-item">
             <div class="job-title">Systems Integration Engineer</div>
             <div class="company-info">
@@ -416,11 +275,8 @@
                 <span class="dates">May 2015 – Nov 2019</span>
             </div>
             <ul>
-                <li>Conducted API, end-to-end, & regression testing in SOA Suite environments, ensuring seamless integration between multiple systems.</li>
-                <li>Automated daily reporting, improving accuracy & reducing manual efforts by 40%, saving approximately 15 hours per week.</li>
-                <li>Boosted reconciliation process efficiency through automation, substantially reducing processing time and eliminating manual errors.</li>
-                <li>Collaborated with cross-functional teams to resolve complex integration issues, notably reducing system downtime.</li>
-                <li>Implemented data validation techniques that significantly improved data integrity across integrated systems.</li>
+                <li>Performed API and end‑to‑end integration testing across telecom platforms within SOA environments.</li>
+                <li>Automated reporting and reconciliation processes, reducing manual effort by 40% and eliminating recurring data errors.</li>
             </ul>
         </div>
 
@@ -429,31 +285,17 @@
         <div class="education-item">
             <div class="degree">Certified Ethical Hacker (CEH)</div>
             <div class="school-info">
-                <span>Arab German Academy, Palestine</span>
-                <span>May 2015 – May 2016</span>
+                <span>Arab German Academy</span>
             </div>
-            <ul>
-                <li>Applied ethical hacking principles and security awareness to enhance test case design and exploratory testing approaches</li>
-            </ul>
         </div>
 
         <div class="education-item">
             <div class="degree">BSc Telecommunication Engineering</div>
             <div class="school-info">
-                <span>An-Najah National University, Palestine</span>
-                <span>Sep 2010 – May 2015</span>
+                <span>An‑Najah National University</span>
             </div>
-            <ul>
-                <li>Specialized in telecommunications systems, signal processing, & engineering</li>
-                <li>Relevant coursework: Software Engineering, Programming Fundamentals, Network Security</li>
-            </ul>
         </div>
 
-        <div class="section-title">LANGUAGES</div>
-        <div class="languages">
-            • English – Proficient<br>
-            • Arabic – Native
-        </div>
     </div>
 </body>
 </html>
