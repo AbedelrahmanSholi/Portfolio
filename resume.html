@@ -120,6 +120,13 @@
             color: #444 !important;
         }
         
+        .role-description {
+            margin: 0 0 8px 0 !important;
+            font-style: italic !important;
+            color: #555 !important;
+            font-size: 13px !important;
+        }
+        
         .education-item {
             margin-bottom: 15px !important;
         }
@@ -170,21 +177,27 @@
         @media print {
             body {
                 background-color: white !important;
-                font-size: 12px !important;
+                font-size: 13px !important;
             }
             
             .container {
                 box-shadow: none !important;
                 margin: 0 !important;
-                padding: 10px 20px !important;
+                padding: 15px 25px !important;
+                max-width: 100% !important;
+                border-radius: 0 !important;
             }
             
             .section-title {
                 page-break-after: avoid !important;
             }
             
-            .job-title, .company-info {
+            .job-title, .company-info, .role-description {
                 page-break-after: avoid !important;
+            }
+            
+            .education-item {
+                page-break-inside: avoid !important;
             }
             
             li:hover {
@@ -208,35 +221,41 @@
 
         <div class="section-title">PROFESSIONAL SUMMARY</div>
         <div class="summary">
-            Quality Architect and QA Lead with 11+ years of experience designing automation strategy, building CI/CD quality gates, and leading distributed QA teams for high‑traffic enterprise systems. Strong background in vendor governance, payment flow validation, and shift‑left testing across Aviation, Healthcare, and Telecom environments. Known for improving release reliability, strengthening test infrastructure security, and driving critical go/no-go release decisions for revenue‑critical platforms. Hands‑on technical foundation in Java, Python, and JavaScript/Node.js, supported by Certified Ethical Hacker (CEH) credentials.
+            Quality Architect and QA Lead with 11+ years of experience designing automation strategy, building CI/CD quality gates, and leading distributed QA teams for high‑traffic enterprise systems. Strong background in vendor governance, payment flow validation, and shift‑left testing across Aviation, Healthcare, and Telecom environments. Known for improving release reliability and driving critical go/no-go release decisions for revenue‑critical platforms. Hands‑on technical foundation in Java, supported by Certified Ethical Hacker (CEH) credentials.
         </div>
 
         <div class="section-title">CORE SKILLS</div>
         <div class="skills-container">
             <div class="skills-column">
                 <div class="skills-item"><span class="skills-title">Quality Leadership:</span> Remote team leadership, vendor governance, release risk ownership, SLA definition, cross‑functional delivery.</div>
-                <div class="skills-item"><span class="skills-title">Programming:</span> Java (Expert), JavaScript/Node.js, TypeScript, Python, SQL (MySQL), HTML/CSS.</div>
+                <div class="skills-item"><span class="skills-title">Programming:</span> Java (Expert), SQL (MySQL), HTML/CSS.</div>
+                <div class="skills-item"><span class="skills-title">Code Literacy:</span> Reads and debugs JavaScript/Node.js, TypeScript, and Python for test analysis, automation review, and root‑cause investigation.</div>
                 <div class="skills-item"><span class="skills-title">Tools & Monitoring:</span> Jira, QMetry, TestRail, Splunk, Confluence, Agile/Scrum delivery.</div>
             </div>
             <div class="skills-column">
-                <div class="skills-item"><span class="skills-title">Automation Architecture:</span> Selenium, Appium, RestAssured, TestNG, Cucumber, API/UI automation, hybrid frameworks.</div>
-                <div class="skills-item"><span class="skills-title">CI/CD & DevOps:</span> GitLab (Expert), GitHub Actions, CI/CD Pipelines, Jenkins, Maven, Git, SauceLabs, Docker/Kubernetes (Familiar).</div>
+                <div class="skills-item"><span class="skills-title">Automation Architecture:</span> Selenium, RestAssured, TestNG, Cucumber, API/UI automation, hybrid frameworks.</div>
+                <div class="skills-item"><span class="skills-title">GenAI for QA:</span> Leveraged AI tools to generate test cases, synthetic test data, and automation scripts where applicable.</div>
+                <div class="skills-item"><span class="skills-title">CI/CD & DevOps:</span> GitLab (Expert), GitHub Actions, CI/CD Pipelines, Jenkins, Maven, Git, SauceLabs.</div>
             </div>
         </div>
 
         <div class="section-title">PROFESSIONAL EXPERIENCE</div>
         
         <div class="experience-item">
-            <div class="job-title">Senior QA – dnata International Team</div>
+            <div class="job-title">QA Lead – dnata International Team</div>
             <div class="company-info">
                 <span class="company">Emirates Group, Dubai</span>
                 <span class="dates">Jan 2024 – Present</span>
             </div>
+            <div class="role-description">Direct global QA operations for enterprise airport platforms deployed across Europe, the Middle East, and Asia — managing internal engineers and governing vendor QA delivery for the dnata International program.</div>
             <ul>
-                <li>Direct global QA operations for enterprise airport platforms deployed across Europe, Middle East, and Asia, managing internal engineers and governing vendor QA delivery.</li>
+                <li>Led end‑to‑end QA for Emirates Resconnect, covering Reservations, Ticketing, and Check‑In systems, validating complex multi‑system passenger journeys across web, mobile, and middleware layers.</li>
                 <li>Led quality architecture and risk validation for enterprise payment gateway modernization, safeguarding transaction reliability during migration from legacy XML to JSON‑based services.</li>
-                <li>Built secure IATA‑792 compliant barcode generator/decoder tooling (Python/Node.js) to create synthetic boarding data, eliminating PII exposure in lower environments.</li>
+                <li>Drove UAT execution and business stakeholder enablement, facilitating training sessions and structured walkthroughs to align operational teams on new releases and accelerate sign‑off.</li>
+                <li>Built secure IATA‑792 compliant barcode generator/decoder tooling to create synthetic boarding data, eliminating PII exposure in lower environments.</li>
                 <li>Architected scalable UI/API automation (Selenium, Appium, JS) integrated into deployment workflows, increasing automated test coverage by 30% and reducing regression time by 80%.</li>
+                <li>Designed a T‑Shirt Sizing framework to standardize QA effort estimation for RFTs, enabling fast, consistent initial scoping during vendor proposal and procurement cycles.</li>
+                <li>Contributed to the full vendor selection lifecycle, including RFI, RFT, and SOW reviews, technical evaluations, and QA interview panels, ensuring delivery partners met enterprise quality standards.</li>
                 <li>Audited vendor testing models and system architecture, defining SLAs and quality gates that reduced production defect leakage and improved release confidence.</li>
             </ul>
         </div>
@@ -247,14 +266,19 @@
                 <span class="company">IQVIA, Palestine – Remote</span>
                 <span class="dates">Sep 2021 – Jan 2024</span>
             </div>
+            <div class="role-description">Led QA for IQVIA's integrated healthcare technology suite serving providers, payers, and patients across Oman — coordinating a distributed team of 8 engineers across multiple time zones and 8 interconnected enterprise products.</div>
             <ul>
-                <li>Led QA delivery for a distributed team of 8 engineers across multiple time zones supporting 8 enterprise healthcare systems.</li>
+                <li>Defined QA strategy and release‑readiness criteria across the program, aligning testing priorities between products and ensuring consistent delivery quality across time zones.</li>
+                <li>Achieved 90% test coverage, leading to a successful rollout and positive impact on healthcare in Oman.</li>
                 <li>Designed modular automation architecture for microservices platforms, cutting execution time from 8h to 4h and improving release cadence.</li>
+                <li>Designed and executed automation test scripts using Selenium WebDriver, RestAssured, and TestNG; created automation scripts and configurations using YAML.</li>
+                <li>Utilized JMeter to design, execute, and analyze performance tests, resulting in a 30% reduction in response time, and collaborated with cross‑functional teams to define performance requirements and validate system performance.</li>
+                <li>Collaborated with architecture teams to design and implement serverless solutions for scalable healthcare applications.</li>
                 <li>Implemented quality dashboards and automated test gates to track key QA KPIs (e.g., defect density, test coverage, pass rate, and release readiness), improving stakeholder visibility into defect trends.</li>
+                <li>Established tracking metrics for continuous improvement and trained team members in QA standards and processes.</li>
+                <li>Addressed discrepancies during testing, applying problem‑solving and analytical skills to resolve issues efficiently.</li>
             </ul>
         </div>
-
-        <div style="page-break-before: always;"></div>
 
         <div class="experience-item">
             <div class="job-title">QA Engineer</div>
@@ -262,8 +286,12 @@
                 <span class="company">ProGineer Technologies, Palestine – Remote</span>
                 <span class="dates">Nov 2019 – Sep 2021</span>
             </div>
+            <div class="role-description">ProGineer Technologies is a Palestine‑based company serving as a delivery partner to PDF Solutions, Inc. (Santa Clara, CA).</div>
             <ul>
-                <li>Built Java‑based automation tooling and executed backend database validation for enterprise web platforms.</li>
+                <li>Achieved consistent, high‑quality outcomes by implementing and maintaining a comprehensive Quality Assurance plan across product releases.</li>
+                <li>Performed manual testing for desktop applications and APIs, and reported and tracked defects using JIRA.</li>
+                <li>Built Java‑based tools to streamline QA processes and increase efficiency — including an automated deployment tool and a utility for modifying thousands of XML files to meet evolving requirements.</li>
+                <li>Executed backend database validation for enterprise web platforms.</li>
                 <li>Standardized QA documentation, templates, and workflows while mentoring engineers, improving onboarding speed and process consistency.</li>
             </ul>
         </div>
@@ -274,9 +302,15 @@
                 <span class="company">Ooredoo Group, Palestine</span>
                 <span class="dates">May 2015 – Nov 2019</span>
             </div>
+            <div class="role-description">Responsible for developing, monitoring, and operating integration systems within an SOA environment.</div>
             <ul>
-                <li>Performed API and end‑to‑end integration testing across telecom platforms within SOA environments.</li>
-                <li>Automated reporting and reconciliation processes, reducing manual effort by 40% and eliminating recurring data errors.</li>
+                <li>Reinforced integration flows and services in SOA Suite through analysis, design, testing, debugging, and documentation across all phases of delivery.</li>
+                <li>Conducted end‑to‑end, regression, functional, and API testing across telecom platforms to guarantee product quality.</li>
+                <li>Enhanced software performance through structured problem investigation, solution recommendation, and implementation, increasing overall system efficiency.</li>
+                <li>Upgraded and automated reconciliation processes and routines, reducing manual effort by 40% and eliminating recurring data errors.</li>
+                <li>Streamlined daily reporting by automating transaction failure, API performance, and error extraction processes — cutting manual report creation time and improving data accuracy.</li>
+                <li>Supported daily operations, promptly resolved incidents, and successfully implemented changes, ensuring a seamless and efficient work environment.</li>
+                <li>Investigated incidents and collaborated with peers and cross‑functional teams to perform root‑cause analysis.</li>
             </ul>
         </div>
 
