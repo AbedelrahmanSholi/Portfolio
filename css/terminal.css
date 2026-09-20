@@ -1,0 +1,296 @@
+/* Terminal portfolio — theme tokens + layout.
+   Phosphor-green CLI on warm black. Everything keys off the variables in
+   :root, so re-theming happens in one place. */
+
+:root {
+  --bg:        #0a0d0c;
+  --pane:      #0f1413;
+  --pane-2:    #131a18;
+  --line:      rgba(255, 255, 255, 0.08);
+  --line-2:    rgba(255, 255, 255, 0.14);
+  --fg:        #c8d6d0;
+  --fg-strong: #f2f7f4;
+  --mut:       #6f827b;
+  --acc:       oklch(0.84 0.17 152);          /* phosphor green */
+  --acc-dim:   oklch(0.84 0.17 152 / 0.14);
+  --acc-ink:   #06120c;                        /* text on accent fills */
+  --amber:     oklch(0.82 0.15 78);
+  --blue:      #5ea0c4;
+
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --maxw: 1080px;
+  --pad: 60px;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+
+@media (max-width: 720px) {
+  :root { --pad: 22px; }
+  body { font-size: 14px; }
+}
+
+/* ---- shared bits ---------------------------------------------------- */
+
+.prompt-sym { color: var(--acc); }
+.prompt-path { color: var(--blue); }
+.comment { color: var(--mut); }
+
+/* A command line drawn as static text: "➜ ~/portfolio  <cmd>" */
+.cmdline { font-size: 13.5px; color: var(--mut); }
+.cmdline b { color: var(--fg); font-weight: 500; }
+
+/* Vertical padding only via longhands — the shorthand would clobber the
+   horizontal padding .wrap sets on the same element (section wrap). */
+.section { padding-top: 70px; padding-bottom: 10px; }
+/* Rendered as an h2 for the heading outline; these resets keep it looking
+   exactly like the plain text label it was. */
+.section-cmd {
+  color: var(--mut); margin: 0 0 26px; font-size: 14px;
+  font-weight: 400; line-height: 1.7; letter-spacing: 0;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px; border-radius: 5px;
+  font: 500 14.5px/1 var(--mono); text-decoration: none;
+  border: 1px solid var(--line-2); color: var(--fg);
+  background: transparent; cursor: pointer;
+  transition: border-color .15s, background .15s, transform .15s;
+}
+.btn:hover { border-color: var(--acc); color: var(--fg-strong); transform: translateY(-1px); }
+.btn-primary { background: var(--acc); color: var(--acc-ink); border-color: var(--acc); font-weight: 700; }
+.btn-primary:hover { background: var(--acc); filter: brightness(1.06); color: var(--acc-ink); }
+
+.chip {
+  border: 1px solid var(--line-2); color: var(--mut);
+  padding: 6px 13px; border-radius: 4px; font-size: 12.5px;
+  background: transparent; cursor: pointer; font-family: var(--mono);
+  transition: border-color .15s, color .15s, background .15s;
+}
+.chip:hover { border-color: var(--acc); color: var(--acc); background: var(--acc-dim); }
+.chip-static { cursor: default; }
+.chip-static:hover { border-color: var(--line-2); color: var(--mut); background: transparent; }
+
+/* ---- top bar -------------------------------------------------------- */
+
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 22px;
+  background: rgba(12, 16, 15, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.dots { display: flex; gap: 8px; }
+.dot { width: 11px; height: 11px; border-radius: 6px; }
+/* The title is a link back to the top; same muted look, same hover as the nav. */
+.topbar .title {
+  color: var(--mut); font-size: 13px;
+  text-decoration: none; transition: color .15s;
+}
+.topbar .title:hover { color: var(--acc); }
+.topnav { margin-left: auto; display: flex; gap: 4px; }
+.topnav a {
+  color: var(--mut); text-decoration: none; font-size: 13px;
+  padding: 6px 11px; border-radius: 4px; transition: color .15s, background .15s;
+}
+.topnav a:hover { color: var(--acc); background: var(--acc-dim); }
+@media (max-width: 720px) { .topnav { display: none; } }
+
+/* ---- hero ----------------------------------------------------------- */
+
+.hero { padding-top: 60px; padding-bottom: 56px; }
+.hero h1 {
+  font: 700 clamp(40px, 7vw, 64px)/1.04 var(--mono);
+  letter-spacing: -1.5px; color: var(--fg-strong); margin: 8px 0 6px;
+}
+.cursor-block {
+  display: inline-block; width: 0.5em; height: 0.92em;
+  background: var(--acc); margin-left: 10px; transform: translateY(0.12em);
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+.hero .role { color: var(--acc); font-size: clamp(18px, 2.4vw, 22px); font-weight: 500; margin: 14px 0 20px; }
+.hero p.lede { color: var(--fg); max-width: 720px; font-size: 16.5px; line-height: 1.85; margin: 0 0 26px; }
+.hero p.lede .comment { font-size: 15px; }
+.tag-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+.tag {
+  border: 1px solid var(--acc); color: var(--acc);
+  padding: 6px 14px; border-radius: 4px; font-size: 13px; background: var(--acc-dim);
+}
+.cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ---- command-line feature block ------------------------------------ */
+
+.cli {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--pane); overflow: hidden; margin: 8px 0 0;
+}
+.cli-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px; border-bottom: 1px solid var(--line); background: var(--pane-2);
+  font-size: 13px; color: var(--mut);
+}
+.cli-head .hint { margin-left: auto; color: var(--mut); font-size: 12.5px; }
+.cli-body { padding: 18px 20px; }
+.cli-log { margin: 0 0 12px; }
+.cli-log .out-cmd { color: var(--fg); }
+.cli-log .out-cmd .prompt-sym { margin-right: 8px; }
+.cli-log .out-text { color: var(--fg); margin: 4px 0 16px; white-space: pre-wrap; }
+.cli-log .out-text .k { color: var(--amber); }
+.cli-log .out-text a { color: var(--acc); }
+.cli-inputline { display: flex; align-items: center; gap: 10px; }
+.cli-inputline .prompt-sym { flex: 0 0 auto; }
+.cli-input {
+  flex: 1 1 auto; background: transparent; border: none; outline: none;
+  color: var(--fg-strong); font: 400 14.5px/1.6 var(--mono); caret-color: var(--acc);
+}
+.cli-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+
+/* ---- metric readouts ------------------------------------------------ */
+
+.readouts {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--pane); overflow: hidden;
+}
+.readout { padding: 24px 24px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.readout:nth-child(-n+3) { border-top: none; }
+.readout:nth-child(3n+1) { border-left: none; }
+/* Max 30px so the longest value ("8h to about 3h") stays on one line. */
+.readout .val { font-size: clamp(26px, 4vw, 30px); font-weight: 700; color: var(--acc); letter-spacing: -0.5px; }
+.readout .lbl { color: var(--fg-strong); font-size: 14px; margin-top: 6px; }
+.readout .note { color: var(--mut); font-size: 12px; margin-top: 3px; }
+/* Single column under 720px. With three readouts a two-column grid leaves an
+   empty cell on the second row, which reads as a broken panel. */
+@media (max-width: 720px) {
+  .readouts { grid-template-columns: 1fr; }
+  .readouts .readout { border-top: 1px solid var(--line); border-left: none; }
+  .readouts .readout:first-child { border-top: none; }
+}
+
+/* ---- career git-graph ---------------------------------------------- */
+
+.graph { position: relative; }
+.graph-row {
+  display: grid; grid-template-columns: 44px 1fr; gap: 0;
+  align-items: stretch;
+}
+.graph-rail { position: relative; }
+.graph-rail svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.graph-meta { padding: 4px 0 30px 30px; }
+.graph-row:last-child .graph-meta { padding-bottom: 6px; }
+.branch-label {
+  font-size: 12px; color: var(--mut); letter-spacing: 0.5px;
+}
+.branch-label .dotmark { color: var(--acc); }
+.role-title { color: var(--fg-strong); font-size: 18px; font-weight: 700; margin: 2px 0 0; }
+.role-co { color: var(--acc); font-size: 14px; margin: 3px 0 8px; }
+.role-co .place { color: var(--mut); }
+.role-blurb { color: var(--fg); font-size: 13.5px; line-height: 1.7; max-width: 760px; opacity: 0.9; margin: 0 0 10px; }
+.stack-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+@media (max-width: 720px) {
+  .graph-row { grid-template-columns: 40px 1fr; }
+  .graph-meta { padding-left: 18px; }
+}
+
+/* ---- selected work / case studies ---------------------------------- */
+
+.work-list { display: flex; flex-direction: column; gap: 14px; }
+.case {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--pane); overflow: hidden;
+}
+.case-head {
+  width: 100%; text-align: left; cursor: pointer;
+  display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center;
+  padding: 22px 24px; background: transparent; border: none; color: inherit;
+  font-family: var(--mono);
+}
+.case-head:hover { background: var(--pane-2); }
+.case-id { color: var(--amber); font-size: 12.5px; }
+.case-org { color: var(--mut); font-size: 12.5px; }
+.case-title { color: var(--fg-strong); font-size: 20px; font-weight: 700; margin: 6px 0 0; }
+.case-toggle { color: var(--acc); font-size: 13px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.case-toggle .glyph { transition: transform .2s; }
+.case[data-open="true"] .case-toggle .glyph { transform: rotate(90deg); }
+
+.case-body {
+  display: grid; grid-template-rows: 0fr; transition: grid-template-rows .28s ease;
+}
+.case[data-open="true"] .case-body { grid-template-rows: 1fr; }
+.case-body-inner { overflow: hidden; }
+.case-body-pad { padding: 0 24px 24px; border-top: 1px solid var(--line); }
+.cs-block { padding-top: 18px; }
+.cs-key { color: var(--amber); font-size: 12.5px; letter-spacing: 0.5px; }
+.cs-block p, .cs-block ul { color: var(--fg); font-size: 14px; line-height: 1.7; margin: 6px 0 0; opacity: 0.92; }
+.cs-block ul { padding-left: 18px; }
+.cs-block li { margin-bottom: 5px; }
+.cs-stack { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+
+/* ---- skills --------------------------------------------------------- */
+
+.skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.skill-card {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--pane); padding: 20px 22px;
+}
+.skill-card .grp {
+  display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px;
+  color: var(--amber); font-size: 13.5px; letter-spacing: 0.3px;
+}
+.skill-card .grp .hash { color: var(--mut); }
+.skill-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.skill-tag {
+  border: 1px solid var(--line-2); color: var(--fg);
+  padding: 6px 12px; border-radius: 4px; font-size: 12.5px; line-height: 1.2;
+}
+.edu-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
+@media (max-width: 720px) { .skills-grid { grid-template-columns: 1fr; } }
+
+/* ---- footer / contact ---------------------------------------------- */
+
+.contact {
+  border: 1px solid var(--acc); background: var(--acc-dim); border-radius: 10px;
+  padding: 34px 36px; display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 20px;
+}
+.contact h2 { color: var(--fg-strong); font-size: 26px; font-weight: 700; margin: 0 0 6px; }
+.contact .avail { color: var(--fg); font-size: 14.5px; }
+.contact-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.footer {
+  padding: 40px 0 56px; display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; color: var(--mut); font-size: 13px;
+}
+.clock .acc { color: var(--acc); }
+
+/* ---- scroll reveal -------------------------------------------------- */
+/* Hidden state is gated behind .reveal-ready (added by JS). If the script
+   never runs, nothing is hidden — content is the default. */
+.reveal-ready .reveal { opacity: 0; transform: translateY(14px); }
+.reveal.in { opacity: 1; transform: none; transition: opacity .5s ease, transform .5s ease; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal-ready .reveal { opacity: 1; transform: none; }
+  .cursor-block { animation: none; }
+}
