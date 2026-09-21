@@ -139,7 +139,7 @@ export const RESUME = {
     'Playwright Framework and CI Migration': {
       problem:
         'An asset management product went live in Switzerland and Italy, with more airports and stations ' +
-        'to follow. It needed web and API integration coverage, and the group was standardising CI on ' +
+        'to follow. It needed web and API integration coverage, and the group was standardizing CI on ' +
         'GitLab, so test execution had to move off Jenkins without losing coverage.',
       approach: [
         'Built a Playwright (TypeScript) framework for web and API integration testing.',

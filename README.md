@@ -66,7 +66,7 @@ because `js/portfolio.js` is an ES module and will not load from `file://`.
 
 Then open http://localhost:8000.
 
-## How the repo is organised
+## How the repo is organized
 
 | Path | What it is |
 | --- | --- |
