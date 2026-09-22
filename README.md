@@ -1,7 +1,5 @@
 # Abedelrahman Sholi, Quality Engineer
 
-Source for my portfolio site.
-
 **Live:** https://abedelrahmansholi.github.io/Portfolio/
 
 ## About
