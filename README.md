@@ -4,12 +4,11 @@
 
 ## About
 
-Hands-on quality engineer. 11+ years in software quality across payments,
-aviation and healthcare. I find product and customer risks early with Product,
-Engineering and Design, through exploratory testing, production data and
-risk-based planning. I build web, mobile and API automation with Playwright
-(TypeScript), Selenium and Appium, and I read and debug application code to get
-to root cause. Four years fully remote across time zones.
+I'm a hands-on quality engineer. Eleven years across payments, aviation and
+healthcare. I go looking for the risks nobody asked about, I test by hand
+first, then I automate what proved to matter, with Playwright and TypeScript,
+Selenium and Appium. When a test fails, I dig into the code and the pipeline
+until I know why. Four years fully remote across time zones.
 
 ## Skills
 

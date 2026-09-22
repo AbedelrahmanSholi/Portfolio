@@ -165,6 +165,15 @@ a { color: inherit; }
 }
 .cli-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
 
+/* Phone width: there is no keyboard to press "/" on, so drop the hint. That
+   leaves the bullet and the sentence as the only two items in the row, so the
+   sentence takes the rest of the width and wraps inside itself instead of
+   being squeezed into a column. */
+@media (max-width: 639.98px) {
+  .cli-head { align-items: flex-start; }
+  .cli-head .hint { display: none; }
+}
+
 /* ---- metric readouts ------------------------------------------------ */
 
 .readouts {

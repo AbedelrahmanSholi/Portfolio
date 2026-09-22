@@ -19,14 +19,11 @@ export const RESUME = {
 
   // Hero tag row: industries render as accent tags, traits as muted chips.
   industries: ['Payments', 'Aviation', 'Healthcare'],
-  traits: ['open to remote', '4 years fully remote'],
+  traits: ['open to remote', '4 years fully remote', 'async by default'],
 
   lede:
-    'Hands-on quality engineer with 11+ years in software quality across payments, aviation and ' +
-    'healthcare. I find product and customer risks early with Product, Engineering and Design, ' +
-    'through exploratory testing, production data and risk-based planning. I build web, mobile and ' +
-    'API automation with Playwright (TypeScript), Selenium and Appium, and I read and debug ' +
-    'application code to get to root cause.',
+    'The spec tells you what should work. Production data tells you what will break. ' +
+    "I start with the second one. I'd rather find a way to ship than a reason to stop.",
 
   experience: [
     {
@@ -37,8 +34,8 @@ export const RESUME = {
       industry: 'Aviation',
       stack: 'Playwright, Selenium, Appium, GitLab CI',
       blurb:
-        'Lead QA for enterprise airport platforms used across Europe, the Middle East and Asia. ' +
-        "Hands-on in testing and automation while leading internal engineers and the vendor's QA delivery.",
+        'I lead QA for airport platforms across Europe, the Middle East and Asia. I still test and ' +
+        "write automation every week, alongside leading our engineers and the vendor's test team.",
     },
     {
       role: 'Lead Quality Assurance Engineer',
@@ -48,7 +45,8 @@ export const RESUME = {
       industry: 'Aviation',
       stack: 'Selenium, Cucumber, RestAssured, SauceLabs',
       blurb:
-        'Led QA for core Emirates passenger-service and payment platforms across web, mobile and API layers.',
+        "I was the QA embedded in the team that runs Emirates' passenger and payment platforms, " +
+        'on web, mobile and API.',
     },
     {
       role: 'Senior QA Engineer',
@@ -58,9 +56,8 @@ export const RESUME = {
       industry: 'Healthcare',
       stack: 'Microservices, RestAssured, TestNG, YAML',
       blurb:
-        "Led QA for IQVIA's healthcare SaaS suite serving providers, payers and patients across the " +
-        'Middle East and parts of Europe, coordinating 8 engineers across time zones and 8 interconnected ' +
-        'products.',
+        'I led QA for a healthcare SaaS suite of eight connected products, with eight engineers ' +
+        'spread across time zones.',
     },
     {
       // No industry label for this role, by the owner's decision.
@@ -70,8 +67,8 @@ export const RESUME = {
       dates: 'Nov 2019 - Sep 2021',
       stack: 'Desktop apps, APIs, Java tooling',
       blurb:
-        'ProGineer Technologies is a Palestine-based company serving as a delivery partner to ' +
-        'PDF Solutions, Inc. (Santa Clara, CA).',
+        'A Palestine-based delivery partner for PDF Solutions in Santa Clara. I tested desktop apps ' +
+        'and APIs and built Java tools for the team.',
     },
     {
       role: 'Systems Integration Engineer',
@@ -80,7 +77,9 @@ export const RESUME = {
       dates: 'May 2015 - Nov 2019',
       industry: 'Telecom',
       stack: 'SOA Suite, Integration testing',
-      blurb: 'Developed, monitored and operated integration systems within an SOA environment.',
+      blurb:
+        'I built, watched and fixed integration systems for a telecom, and learned to find problems ' +
+        'in production logs before customers did.',
     },
   ],
 
@@ -92,6 +91,7 @@ export const RESUME = {
     { text: 'When I find a risk late, I propose a way to ship, not a reason to stop.', ref: 'Payment Gateway Migration' },
     { text: 'I raise UX problems, not only bugs.', ref: 'Payment Gateway Migration' },
     { text: 'I build test data that holds no PII.', ref: 'Synthetic Test Data and Bug Investigation' },
+    { text: 'When a test fails, I find out why before I raise it.', ref: 'Synthetic Test Data and Bug Investigation' },
   ],
 
   // Selected work. Signature engagements pulled from the experience above.
@@ -130,14 +130,14 @@ export const RESUME = {
         'Emirates moved its payment gateway from XML to JSON services, across global and local card ' +
         'types, on a gateway that processes millions of transactions.',
       approach: [
-        'On my own initiative, checked production data for which cards customers really use, found one that would have failed on the new version, and proposed a routing fix.',
-        'Planned test coverage for the migration by risk, so critical payment cases were covered first and the remaining effort went to the scenarios that mattered most to customers.',
-        'Found a payment failure when switching payment method mid-entry, through exploratory testing. It affected web, mobile and call center users.',
-        'Raised UX risks, missing test cards and untested flows early, and worked with designers on the payment gateway UI.',
+        'Nobody asked me to look at production data. I did, to see which cards customers really use. One card type would have failed on the new version. I proposed routing it to the old gateway until the fix was ready.',
+        'I planned the testing by risk: the payment paths that would hurt most got covered first.',
+        'Testing by hand, I switched payment method halfway through and the payment failed. It affected web, mobile and the call center.',
+        'I raised the UX problems too, not only bugs, and worked with the designers on the payment screens.',
       ],
       outcome:
-        'The routing fix kept the release on its planned date. The mid-entry failure was caught before ' +
-        'release. The UI changes made the payment flow easier for end users.',
+        'We shipped on the planned date. The mid-entry bug never reached customers. The payment flow ' +
+        'got simpler.',
     },
     'Playwright Framework and CI Migration': {
       problem:
@@ -145,22 +145,22 @@ export const RESUME = {
         'airports and stations to follow. It needed web and API integration coverage, and test ' +
         'execution had to move from Jenkins to GitLab CI.',
       approach: [
-        'Built a Playwright (TypeScript) framework for web and API integration testing.',
-        'Wrote about 600 end-to-end scenarios with Playwright agents and AI-assisted authoring.',
-        'Moved CI execution from Jenkins to GitLab CI with SauceLabs.',
-        'Added contract and schema tests for program APIs with RestAssured against OpenAPI/Swagger specs, supported by PactFlow.',
+        'I built a Playwright (TypeScript) framework for web and API testing.',
+        'I wrote about 600 end-to-end scenarios, using Playwright agents and AI tools for the first drafts.',
+        'I moved test execution from Jenkins to GitLab CI, running on SauceLabs.',
+        'I added contract and schema tests against the OpenAPI specs, with PactFlow.',
       ],
-      outcome: 'About 600 end-to-end scenarios run in GitLab CI with SauceLabs.',
+      outcome: 'About 600 scenarios run in GitLab CI.',
     },
     'HACCP Catering Framework Redesign': {
       problem:
         'The Selenium and Appium framework for a food safety (HACCP) catering application needed a new ' +
         'architecture. The regression run took 8 hours.',
       approach: [
-        'Redesigned the Selenium and Appium framework for the new architecture.',
-        'Ran mobile suites on real Samsung devices in GitLab and Jenkins pipelines.',
+        'I rebuilt the Selenium and Appium framework for the new architecture.',
+        'Mobile suites run on real Samsung devices in the pipelines.',
       ],
-      outcome: 'Regression run cut from 8 hours to about 3 hours.',
+      outcome: 'Regression went from 8 hours to about 3.',
     },
     'Synthetic Test Data and Bug Investigation': {
       problem:
@@ -168,14 +168,14 @@ export const RESUME = {
         'carries passenger PII. Test and pipeline failures had to be traced to root cause before they ' +
         'reached developers.',
       approach: [
-        'Built an IATA 792 barcode generator and decoder, unprompted, that creates synthetic boarding data.',
-        'Used Splunk logs to reproduce bugs and to build automation test data with PII removed.',
-        'Traced test and pipeline failures to root cause across the application, APIs and GitLab CI before raising them with developers.',
-        'Proposed and added failure categorization to the Allure reports.',
+        'I built an IATA 792 barcode generator and decoder, on my own initiative, so we could create boarding data instead of copying it from production.',
+        'I use Splunk logs to reproduce bugs and to build test data with the PII stripped out.',
+        'When a test or pipeline fails, I trace it to the root cause before I raise it.',
+        'I proposed and added failure categories to the Allure reports.',
       ],
       outcome:
-        'Lower environments hold no passenger PII. Automation has repeatable test data. Each run shows ' +
-        'clear error categories, so failures are triaged faster.',
+        'No passenger PII in lower environments. Repeatable test data. Failures sorted by category, ' +
+        'so triage is faster.',
     },
   },
 

@@ -79,6 +79,16 @@ function Topbar() {
 }
 
 // --- hero --------------------------------------------------------------
+// The lede carries two ideas. Break the line before its closing sentence so
+// they read as two lines. A <br> inside the one paragraph keeps the existing
+// .lede spacing exactly; two paragraphs would add the 26px bottom margin
+// between them. The copy itself stays in content.js.
+function ledeLines() {
+  const cut = R.lede.lastIndexOf('. ');
+  if (cut < 0) return [R.lede];
+  return [R.lede.slice(0, cut + 1), h('br'), R.lede.slice(cut + 2)];
+}
+
 function Hero() {
   return h('header', { class: 'hero wrap', id: 'top' },
     h('div', { class: 'cmdline' },
@@ -88,7 +98,7 @@ function Hero() {
     ),
     h('h1', null, R.name, h('span', { class: 'cursor-block' })),
     h('div', { class: 'role' }, '# ' + R.title),
-    h('p', { class: 'lede' }, R.lede),
+    h('p', { class: 'lede' }, ledeLines()),
     h('div', { class: 'tag-row' },
       R.industries.map((t) => h('span', { class: 'tag' }, t.toLowerCase())),
       R.traits.map((t) => h('span', { class: 'chip chip-static' }, t)),
