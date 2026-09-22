@@ -8,7 +8,7 @@
 
 export const RESUME = {
   name: 'Abedelrahman Sholi',
-  title: 'Hands-on QA Lead',
+  title: 'Hands-on quality engineer',
   years: '11+',
   location: 'Dubai, UAE',
   availability: 'Open to remote roles, available across all time zones',
@@ -19,12 +19,14 @@ export const RESUME = {
 
   // Hero tag row: industries render as accent tags, traits as muted chips.
   industries: ['Payments', 'Aviation', 'Healthcare'],
-  traits: ['open to remote', '5+ years leading teams', '4 years fully remote'],
+  traits: ['open to remote', '4 years fully remote'],
 
   lede:
-    'Hands-on QA lead with 11+ years in software quality across payments, aviation and healthcare. ' +
-    'I find risks early through exploratory testing and production data, and I build web, mobile ' +
-    'and API automation with Playwright and TypeScript.',
+    'Hands-on quality engineer with 11+ years in software quality across payments, aviation and ' +
+    'healthcare. I find product and customer risks early with Product, Engineering and Design, ' +
+    'through exploratory testing, production data and risk-based planning. I build web, mobile and ' +
+    'API automation with Playwright (TypeScript), Selenium and Appium, and I read and debug ' +
+    'application code to get to root cause.',
 
   experience: [
     {
@@ -58,7 +60,7 @@ export const RESUME = {
       blurb:
         "Led QA for IQVIA's healthcare SaaS suite serving providers, payers and patients across the " +
         'Middle East and parts of Europe, coordinating 8 engineers across time zones and 8 interconnected ' +
-        'products delivered by SaaS vendors.',
+        'products.',
     },
     {
       // No industry label for this role, by the owner's decision.
@@ -116,7 +118,7 @@ export const RESUME = {
       name: 'Synthetic Test Data and Bug Investigation',
       org: 'dnata International',
       tag: 'Test data, Investigation',
-      stack: ['IATA 792', 'Splunk', 'Synthetic data'],
+      stack: ['IATA 792', 'Splunk', 'Allure', 'Synthetic data'],
     },
   ],
 
@@ -125,10 +127,11 @@ export const RESUME = {
   caseStudies: {
     'Payment Gateway Migration': {
       problem:
-        'Emirates moved its payment gateway from XML to JSON services. The release covered millions of ' +
-        'transactions across global and local card types.',
+        'Emirates moved its payment gateway from XML to JSON services, across global and local card ' +
+        'types, on a gateway that processes millions of transactions.',
       approach: [
-        'Checked production data for which cards customers really use, found one that would have failed on the new version, and proposed a routing fix.',
+        'On my own initiative, checked production data for which cards customers really use, found one that would have failed on the new version, and proposed a routing fix.',
+        'Planned test coverage for the migration by risk, so critical payment cases were covered first and the remaining effort went to the scenarios that mattered most to customers.',
         'Found a payment failure when switching payment method mid-entry, through exploratory testing. It affected web, mobile and call center users.',
         'Raised UX risks, missing test cards and untested flows early, and worked with designers on the payment gateway UI.',
       ],
@@ -138,20 +141,21 @@ export const RESUME = {
     },
     'Playwright Framework and CI Migration': {
       problem:
-        'An asset management product went live in Switzerland and Italy, with more airports and stations ' +
-        'to follow. It needed web and API integration coverage, and the group was standardizing CI on ' +
-        'GitLab, so test execution had to move off Jenkins without losing coverage.',
+        'An enterprise asset management (EAM) product went live in Switzerland and Italy, with more ' +
+        'airports and stations to follow. It needed web and API integration coverage, and test ' +
+        'execution had to move from Jenkins to GitLab CI.',
       approach: [
         'Built a Playwright (TypeScript) framework for web and API integration testing.',
+        'Wrote about 600 end-to-end scenarios with Playwright agents and AI-assisted authoring.',
         'Moved CI execution from Jenkins to GitLab CI with SauceLabs.',
         'Added contract and schema tests for program APIs with RestAssured against OpenAPI/Swagger specs, supported by PactFlow.',
       ],
-      outcome: 'Integration testing for the product runs in GitLab CI with SauceLabs.',
+      outcome: 'About 600 end-to-end scenarios run in GitLab CI with SauceLabs.',
     },
     'HACCP Catering Framework Redesign': {
       problem:
-        'The Selenium and Appium framework for a food safety (HACCP) catering application was built on ' +
-        'the wrong architecture. The regression run took 8 hours.',
+        'The Selenium and Appium framework for a food safety (HACCP) catering application needed a new ' +
+        'architecture. The regression run took 8 hours.',
       approach: [
         'Redesigned the Selenium and Appium framework for the new architecture.',
         'Ran mobile suites on real Samsung devices in GitLab and Jenkins pipelines.',
@@ -161,12 +165,17 @@ export const RESUME = {
     'Synthetic Test Data and Bug Investigation': {
       problem:
         'Lower environments needed realistic boarding data and repeatable test data. Production data ' +
-        'carries passenger PII.',
+        'carries passenger PII. Test and pipeline failures had to be traced to root cause before they ' +
+        'reached developers.',
       approach: [
-        'Built an IATA 792 barcode generator and decoder that creates synthetic boarding data.',
+        'Built an IATA 792 barcode generator and decoder, unprompted, that creates synthetic boarding data.',
         'Used Splunk logs to reproduce bugs and to build automation test data with PII removed.',
+        'Traced test and pipeline failures to root cause across the application, APIs and GitLab CI before raising them with developers.',
+        'Proposed and added failure categorization to the Allure reports.',
       ],
-      outcome: 'Lower environments hold no passenger PII. Automation has repeatable test data.',
+      outcome:
+        'Lower environments hold no passenger PII. Automation has repeatable test data. Each run shows ' +
+        'clear error categories, so failures are triaged faster.',
     },
   },
 
@@ -174,20 +183,19 @@ export const RESUME = {
   // own context. "about 3h" is the resume's own wording and stays.
   readouts: [
     { value: '8h to about 3h', label: 'Regression run', note: 'dnata, HACCP framework redesign' },
-    { value: '90%', label: 'Test coverage', note: 'IQVIA, 8-product suite' },
+    { value: '90%', label: 'Requirements coverage', note: 'IQVIA, 8-product suite' },
     { value: '40% less', label: 'Manual effort', note: 'Ooredoo, reconciliation routines' },
   ],
 
   skills: [
-    { group: 'Testing', items: ['Exploratory testing', 'Risk-based testing', 'API and integration testing', 'Contract testing (OpenAPI/Swagger, PactFlow)', 'Real-device mobile testing (SauceLabs)', 'Shift-left', 'Test-pyramid strategy'] },
-    { group: 'Automation', items: ['Playwright (TypeScript)', 'Selenium', 'Appium', 'RestAssured', 'Cucumber', 'JUnit', 'TestNG', 'Hybrid web/API frameworks'] },
-    { group: 'Programming', items: ['Java', 'SQL (MySQL)', 'HTML/CSS'] },
-    { group: 'Code Literacy', items: ['JavaScript / Node.js'] },
+    { group: 'Testing', items: ['Exploratory', 'Risk-based', 'API and integration', 'Contract testing (OpenAPI/Swagger, PactFlow)', 'Real-device mobile testing (SauceLabs)'] },
+    { group: 'Automation', items: ['Playwright (TypeScript)', 'Selenium', 'Appium', 'RestAssured', 'Cucumber', 'JUnit', 'TestNG', 'Hybrid web/API automation frameworks'] },
+    { group: 'Programming', items: ['Java (primary)', 'TypeScript', 'JavaScript/Node.js'] },
     { group: 'CI/CD', items: ['GitLab CI', 'Jenkins', 'Maven', 'Git'] },
-    { group: 'Investigation', items: ['Splunk (bug reproduction, PII-removed test data)', 'JMeter (API-level performance tests)'] },
-    { group: 'GenAI for QA', items: ['LLM test-case generation', 'Synthetic test data', 'AI-assisted test analysis'] },
-    { group: 'Tools', items: ['Jira', 'QMetry', 'TestRail', 'Confluence', 'Agile / Scrum'] },
-    { group: 'Leadership', items: ['Distributed team leadership', 'Vendor QA governance', 'Release readiness', 'Quality gates and SLAs'] },
+    { group: 'Observability', items: ['Splunk'] },
+    { group: 'Tools', items: ['Jira', 'QMetry', 'TestRail', 'Confluence', 'Agile/Scrum delivery'] },
+    { group: 'Leadership', items: ['Distributed team leadership', 'SaaS vendor QA governance', 'Release readiness', 'Quality gates and SLAs', 'RFI/RFT/SOW review'] },
+    { group: 'GenAI for QA', items: ['Claude', 'GitHub Copilot', 'Playwright agents', 'Test-case generation', 'Synthetic test data', 'Automation authoring', 'AI-assisted test analysis'] },
   ],
 
   education: [

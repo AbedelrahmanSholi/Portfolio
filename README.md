@@ -1,4 +1,4 @@
-# Abedelrahman Sholi, QA Lead
+# Abedelrahman Sholi, Quality Engineer
 
 Source for my portfolio site.
 
@@ -6,38 +6,35 @@ Source for my portfolio site.
 
 ## About
 
-Hands-on QA lead. 11+ years in software quality across payments, aviation and
-healthcare, 5+ of those leading distributed teams. I find product and customer
-risks early, through exploratory testing, production data and risk-based
-planning. I build web, mobile and API automation with Playwright (TypeScript),
-Selenium and Appium. Four years fully remote across time zones.
+Hands-on quality engineer. 11+ years in software quality across payments,
+aviation and healthcare. I find product and customer risks early with Product,
+Engineering and Design, through exploratory testing, production data and
+risk-based planning. I build web, mobile and API automation with Playwright
+(TypeScript), Selenium and Appium, and I read and debug application code to get
+to root cause. Four years fully remote across time zones.
 
 ## Skills
 
-**Testing.** Exploratory testing, risk-based testing, API and integration
-testing, contract testing (OpenAPI/Swagger, PactFlow), mobile testing on real
-devices (SauceLabs), shift-left, test-pyramid strategy.
+**Testing.** Exploratory, risk-based, API and integration, contract testing
+(OpenAPI/Swagger, PactFlow), real-device mobile testing (SauceLabs).
 
 **Automation.** Playwright (TypeScript), Selenium, Appium, RestAssured,
 Cucumber, JUnit, TestNG, hybrid web/API automation frameworks.
 
-**Programming.** Java, SQL (MySQL), HTML/CSS.
-
-**Code literacy.** Reads and debugs JavaScript/Node.js for test analysis,
-automation review and root-cause investigation.
+**Programming.** Java (primary), TypeScript and JavaScript/Node.js.
 
 **CI/CD.** GitLab CI, Jenkins, Maven, Git.
 
-**Investigation.** Splunk for bug reproduction and for building test data from
-production logs with PII removed. JMeter for API-level performance tests.
-
-**GenAI for QA.** LLM-assisted generation of test cases, synthetic test data
-and automation scripts. AI-assisted test analysis.
+**Observability.** Splunk.
 
 **Tools.** Jira, QMetry, TestRail, Confluence, Agile/Scrum delivery.
 
-**Leadership.** Distributed team leadership, vendor QA governance, release
-readiness, quality gates and SLAs.
+**Leadership.** Distributed team leadership, SaaS vendor QA governance, release
+readiness, quality gates and SLAs, RFI/RFT/SOW review.
+
+**GenAI for QA.** Claude, GitHub Copilot and Playwright agents for test-case
+generation, synthetic test data, automation authoring and AI-assisted test
+analysis.
 
 ## Experience
 
