@@ -1,84 +1,700 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abedelrahman Sholi | Hands-on QA Lead</title>
+<meta name="description" content="Hands-on QA Lead at Emirates Group (dnata). 11+ years leading quality for airline, airport, payment and healthcare platforms. Dubai, UAE. Open to remote roles.">
+<meta name="author" content="Abedelrahman Sholi">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="canonical" href="https://abedelrahmansholi.github.io/Portfolio/">
+<meta name="theme-color" content="#0F1B2D">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Abedelrahman Sholi">
+<meta property="og:title" content="Abedelrahman Sholi | Hands-on QA Lead">
+<meta property="og:description" content="Hands-on QA Lead at Emirates Group (dnata). 11+ years leading quality for airline, airport, payment and healthcare platforms. Dubai, UAE. Open to remote roles.">
+<meta property="og:url" content="https://abedelrahmansholi.github.io/Portfolio/">
+<meta property="og:image" content="https://abedelrahmansholi.github.io/Portfolio/assets/profile.jpg">
+<meta property="og:image:alt" content="Portrait of Abedelrahman Sholi">
+<meta property="profile:first_name" content="Abedelrahman">
+<meta property="profile:last_name" content="Sholi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Abedelrahman Sholi | Hands-on QA Lead">
+<meta name="twitter:description" content="Hands-on QA Lead at Emirates Group (dnata). 11+ years leading quality for airline, airport, payment and healthcare platforms. Dubai, UAE. Open to remote roles.">
+<meta name="twitter:image" content="https://abedelrahmansholi.github.io/Portfolio/assets/profile.jpg">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@600;700;800&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Abedelrahman Sholi", "jobTitle": "QA Lead", "worksFor": {"@type": "Organization", "name": "dnata (Emirates Group)"}, "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"}, "url": "https://abedelrahmansholi.github.io/Portfolio/", "image": "https://abedelrahmansholi.github.io/Portfolio/assets/profile.jpg", "sameAs": ["https://linkedin.com/in/sholi"], "knowsLanguage": ["Arabic", "English"]}</script>
+<style>
+/* Layout: airport-signage idea. One dark "release board" in the hero carries the boldness; everything else is a calm, cool, single-column reading flow that widens to two columns on desktop. */
+:root {
+  --bg: #F4F6F9;
+  --surface: #FFFFFF;
+  --ink: #0F1B2D;
+  --muted: #56637A;
+  --line: #DCE2EB;
+  --accent: #A85F00;
+  --accent-soft: #FFF2DF;
+  --go: #17794A;
+  --go-soft: #E2F3E9;
+  --board-bg: #0F1B2D;
+  --board-fg: #E6ECF4;
+  --board-dim: #8796AE;
+  --board-line: #24344D;
+  --board-amber: #F2A93B;
+  --board-go: #5FD39A;
 
-  <title>Abedelrahman Sholi, Quality Engineer</title>
-  <meta name="description" content="I look at what customers actually do before I decide what to test. 11+ years in payments, aviation and healthcare. Quality engineer in Dubai, open to remote roles." />
-  <meta name="keywords" content="quality engineer, exploratory testing, risk-based testing, Playwright, TypeScript, Selenium, Appium, RestAssured, contract testing, GitLab CI, payment testing, Dubai" />
-  <meta name="author" content="Abedelrahman Sholi" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://abedelrahmansholi.github.io/Portfolio/" />
-  <link rel="icon" href="favicon.png" />
+  --f-display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; base-uri 'self'; form-action 'self'" />
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-
-  <!-- Social cards -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Abedelrahman Sholi, Quality Engineer" />
-  <meta property="og:description" content="I look at what customers actually do before I decide what to test. 11+ years in payments, aviation and healthcare. Quality engineer in Dubai, open to remote roles." />
-  <meta property="og:url" content="https://abedelrahmansholi.github.io/Portfolio/" />
-  <meta property="og:image" content="https://abedelrahmansholi.github.io/Portfolio/favicon.png" />
-  <meta property="og:site_name" content="Abedelrahman Sholi, Portfolio" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Abedelrahman Sholi, Quality Engineer" />
-  <meta name="twitter:description" content="I look at what customers actually do before I decide what to test. 11+ years in payments, aviation and healthcare. Quality engineer in Dubai, open to remote roles." />
-  <meta name="twitter:image" content="https://abedelrahmansholi.github.io/Portfolio/favicon.png" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Abedelrahman Sholi",
-    "jobTitle": "Quality Engineer",
-    "description": "I look at what customers actually do before I decide what to test. 11+ years in payments, aviation and healthcare. Quality engineer in Dubai, open to remote roles.",
-    "url": "https://abedelrahmansholi.github.io/Portfolio/",
-    "sameAs": [
-      "https://linkedin.com/in/sholi"
-    ],
-    "knowsAbout": [
-      "Exploratory Testing",
-      "Risk-based Testing",
-      "Test Automation",
-      "Playwright",
-      "Selenium",
-      "API and Contract Testing",
-      "CI/CD Pipelines",
-      "Payment Systems Testing"
-    ],
-    "alumniOf": "An-Najah National University",
-    "workLocation": "Dubai, United Arab Emirates"
+  --s-1: .25rem; --s-2: .5rem; --s-3: .75rem; --s-4: 1rem; --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4.5rem;
+  --radius: 10px;
+  --wrap: 68rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C1420; --surface: #121D2D; --ink: #E6ECF3; --muted: #93A1B6; --line: #22324A;
+    --accent: #F2A93B; --accent-soft: #2B2315; --go: #4CC38A; --go-soft: #12291F;
+    --board-bg: #070D17; --board-fg: #E6ECF4; --board-dim: #7F8EA6; --board-line: #1E2C42; --board-amber: #F2A93B; --board-go: #5FD39A;
+    color-scheme: dark;
   }
-  </script>
+}
+:root[data-theme="dark"] {
+  --bg: #0C1420; --surface: #121D2D; --ink: #E6ECF3; --muted: #93A1B6; --line: #22324A;
+  --accent: #F2A93B; --accent-soft: #2B2315; --go: #4CC38A; --go-soft: #12291F;
+  --board-bg: #070D17; --board-fg: #E6ECF4; --board-dim: #7F8EA6; --board-line: #1E2C42; --board-amber: #F2A93B; --board-go: #5FD39A;
+  color-scheme: dark;
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/terminal.css" />
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: 1rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: max(16px, 4vw); }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.12; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.label {
+  font-family: var(--f-mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+
+/* Draft bar */
+.draft {
+  background: var(--accent-soft); border-bottom: 1px solid var(--line);
+  font-size: .85rem;
+}
+.draft .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-4); padding-block: var(--s-2); }
+.draft strong { color: var(--accent); }
+.draft button {
+  font: inherit; font-size: .8rem; font-weight: 600; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 999px; padding: .2rem .8rem; cursor: pointer;
+}
+
+/* Placeholder marker */
+.ph {
+  font-family: var(--f-mono); font-size: .85em; font-weight: 500;
+  color: var(--accent); background: var(--accent-soft);
+  border: 1px dashed var(--accent); border-radius: 4px; padding: 0 .35em;
+  white-space: normal;
+}
+body.clean .ph { font-family: inherit; font-size: inherit; font-weight: inherit; color: inherit; background: none; border-color: transparent; padding: 0; }
+
+/* Nav */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; gap: var(--s-4); padding-block: var(--s-3); }
+.brand { font-family: var(--f-display); font-weight: 800; text-decoration: none; white-space: nowrap; }
+.nav-links { display: flex; gap: var(--s-4); overflow-x: auto; flex: 1; min-width: 0; scrollbar-width: none; font-size: .9rem; }
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a { text-decoration: none; color: var(--muted); white-space: nowrap; }
+.nav-links a:hover { color: var(--ink); }
+.btn {
+  display: inline-flex; align-items: center; gap: .45rem; text-decoration: none; white-space: nowrap;
+  font-weight: 600; font-size: .92rem; border-radius: 999px; padding: .6rem 1.1rem;
+  border: 1px solid var(--ink); background: var(--ink); color: var(--bg);
+}
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn:hover { opacity: .9; }
+.nav .btn { padding: .4rem .9rem; font-size: .85rem; }
+@media (max-width: 560px) { .nav .btn { display: none; } }
+
+/* Hero */
+.hero { padding-block: var(--s-7) var(--s-7); }
+.hero-grid { display: grid; gap: var(--s-6); align-items: start; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.05fr 1fr; gap: var(--s-7); } }
+.who { display: flex; align-items: center; gap: var(--s-4); margin-bottom: var(--s-5); }
+.photo {
+  width: 88px; height: 88px; border-radius: 50%; flex: none; object-fit: cover; object-position: 50% 30%;
+  border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--line);
+}
+.who h1 { font-size: 1.35rem; font-weight: 800; }
+.who .label { margin-top: .15rem; }
+.thesis {
+  font-family: var(--f-display); font-weight: 700; font-size: clamp(2rem, 1.3rem + 3.2vw, 3.3rem);
+  line-height: 1.05; letter-spacing: -.02em; text-wrap: balance;
+}
+.thesis em { font-style: normal; color: var(--accent); }
+.lede { margin-top: var(--s-5); max-width: 36rem; color: var(--muted); font-size: 1.05rem; }
+.lede strong { color: var(--ink); font-weight: 600; }
+.avail { margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.chip {
+  display: inline-flex; align-items: center; gap: .4rem; font-size: .82rem; font-weight: 500;
+  border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: .25rem .7rem;
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--go); }
+.ctas { margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); }
+
+/* Release board */
+.board {
+  background: var(--board-bg); color: var(--board-fg); border-radius: 14px; border: 1px solid var(--board-line);
+  font-family: var(--f-mono); overflow: hidden; min-width: 0;
+}
+.board-head { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); padding: var(--s-4) var(--s-4) var(--s-3); border-bottom: 1px solid var(--board-line); }
+.board-title { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--board-amber); font-weight: 500; }
+.board-time { font-size: .72rem; color: var(--board-dim); }
+.board-cols, .board-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-3); padding: 0 var(--s-4); }
+.board-cols { font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--board-dim); padding-block: var(--s-2); }
+.board-row { padding-block: .7rem; border-top: 1px dashed var(--board-line); align-items: center; }
+.board-row .what { font-size: .86rem; line-height: 1.35; }
+.board-row .where { display: block; font-size: .7rem; color: var(--board-dim); margin-top: .15rem; letter-spacing: .04em; }
+.status {
+  font-size: .68rem; font-weight: 500; letter-spacing: .1em; padding: .2rem .5rem; border-radius: 3px; white-space: nowrap;
+  color: var(--board-go); border: 1px solid color-mix(in srgb, var(--board-go) 45%, transparent);
+}
+.status.amber { color: var(--board-amber); border-color: color-mix(in srgb, var(--board-amber) 45%, transparent); }
+.board-foot { padding: var(--s-3) var(--s-4); font-size: .7rem; color: var(--board-dim); border-top: 1px solid var(--board-line); }
+.live::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--board-go); margin-right: .35rem; vertical-align: middle; animation: blink 1.6s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .live::before { animation: none; } }
+
+/* Sections */
+section.block { padding-block: var(--s-7); border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: var(--s-2); margin-bottom: var(--s-6); max-width: 42rem; }
+.sec-head h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); font-weight: 700; letter-spacing: -.01em; }
+.sec-head p { color: var(--muted); }
+
+/* Player-coach split */
+.split { display: grid; gap: var(--s-4); }
+@media (min-width: 760px) { .split { grid-template-columns: 1fr 1fr; } }
+.pane { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s-5); min-width: 0; }
+.pane h3 { font-size: 1.15rem; margin-bottom: var(--s-1); }
+.pane .label { display: block; margin-bottom: var(--s-4); }
+.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.ticks li { display: grid; grid-template-columns: 1.1rem minmax(0, 1fr); gap: var(--s-2); font-size: .95rem; }
+.ticks li::before { content: "›"; font-family: var(--f-mono); color: var(--accent); font-weight: 500; }
+
+/* Experience */
+.org { display: grid; gap: var(--s-4); }
+.org + .org { margin-top: var(--s-7); }
+.org-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--s-2) var(--s-4); }
+.org-head h3 { font-size: 1.35rem; font-weight: 800; }
+.promo { font-family: var(--f-mono); font-size: .75rem; color: var(--go); background: var(--go-soft); padding: .15rem .55rem; border-radius: 999px; letter-spacing: .04em; }
+.role { border-left: 2px solid var(--line); padding-left: var(--s-5); display: grid; gap: var(--s-3); position: relative; }
+.role::before { content: ""; position: absolute; left: -6px; top: .45rem; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.role + .role { margin-top: var(--s-5); }
+.role-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-1) var(--s-4); align-items: baseline; }
+.role-top h4 { margin: 0; font-family: var(--f-display); font-size: 1.08rem; font-weight: 700; }
+.when { font-family: var(--f-mono); font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.scope { color: var(--muted); max-width: 46rem; }
+.cols { display: grid; gap: var(--s-4); }
+@media (min-width: 860px) { .cols { grid-template-columns: 1fr 1fr; gap: var(--s-6); } }
+.cols > div { min-width: 0; }
+.cols .label { display: block; margin-bottom: var(--s-3); }
+.metrics { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.metric { font-family: var(--f-mono); font-size: .78rem; border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: .2rem .55rem; font-variant-numeric: tabular-nums; }
+.metric b { color: var(--accent); font-weight: 500; }
+.earlier { display: grid; gap: var(--s-4); }
+@media (min-width: 760px) { .earlier { grid-template-columns: 1fr 1fr; } }
+
+/* Work */
+.work { display: grid; gap: var(--s-4); }
+@media (min-width: 760px) { .work { grid-template-columns: 1fr 1fr; } }
+.case { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s-5); display: grid; gap: var(--s-3); align-content: start; min-width: 0; }
+.case.feature { border-color: var(--accent); }
+@media (min-width: 760px) { .case.feature { grid-column: 1 / -1; } }
+.case h3 { font-size: 1.12rem; }
+.case p { color: var(--muted); font-size: .95rem; }
+.tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+.tag { font-family: var(--f-mono); font-size: .7rem; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: .05rem .4rem; }
+.case-link { font-size: .88rem; font-weight: 600; }
+.bcbp { background: var(--board-bg); color: var(--board-fg); border-radius: 8px; padding: var(--s-3) var(--s-4); overflow-x: auto; font-family: var(--f-mono); font-size: .78rem; line-height: 1.5; }
+.bcbp pre { margin: 0; white-space: pre; }
+.bcbp .k { color: var(--board-amber); }
+.bcbp .cap { display: block; color: var(--board-dim); font-size: .68rem; margin-top: .4rem; letter-spacing: .04em; }
+
+/* Toolkit */
+.kit { display: grid; gap: var(--s-5); }
+@media (min-width: 760px) { .kit { grid-template-columns: repeat(3, 1fr); } }
+.kit h3 { font-size: .95rem; margin-bottom: var(--s-2); }
+.kit .group.lead h3 { color: var(--accent); }
+.kit ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.kit li { font-size: .85rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: .15rem .55rem; }
+
+/* Credentials */
+.creds { display: grid; gap: var(--s-4); }
+@media (min-width: 760px) { .creds { grid-template-columns: repeat(3, 1fr); } }
+.cred { border-top: 2px solid var(--ink); padding-top: var(--s-3); display: grid; gap: var(--s-1); }
+.cred h3 { font-size: 1rem; }
+.cred p { color: var(--muted); font-size: .92rem; }
+
+/* Contact */
+.contact { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: var(--s-6) var(--s-5); display: grid; gap: var(--s-5); }
+@media (min-width: 860px) { .contact { grid-template-columns: 1fr 1fr; padding: var(--s-7); } }
+.contact h2 { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.3rem); }
+.contact p { color: var(--muted); margin-top: var(--s-3); max-width: 30rem; }
+.lines { display: grid; gap: var(--s-2); align-content: start; }
+.line { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) auto; gap: var(--s-3); align-items: center; padding-block: var(--s-2); border-bottom: 1px solid var(--line); }
+.line .v { overflow-wrap: anywhere; font-weight: 500; }
+.line a.v { text-decoration-color: var(--line); text-underline-offset: 3px; }
+.copy { font: inherit; font-size: .75rem; font-weight: 600; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 999px; padding: .15rem .6rem; cursor: pointer; }
+.copy:hover { color: var(--ink); }
+
+
+/* Programs table */
+.prog-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.prog { width: 100%; border-collapse: collapse; min-width: 640px; font-size: .92rem; }
+.prog th { text-align: left; font-family: var(--f-mono); font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: .8rem 1rem; border-bottom: 1px solid var(--line); }
+.prog td { padding: .85rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.prog tr:last-child td { border-bottom: 0; }
+.prog td:first-child { font-weight: 600; }
+.prog .sub { display: block; font-weight: 400; color: var(--muted); font-size: .82rem; }
+.role-pill { font-family: var(--f-mono); font-size: .72rem; white-space: nowrap; border-radius: 999px; padding: .1rem .55rem; border: 1px solid var(--line); display: inline-block; margin: 0 .25rem .25rem 0; }
+.role-pill.gov { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.role-pill.auto { color: var(--go); border-color: color-mix(in srgb, var(--go) 40%, transparent); }
+.state { font-size: .82rem; color: var(--muted); }
+
+footer { padding-block: var(--s-6); color: var(--muted); font-size: .82rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-2); }
+</style>
 </head>
 <body>
-  <div id="root"></div>
-  <noscript>
-    <div style="max-width:720px;margin:0 auto;padding:48px 22px;font-family:ui-monospace,Menlo,monospace;color:#c8d6d0;line-height:1.7">
-      <h1 style="color:#f2f7f4;font-size:28px;margin:0 0 4px">Abedelrahman Sholi</h1>
-      <p style="margin:0 0 20px"># Hands-on quality engineer</p>
-      <p>I'm a hands-on quality engineer. Eleven years across payments, aviation and healthcare. I go
-         looking for the risks nobody asked about, I test by hand first, then I automate what proved
-         to matter, with Playwright and TypeScript, Selenium and Appium. When a test fails, I dig into
-         the code and the pipeline until I know why.</p>
-      <p>Dubai, UAE. Open to remote roles, available across all time zones.</p>
-      <ul style="padding-left:18px">
-        <li><a style="color:#6ee7a8" href="assets/Abedelrahman-Sholi-Resume.pdf">Download resume (PDF)</a></li>
-        <li><a style="color:#6ee7a8" href="mailto:s.holi_1989@live.com">s.holi_1989@live.com</a></li>
-        <li><a style="color:#6ee7a8" href="tel:+971569538533">+971 56 953 8533</a></li>
-        <li><a style="color:#6ee7a8" href="https://linkedin.com/in/sholi">linkedin.com/in/sholi</a></li>
-      </ul>
-      <p style="color:#6f827b;font-size:13px">This page renders with JavaScript. The details above are the same as the resume.</p>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">A. Sholi</a>
+    <div class="nav-links">
+      <a href="#leadership">Leadership</a>
+      <a href="#programs">Programs</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#contact">Contact</a>
     </div>
-  </noscript>
-  <script type="module" src="js/portfolio.js"></script>
+    <a class="btn" href="assets/Abedelrahman-Sholi-Resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="who">
+          <img class="photo" src="assets/profile.jpg" alt="Abedelrahman Sholi" width="88" height="88">
+          <div>
+            <h1>Abedelrahman Sholi</h1>
+            <div class="label">Hands-on QA Lead · Emirates Group</div>
+          </div>
+        </div>
+        <p class="thesis">I lead quality for airline, airport and payment platforms, and <em>I still write the tests.</em></p>
+        <p class="lede">
+          <strong>11+ years</strong> across aviation, payments, healthcare and telecom. I own release go/no-go, lead
+          QA engineers, govern about <strong>25 vendor QA engineers</strong> across programs for easyJet, Aer Lingus and Immfly,
+          and build the automation myself in Playwright (TypeScript), Selenium and Appium.
+        </p>
+        <div class="avail">
+          <span class="chip"><span class="dot" aria-hidden="true"></span>Open to remote roles</span>
+          <span class="chip">Dubai, UAE</span>
+          <span class="chip">All time zones</span>
+          <span class="chip">4 years fully remote</span>
+        </div>
+        <div class="ctas">
+          <a class="btn" href="assets/Abedelrahman-Sholi-Resume.pdf" target="_blank" rel="noopener">Download resume</a>
+          <a class="btn ghost" href="#contact">Contact me</a>
+        </div>
+      </div>
+
+      <aside class="board" aria-label="Release board: selected results">
+        <div class="board-head">
+          <span class="board-title">Release board</span>
+          <span class="board-time live">DXB · GMT+4</span>
+        </div>
+        <div class="board-cols"><span>Result · Program</span><span>Status</span></div>
+        <div class="board-row">
+          <div class="what">600 end-to-end scenarios, Playwright (TS)<span class="where">dnata · asset management · Europe</span></div>
+          <span class="status">LIVE</span>
+        </div>
+        <div class="board-row">
+          <div class="what">Regression cut from 8h to ~3h<span class="where">dnata · HACCP mobile app</span></div>
+          <span class="status">DONE</span>
+        </div>
+        <div class="board-row">
+          <div class="what">Lounge system rollout, no critical issues<span class="where">dnata · on-site UAT, Europe &amp; Africa</span></div>
+          <span class="status">GO</span>
+        </div>
+        <div class="board-row">
+          <div class="what">Card failure found, release kept on date<span class="where">Emirates · payment gateway migration</span></div>
+          <span class="status amber">ON TIME</span>
+        </div>
+        <div class="board-row">
+          <div class="what">8 engineers, 8 products, 90% coverage<span class="where">IQVIA · healthcare SaaS · remote</span></div>
+          <span class="status">DONE</span>
+        </div>
+        <div class="board-foot">Defect leakage and release KPIs tracked every release</div>
+      </aside>
+    </div>
+  </header>
+
+  <section class="block" id="leadership">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">How I work</span>
+        <h2>Player-coach: I lead the release and I build the framework</h2>
+        <p>Most QA leads stop coding. I lead teams and vendors through release, and I still debug failures down to the code and the pipeline.</p>
+      </div>
+      <div class="split">
+        <div class="pane">
+          <h3>Lead</h3>
+          <span class="label">People, vendors, releases</span>
+          <ul class="ticks">
+            <li><span>Own release readiness and the go/no-go call for each release.</span></li>
+            <li><span>Lead internal QA engineers and govern about 25 vendor QA engineers across six programs. Report to a Director.</span></li>
+            <li><span>Set the SLAs and quality gates vendors deliver against. Review RFI, RFT and SOW responses and run technical evaluations.</span></li><li><span>Run quality engineering workshops and talks on ways of working and AI adoption across Emirates and dnata.</span></li>
+            <li><span>Hire, run 1:1s and performance reviews, and mentor engineers. Mentored an engineer into a promotion.</span></li>
+            <li><span>Work with Product Owners, Delivery Managers, business teams and vendor engineers from requirements to release.</span></li>
+          </ul>
+        </div>
+        <div class="pane">
+          <h3>Hands-on</h3>
+          <span class="label">Frameworks, pipelines, root cause</span>
+          <ul class="ticks">
+            <li><span>Build web, mobile and API automation in Playwright (TypeScript), Selenium, Appium and RestAssured.</span></li>
+            <li><span>Move suites between CI systems: Jenkins to GitLab CI, with SauceLabs real devices.</span></li>
+            <li><span>Add contract and schema tests against OpenAPI/Swagger, supported by PactFlow.</span></li>
+            <li><span>Trace failures across the application, APIs and pipeline before raising them with developers.</span></li>
+            <li><span>Use Claude, GitHub Copilot and Playwright agents for test design, synthetic data and first-draft scripts.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="programs">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">dnata programs</span>
+        <h2>Six programs, five regions</h2>
+        <p>Where my current work runs and what I own on each. Governance means vendor QA, SLAs, quality gates and release sign-off.</p>
+      </div>
+      <div class="prog-wrap">
+        <table class="prog">
+          <thead><tr><th scope="col">Program</th><th scope="col">Regions</th><th scope="col">My role</th></tr></thead>
+          <tbody>
+            <tr><td>easyJet<span class="sub">Client airline</span></td><td>UK &amp; Ireland</td><td><span class="role-pill gov">Governance</span><span class="role-pill auto">Automation</span></td></tr>
+            <tr><td>Aer Lingus<span class="sub">Client airline</span></td><td>UK &amp; Ireland</td><td><span class="role-pill gov">Governance</span><span class="role-pill auto">Automation</span></td></tr>
+            <tr><td>Immfly<span class="sub">Client partner</span></td><td>UK &amp; Ireland</td><td><span class="role-pill gov">Governance</span><span class="role-pill auto">Automation</span></td></tr>
+            <tr><td>Enterprise asset management (EAM)<span class="sub">Airport operations</span></td><td>Europe, Middle East, Americas incl. Brazil<span class="sub state">Some live, some rolling out</span></td><td><span class="role-pill gov">Governance</span><span class="role-pill auto">Automation</span></td></tr>
+            <tr><td>Lounge Management System<span class="sub">Airport lounges</span></td><td>Europe, Africa, Australia</td><td><span class="role-pill gov">Governance</span><span class="role-pill auto">On-site UAT</span></td></tr>
+            <tr><td>HACCP food safety app<span class="sub">Catering, mobile</span></td><td>—</td><td><span class="role-pill gov">Governance</span><span class="role-pill auto">Automation</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Experience</span>
+        <h2>Leadership first, then the hands-on work behind it</h2>
+      </div>
+
+      <div class="org">
+        <div class="org-head">
+          <h3>Emirates Group</h3>
+          <span class="promo">Promoted Jan 2026</span>
+        </div>
+
+        <article class="role">
+          <div class="role-top">
+            <h4>QA Lead · dnata International</h4>
+            <span class="when">Jan 2026 – Present · Dubai</span>
+          </div>
+          <p class="scope">Lead QA for dnata's airline and airport platforms across six programs. Lead 2 QA engineers, govern about 25 vendor QA engineers, and report to a Director.</p>
+          <div class="cols">
+            <div>
+              <span class="label">Leadership</span>
+              <ul class="ticks">
+                <li><span>Owned release readiness for each release. Ran on-site UAT of the Lounge Management System in Europe and Africa before a rollout with no critical issues.</span></li>
+                <li><span>Governed vendor QA for easyJet, Aer Lingus and Immfly programs: RFI, RFT and SOW reviews, technical evaluations, interview panels, SLAs and quality gates.</span></li><li><span>Hire, run 1:1s and performance reviews for my team.</span></li>
+                <li><span>Reviewed the vendor's infrastructure design for testability and resilience. A risk I raised on performance test accuracy led the vendor to change the design.</span></li>
+              </ul>
+            </div>
+            <div>
+              <span class="label">Hands-on</span>
+              <ul class="ticks">
+                <li><span>Built a Playwright (TypeScript) framework for the enterprise asset management (EAM) product: about 600 E2E scenarios, moved from Jenkins to GitLab CI with SauceLabs.</span></li><li><span>Built automation for the easyJet, Aer Lingus and Immfly programs alongside vendor governance.</span></li>
+                <li><span>Redesigned the Selenium/Appium framework for a food safety (HACCP) app. Regression went from 8h to about 3h on real Samsung devices.</span></li>
+                <li><span>Added failure categories to Allure reports so failures are triaged faster. Used Splunk logs to reproduce bugs and build PII-free test data.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="metrics">
+            <span class="metric"><b>~25</b> vendor QA engineers</span>
+            <span class="metric"><b>6</b> programs</span>
+            <span class="metric"><b>600</b> E2E scenarios</span>
+            <span class="metric"><b>8h → 3h</b> regression</span>
+          </div>
+        </article>
+
+        <article class="role">
+          <div class="role-top">
+            <h4>Lead QA Engineer · Emirates</h4>
+            <span class="when">Jan 2024 – Jan 2026 · Dubai</span>
+          </div>
+          <p class="scope">Led QA for core passenger-service and payment platforms across web, mobile and API, with a team of up to 3 engineers. Hired, ran 1:1s and performance reviews, and mentored an engineer into a promotion.</p>
+          <div class="cols">
+            <div>
+              <span class="label">Leadership</span>
+              <ul class="ticks">
+                <li><span>Led end-to-end QA for Emirates Resconnect (Reservations, Ticketing, Check-In) across web, mobile and middleware.</span></li>
+                <li><span>Planned payment migration coverage by risk, so critical payment cases were covered first.</span></li>
+                <li><span>Ran UAT, training and walkthroughs with business teams so operations were ready for each release.</span></li>
+              </ul>
+            </div>
+            <div>
+              <span class="label">Hands-on</span>
+              <ul class="ticks">
+                <li><span>Used production data to find a card type that would have failed on the new gateway. Proposed a routing fix that kept the release on its planned date.</span></li>
+                <li><span>Found a payment failure when switching method mid-entry, affecting web, mobile and call center users. Caught before release.</span></li>
+                <li><span>Built UI, API and contract tests for the XML-to-JSON migration on a gateway processing millions of transactions across Emirates' worldwide network.</span></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="org">
+        <div class="org-head">
+          <h3>IQVIA</h3>
+          <span class="when">Remote · Middle East &amp; Europe</span>
+        </div>
+        <article class="role">
+          <div class="role-top">
+            <h4>Senior QA Engineer</h4>
+            <span class="when">Sep 2021 – Jan 2024</span>
+          </div>
+          <p class="scope">Led QA for an 8-product healthcare SaaS suite for providers, payers and patients, coordinating 8 engineers across time zones. Hired, ran 1:1s and performance reviews, and mentored engineers.</p>
+          <div class="cols">
+            <div>
+              <span class="label">Leadership</span>
+              <ul class="ticks">
+                <li><span>Defined release readiness criteria, shift-left strategy and test plans across the program.</span></li>
+                <li><span>Ran UAT, demos and release sign-off with Product and operations. Tracked QA KPIs and defect trends.</span></li>
+                <li><span>Reached 90% requirements coverage, traced in Jira, for a multi-country rollout.</span></li>
+              </ul>
+            </div>
+            <div>
+              <span class="label">Hands-on</span>
+              <ul class="ticks">
+                <li><span>Designed a modular automation architecture for microservices, cutting execution from 8h to 4h.</span></li>
+                <li><span>Wrote Selenium, RestAssured and TestNG suites. Ran JMeter tests on healthcare backend APIs.</span></li>
+                <li><span>Built quality dashboards and shift-left gates for defect density, coverage, pass rate and readiness.</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="metrics">
+            <span class="metric"><b>8</b> engineers</span>
+            <span class="metric"><b>8</b> products</span>
+            <span class="metric"><b>90%</b> requirements coverage</span>
+            <span class="metric"><b>8h → 4h</b> execution</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="org">
+        <div class="org-head"><h3>Earlier</h3></div>
+        <div class="earlier">
+          <article class="role">
+            <div class="role-top">
+              <h4>QA Engineer · ProGineer Technologies</h4>
+              <span class="when">Nov 2019 – Sep 2021 · Remote</span>
+            </div>
+            <p class="scope">Delivery partner to PDF Solutions (Santa Clara, CA). Owned the QA plan, built Java tools for the team, including a utility that updates thousands of XML files, and mentored engineers.</p>
+          </article>
+          <article class="role">
+            <div class="role-top">
+              <h4>Systems Integration Engineer · Ooredoo</h4>
+              <span class="when">May 2015 – Nov 2019 · Palestine</span>
+            </div>
+            <p class="scope">Built and tested SOA integration flows for telecom platforms. Automated reconciliation routines, cutting manual effort by 40%.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Selected work</span>
+        <h2>Case studies</h2>
+        <p>Written without confidential details.</p>
+      </div>
+      <div class="work">
+        <article class="case feature">
+          <span class="label">dnata · built on my own initiative · internal tool</span>
+          <h3>Synthetic boarding passes, so test environments hold no passenger data</h3>
+          <p>An IATA Resolution 792 barcode generator and decoder. It creates realistic boarding data for automation, so lower environments carry no passenger PII and every test run uses the same repeatable data.</p>
+          <div class="bcbp" aria-label="Example synthetic boarding pass barcode string">
+<pre><span class="k">M1</span>TEST/SAMPLE         <span class="k">E</span>ABC123 <span class="k">DXBZRH</span>EK 0087 280Y012A0001 100</pre>
+            <span class="cap">Synthetic BCBP string · format code, name, PNR, route, carrier, flight, date, seat · no real passenger</span>
+          </div>
+          <div class="tags"><span class="tag">IATA BCBP</span><span class="tag">Test data</span><span class="tag">Privacy</span></div>
+        </article>
+
+        <article class="case">
+          <span class="label">dnata · enterprise asset management (EAM)</span>
+          <h3>Playwright framework at 600 scenarios</h3>
+          <p>Web and API integration framework for a product live in Europe and rolling out to more regions. Scenarios written with Playwright agents and AI-assisted authoring; execution moved from Jenkins to GitLab CI with SauceLabs.</p>
+          <div class="tags"><span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">GitLab CI</span><span class="tag">SauceLabs</span></div>
+        </article>
+
+        <article class="case">
+          <span class="label">Emirates · payments</span>
+          <h3>The card that would have failed</h3>
+          <p>During a payment gateway migration, production data showed which cards customers really use. One would have failed on the new version. A routing fix kept the release on its planned date.</p>
+          <div class="tags"><span class="tag">Risk-based testing</span><span class="tag">Production data</span><span class="tag">Payments</span></div>
+        </article>
+
+        <article class="case">
+          <span class="label">dnata · food safety app</span>
+          <h3>Regression from 8 hours to 3</h3>
+          <p>Redesigned the Selenium and Appium framework on a new architecture, with mobile suites on real Samsung devices in GitLab and Jenkins pipelines.</p>
+          <div class="tags"><span class="tag">Appium</span><span class="tag">Selenium</span><span class="tag">Real devices</span></div>
+        </article>
+
+        <article class="case">
+          <span class="label">Emirates Group · internal</span>
+          <h3>Workshops and talks</h3>
+          <p>Quality engineering workshops and internal conference talks across Emirates and dnata on QA ways of working and AI adoption in testing.</p>
+          <div class="tags"><span class="tag">Quality engineering</span><span class="tag">Ways of working</span><span class="tag">AI adoption</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="toolkit">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Toolkit</span>
+        <h2>What I lead with and what I build with</h2>
+      </div>
+      <div class="kit">
+        <div class="group lead">
+          <h3>Leadership</h3>
+          <ul><li>Release go/no-go</li><li>Quality gates &amp; SLAs</li><li>Vendor QA governance</li><li>RFI / RFT / SOW review</li><li>Distributed teams</li><li>UAT leadership</li></ul>
+        </div>
+        <div class="group">
+          <h3>Automation</h3>
+          <ul><li>Playwright (TS)</li><li>Selenium</li><li>Appium</li><li>RestAssured</li><li>Cucumber</li><li>JUnit</li><li>TestNG</li></ul>
+        </div>
+        <div class="group">
+          <h3>Testing</h3>
+          <ul><li>Exploratory</li><li>Risk-based</li><li>API &amp; integration</li><li>Contract (PactFlow, OpenAPI)</li><li>Real-device mobile</li><li>JMeter</li></ul>
+        </div>
+        <div class="group">
+          <h3>CI/CD &amp; code</h3>
+          <ul><li>GitLab CI</li><li>Jenkins</li><li>Maven</li><li>Git</li><li>Java</li><li>TypeScript</li></ul>
+        </div>
+        <div class="group">
+          <h3>Observability &amp; reporting</h3>
+          <ul><li>Splunk</li><li>Allure</li><li>SauceLabs</li><li>Jira</li><li>QMetry</li><li>TestRail</li></ul>
+        </div>
+        <div class="group">
+          <h3>GenAI for QA</h3>
+          <ul><li>Claude</li><li>GitHub Copilot</li><li>Playwright agents</li><li>Synthetic test data</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="credentials">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Credentials</span>
+        <h2>Education and languages</h2>
+      </div>
+      <div class="creds">
+        <div class="cred">
+          <h3>BSc Telecommunication Engineering</h3>
+          <p>An-Najah National University · 2010 – 2015</p>
+        </div>
+        <div class="cred">
+          <h3>Certified Ethical Hacker (CEH)</h3>
+          <p>EC-Council · Arab German Academy · 2015 – 2016</p>
+        </div>
+        <div class="cred">
+          <h3>Languages</h3>
+          <p>Arabic, native · English, professional working proficiency</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <span class="label">Contact</span>
+          <h2>Need quality leadership that stays hands-on?</h2>
+          <p>Open to remote roles, fully remote or remote including the UAE. Available across US, EU and APAC hours.</p>
+        </div>
+        <div class="lines">
+          <div class="line">
+            <span class="label">Email</span>
+            <span class="v" id="email">s.holi_1989@live.com</span>
+            <button class="copy" type="button" data-copy="email">Copy</button>
+          </div>
+          <div class="line">
+            <span class="label">Phone</span>
+            <span class="v" id="phone">+971 56 953 8533</span>
+            <button class="copy" type="button" data-copy="phone">Copy</button>
+          </div>
+          <div class="line">
+            <span class="label">LinkedIn</span>
+            <a class="v" href="https://linkedin.com/in/sholi" target="_blank" rel="noopener">linkedin.com/in/sholi</a>
+            <span></span>
+          </div>
+          <div class="line">
+            <span class="label">Resume</span>
+            <a class="v" href="assets/Abedelrahman-Sholi-Resume.pdf" target="_blank" rel="noopener">Download PDF</a>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Abedelrahman Sholi · Dubai, UAE</span>
+    <span>QA Lead · Aviation · Payments · Healthcare</span>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
 </body>
 </html>

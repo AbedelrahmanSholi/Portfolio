@@ -1,6 +1,5 @@
 # Robots for Abedelrahman Sholi — portfolio
-# The page renders client-side, so CSS and JS must stay crawlable for Google
-# to see the content.
+# All page content is in the HTML, so crawlers can read it directly.
 
 User-agent: *
 Allow: /
