@@ -5,9 +5,9 @@
 ## About
 
 I lead quality for airline, airport and payment platforms, and I still write
-the tests. 11+ years across aviation, payments, healthcare and telecom. I own
-release go/no-go, lead QA engineers, govern about 25 vendor QA engineers across
-programs for easyJet, Aer Lingus and Immfly, and build the automation myself in
+the tests. 11+ years across aviation, payments, healthcare and telecom. I give
+the quality go/no-go on every release, lead QA engineers, govern 19 QA engineers
+from five vendors across four programs, and build the automation myself in
 Playwright (TypeScript), Selenium and Appium. Four years fully remote across
 time zones.
 
@@ -15,11 +15,11 @@ Dubai, UAE. Open to remote roles, available across all time zones.
 
 ## Leadership
 
-* Release readiness and go/no-go for each release.
-* Lead 2 QA engineers at dnata and govern about 25 vendor QA engineers across
-  six programs. Report to a Director.
-* Hiring, 1:1s, performance reviews and mentoring at dnata, Emirates and IQVIA.
-  Mentored an engineer into a promotion.
+* Release readiness and the quality go/no-go for each release.
+* Lead 2 QA engineers at dnata and govern 19 QA engineers from five vendors
+  across four programs. Report to a Director.
+* Hiring, 1:1s and performance reviews at dnata, Emirates and IQVIA, and
+  mentoring engineers at dnata.
 * Vendor QA governance: SLAs, quality gates, RFI/RFT/SOW review, technical
   evaluations and interview panels.
 * Quality engineering workshops and internal talks across Emirates and dnata
