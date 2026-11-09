@@ -28,17 +28,20 @@ Dubai, UAE. Open to remote roles, available across all time zones.
 ## Hands-on
 
 **Automation.** Playwright (TypeScript), Selenium, Appium, RestAssured,
-Cucumber, JUnit, TestNG.
+SoapUI, Cucumber, JUnit, TestNG.
 
 **Testing.** Exploratory, risk-based, API and integration, contract testing
 (OpenAPI/Swagger, PactFlow), real-device mobile testing (SauceLabs), JMeter.
 
-**CI/CD and code.** GitLab CI, Jenkins, Maven, Git, Java, TypeScript.
+**CI/CD and code.** GitLab CI, Jenkins, Maven, Git, Docker, Java, TypeScript,
+SQL.
 
 **Observability and reporting.** Splunk, Allure, Jira, QMetry, TestRail.
 
 **GenAI for QA.** Claude, GitHub Copilot and Playwright agents for test design,
-synthetic test data and first-draft automation.
+synthetic test data and first-draft automation. Took part in the pilot of
+Aura, Emirates Group's Claude-based AI tool, reviewing its outputs and testing
+its guardrails with manipulated prompts.
 
 ## Experience
 
