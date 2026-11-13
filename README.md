@@ -5,11 +5,11 @@
 ## About
 
 I lead quality for airline, airport and payment platforms, and I still write
-the tests. 11+ years across aviation, payments, healthcare and telecom. I give
-the quality go/no-go on every release, lead QA engineers, govern 19 QA engineers
-from five vendors across four programs, and build automation myself in
-Playwright (TypeScript), Selenium and Appium. Four years fully remote across
-time zones.
+the tests. 11+ years across aviation, payments, healthcare and telecom. I'm
+leading dnata's move to AI-assisted test automation, from strategy and
+guardrails to team adoption. I lead QA engineers and vendor QA teams, own the
+release go/no-go, and stay hands-on, from framework design to debugging down to
+code and pipelines. Four years fully remote across time zones.
 
 Dubai, UAE. Open to remote roles, available across all time zones.
 
